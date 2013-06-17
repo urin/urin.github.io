@@ -1,2 +1,2 @@
-urin.github.com
+[GitHub page of urin](http://urin.github.io)
 ===============
