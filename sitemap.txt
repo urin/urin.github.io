@@ -1,0 +1,8 @@
+
+http://urin.github.io/index.html
+http://urin.github.io/tags/Jekyll/index.html
+http://urin.github.io/tags/GitHub/index.html
+http://urin.github.io/tags/Octopress/index.html
+http://urin.github.io/tags/Ruby/index.html
+
+http://urin.github.io/2013/Renewal

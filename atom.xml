@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>URIN HACK</title>
+  <link href="http://urin.github.io/atom.xml" rel="self"/>
+  <link href="http://urin.github.io"/>
+  <updated>2013-08-03T00:00:00+09:00</updated>
+  <id>http://urin.github.io</id>
+  <author>
+    <name>うりん</name>
+  </author>
+  
+  <entry>
+    <title>ブログをリニューアル</title>
+    <link href="http://urin.github.io/2013/Renewal"/>
+    <updated>2013-08-03T00:00:00+09:00</updated>
+    <id>http://urin.github.io/2013/Renewal</id>
+    <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
+何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすることが多いのだとどこかで聞いたことがある。まさに、それだ。&lt;/p&gt;
+
+&lt;h2&gt;Jekyllを選択したわけ&lt;/h2&gt;
+
+&lt;p&gt;ブログサービスを選ぶ判断基準は以下。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;無料&lt;/li&gt;
+&lt;li&gt;長い将来を見据えてサービス停止とならない（と思われる）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HTML&lt;/code&gt;や&lt;code&gt;CSS&lt;/code&gt;、&lt;code&gt;Javascript&lt;/code&gt;含めてほぼ完全にカスタマイズできる&lt;/li&gt;
+&lt;li&gt;余計な広告ができるだけ入らない&lt;/li&gt;
+&lt;li&gt;記事に&lt;code&gt;HTML&lt;/code&gt;が使えてコードのシンタックスハイライトなどもできる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;無料のブログサービスを調べる&lt;/h3&gt;
+
+&lt;p&gt;日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;忍者ブログ&lt;/li&gt;
+&lt;li&gt;Blogger&lt;/li&gt;
+&lt;li&gt;アメーバブログ&lt;/li&gt;
+&lt;li&gt;fc2ブログ&lt;/li&gt;
+&lt;li&gt;Livedoorブログ&lt;/li&gt;
+&lt;li&gt;・・・&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に&lt;code&gt;HTML&lt;/code&gt;を使うのが難しくなったのが致命的だった。
+これら伝統的なブログサービス以外の選択肢としては&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Striking.ly&lt;/li&gt;
+&lt;li&gt;WordPress.com&lt;/li&gt;
+&lt;li&gt;WordPress.orgを何らかのサーバ上で運営&lt;/li&gt;
+&lt;li&gt;OctpressをGitHubでホスティング&lt;/li&gt;
+&lt;li&gt;Wix&lt;/li&gt;
+&lt;li&gt;Weebly&lt;/li&gt;
+&lt;li&gt;Jimdo&lt;/li&gt;
+&lt;li&gt;Edicy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というのもあったが、WordPress.comなどはGoogleアドセンスが使えない、HTML、CSSをカスタマイズ出来ないなど色々と不都合があった。&lt;/p&gt;
+
+&lt;h3&gt;結論&lt;/h3&gt;
+
+&lt;p&gt;完全にカスタマイズできて&lt;code&gt;Octopress&lt;/code&gt;のベースにもなっている&lt;code&gt;Jekyll&lt;/code&gt;が今年リリースされた&lt;code&gt;Version 0.12.0&lt;/code&gt;あたりから
+急激に充実してもはや&lt;code&gt;Octopress&lt;/code&gt;なんていらないんじゃ、という感じがしたので&lt;code&gt;Jekyll 1.1+&lt;/code&gt;を&lt;code&gt;GitHub Pages&lt;/code&gt;にホスティングしてもらう形とした。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;code&gt;Jekyll Bootstrap&lt;/code&gt;という&lt;code&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
+開発が停滞気味で&lt;code&gt;Jekyll&lt;/code&gt;本体と&lt;code&gt;Bootstrap&lt;/code&gt;の更新に追いついて行けなさそうな予感がしたので結局、素の&lt;code&gt;Jekyll&lt;/code&gt;にした。&lt;/p&gt;
+
+&lt;p&gt;デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
+なにせ、依存関係が少ない。やはりこういうことが重要なのだ。&lt;/p&gt;
+</content>
+  </entry>
+  
+</feed>

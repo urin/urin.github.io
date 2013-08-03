@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+    <meta charset="utf-8">
+    <title>ブログをリニューアル - URIN HACK</title>
+    <meta name="description" content="URIN HACK Amazing programming hacks Jekyll GitHub Octopress Ruby">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="ブログをリニューアル - URIN HACK">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/img/layout/URIN-HACK-icon-50x50.jpg">
+    <meta property="og:url" content="http://urin.github.io/2013/Renewal">
+    <meta property="og:site_name" content="URIN HACK">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="canonical" href="http://urin.github.io/2013/Renewal">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <!--
+    <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/layout/apple-touch-icon-114x114.png">
+    -->
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/css/font-awesome.css" rel="stylesheet" media="screen">
+    <link href="/css/syntax.css" rel="stylesheet" media="screen">
+    <link href="/css/style.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body class="container">
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <header class="row">
+      <div class="header-logo col-6 col-sm-3 col-lg-3">
+        <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
+        <a href="/rss.xml" title="RSSフィード"><i class="icon-rss"></i></a>
+      </div>
+      <nav class="sns-icons col-6 col-offset-6 col-sm-3 col-lg-3">
+        <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+        <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+        <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+      </nav>
+    </header>
+    <hr>
+    <article>
+      <div class="row">
+  <div class="col-12 col-sm-3 col-lg-2"><div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i><span class="digits">2013-08-03</span></li>
+  
+    
+       
+    <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="1件の記事">Jekyll <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/Ruby" title="1件の記事">Ruby <span class="badge digits">1</span></a></li>
+      
+    
+  
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+</div>
+</div>
+  <div class="post col-12 col-sm-9 col-lg-10">
+    <h1 class="well">ブログをリニューアル</h1>
+    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。</p>
+
+<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
+何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすることが多いのだとどこかで聞いたことがある。まさに、それだ。</p>
+
+<h2>Jekyllを選択したわけ</h2>
+
+<p>ブログサービスを選ぶ判断基準は以下。</p>
+
+<ul>
+<li>無料</li>
+<li>長い将来を見据えてサービス停止とならない（と思われる）</li>
+<li><code>HTML</code>や<code>CSS</code>、<code>Javascript</code>含めてほぼ完全にカスタマイズできる</li>
+<li>余計な広告ができるだけ入らない</li>
+<li>記事に<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
+</ul>
+
+<h3>無料のブログサービスを調べる</h3>
+
+<p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
+
+<ul>
+<li>忍者ブログ</li>
+<li>Blogger</li>
+<li>アメーバブログ</li>
+<li>fc2ブログ</li>
+<li>Livedoorブログ</li>
+<li>・・・</li>
+</ul>
+
+<p>正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に<code>HTML</code>を使うのが難しくなったのが致命的だった。
+これら伝統的なブログサービス以外の選択肢としては</p>
+
+<ul>
+<li>Striking.ly</li>
+<li>WordPress.com</li>
+<li>WordPress.orgを何らかのサーバ上で運営</li>
+<li>OctpressをGitHubでホスティング</li>
+<li>Wix</li>
+<li>Weebly</li>
+<li>Jimdo</li>
+<li>Edicy</li>
+</ul>
+
+<p>というのもあったが、WordPress.comなどはGoogleアドセンスが使えない、HTML、CSSをカスタマイズ出来ないなど色々と不都合があった。</p>
+
+<h3>結論</h3>
+
+<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされた<code>Version 0.12.0</code>あたりから
+急激に充実してもはや<code>Octopress</code>なんていらないんじゃ、という感じがしたので<code>Jekyll 1.1+</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
+
+<p><code>Jekyll</code>のスターターキットとして<code>Jekyll Bootstrap</code>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
+開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、素の<code>Jekyll</code>にした。</p>
+
+<p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
+なにせ、依存関係が少ない。やはりこういうことが重要なのだ。</p>
+
+    <div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i><span class="digits">2013-08-03</span></li>
+  
+    
+       
+    <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="1件の記事">Jekyll <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress <span class="badge digits">1</span></a></li>
+       
+    <li><i class="icon-tag"></i><a href="/tags/Ruby" title="1件の記事">Ruby <span class="badge digits">1</span></a></li>
+      
+    
+  
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+</div>
+
+  </div>
+</div>
+
+<!-- Twitter button -->
+<style> iframe.twitter-share-button { width: 90px !important } </style>
+<script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){
+      js=d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document, 'script', 'twitter-wjs');
+</script>
+<!-- Google +1 button -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- Hatena bookmark button -->
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+    </article>
+    <hr>
+    <footer class="text-muted">
+      <div class="col-12 col-sm-4 col-lg-4">
+        <h4><i class="icon-paper-clip"></i>最近の記事</h4>
+        <dl class="recent-posts list-unstyled">
+
+          <dt>
+            <span class="digits">2013-08-03</span>
+          </dt>
+          <dd>
+            <a href="/2013/Renewal">ブログをリニューアル</a>
+          </dd>
+  
+
+        </dl>
+      </div>
+      <div class="col-12 col-sm-4 col-lg-4">
+        <h4><i class="icon-tags"></i>タグ</h4>
+<a href="/tags/Jekyll" style="font-size: NaN%;">Jekyll</a>
+<a href="/tags/Octopress" style="font-size: NaN%;">Octopress</a>
+<a href="/tags/GitHub" style="font-size: NaN%;">GitHub</a>
+<a href="/tags/Ruby" style="font-size: NaN%;">Ruby</a>
+
+      </div>
+      <div class="col-12 col-sm-4 col-lg-4">
+        <h4><i class="icon-github"></i>レポジトリ</h4>
+        <dl>
+          <dt>
+            <a href="//github.com/urin/jquery.tile.js">jquery.tile.js</a>
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+          </dt>
+          <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.balloon.js">jquery.balloon.js</a>
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+          </dt>
+          <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js
+            </a>
+          </dt>
+          <dd>掲載したコードの右側が切れるのを表示領域を伸ばすボタンで回避するjQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/.vimrc">.vimrc</a>
+          </dt>
+          <dd>Vim用設定ファイル</dd>
+        </dl>
+      </div>
+      <div class="copyright col-12">
+        <span class="col-6 col-lg-2 col-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
+        <span class="sns-icons col-6 col-lg-2">
+          <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+          <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+          <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+        </span>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

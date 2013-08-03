@@ -1,0 +1,208 @@
+/***********************************************************
+ * Global
+ ***********************************************************/
+
+body {
+  background-color: #fafafa;
+  background: -webkit-radial-gradient(70% 0%, circle, #fafafa, #e8e8e8);
+  background: -moz-radial-gradient   (70% 0%, circle, #fafafa, #e8e8e8);
+  background: -o-radial-gradient     (70% 0%, circle, #fafafa, #e8e8e8);
+  background: -ms-radial-gradient    (70% 0%, circle, #fafafa, #e8e8e8);
+  background: radial-gradient        (70% 0%, circle, #fafafa, #e8e8e8);
+}
+
+hr {
+  margin: 0;
+  width: 100%;
+  -moz-box-shadow:    0 -1px 1px rgba(  0,   0,   0, 0.07), 0 0 2px rgba(255, 255, 255, 0.97);
+  -webkit-box-shadow: 0 -1px 1px rgba(  0,   0,   0, 0.07), 0 0 2px rgba(255, 255, 255, 0.97);
+  box-shadow:         0 -1px 1px rgba(  0,   0,   0, 0.07), 0 0 2px rgba(255, 255, 255, 0.97);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  margin-top: 30px;
+}
+
+pre {
+  line-height: 1.1em;
+}
+
+code {
+  border: 1px solid #f3d5dc;
+}
+
+pre > code {
+  font-size: inherit;
+  border: none;
+}
+
+article a[href*="//"]:after {
+  content: "\f08e";
+  vertical-align: super;
+  font-size: 0.8em;
+  padding: 3px;
+  font-family: FontAwesome;
+}
+
+header a:hover,
+footer a:hover {
+  text-decoration: none;
+}
+
+i[class^="icon-"] {
+  display: inline-block;
+  width: 1.2em;
+  text-align: center;
+}
+
+.icon-time {
+  color: #79543a;
+}
+
+.icon-tag, .icon-tags {
+  color: #4e793a;
+}
+
+.digits {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/***********************************************************
+ * Default layout
+ ***********************************************************/
+header {
+  height: 40px; line-height: 40px;
+}
+
+.header-logo > * {
+  opacity: 0.5;
+}
+
+.header-logo > *:hover {
+  opacity: 1;
+}
+
+header i[class^="icon-"] {
+  vertical-align: middle;
+}
+
+header .icon-rss {
+  font-size: 22px;
+  color: #ee802f;
+}
+
+header .sns-icons {
+  text-align: right;
+}
+
+.sns-icons {
+  text-shadow: none;
+}
+
+.sns-icons i {
+  margin-right: 10px;
+  padding-top: 4px; width: 24px; height: 24px;
+  font-size: 16px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+}
+
+.sns-icons > * {
+  opacity: 0.5;
+}
+
+.sns-icons > *:hover {
+  opacity: 1;
+}
+
+.sns-icons i.icon-github {
+  color: #171515;
+  background-color: #ddd;
+}
+
+.sns-icons i.icon-twitter {
+  color: #fff;
+  background-color: #00acee;
+}
+
+.sns-icons i.icon-facebook {
+  color: #fff;
+  background-color: #3b5998;
+}
+
+article {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+footer {
+  margin-top:    30px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.recent-posts > dt {
+  font-weight: normal;
+}
+
+.recent-posts > dd {
+  font-weight: bold;
+}
+
+.github-btn {
+  position: relative;
+  top: 4px;
+}
+
+.copyright {
+  text-align: center;
+  color: #bbb;
+  font-size: 12px;
+  padding: 20px;
+  height: 60px;
+}
+
+/***********************************************************
+ * Post layout
+ ***********************************************************/
+.post p {
+  margin-bottom: 10px;
+}
+
+.post p,
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6
+{
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.post-aux .badge {
+  vertical-align: super;
+  font-size: 70%;
+  background-color: #ddd;
+  font-weight: normal;
+  color: #428bca;
+  text-shadow: none;
+}
+
+.post-aux {
+  color: #888;
+  margin-top: 20px;
+  line-height: 2.4;
+  opacity: 0.7;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.post-aux:hover {
+  opacity: 1;
+}
+
