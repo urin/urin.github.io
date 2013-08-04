@@ -14,21 +14,21 @@
     <link href="http://urin.github.io/2013/Renewal"/>
     <updated>2013-08-03T00:00:00+09:00</updated>
     <id>http://urin.github.io/2013/Renewal</id>
-    <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
-何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすることが多いのだとどこかで聞いたことがある。まさに、それだ。&lt;/p&gt;
+    <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。
+&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;
+去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
+何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
 
 &lt;h2&gt;Jekyllを選択したわけ&lt;/h2&gt;
 
 &lt;p&gt;ブログサービスを選ぶ判断基準は以下。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;無料&lt;/li&gt;
-&lt;li&gt;長い将来を見据えてサービス停止とならない（と思われる）&lt;/li&gt;
+&lt;li&gt;無料で容量制限が厳しくない&lt;/li&gt;
+&lt;li&gt;将来性がある（１０年間くらいはサービスが継続すると思われる）&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;HTML&lt;/code&gt;や&lt;code&gt;CSS&lt;/code&gt;、&lt;code&gt;Javascript&lt;/code&gt;含めてほぼ完全にカスタマイズできる&lt;/li&gt;
-&lt;li&gt;余計な広告ができるだけ入らない&lt;/li&gt;
-&lt;li&gt;記事に&lt;code&gt;HTML&lt;/code&gt;が使えてコードのシンタックスハイライトなどもできる&lt;/li&gt;
+&lt;li&gt;余計な広告が入らない&lt;/li&gt;
+&lt;li&gt;記事にも&lt;code&gt;HTML&lt;/code&gt;が使えてコードのシンタックスハイライトなどもできる&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3&gt;無料のブログサービスを調べる&lt;/h3&gt;
@@ -36,11 +36,11 @@
 &lt;p&gt;日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;忍者ブログ&lt;/li&gt;
-&lt;li&gt;Blogger&lt;/li&gt;
-&lt;li&gt;アメーバブログ&lt;/li&gt;
-&lt;li&gt;fc2ブログ&lt;/li&gt;
-&lt;li&gt;Livedoorブログ&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ninja.co.jp/blog/&quot;&gt;忍者ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.blogger.com/&quot;&gt;Blogger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ameblo.jp/&quot;&gt;Ameba (アメーバ)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.fc2.com/&quot;&gt;FC2ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.livedoor.com/&quot;&gt;ライブドアブログ(livedoor Blog)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;・・・&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -48,28 +48,35 @@
 これら伝統的なブログサービス以外の選択肢としては&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Striking.ly&lt;/li&gt;
-&lt;li&gt;WordPress.com&lt;/li&gt;
-&lt;li&gt;WordPress.orgを何らかのサーバ上で運営&lt;/li&gt;
-&lt;li&gt;OctpressをGitHubでホスティング&lt;/li&gt;
-&lt;li&gt;Wix&lt;/li&gt;
-&lt;li&gt;Weebly&lt;/li&gt;
-&lt;li&gt;Jimdo&lt;/li&gt;
-&lt;li&gt;Edicy&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.strikingly.com/&quot;&gt;Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wordpress.com/&quot;&gt;WordPress.com - Get a Free Blog Here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wordpress.org/&quot;&gt;WordPress › Blog Tool, Publishing Platform, and CMS&lt;/a&gt;を何らかのサーバ上で運営&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt;をGitHubでホスティング&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.edicy.com/&quot;&gt;Edicy — Create a Website — Easy to use Website Builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ja.wix.com/&quot;&gt;WIX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.weebly.com/&quot;&gt;Weebly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jp.jimdo.com/&quot;&gt;Jimdo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;というのもあったが、WordPress.comなどはGoogleアドセンスが使えない、HTML、CSSをカスタマイズ出来ないなど色々と不都合があった。&lt;/p&gt;
+&lt;p&gt;というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、&lt;code&gt;HTML&lt;/code&gt;、&lt;code&gt;CSS&lt;/code&gt;をカスタマイズ出来ないなど色々と不都合があった。
+で、この中では&lt;code&gt;Octopress&lt;/code&gt;が&lt;code&gt;Compass&lt;/code&gt;が使えたり色々といいように見えた。しかし・・・&lt;/p&gt;
 
 &lt;h3&gt;結論&lt;/h3&gt;
 
-&lt;p&gt;完全にカスタマイズできて&lt;code&gt;Octopress&lt;/code&gt;のベースにもなっている&lt;code&gt;Jekyll&lt;/code&gt;が今年リリースされた&lt;code&gt;Version 0.12.0&lt;/code&gt;あたりから
-急激に充実してもはや&lt;code&gt;Octopress&lt;/code&gt;なんていらないんじゃ、という感じがしたので&lt;code&gt;Jekyll 1.1+&lt;/code&gt;を&lt;code&gt;GitHub Pages&lt;/code&gt;にホスティングしてもらう形とした。&lt;/p&gt;
+&lt;p&gt;完全にカスタマイズできて&lt;code&gt;Octopress&lt;/code&gt;のベースにもなっている&lt;code&gt;Jekyll&lt;/code&gt;が今年リリースされたバージョン&lt;code&gt;0.12.0&lt;/code&gt;あたりから
+急激に充実してもはや&lt;code&gt;Octopress&lt;/code&gt;なんていらないんじゃね？という勢いを感じたので&lt;code&gt;Jekyll&lt;/code&gt;を&lt;code&gt;GitHub Pages&lt;/code&gt;にホスティングしてもらう形とした。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;code&gt;Jekyll Bootstrap&lt;/code&gt;という&lt;code&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
-開発が停滞気味で&lt;code&gt;Jekyll&lt;/code&gt;本体と&lt;code&gt;Bootstrap&lt;/code&gt;の更新に追いついて行けなさそうな予感がしたので結局、素の&lt;code&gt;Jekyll&lt;/code&gt;にした。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;という&lt;code&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
+開発が停滞気味で&lt;code&gt;Jekyll&lt;/code&gt;本体と&lt;code&gt;Bootstrap&lt;/code&gt;の更新に追いついて行けなさそうな予感がしたので結局、こうした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;常に最新の&lt;code&gt;Jekyll&lt;/code&gt;が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。&lt;/li&gt;
+&lt;li&gt;レスポンシブ対応のグリッドシステムを持っていて今後も息が長い&lt;code&gt;CSS&lt;/code&gt;フレームワークを使いたい。ということで&lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap 3 RC1&lt;/a&gt;を導入。&lt;/li&gt;
+&lt;li&gt;アイコンは&lt;code&gt;Web font&lt;/code&gt;がいいので&lt;code&gt;Bootstrap&lt;/code&gt;との相性も良い&lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/&quot;&gt;Font Awesome, the iconic font designed for Bootstrap&lt;/a&gt;。&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ、依存関係が少ない。やはりこういうことが重要なのだ。&lt;/p&gt;
+なにせ依存関係が少ない。安定依存の原則。これ重要。&lt;/p&gt;
 </content>
   </entry>
   

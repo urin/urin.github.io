@@ -82,21 +82,21 @@
 </div>
   <div class="post col-12 col-sm-9 col-lg-10">
     <h1 class="well">ブログをリニューアル</h1>
-    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。</p>
-
-<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
-何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすることが多いのだとどこかで聞いたことがある。まさに、それだ。</p>
+    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。
+<a href="//jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a>
+去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
+何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。</p>
 
 <h2>Jekyllを選択したわけ</h2>
 
 <p>ブログサービスを選ぶ判断基準は以下。</p>
 
 <ul>
-<li>無料</li>
-<li>長い将来を見据えてサービス停止とならない（と思われる）</li>
+<li>無料で容量制限が厳しくない</li>
+<li>将来性がある（１０年間くらいはサービスが継続すると思われる）</li>
 <li><code>HTML</code>や<code>CSS</code>、<code>Javascript</code>含めてほぼ完全にカスタマイズできる</li>
-<li>余計な広告ができるだけ入らない</li>
-<li>記事に<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
+<li>余計な広告が入らない</li>
+<li>記事にも<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
 </ul>
 
 <h3>無料のブログサービスを調べる</h3>
@@ -104,11 +104,11 @@
 <p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
 
 <ul>
-<li>忍者ブログ</li>
-<li>Blogger</li>
-<li>アメーバブログ</li>
-<li>fc2ブログ</li>
-<li>Livedoorブログ</li>
+<li><a href="http://www.ninja.co.jp/blog/">忍者ブログ</a></li>
+<li><a href="http://www.blogger.com/">Blogger</a></li>
+<li><a href="http://ameblo.jp/">Ameba (アメーバ)</a></li>
+<li><a href="http://blog.fc2.com/">FC2ブログ</a></li>
+<li><a href="http://blog.livedoor.com/">ライブドアブログ(livedoor Blog)</a></li>
 <li>・・・</li>
 </ul>
 
@@ -116,28 +116,35 @@
 これら伝統的なブログサービス以外の選択肢としては</p>
 
 <ul>
-<li>Striking.ly</li>
-<li>WordPress.com</li>
-<li>WordPress.orgを何らかのサーバ上で運営</li>
-<li>OctpressをGitHubでホスティング</li>
-<li>Wix</li>
-<li>Weebly</li>
-<li>Jimdo</li>
-<li>Edicy</li>
+<li><a href="https://www.strikingly.com/">Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成</a></li>
+<li><a href="http://wordpress.com/">WordPress.com - Get a Free Blog Here</a></li>
+<li><a href="http://wordpress.org/">WordPress › Blog Tool, Publishing Platform, and CMS</a>を何らかのサーバ上で運営</li>
+<li><a href="http://octopress.org/">Octopress</a>をGitHubでホスティング</li>
+<li><a href="http://www.edicy.com/">Edicy — Create a Website — Easy to use Website Builder</a></li>
+<li><a href="http://ja.wix.com/">WIX</a></li>
+<li><a href="http://www.weebly.com/">Weebly</a></li>
+<li><a href="http://jp.jimdo.com/">Jimdo</a></li>
 </ul>
 
-<p>というのもあったが、WordPress.comなどはGoogleアドセンスが使えない、HTML、CSSをカスタマイズ出来ないなど色々と不都合があった。</p>
+<p>というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、<code>HTML</code>、<code>CSS</code>をカスタマイズ出来ないなど色々と不都合があった。
+で、この中では<code>Octopress</code>が<code>Compass</code>が使えたり色々といいように見えた。しかし・・・</p>
 
 <h3>結論</h3>
 
-<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされた<code>Version 0.12.0</code>あたりから
-急激に充実してもはや<code>Octopress</code>なんていらないんじゃ、という感じがしたので<code>Jekyll 1.1+</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
+<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされたバージョン<code>0.12.0</code>あたりから
+急激に充実してもはや<code>Octopress</code>なんていらないんじゃね？という勢いを感じたので<code>Jekyll</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
 
-<p><code>Jekyll</code>のスターターキットとして<code>Jekyll Bootstrap</code>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
-開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、素の<code>Jekyll</code>にした。</p>
+<p><code>Jekyll</code>のスターターキットとして<a href="http://jekyllbootstrap.com/">Jekyll-Bootstrap</a>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
+開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、こうした。</p>
+
+<ul>
+<li>常に最新の<code>Jekyll</code>が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。</li>
+<li>レスポンシブ対応のグリッドシステムを持っていて今後も息が長い<code>CSS</code>フレームワークを使いたい。ということで<a href="http://getbootstrap.com/">Bootstrap 3 RC1</a>を導入。</li>
+<li>アイコンは<code>Web font</code>がいいので<code>Bootstrap</code>との相性も良い<a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome, the iconic font designed for Bootstrap</a>。</li>
+</ul>
 
 <p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ、依存関係が少ない。やはりこういうことが重要なのだ。</p>
+なにせ依存関係が少ない。安定依存の原則。これ重要。</p>
 
     <div class="post-aux">
   <ul class="list-inline">
@@ -211,10 +218,10 @@
       </div>
       <div class="col-12 col-sm-4 col-lg-4">
         <h4><i class="icon-tags"></i>タグ</h4>
+<a href="/tags/Ruby" style="font-size: NaN%;">Ruby</a>
 <a href="/tags/Jekyll" style="font-size: NaN%;">Jekyll</a>
 <a href="/tags/Octopress" style="font-size: NaN%;">Octopress</a>
 <a href="/tags/GitHub" style="font-size: NaN%;">GitHub</a>
-<a href="/tags/Ruby" style="font-size: NaN%;">Ruby</a>
 
       </div>
       <div class="col-12 col-sm-4 col-lg-4">
