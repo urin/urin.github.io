@@ -5,9 +5,61 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2013-08-04T12:44:03+09:00</lastBuildDate>
-    <pubDate>2013-08-03T00:00:00+09:00</pubDate>
+    <lastBuildDate>2013-08-04T19:15:33+09:00</lastBuildDate>
+    <pubDate>2013-08-04T00:00:00+09:00</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>Jekyll 1.1系をWindowsに導入する</title>
+      <description>&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
+
+&lt;h3&gt;Pythonをインストール&lt;/h3&gt;
+
+&lt;p&gt;シンタックスハイライト用の&lt;code&gt;pygments.rb&lt;/code&gt;が使用する。
+&lt;code&gt;pygments.rb&lt;/code&gt;によると&lt;code&gt;python&lt;/code&gt;のバージョン&lt;code&gt;2.6&lt;/code&gt;以降であれば何でもいいと書いてあるが、python&lt;code&gt;3&lt;/code&gt;系では動作しない。
+よって&lt;code&gt;2.7&lt;/code&gt;をインストールする。&lt;/p&gt;
+
+&lt;p&gt;インストールが終わったら&lt;code&gt;python.exe&lt;/code&gt;のあるディレクトリを&lt;code&gt;PATH&lt;/code&gt;に追加する。&lt;/p&gt;
+
+&lt;h3&gt;easy_install(distribute)をインストール&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://python-distribute.org/distribute_setup.py&quot;&gt;distribute_setup.py&lt;/a&gt;
+をダウンロードしてきて&lt;code&gt;python&lt;/code&gt;で実行するだけ。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;python distribute_setup.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Pygmentsをインストール&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;python&lt;/code&gt;のあるディレクトリに&lt;code&gt;Scripts&lt;/code&gt;フォルダができていてその中に&lt;code&gt;easy_install.exe&lt;/code&gt;がある。
+ここで&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;&lt;span class=&quot;k&quot;&gt;cd&lt;/span&gt; Scripts
+easy_install Pygments
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;とするだけ。&lt;/p&gt;
+
+&lt;h3&gt;pygments.rbのダウングレード&lt;/h3&gt;
+
+&lt;p&gt;シンタックスハイライトを使用しようとすると&lt;code&gt;posix-spawn&lt;/code&gt;やら&lt;code&gt;liquid&lt;/code&gt;やらがエラーを出す。この問題は&lt;a href=&quot;//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working&quot;&gt;Stack Over Flow&lt;/a&gt;にも挙げられていて対策もあった。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall -a pygments.rb
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.5.0&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;とバージョンを&lt;code&gt;0.5.0&lt;/code&gt;に下げる。&lt;/p&gt;
+
+&lt;h3&gt;エンコーディングの固定化&lt;/h3&gt;
+
+&lt;p&gt;日本語を使うと&lt;code&gt;jekyll build&lt;/code&gt;でエラーになるのでファイル読み込み時のエンコーディングを&lt;code&gt;UTF-8&lt;/code&gt;固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら&lt;code&gt;Windows-31J&lt;/code&gt;）が、実際のファイルは全て&lt;code&gt;UTF-8&lt;/code&gt;にしたいので。LinuxやMacなんかではシステムのエンコーディングが&lt;code&gt;UTF-8&lt;/code&gt;だから普通は問題ない。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;jekyll&lt;/code&gt;本体に手をつけるハックもネット上で見かけたがよろしくない。
+&lt;a href=&quot;//gist.github.com/urin/6119169#file-set_default_encoding.rb&quot;&gt;これ&lt;/a&gt;を&lt;code&gt;_plugins&lt;/code&gt;フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UTF_8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;
+
+&lt;p&gt;さあ、快適なJekyllライフをはじめよう。&lt;/p&gt;
+</description>
+      <link>http://urin.github.io/2013/Setup-jekyll-1.1-to-windows</link>
+      <guid>http://urin.github.io//2013/Setup-jekyll-1.1-to-windows</guid>
+      <pubDate>2013-08-04T00:00:00+09:00</pubDate>
+    </item>
 
     <item>
       <title>ブログをリニューアル</title>

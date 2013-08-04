@@ -146,17 +146,25 @@ footer {
   text-shadow: 1px 1px 0 #fff;
 }
 
-.recent-posts > dt {
+.recent-posts .icon-paper-clip {
+  color: #ccc;
+}
+
+.recent-posts dt {
   font-weight: normal;
 }
 
-.recent-posts > dd {
+.recent-posts dd {
   font-weight: bold;
 }
 
-.github-btn {
+.repos .github-btn {
   position: relative;
   top: 4px;
+}
+
+.repos .icon-github {
+  color: #171515;
 }
 
 .copyright {
@@ -206,3 +214,9 @@ footer {
   opacity: 1;
 }
 
+/***********************************************************
+ * Post list related tag
+ ***********************************************************/
+.post-list-row {
+  margin-bottom: 20px;
+}
