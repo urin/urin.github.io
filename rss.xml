@@ -5,16 +5,19 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2013-08-04T12:36:10+09:00</lastBuildDate>
+    <lastBuildDate>2013-08-04T12:44:03+09:00</lastBuildDate>
     <pubDate>2013-08-03T00:00:00+09:00</pubDate>
     <ttl>1800</ttl>
 
     <item>
       <title>ブログをリニューアル</title>
-      <description>&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。
-&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;
-去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
-何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
+      <description>&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。&lt;/p&gt;
+
+&lt;p&gt;何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
 
 &lt;h2&gt;Jekyllを選択したわけ&lt;/h2&gt;
 

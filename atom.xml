@@ -14,10 +14,13 @@
     <link href="http://urin.github.io/2013/Renewal"/>
     <updated>2013-08-03T00:00:00+09:00</updated>
     <id>http://urin.github.io/2013/Renewal</id>
-    <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。
-&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;
-去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。
-何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
+    <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。&lt;/p&gt;
+
+&lt;p&gt;何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
 
 &lt;h2&gt;Jekyllを選択したわけ&lt;/h2&gt;
 
