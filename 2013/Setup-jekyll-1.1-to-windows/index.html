@@ -2,20 +2,20 @@
 <html lang="ja">
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
     <meta charset="utf-8">
-    <title>ブログをリニューアル - URIN HACK</title>
-    <meta name="description" content="URIN HACK Amazing programming hacks Jekyll GitHub Octopress Ruby">
+    <title>Jekyll 1.1系をWindowsに導入する - URIN HACK</title>
+    <meta name="description" content="URIN HACK Amazing programming hacks Jekyll Ruby Windows">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:title" content="ブログをリニューアル - URIN HACK">
+    <meta property="og:title" content="Jekyll 1.1系をWindowsに導入する - URIN HACK">
     <meta property="og:type" content="article">
     <meta property="og:image" content="/img/layout/URIN-HACK-icon-50x50.jpg">
-    <meta property="og:url" content="http://urin.github.io/2013/Renewal">
+    <meta property="og:url" content="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows">
     <meta property="og:site_name" content="URIN HACK">
     <link href="/favicon.ico" rel="shortcut icon">
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="canonical" href="http://urin.github.io/2013/Renewal">
+    <link rel="canonical" href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--
@@ -58,17 +58,15 @@
       <div class="row">
   <div class="col-12 col-sm-3 col-lg-2"><div class="post-aux">
   <ul class="list-inline">
-    <li><i class="icon-time"></i><span class="digits">2013-08-03</span></li>
+    <li><i class="icon-time"></i><span class="digits">2013-08-04</span></li>
 
   
      
     <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="2件の記事">Jekyll <span class="badge digits">2</span></a></li>
      
-    <li><i class="icon-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub <span class="badge digits">1</span></a></li>
-     
-    <li><i class="icon-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress <span class="badge digits">1</span></a></li>
-     
     <li><i class="icon-tag"></i><a href="/tags/Ruby" title="2件の記事">Ruby <span class="badge digits">2</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/Windows" title="1件の記事">Windows <span class="badge digits">1</span></a></li>
     
   
 
@@ -76,7 +74,7 @@
 
   <ul class="sns-buttons list-inline">
 
-    <li><div class="fb-like" data-href="http://urin.github.io/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><div class="fb-like" data-href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
     <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
     <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
     <li><div class="g-plusone" data-size="medium"></div></li>
@@ -85,89 +83,63 @@
 </div>
 </div>
   <div class="post col-12 col-sm-9 col-lg-10">
-    <h1 class="well">ブログをリニューアル</h1>
-    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。</p>
+    <h1 class="well">Jekyll 1.1系をWindowsに導入する</h1>
+    <p>現時点で最新版の<code>jekyll-1.1.2</code>をインストールしてみる。Rubyは<code>1.9.3</code>でやったが<code>2.0.0</code>でも多分問題ない。</p>
 
-<p><a href="//jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a></p>
+<h3>Pythonをインストール</h3>
 
-<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。</p>
+<p>シンタックスハイライト用の<code>pygments.rb</code>が使用する。
+<code>pygments.rb</code>によると<code>python</code>のバージョン<code>2.6</code>以降であれば何でもいいと書いてあるが、python<code>3</code>系では動作しない。
+よって<code>2.7</code>をインストールする。</p>
 
-<p>何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。</p>
+<p>インストールが終わったら<code>python.exe</code>のあるディレクトリを<code>PATH</code>に追加する。</p>
 
-<h2>Jekyllを選択したわけ</h2>
+<h3>easy_install(distribute)をインストール</h3>
 
-<p>ブログサービスを選ぶ判断基準は以下。</p>
+<p><a href="http://python-distribute.org/distribute_setup.py">distribute_setup.py</a>
+をダウンロードしてきて<code>python</code>で実行するだけ。</p>
+<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">python distribute_setup.py
+</code></pre></div>
+<h3>Pygmentsをインストール</h3>
 
-<ul>
-<li>無料で容量制限が厳しくない</li>
-<li>将来性がある（１０年間くらいはサービスが継続すると思われる）</li>
-<li><code>HTML</code>や<code>CSS</code>、<code>Javascript</code>含めてほぼ完全にカスタマイズできる</li>
-<li>余計な広告が入らない</li>
-<li>記事にも<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
-</ul>
+<p><code>python</code>のあるディレクトリに<code>Scripts</code>フォルダができていてその中に<code>easy_install.exe</code>がある。
+ここで</p>
+<div class="highlight"><pre><code class="bat language-bat" data-lang="bat"><span class="k">cd</span> Scripts
+easy_install Pygments
+</code></pre></div>
+<p>とするだけ。</p>
 
-<h3>無料のブログサービスを調べる</h3>
+<h3>pygments.rbのダウングレード</h3>
 
-<p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
+<p>シンタックスハイライトを使用しようとすると<code>posix-spawn</code>やら<code>liquid</code>やらがエラーを出す。この問題は<a href="//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working">Stack Over Flow</a>にも挙げられていて対策もあった。</p>
+<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem uninstall -a pygments.rb
+gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
+</code></pre></div>
+<p>とバージョンを<code>0.5.0</code>に下げる。</p>
 
-<ul>
-<li><a href="http://www.ninja.co.jp/blog/">忍者ブログ</a></li>
-<li><a href="http://www.blogger.com/">Blogger</a></li>
-<li><a href="http://hatenablog.com/">はてなブログ</a></li>
-<li><a href="http://d.hatena.ne.jp/">はてなダイアリー</a></li>
-<li><a href="http://ameblo.jp/">Ameba (アメーバ)</a></li>
-<li><a href="http://blog.fc2.com/">FC2ブログ</a></li>
-<li><a href="http://blog.livedoor.com/">ライブドアブログ(livedoor Blog)</a></li>
-<li>・・・</li>
-</ul>
+<h3>エンコーディングの固定化</h3>
 
-<p>正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に<code>HTML</code>を使うのが難しくなったのが致命的だった。
-これら伝統的なブログサービス以外の選択肢としては</p>
+<p>日本語を使うと<code>jekyll build</code>でエラーになるのでファイル読み込み時のエンコーディングを<code>UTF-8</code>固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら<code>Windows-31J</code>）が、実際のファイルは全て<code>UTF-8</code>にしたいので。LinuxやMacなんかではシステムのエンコーディングが<code>UTF-8</code>だから普通は問題ない。</p>
 
-<ul>
-<li><a href="https://www.strikingly.com/">Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成</a></li>
-<li><a href="http://wordpress.com/">WordPress.com - Get a Free Blog Here</a></li>
-<li><a href="http://wordpress.org/">WordPress › Blog Tool, Publishing Platform, and CMS</a>を何らかのサーバ上で運営</li>
-<li><a href="http://octopress.org/">Octopress</a>をGitHubでホスティング</li>
-<li><a href="http://www.edicy.com/">Edicy — Create a Website — Easy to use Website Builder</a></li>
-<li><a href="http://ja.wix.com/">WIX</a></li>
-<li><a href="http://www.weebly.com/">Weebly</a></li>
-<li><a href="http://jp.jimdo.com/">Jimdo</a></li>
-</ul>
+<p><code>jekyll</code>本体に手をつけるハックもネット上で見かけたがよろしくない。
+<a href="//gist.github.com/urin/6119169#file-set_default_encoding.rb">これ</a>を<code>_plugins</code>フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="o">.</span><span class="n">default_external</span> <span class="o">=</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span>
+</code></pre></div>
+<p>以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは<a href="//jekyllrb.com/docs/home/">Jekyllの公式ドキュメント</a>をひと通り見ながらやれば大体OK。</p>
 
-<p>というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、<code>HTML</code>、<code>CSS</code>をカスタマイズ出来ないなど色々と不都合があった。
-で、この中では<code>Octopress</code>が<code>Compass</code>が使えたり色々といいように見えた。しかし・・・</p>
-
-<h3>結論</h3>
-
-<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされたバージョン<code>0.12.0</code>あたりから
-急激に充実してもはや<code>Octopress</code>なんていらないんじゃね？という勢いを感じたので<code>Jekyll</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
-
-<p><code>Jekyll</code>のスターターキットとして<a href="http://jekyllbootstrap.com/">Jekyll-Bootstrap</a>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
-開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、こうした。</p>
-
-<ul>
-<li>常に最新の<code>Jekyll</code>が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。</li>
-<li>レスポンシブ対応のグリッドシステムを持っていて今後も息が長い<code>CSS</code>フレームワークを使いたい。ということで<a href="http://getbootstrap.com/">Bootstrap 3 RC1</a>を導入。</li>
-<li>アイコンは<code>Web font</code>がいいので<code>Bootstrap</code>との相性も良い<a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome, the iconic font designed for Bootstrap</a>。</li>
-</ul>
-
-<p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ依存関係が少ない。安定依存の原則。これ重要。</p>
+<p>さあ、快適なJekyllライフをはじめよう。</p>
 
     <div class="post-aux">
   <ul class="list-inline">
-    <li><i class="icon-time"></i><span class="digits">2013-08-03</span></li>
+    <li><i class="icon-time"></i><span class="digits">2013-08-04</span></li>
 
   
      
     <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="2件の記事">Jekyll <span class="badge digits">2</span></a></li>
      
-    <li><i class="icon-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub <span class="badge digits">1</span></a></li>
-     
-    <li><i class="icon-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress <span class="badge digits">1</span></a></li>
-     
     <li><i class="icon-tag"></i><a href="/tags/Ruby" title="2件の記事">Ruby <span class="badge digits">2</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/Windows" title="1件の記事">Windows <span class="badge digits">1</span></a></li>
     
   
 
@@ -175,7 +147,7 @@
 
   <ul class="sns-buttons list-inline">
 
-    <li><div class="fb-like" data-href="http://urin.github.io/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><div class="fb-like" data-href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
     <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
     <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
     <li><div class="g-plusone" data-size="medium"></div></li>
@@ -238,11 +210,11 @@
       </div>
       <div class="tags col-12 col-sm-4 col-lg-4">
         <h4><i class="icon-tags"></i>タグ</h4>
-<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
-<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
-<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
 <a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
 
       </div>
       <div class="repos col-12 col-sm-4 col-lg-4">
