@@ -31,17 +31,6 @@
 
   <body class="container">
 
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <header class="row">
       <div class="header-logo col-6 col-sm-3 col-lg-3">
         <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
@@ -55,14 +44,6 @@
     </header>
     <hr>
     <article>
-
-      <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- ads linkunit1 -->
-      <ins class="adsbygoogle"
-          style="display:block;width:728px;height:15px;margin:0 auto;overflow:hidden"
-          data-ad-client="ca-pub-8915879811522337"
-          data-ad-slot="7671928201"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
       <div class="row">
   <div class="col-12 col-sm-3 col-lg-2">
@@ -83,23 +64,8 @@
   </ul>
 
 
-  <ul class="sns-buttons list-inline">
-    <li><div class="fb-like" data-href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
-    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
-    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
-    <li><div class="g-plusone" data-size="medium"></div></li>
-  </ul>
-
 </div>
 
-
-    <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- ads縦長1 -->
-    <ins class="adsbygoogle"
-        style="display:block;width:120px;height:600px;margin:0 auto;overflow:hidden"
-        data-ad-client="ca-pub-8915879811522337"
-        data-ad-slot="6195195003"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
   </div>
   <div class="post col-12 col-sm-9 col-lg-10">
@@ -142,7 +108,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
 <p>日本語を使うと<code>jekyll build</code>でエラーになるのでファイル読み込み時のエンコーディングを<code>UTF-8</code>固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら<code>Windows-31J</code>）が、実際のファイルは全て<code>UTF-8</code>にしたいので。LinuxやMacなんかではシステムのエンコーディングが<code>UTF-8</code>だから普通は問題ない。</p>
 
 <p><code>jekyll</code>本体に手をつけるハックもネット上で見かけたがよろしくない。
-<a href="//gist.github.com/urin/6119169#file-set_default_encoding.rb">これ</a>を<code>_plugins</code>フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。</p>
+これを<code>_plugins</code>フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="o">.</span><span class="n">default_external</span> <span class="o">=</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span>
 </code></pre></div>
 <p>以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは<a href="//jekyllrb.com/docs/home/">Jekyllの公式ドキュメント</a>をひと通り見ながらやれば大体OK。</p>
@@ -166,41 +132,11 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
   </ul>
 
 
-  <ul class="sns-buttons list-inline">
-    <li><div class="fb-like" data-href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
-    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
-    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
-    <li><div class="g-plusone" data-size="medium"></div></li>
-  </ul>
-
 </div>
 
   </div>
 </div>
 
-
-<!-- Twitter button -->
-<style> iframe.twitter-share-button { width: 90px !important } </style>
-<script>
-  !function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-    if(!d.getElementById(id)){
-      js=d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';
-      fjs.parentNode.insertBefore(js,fjs);
-    }
-  }(document, 'script', 'twitter-wjs');
-</script>
-<!-- Google +1 button -->
-<script type="text/javascript">
-  window.___gcfg = {lang: 'ja'};
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-<!-- Hatena bookmark button -->
-<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 
 
     </article>
@@ -231,22 +167,12 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
       <div class="tags col-12 col-sm-4 col-lg-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div>
-<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
-<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
-<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
 <a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
 
-        </div>
-
-        <div>
-          <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- ads square1 -->
-          <ins class="adsbygoogle"
-              style="display:block;width:300px;height:250px;margin:0 auto;overflow:hidden"
-              data-ad-client="ca-pub-8915879811522337"
-              data-ad-slot="4718461809"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
       </div>
@@ -256,14 +182,10 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
           <dt>
             <a href="//github.com/urin/jquery.tile.js">jquery.tile.js</a>
 
-            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-
           </dt>
           <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
           <dt>
             <a href="//github.com/urin/jquery.balloon.js">jquery.balloon.js</a>
-
-            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
 
           </dt>
           <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>

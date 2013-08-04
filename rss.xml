@@ -5,7 +5,7 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2013-08-05T00:18:35+09:00</lastBuildDate>
+    <lastBuildDate>2013-08-05T07:30:26+09:00</lastBuildDate>
     <pubDate>2013-08-04T00:00:00+09:00</pubDate>
     <ttl>1800</ttl>
 
@@ -49,7 +49,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 &lt;p&gt;日本語を使うと&lt;code&gt;jekyll build&lt;/code&gt;でエラーになるのでファイル読み込み時のエンコーディングを&lt;code&gt;UTF-8&lt;/code&gt;固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら&lt;code&gt;Windows-31J&lt;/code&gt;）が、実際のファイルは全て&lt;code&gt;UTF-8&lt;/code&gt;にしたいので。LinuxやMacなんかではシステムのエンコーディングが&lt;code&gt;UTF-8&lt;/code&gt;だから普通は問題ない。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;jekyll&lt;/code&gt;本体に手をつけるハックもネット上で見かけたがよろしくない。
-&lt;a href=&quot;//gist.github.com/urin/6119169#file-set_default_encoding.rb&quot;&gt;これ&lt;/a&gt;を&lt;code&gt;_plugins&lt;/code&gt;フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。&lt;/p&gt;
+これを&lt;code&gt;_plugins&lt;/code&gt;フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UTF_8&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;
