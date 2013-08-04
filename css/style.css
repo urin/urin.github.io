@@ -28,7 +28,8 @@ h2, h3 {
 }
 
 pre {
-  line-height: 1.1em;
+  font-size: inherit;
+  line-height: 1.4;
 }
 
 code {
