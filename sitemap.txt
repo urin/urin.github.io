@@ -5,7 +5,6 @@ http://urin.github.io/tags/GitHub/index.html
 http://urin.github.io/tags/Octopress/index.html
 http://urin.github.io/tags/Ruby/index.html
 http://urin.github.io/tags/Windows/index.html
-http://urin.github.io/tags/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/index.html
 
 http://urin.github.io/2013/Setup-jekyll-1.1-to-windows
 http://urin.github.io/2013/Renewal
