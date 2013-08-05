@@ -366,7 +366,7 @@ p {
   line-height: 1.4;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .lead {
     font-size: 21px;
   }
@@ -759,7 +759,7 @@ pre code {
   clear: both;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .row {
     margin-right: -15px;
     margin-left: -15px;
@@ -876,7 +876,7 @@ pre code {
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .container {
     max-width: 728px;
   }
@@ -998,7 +998,7 @@ pre code {
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .container {
     max-width: 940px;
   }
@@ -1087,7 +1087,7 @@ pre code {
   }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
@@ -2038,7 +2038,7 @@ input[type="button"].btn-block {
   clear: both;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .form-horizontal .form-group {
     margin-right: -15px;
     margin-left: -15px;
@@ -2050,7 +2050,7 @@ input[type="button"].btn-block {
   margin-left: -15px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .form-horizontal .control-label {
     text-align: right;
   }
@@ -4528,7 +4528,7 @@ td.hidden-lg {
   display: table-cell !important;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   .visible-sm {
     display: none !important;
   }
@@ -4591,7 +4591,7 @@ td.hidden-lg {
   }
 }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .visible-sm {
     display: none !important;
   }
