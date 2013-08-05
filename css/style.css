@@ -159,6 +159,10 @@ footer {
   font-weight: bold;
 }
 
+.tag-cloud {
+  text-align: center;
+}
+
 .repos .github-btn {
   position: relative;
   top: 4px;
