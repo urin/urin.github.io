@@ -21,9 +21,6 @@
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinkun">
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <!--
     <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
@@ -37,6 +34,11 @@
     <link href="/css/font-awesome.css" rel="stylesheet" media="screen">
     <link href="/css/syntax.css" rel="stylesheet" media="screen">
     <link href="/css/style.css" rel="stylesheet" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body class="container">
@@ -53,11 +55,11 @@
     </script>
 
     <header class="row">
-      <div class="header-logo col-6 col-sm-3 col-lg-3">
+      <div class="header-logo col-6 col-sm-3">
         <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
         <a href="/rss.xml" title="RSSフィード"><i class="icon-rss"></i></a>
       </div>
-      <nav class="sns-icons col-6 col-offset-6 col-sm-3 col-lg-3">
+      <nav class="sns-icons col-6 col-sm-3 col-sm-offset-6">
         <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
         <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
         <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
@@ -78,8 +80,8 @@
 
 <hr>
 <div class="row post-list-row">
-  <div class="post-aux col-12 col-sm-2 col-lg-2"><i class="icon-time"></i><span class="digits">2013-08-03</span></div>
-  <div class="post col-12 col-sm-10 col-lg-10">
+  <div class="post-aux col-sm-2"><i class="icon-time"></i><span class="digits">2013-08-03</span></div>
+  <div class="post col-sm-10">
     <h3><a href="/2013/Renewal">ブログをリニューアル</a></h3>
     <section>ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。
 
@@ -96,7 +98,7 @@ Jekyll • Simple, blog-aware, static sites
     </article>
     <hr>
     <footer class="text-muted">
-      <div class="recent-posts col-12 col-sm-4 col-lg-4">
+      <div class="recent-posts col-sm-4">
         <h4><i class="icon-paper-clip"></i>最近の記事</h4>
         <dl class="list-unstyled">
 
@@ -118,13 +120,13 @@ Jekyll • Simple, blog-aware, static sites
 
         </dl>
       </div>
-      <div class="tags col-12 col-sm-4 col-lg-4">
+      <div class="tags col-sm-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div class="tag-cloud">
-<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
 <a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
 <a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
 <a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
 
         </div>
@@ -140,7 +142,7 @@ Jekyll • Simple, blog-aware, static sites
         </div>
 
       </div>
-      <div class="repos col-12 col-sm-4 col-lg-4">
+      <div class="repos col-sm-4">
         <h4><i class="icon-github"></i>レポジトリ</h4>
         <dl>
           <dt>
@@ -168,13 +170,13 @@ Jekyll • Simple, blog-aware, static sites
           <dd>Vim用設定ファイル</dd>
         </dl>
       </div>
-      <div class="copyright col-12">
-        <span class="col-6 col-lg-2 col-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
-        <span class="sns-icons col-6 col-lg-2">
+      <div class="copyright">
+        <span class="sns-icons col-6 col-sm-3 col-sm-offset-3">
           <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
           <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
           <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
         </span>
+        <span class="col-6 col-sm-3"><span class="digits">&copy; 2013</span> うりん</span>
       </div>
     </footer>
     <script src="//code.jquery.com/jquery.min.js"></script>
