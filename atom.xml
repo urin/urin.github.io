@@ -11,9 +11,9 @@
   
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
-    <link href="http://urin.github.io/2013/Setup-jekyll-1.1-to-windows"/>
+    <link href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows"/>
     <updated>2013-08-04T00:00:00+09:00</updated>
-    <id>http://urin.github.io/2013/Setup-jekyll-1.1-to-windows</id>
+    <id>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</id>
     <content type="html">&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
 &lt;h3&gt;Pythonをインストール&lt;/h3&gt;
@@ -63,9 +63,9 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
   
   <entry>
     <title>ブログをリニューアル</title>
-    <link href="http://urin.github.io/2013/Renewal"/>
+    <link href="http://urin.github.io/posts/2013/Renewal"/>
     <updated>2013-08-03T00:00:00+09:00</updated>
-    <id>http://urin.github.io/2013/Renewal</id>
+    <id>http://urin.github.io/posts/2013/Renewal</id>
     <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/p&gt;
