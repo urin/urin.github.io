@@ -154,7 +154,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
 <p>日本語を使うと<code>jekyll build</code>でエラーになるのでファイル読み込み時のエンコーディングを<code>UTF-8</code>固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら<code>Windows-31J</code>）が、実際のファイルは全て<code>UTF-8</code>にしたいので。LinuxやMacなんかではシステムのエンコーディングが<code>UTF-8</code>だから普通は問題ない。</p>
 
 <p><code>jekyll</code>本体に手をつけるハックもネット上で見かけたがよろしくない。
-これを<code>_plugins</code>フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。</p>
+デフォルトエンコーディングを変更するだけの<code>.rb</code>ファイルを<code>_plugins</code>フォルダに置いて<code>build</code>すれば<code>jekyll</code>が<code>UTF-8</code>固定で動くようになる。</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="o">.</span><span class="n">default_external</span> <span class="o">=</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span>
 </code></pre></div>
 <p>以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは<a href="//jekyllrb.com/docs/home/">Jekyllの公式ドキュメント</a>をひと通り見ながらやれば大体OK。</p>
@@ -223,6 +223,14 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
         <dl class="list-unstyled">
 
           <dt>
+            <span class="digits">2013-08-10</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a>
+          </dd>
+  
+
+          <dt>
             <span class="digits">2013-08-04</span>
           </dt>
           <dd>
@@ -243,11 +251,15 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
       <div class="tags col-sm-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div class="tag-cloud">
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
 <a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
 <a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
-<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
 <a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/C++" style="font-size: 70%;">C++</a>
+<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
 
         </div>
 
@@ -266,24 +278,31 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
         <h4><i class="icon-github"></i>レポジトリ</h4>
         <dl>
           <dt>
+            <a href="//github.com/urin/wers">wers</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=wers&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>Windows用Rubyバージョン管理ツール<br>(rbenvのWindows版ようなもの)<br>生まれたて。</dd>
+          <dt>
             <a href="//github.com/urin/jquery.tile.js">jquery.tile.js</a>
 
             <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
 
           </dt>
-          <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
+          <dd>要素の高さを揃える超軽量なjQueryプラグイン（<a href="/jquery.tile.js">デモはこちら</a>）</dd>
           <dt>
             <a href="//github.com/urin/jquery.balloon.js">jquery.balloon.js</a>
 
             <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
 
           </dt>
-          <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
+          <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン（<a href="/jquery.balloon.js">デモはこちら</a>）</dd>
           <dt>
             <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js
             </a>
           </dt>
-          <dd>掲載したコードの右側が切れるのを表示領域を伸ばすボタンで回避するjQueryプラグイン</dd>
+          <dd>要素を浮かせて伸ばすボタンを付けるjQueryプラグイン</dd>
           <dt>
             <a href="//github.com/urin/.vimrc">.vimrc</a>
           </dt>
@@ -291,12 +310,12 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
         </dl>
       </div>
       <div class="copyright">
-        <span class="sns-icons col-6 col-sm-3 col-sm-offset-3">
+        <span class="col-6 col-sm-2 col-sm-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
+        <span class="sns-icons col-6 col-sm-3">
           <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
           <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
           <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
         </span>
-        <span class="col-6 col-sm-3"><span class="digits">&copy; 2013</span> うりん</span>
       </div>
     </footer>
     <script src="//code.jquery.com/jquery.min.js"></script>

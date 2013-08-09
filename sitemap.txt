@@ -5,6 +5,11 @@ http://urin.github.io/tags/GitHub/index.html
 http://urin.github.io/tags/Octopress/index.html
 http://urin.github.io/tags/Ruby/index.html
 http://urin.github.io/tags/Windows/index.html
+http://urin.github.io/tags/C++/index.html
+http://urin.github.io/tags/makefile/index.html
+http://urin.github.io/tags/gcc/index.html
+http://urin.github.io/tags/Linux/index.html
 
-http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows/index.html
-http://urin.github.io/posts/2013/Renewal/index.html
+http://urin.github.io/posts/2013/simple-makefile-for-clang
+http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows
+http://urin.github.io/posts/2013/Renewal

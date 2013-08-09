@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>シンプルで応用の効くmakefileとその解説 - URIN HACK</title>
+    <meta name="description" content="URIN HACK Amazing programming hacks C++ makefile gcc Linux">
+
+    <meta property="fb:admins" content="100001990741720">
+    <meta property="fb:app_id" content="494189017339311">
+    <meta property="og:title"  content="シンプルで応用の効くmakefileとその解説 - URIN HACK">
+    <meta name="twitter:title" content="シンプルで応用の効くmakefileとその解説 - URIN HACK">
+    <meta property="og:description"  content="URIN HACK Amazing programming hacks C++ makefile gcc Linux">
+    <meta name="twitter:description" content="URIN HACK Amazing programming hacks C++ makefile gcc Linux">
+    <meta property="og:type" content="article">
+    <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
+    <meta property="og:site_name" content="URIN HACK">
+    <meta property="og:url" content="http://urin.github.io/posts/2013/simple-makefile-for-clang">
+    <meta property="twitter:card" content="summary">
+    <meta name="twitter:site" content="@urinkun">
+
+    <!--
+    <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/layout/apple-touch-icon-114x114.png">
+    -->
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="http://urin.github.io/posts/2013/simple-makefile-for-clang">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet" media="screen">
+    <link href="/css/syntax.css" rel="stylesheet" media="screen">
+    <link href="/css/style.css" rel="stylesheet" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="container">
+
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName("div")[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <header class="row">
+      <div class="header-logo col-6 col-sm-3">
+        <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
+        <a href="/rss.xml" title="RSSフィード"><i class="icon-rss"></i></a>
+      </div>
+      <nav class="sns-icons col-6 col-sm-3 col-sm-offset-6">
+        <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+        <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+        <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+      </nav>
+    </header>
+    <hr>
+    <article>
+
+      <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- ads linkunit1 -->
+      <ins class="adsbygoogle"
+          style="display:block;box-sizing:content-box;width:728px;height:15px;margin:10px auto;overflow:hidden;font-size:12px"
+          data-ad-client="ca-pub-8915879811522337"
+          data-ad-slot="7671928201"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+      <div class="row">
+  <div class="col-sm-3 col-lg-2">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i><span class="digits">2013-08-10</span></li>
+
+  
+     
+    <li><i class="icon-tag"></i><a href="/tags/C++" title="1件の記事">C++ <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/makefile" title="1件の記事">makefile <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/gcc" title="1件の記事">gcc <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/Linux" title="1件の記事">Linux <span class="badge digits">1</span></a></li>
+    
+  
+
+  </ul>
+
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/simple-makefile-for-clang" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+
+</div>
+
+
+    <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- ads縦長1 -->
+    <ins class="adsbygoogle"
+        style="display:block;width:120px;height:600px;margin:0 auto;overflow:hidden"
+        data-ad-client="ca-pub-8915879811522337"
+        data-ad-slot="6195195003"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </div>
+  <div class="post col-sm-9 col-lg-10">
+    <h1 class="well">シンプルで応用の効くmakefileとその解説</h1>
+    <p><code>makefile</code>は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。</p>
+
+<p>Linux系OS上（正確に言うとGNU MakeとGCC）で複数の<code>C/C++</code>ソースファイルから１つの実行ファイルを作成(<code>make</code>)するための汎用的な<code>makefile</code>テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って<code>makefile</code>をカスタマイズする必要があると思うがそのベースにする。</p>
+
+<h2>このmakefileのいいところ</h2>
+
+<ul>
+<li>コンパイル対象となるソースファイルをワイルドカードで指定できる。</li>
+<li>ヘッダファイル、ライブラリ、オブジェクトファイルなどコンパイル、リンクに関連するどのファイルが外部で変更されていてもきちんと <strong>差分</strong> コンパイルされる。</li>
+<li>makefile自体に説明書（この記事）がある。</li>
+</ul>
+
+<h2>makefile</h2>
+
+<p>※makefileではタブ文字に重要な意味がありますが都合によりタブ文字をスペース４文字に置き換えています。</p>
+
+<p><a href="//gist.github.com/urin/5971408#file-makefile">そのまま使えるソースはこちら</a>。</p>
+<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="nv">COMPILER</span> <span class="o">=</span> g++
+<span class="nv">CFLAGS</span>   <span class="o">=</span> -Wextra -g -MMD -MP
+<span class="nv">LDFLAGS</span>  <span class="o">=</span>
+<span class="nv">LIBS</span>     <span class="o">=</span>
+<span class="nv">INCLUDE</span>  <span class="o">=</span> -I../include
+<span class="nv">TARGET</span>   <span class="o">=</span> ../bin/<span class="k">$(</span>shell basename <span class="sb">`</span>readlink -f ..<span class="sb">`</span><span class="k">)</span>
+<span class="nv">OBJDIR</span>   <span class="o">=</span> ./obj
+<span class="cp">ifeq &quot;$(strip $(OBJDIR))&quot; &quot;&quot;</span>
+  <span class="nv">OBJDIR</span> <span class="o">=</span> .
+<span class="cp">endif</span>
+<span class="nv">SOURCES</span>  <span class="o">=</span> <span class="k">$(</span>wildcard *.cpp<span class="k">)</span>
+<span class="nv">OBJECTS</span>  <span class="o">=</span> <span class="k">$(</span>addprefix <span class="k">$(</span>OBJDIR<span class="k">)</span>/, <span class="k">$(</span>SOURCES:.cpp<span class="o">=</span>.o<span class="k">))</span>
+<span class="nv">DEPENDS</span>  <span class="o">=</span> <span class="k">$(</span>OBJECTS:.o<span class="o">=</span>.d<span class="k">)</span>
+
+<span class="k">$(</span>TARGET<span class="k">)</span>: <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
+    <span class="k">$(</span>COMPILER<span class="k">)</span> -o <span class="nv">$@</span> <span class="nv">$^</span> <span class="k">$(</span>LDFLAGS<span class="k">)</span>
+
+<span class="k">$(</span>OBJDIR<span class="k">)</span>/%.o: %.cpp
+    @<span class="o">[</span> -d <span class="k">$(</span>OBJDIR<span class="k">)</span> <span class="o">]</span> <span class="o">||</span> mkdir -p <span class="k">$(</span>OBJDIR<span class="k">)</span>
+    <span class="k">$(</span>COMPILER<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>INCLUDE<span class="k">)</span> -o <span class="nv">$@</span> -c <span class="nv">$&lt;</span>
+
+all: clean <span class="k">$(</span>TARGET<span class="k">)</span>
+
+clean:
+    rm -f <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>DEPENDS<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
+    @rmdir --ignore-fail-on-non-empty <span class="sb">`</span>readlink -f <span class="k">$(</span>OBJDIR<span class="k">)</span><span class="sb">`</span>
+
+<span class="cp">-include $(DEPENDS)</span>
+</code></pre></div>
+<h2>使用方法</h2>
+
+<h4><code>make</code></h4>
+
+<p>基本的には<code>make</code>するだけで依存関係を考慮して差分コンパイルされる。
+ソースファイルはもちろん、ヘッダファイル、ライブラリなどが更新されている場合も自動的に検出して差分コンパイルされる。</p>
+
+<h4><code>make all</code></h4>
+
+<p>強制的に全ソースをコンパイルしたい場合は<code>make all</code>する。
+このコマンドは全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除してから全ソースをコンパイルする。</p>
+
+<h4><code>make clean</code></h4>
+
+<p>全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除する。</p>
+
+<h2>初期設定状態のmakefile</h2>
+
+<p>下記のようなディレクトリツリーで初期設定の<code>makefile</code>を用いて<code>make</code>を実行した場合、以下の矢印(&lt;-)ようにファイルが生成される。
+同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">example
+|-- bin
+|   `-- example    &lt;- (TARGET) 実行ファイル
+|-- include
+|   `-- main.h
+`-- source
+    |-- main.cpp
+    |-- makefile
+    `-- obj        &lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
+        |-- main.d &lt;- (DEPENDS) 依存関係ファイル
+        `-- main.o &lt;- (OBJECTS) オブジェクトファイル
+</code></pre></div>
+<h2>解説</h2>
+
+<h3>コンパイラの指定 (<code>COMPILER</code>)</h3>
+
+<p>コンパイラは<code>COMPILER</code>の値を用いる。初期値は<code>g++</code>。C言語のみの場合は<code>gcc</code>に変更しても良いが基本的には<code>g++</code>で問題ない。</p>
+
+<h3>コンパイルオプション (<code>CFLAGS</code>)</h3>
+
+<p>コンパイルオプションとして<code>CFLAGS</code>の値を用いる。<code>-D</code>オプションによる<code>#define</code>の追加、最適化オプション、コードカバレッジ用の<code>-coverage</code>などを用いる場合はここに記述する。</p>
+
+<p>以下は初期値の解説。</p>
+
+<ul>
+<li><code>-Wextra</code>
+
+<ul>
+<li>コンパイルワーニングのレベルを最大にする。</li>
+<li><code>-Wall</code>よりも強力。</li>
+</ul></li>
+<li><code>-g</code>
+
+<ul>
+<li>デバッグオプション。</li>
+<li><code>gdb</code>でのデバッグを可能にする。</li>
+</ul></li>
+<li><code>-MMD -MP</code>
+
+<ul>
+<li>ソースファイルの依存関係を中間ファイルに出力する。</li>
+<li>依存関係ファイルはソースファイル名の拡張子を<code>.d</code>に変更したものとなり、<code>OBJDIR</code>で指定したディレクトリに生成される。</li>
+<li>この依存関係ファイルは<code>makefile</code>最後の<code>include</code>文にてインクルードされることで依存しているヘッダファイル等が変更された場合に自動的に再コンパイルされるようになる。</li>
+</ul></li>
+</ul>
+
+<h3>リンクオプション (<code>LDFLAGS</code>)</h3>
+
+<p>リンクオプションとして<code>LDFLAGS</code>の値を用いる。初期値は空。
+標準ライブラリをリンクする<code>-l</code>オプションやコードカバレッジ用の<code>-coverage</code>などを用いる場合はここに記述する。</p>
+
+<h3>ライブラリの指定 (<code>LIBS</code>)</h3>
+
+<p>リンクするライブラリとして<code>LIBS</code>の値を用いる。初期値は空。
+静的ライブラリ（<code>*.a</code>）や動的ライブラリ（<code>*.so</code>）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
+ここで指定したライブラリが更新された場合、<code>make</code>は再コンパイルが必要だと認識する。</p>
+
+<h3>インクルードパスの指定 (<code>INCLUDE</code>)</h3>
+
+<p>インクルードパスとして<code>INCLUDE</code>の値を用いる。初期値は<code>-I../include</code>。
+ソースファイル中の<code>#include</code>ファイル検索パスに加えるパスを<code>-I</code>オプションにて指定する。<code>-I</code>オプションとディレクトリ名の間に空白を書くことはできない。
+複数ディレクトリを指定したい場合は<code>-I</code>オプションを空白区切りで複数指定する。</p>
+
+<h3>実行ファイルの指定 (<code>TARGET</code>)</h3>
+
+<p>実行ファイル名として<code>TARGET</code>の値を用いる。
+以下は初期値 <code> ../bin/$(shell basename `readlink -f ..`) </code>の解説。
+実行ファイルの生成先のディレクトリは<code>../bin</code>。
+生成される実行ファイル名は <code> $(shell basename `readlink -f ..`) </code>である。
+これは<code>makefile</code>の存在するディレクトリの親ディレクトリの名前である。
+つまり、以下の様なディレクトリ構成の場合、</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">example
+|-- bin
+`-- source
+    |-- main.cpp
+    `-- makefile
+</code></pre></div>
+<p><code>example</code>という名前の実行ファイルが<code>example/bin</code>に生成されることになる。</p>
+
+<h3>中間ファイル生成先ディレクトリの指定 (<code>OBJDIR</code>)</h3>
+
+<p>中間ファイル生成先ディレクトリとして<code>OBJDIR</code>の値を用いる。初期値は<code>./obj</code>。
+このフォルダにオブジェクトファイル(<code>*.o</code>)や依存関係ファイル(<code>*.d</code>)が生成される。</p>
+
+<h3>ソースファイルの指定 (<code>SOURCES</code>)</h3>
+
+<p>コンパイル対象となるソースファイルとして<code>SOURCES</code>の値を用いる。初期値は<code>$(wildcard *.cpp)</code>。
+これは<code>makefile</code>と同一ディレクトリに存在する拡張子<code>cpp</code>のファイル全てをコンパイル対象とすることを意味する。別の拡張子(<code>.c</code>など)に変更したい場合は、<code>makefile</code>内の<code>cpp</code>を全て変更する。</p>
+
+<h3>オブジェクトファイルの指定 (<code>OBJECTS</code>)</h3>
+
+<p>オブジェクトファイルとして<code>OBJECTS</code>の値を用いる。
+以下は初期値 <code>$(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))</code>の解説。
+オブジェクトファイルの生成先ディレクトリは<code>OBJDIR</code>。
+オブジェクトファイル名はソースファイル(<code>SOURCES</code>)の拡張子を<code>.o</code>に置換したものである。
+<code>OBJDIR</code>が空の場合はソースファイルと同一のディレクトリに生成される。</p>
+
+<h3>依存関係ファイルの指定 (<code>DEPENDS</code>)</h3>
+
+<p>依存関係ファイルとして<code>DEPENDS</code>の値を用いる。
+初期値<code>$(OBJECTS:.o=.d)</code>はオブジェクトファイルの拡張子を<code>.d</code>に置換したものである。</p>
+
+<p>そんじゃーね。</p>
+
+    <div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i><span class="digits">2013-08-10</span></li>
+
+  
+     
+    <li><i class="icon-tag"></i><a href="/tags/C++" title="1件の記事">C++ <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/makefile" title="1件の記事">makefile <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/gcc" title="1件の記事">gcc <span class="badge digits">1</span></a></li>
+     
+    <li><i class="icon-tag"></i><a href="/tags/Linux" title="1件の記事">Linux <span class="badge digits">1</span></a></li>
+    
+  
+
+  </ul>
+
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/simple-makefile-for-clang" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+
+</div>
+
+  </div>
+</div>
+
+
+<!-- Twitter button -->
+<style> iframe.twitter-share-button { width: 90px !important } </style>
+<script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){
+      js=d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document, 'script', 'twitter-wjs');
+</script>
+<!-- Google +1 button -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- Hatena bookmark button -->
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+    </article>
+    <hr>
+    <footer class="text-muted">
+      <div class="recent-posts col-sm-4">
+        <h4><i class="icon-paper-clip"></i>最近の記事</h4>
+        <dl class="list-unstyled">
+
+          <dt>
+            <span class="digits">2013-08-10</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a>
+          </dd>
+  
+
+          <dt>
+            <span class="digits">2013-08-04</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/Setup-jekyll-1.1-to-windows">Jekyll 1.1系をWindowsに導入する</a>
+          </dd>
+  
+
+          <dt>
+            <span class="digits">2013-08-03</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/Renewal">ブログをリニューアル</a>
+          </dd>
+  
+
+        </dl>
+      </div>
+      <div class="tags col-sm-4">
+        <h4><i class="icon-tags"></i>タグ</h4>
+        <div class="tag-cloud">
+<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/C++" style="font-size: 70%;">C++</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+
+        </div>
+
+        <div>
+          <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Ads 234x60 -->
+          <ins class="adsbygoogle"
+              style="display:block;width:234px;height:60px;margin:20px auto;overflow:hidden"
+              data-ad-client="ca-pub-8915879811522337"
+              data-ad-slot="2425973402"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </div>
+      <div class="repos col-sm-4">
+        <h4><i class="icon-github"></i>レポジトリ</h4>
+        <dl>
+          <dt>
+            <a href="//github.com/urin/wers">wers</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=wers&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>Windows用Rubyバージョン管理ツール<br>(rbenvのWindows版ようなもの)<br>生まれたて。</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.tile.js">jquery.tile.js</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>要素の高さを揃える超軽量なjQueryプラグイン（<a href="/jquery.tile.js">デモはこちら</a>）</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.balloon.js">jquery.balloon.js</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン（<a href="/jquery.balloon.js">デモはこちら</a>）</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js
+            </a>
+          </dt>
+          <dd>要素を浮かせて伸ばすボタンを付けるjQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/.vimrc">.vimrc</a>
+          </dt>
+          <dd>Vim用設定ファイル</dd>
+        </dl>
+      </div>
+      <div class="copyright">
+        <span class="col-6 col-sm-2 col-sm-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
+        <span class="sns-icons col-6 col-sm-3">
+          <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+          <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+          <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+        </span>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37966978-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
+

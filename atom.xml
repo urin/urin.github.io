@@ -3,11 +3,188 @@
   <title>URIN HACK</title>
   <link href="http://urin.github.io/atom.xml" rel="self"/>
   <link href="http://urin.github.io"/>
-  <updated>2013-08-04T00:00:00+09:00</updated>
+  <updated>2013-08-10T00:00:00+09:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
   </author>
+  
+  <entry>
+    <title>シンプルで応用の効くmakefileとその解説</title>
+    <link href="http://urin.github.io/posts/2013/simple-makefile-for-clang"/>
+    <updated>2013-08-10T00:00:00+09:00</updated>
+    <id>http://urin.github.io/posts/2013/simple-makefile-for-clang</id>
+    <content type="html">&lt;p&gt;&lt;code&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
+
+&lt;p&gt;Linux系OS上（正確に言うとGNU MakeとGCC）で複数の&lt;code&gt;C/C++&lt;/code&gt;ソースファイルから１つの実行ファイルを作成(&lt;code&gt;make&lt;/code&gt;)するための汎用的な&lt;code&gt;makefile&lt;/code&gt;テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って&lt;code&gt;makefile&lt;/code&gt;をカスタマイズする必要があると思うがそのベースにする。&lt;/p&gt;
+
+&lt;h2&gt;このmakefileのいいところ&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コンパイル対象となるソースファイルをワイルドカードで指定できる。&lt;/li&gt;
+&lt;li&gt;ヘッダファイル、ライブラリ、オブジェクトファイルなどコンパイル、リンクに関連するどのファイルが外部で変更されていてもきちんと &lt;strong&gt;差分&lt;/strong&gt; コンパイルされる。&lt;/li&gt;
+&lt;li&gt;makefile自体に説明書（この記事）がある。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;makefile&lt;/h2&gt;
+
+&lt;p&gt;※makefileではタブ文字に重要な意味がありますが都合によりタブ文字をスペース４文字に置き換えています。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;そのまま使えるソースはこちら&lt;/a&gt;。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;makefile language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
+&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -Wextra -g -MMD -MP
+&lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I../include
+&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ../bin/&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;shell basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f ..&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./obj
+&lt;span class=&quot;cp&quot;&gt;ifeq &amp;quot;$(strip $(OBJDIR))&amp;quot; &amp;quot;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
+&lt;span class=&quot;cp&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;wildcard *.cpp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;addprefix &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/, &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;LIBS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;COMPILER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;LDFLAGS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/%.o: %.cpp
+    @&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -d &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; mkdir -p &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;COMPILER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;INCLUDE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; -c &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;
+
+all: clean &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+clean:
+    rm -f &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;DEPENDS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+    @rmdir --ignore-fail-on-non-empty &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;-include $(DEPENDS)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;使用方法&lt;/h2&gt;
+
+&lt;h4&gt;&lt;code&gt;make&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;基本的には&lt;code&gt;make&lt;/code&gt;するだけで依存関係を考慮して差分コンパイルされる。
+ソースファイルはもちろん、ヘッダファイル、ライブラリなどが更新されている場合も自動的に検出して差分コンパイルされる。&lt;/p&gt;
+
+&lt;h4&gt;&lt;code&gt;make all&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;強制的に全ソースをコンパイルしたい場合は&lt;code&gt;make all&lt;/code&gt;する。
+このコマンドは全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除してから全ソースをコンパイルする。&lt;/p&gt;
+
+&lt;h4&gt;&lt;code&gt;make clean&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除する。&lt;/p&gt;
+
+&lt;h2&gt;初期設定状態のmakefile&lt;/h2&gt;
+
+&lt;p&gt;下記のようなディレクトリツリーで初期設定の&lt;code&gt;makefile&lt;/code&gt;を用いて&lt;code&gt;make&lt;/code&gt;を実行した場合、以下の矢印(&amp;lt;-)ようにファイルが生成される。
+同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;example
+|-- bin
+|   `-- example    &amp;lt;- (TARGET) 実行ファイル
+|-- include
+|   `-- main.h
+`-- source
+    |-- main.cpp
+    |-- makefile
+    `-- obj        &amp;lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
+        |-- main.d &amp;lt;- (DEPENDS) 依存関係ファイル
+        `-- main.o &amp;lt;- (OBJECTS) オブジェクトファイル
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;解説&lt;/h2&gt;
+
+&lt;h3&gt;コンパイラの指定 (&lt;code&gt;COMPILER&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;コンパイラは&lt;code&gt;COMPILER&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;g++&lt;/code&gt;。C言語のみの場合は&lt;code&gt;gcc&lt;/code&gt;に変更しても良いが基本的には&lt;code&gt;g++&lt;/code&gt;で問題ない。&lt;/p&gt;
+
+&lt;h3&gt;コンパイルオプション (&lt;code&gt;CFLAGS&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;コンパイルオプションとして&lt;code&gt;CFLAGS&lt;/code&gt;の値を用いる。&lt;code&gt;-D&lt;/code&gt;オプションによる&lt;code&gt;#define&lt;/code&gt;の追加、最適化オプション、コードカバレッジ用の&lt;code&gt;-coverage&lt;/code&gt;などを用いる場合はここに記述する。&lt;/p&gt;
+
+&lt;p&gt;以下は初期値の解説。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Wextra&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コンパイルワーニングのレベルを最大にする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;よりも強力。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-g&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;デバッグオプション。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gdb&lt;/code&gt;でのデバッグを可能にする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-MMD -MP&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ソースファイルの依存関係を中間ファイルに出力する。&lt;/li&gt;
+&lt;li&gt;依存関係ファイルはソースファイル名の拡張子を&lt;code&gt;.d&lt;/code&gt;に変更したものとなり、&lt;code&gt;OBJDIR&lt;/code&gt;で指定したディレクトリに生成される。&lt;/li&gt;
+&lt;li&gt;この依存関係ファイルは&lt;code&gt;makefile&lt;/code&gt;最後の&lt;code&gt;include&lt;/code&gt;文にてインクルードされることで依存しているヘッダファイル等が変更された場合に自動的に再コンパイルされるようになる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;リンクオプション (&lt;code&gt;LDFLAGS&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;リンクオプションとして&lt;code&gt;LDFLAGS&lt;/code&gt;の値を用いる。初期値は空。
+標準ライブラリをリンクする&lt;code&gt;-l&lt;/code&gt;オプションやコードカバレッジ用の&lt;code&gt;-coverage&lt;/code&gt;などを用いる場合はここに記述する。&lt;/p&gt;
+
+&lt;h3&gt;ライブラリの指定 (&lt;code&gt;LIBS&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;リンクするライブラリとして&lt;code&gt;LIBS&lt;/code&gt;の値を用いる。初期値は空。
+静的ライブラリ（&lt;code&gt;*.a&lt;/code&gt;）や動的ライブラリ（&lt;code&gt;*.so&lt;/code&gt;）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
+ここで指定したライブラリが更新された場合、&lt;code&gt;make&lt;/code&gt;は再コンパイルが必要だと認識する。&lt;/p&gt;
+
+&lt;h3&gt;インクルードパスの指定 (&lt;code&gt;INCLUDE&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;インクルードパスとして&lt;code&gt;INCLUDE&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;-I../include&lt;/code&gt;。
+ソースファイル中の&lt;code&gt;#include&lt;/code&gt;ファイル検索パスに加えるパスを&lt;code&gt;-I&lt;/code&gt;オプションにて指定する。&lt;code&gt;-I&lt;/code&gt;オプションとディレクトリ名の間に空白を書くことはできない。
+複数ディレクトリを指定したい場合は&lt;code&gt;-I&lt;/code&gt;オプションを空白区切りで複数指定する。&lt;/p&gt;
+
+&lt;h3&gt;実行ファイルの指定 (&lt;code&gt;TARGET&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;実行ファイル名として&lt;code&gt;TARGET&lt;/code&gt;の値を用いる。
+以下は初期値 &lt;code&gt; ../bin/$(shell basename `readlink -f ..`) &lt;/code&gt;の解説。
+実行ファイルの生成先のディレクトリは&lt;code&gt;../bin&lt;/code&gt;。
+生成される実行ファイル名は &lt;code&gt; $(shell basename `readlink -f ..`) &lt;/code&gt;である。
+これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの親ディレクトリの名前である。
+つまり、以下の様なディレクトリ構成の場合、&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;example
+|-- bin
+`-- source
+    |-- main.cpp
+    `-- makefile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;example&lt;/code&gt;という名前の実行ファイルが&lt;code&gt;example/bin&lt;/code&gt;に生成されることになる。&lt;/p&gt;
+
+&lt;h3&gt;中間ファイル生成先ディレクトリの指定 (&lt;code&gt;OBJDIR&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;中間ファイル生成先ディレクトリとして&lt;code&gt;OBJDIR&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;./obj&lt;/code&gt;。
+このフォルダにオブジェクトファイル(&lt;code&gt;*.o&lt;/code&gt;)や依存関係ファイル(&lt;code&gt;*.d&lt;/code&gt;)が生成される。&lt;/p&gt;
+
+&lt;h3&gt;ソースファイルの指定 (&lt;code&gt;SOURCES&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;コンパイル対象となるソースファイルとして&lt;code&gt;SOURCES&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;$(wildcard *.cpp)&lt;/code&gt;。
+これは&lt;code&gt;makefile&lt;/code&gt;と同一ディレクトリに存在する拡張子&lt;code&gt;cpp&lt;/code&gt;のファイル全てをコンパイル対象とすることを意味する。別の拡張子(&lt;code&gt;.c&lt;/code&gt;など)に変更したい場合は、&lt;code&gt;makefile&lt;/code&gt;内の&lt;code&gt;cpp&lt;/code&gt;を全て変更する。&lt;/p&gt;
+
+&lt;h3&gt;オブジェクトファイルの指定 (&lt;code&gt;OBJECTS&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;オブジェクトファイルとして&lt;code&gt;OBJECTS&lt;/code&gt;の値を用いる。
+以下は初期値 &lt;code&gt;$(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))&lt;/code&gt;の解説。
+オブジェクトファイルの生成先ディレクトリは&lt;code&gt;OBJDIR&lt;/code&gt;。
+オブジェクトファイル名はソースファイル(&lt;code&gt;SOURCES&lt;/code&gt;)の拡張子を&lt;code&gt;.o&lt;/code&gt;に置換したものである。
+&lt;code&gt;OBJDIR&lt;/code&gt;が空の場合はソースファイルと同一のディレクトリに生成される。&lt;/p&gt;
+
+&lt;h3&gt;依存関係ファイルの指定 (&lt;code&gt;DEPENDS&lt;/code&gt;)&lt;/h3&gt;
+
+&lt;p&gt;依存関係ファイルとして&lt;code&gt;DEPENDS&lt;/code&gt;の値を用いる。
+初期値&lt;code&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code&gt;.d&lt;/code&gt;に置換したものである。&lt;/p&gt;
+
+&lt;p&gt;そんじゃーね。&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
@@ -52,7 +229,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 &lt;p&gt;日本語を使うと&lt;code&gt;jekyll build&lt;/code&gt;でエラーになるのでファイル読み込み時のエンコーディングを&lt;code&gt;UTF-8&lt;/code&gt;固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら&lt;code&gt;Windows-31J&lt;/code&gt;）が、実際のファイルは全て&lt;code&gt;UTF-8&lt;/code&gt;にしたいので。LinuxやMacなんかではシステムのエンコーディングが&lt;code&gt;UTF-8&lt;/code&gt;だから普通は問題ない。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;jekyll&lt;/code&gt;本体に手をつけるハックもネット上で見かけたがよろしくない。
-これを&lt;code&gt;_plugins&lt;/code&gt;フォルダに放り込んでおくとjekyllがエンコーディング固定で動くようになる。&lt;/p&gt;
+デフォルトエンコーディングを変更するだけの&lt;code&gt;.rb&lt;/code&gt;ファイルを&lt;code&gt;_plugins&lt;/code&gt;フォルダに置いて&lt;code&gt;build&lt;/code&gt;すれば&lt;code&gt;jekyll&lt;/code&gt;が&lt;code&gt;UTF-8&lt;/code&gt;固定で動くようになる。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UTF_8&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;

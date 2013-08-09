@@ -3,12 +3,12 @@
  ***********************************************************/
 
 body {
-  background-color: #fafafa;
-  background: -webkit-radial-gradient(70% 0%, circle, #fafafa, #e8e8e8);
-  background: -moz-radial-gradient   (70% 0%, circle, #fafafa, #e8e8e8);
-  background: -o-radial-gradient     (70% 0%, circle, #fafafa, #e8e8e8);
-  background: -ms-radial-gradient    (70% 0%, circle, #fafafa, #e8e8e8);
-  background: radial-gradient        (70% 0%, circle, #fafafa, #e8e8e8);
+  background-color: #e4e4e4;
+  background: -webkit-radial-gradient(65% 5%, circle, #fcfcfc, #e0e0e0);
+  background: -moz-radial-gradient   (65% 5%, circle, #fcfcfc, #e0e0e0);
+  background: -o-radial-gradient     (65% 5%, circle, #fcfcfc, #e0e0e0);
+  background: -ms-radial-gradient    (65% 5%, circle, #fcfcfc, #e0e0e0);
+  background: radial-gradient        (65% 5%, circle, #fcfcfc, #e0e0e0);
 }
 
 hr {
@@ -30,15 +30,27 @@ h2, h3 {
 pre {
   font-size: inherit;
   line-height: 1.4;
+  overflow: auto;
+  word-wrap: normal;
 }
 
 code {
   border: 1px solid #f3d5dc;
+  font-size: inherit;
+  font-weight: bold;
+  padding-left:  3px;
+  padding-right: 3px;
+  margin-left:   3px;
+  margin-right:  3px;
 }
 
 pre > code {
   font-size: inherit;
   border: none;
+  white-space: pre;
+  font-weight: normal;
+  padding:  0;
+  margin:   0;
 }
 
 article a[href*="//"]:after {
@@ -77,6 +89,7 @@ i[class^="icon-"] {
  ***********************************************************/
 header {
   height: 40px; line-height: 40px;
+  overflow: hidden;
 }
 
 .header-logo > * {
@@ -143,8 +156,9 @@ article {
 
 footer {
   margin-top:    30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-shadow: 1px 1px 0 #fff;
+  overflow: hidden;
 }
 
 .recent-posts .icon-paper-clip {
