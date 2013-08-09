@@ -28,7 +28,7 @@
 
 &lt;h2&gt;makefile&lt;/h2&gt;
 
-&lt;p&gt;※makefileではタブ文字に重要な意味がありますが都合によりタブ文字をスペース４文字に置き換えています。&lt;/p&gt;
+&lt;p&gt;※makefileではタブ文字に重要な意味があるが都合によりタブ文字をスペース４文字に置き換えている。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;そのまま使えるソースはこちら&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;makefile language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
