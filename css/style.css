@@ -80,6 +80,10 @@ i[class^="icon-"] {
   color: #4e793a;
 }
 
+.icon-comments {
+  color: #ebc344;
+}
+
 .digits {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
