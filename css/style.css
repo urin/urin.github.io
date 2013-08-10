@@ -237,9 +237,14 @@ footer {
   opacity: 1;
 }
 
+#disqus_thread {
+  margin-top: 20px;
+}
+
 /***********************************************************
  * Post list related tag
  ***********************************************************/
 .post-list-row {
   margin-bottom: 20px;
 }
+
