@@ -32,6 +32,8 @@ pre {
   line-height: 1.4;
   overflow: auto;
   word-wrap: normal;
+  margin-top:    30px;
+  margin-bottom: 30px;
   -moz-border-radius:    4px;
   -webkit-border-radius: 4px;
   border-radius:         4px;
@@ -69,8 +71,20 @@ footer a:hover {
   text-decoration: none;
 }
 
+blockquote {
+  border-left-color: #cccccc;
+}
+
+blockquote p {
+  font-size: inherit;
+}
+
 .balloon-defaults {
-  font-size: 12px;
+  font-size: 10px;
+}
+
+.block {
+  display: block;
 }
 
 i[class^="icon-"] {
@@ -225,7 +239,7 @@ footer {
 
 article img {
   display: block;
-  margin: 20px auto;
+  margin: 30px auto;
   -moz-border-radius:    4px;
   -webkit-border-radius: 4px;
   border-radius:         4px;

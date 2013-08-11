@@ -5,7 +5,7 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2013-08-11T16:36:29+09:00</lastBuildDate>
+    <lastBuildDate>2013-08-11T18:16:43+09:00</lastBuildDate>
     <pubDate>2013-08-11T00:00:00+09:00</pubDate>
     <ttl>1800</ttl>
 
@@ -23,7 +23,7 @@
 
 &lt;p&gt;以下のデモページ（画像をクリック）ではクリックすると実行結果が表示されるので実行前と実行後の見た目の変化がわかる。ダウンロードリンクはデモページの最下部にある。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/jquery.tile.js&quot; title=&quot;デモページヘ&quot;&gt;&lt;img src=&quot;/img/posts/2013/2013-08-11-jquery-tile-js-demos-thumbnail.png&quot; alt=&quot;jquery.tile.js&quot; width=&quot;600&quot; height=&quot;318&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/jquery.tile.js&quot; title=&quot;デモページヘ&quot; class=&quot;block&quot;&gt;&lt;img src=&quot;/img/posts/2013/2013-08-11-jquery-tile-js-demos-thumbnail.png&quot; alt=&quot;jquery.tile.js&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;使用方法１―全ての要素の高さを揃える&lt;/h3&gt;
 
@@ -65,6 +65,17 @@
 &lt;p&gt;&lt;img src=&quot;/img/posts/2013/2013-08-11-tile2-before.png&quot; alt=&quot;jquery.tile.js&quot;&gt;
 &lt;i class=&quot;icon-arrow-down&quot; style=&quot;display: block; margin: 10px auto; font-size: 40px&quot;&gt;&lt;/i&gt;
 &lt;img src=&quot;/img/posts/2013/2013-08-11-tile2-after.png&quot; alt=&quot;jquery.tile.js&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;以下で紹介されています&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://liginc.co.jp/web/js/jquery/22340#contents&quot;&gt;見た目を綺麗に整列する！ブロックレベル要素の高さを揃えるJS3選 | 株式会社LIG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://qiita.com/ituki_b/items/ddbf2dc96e6e746a8c1f&quot;&gt;jQuery - 横並びしてる要素の高さをそろえ、要素が削除されたあともまた高さをそろえる - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ilovex.co.jp/blog/system/html/js2.html#main-content&quot;&gt;リストの高さを揃える便利なJS（2） | システム開発ブログ(システム開発のアイロベックス)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://1bit.mobi/20111025170154.html&quot;&gt;ブロック要素の天地を揃えるのはjquery.tile.jsが一番便利でした | 1bit::memo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 </description>
       <link>http://urin.github.io/posts/2013/release-jquery-tile-js</link>
       <guid>http://urin.github.io//posts/2013/release-jquery-tile-js</guid>
