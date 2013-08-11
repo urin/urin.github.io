@@ -211,6 +211,10 @@ footer {
   color: #171515;
 }
 
+.adsbygoogle {
+  margin: 30px 10px;
+}
+
 .copyright {
   text-align: center;
   color: #bbb;
@@ -277,3 +281,24 @@ article img {
   margin-bottom: 20px;
 }
 
+/***********************************************************
+ * Top page
+ ***********************************************************/
+.typography {
+  position: relative;
+  margin: 80px 20px 120px 20px;
+  text-align: center;
+  font-size: 100px;
+  font-weight: 100;
+  line-height: 1.4;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, .3), 0 1px 1px rgba(255, 255, 255, .90);
+  color: #eee4e4;
+}
+
+.typography:before {
+  position: absolute; top: 0; left: 0;
+  content: attr(title);
+  color: #aaa0a0;
+  -webkit-mask-image: -webkit-radial-gradient(50% 50%, circle, rgba(0,0,0,0), rgba(0,0,0,1));
+}
