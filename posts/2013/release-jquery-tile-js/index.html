@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Jekyll 1.1系をWindowsに導入する - URIN HACK</title>
-    <meta name="description" content="URIN HACK Amazing programming hacks Jekyll Ruby Windows">
+    <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js - URIN HACK</title>
+    <meta name="description" content="URIN HACK Amazing programming hacks jQuery JavaScript">
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="Jekyll 1.1系をWindowsに導入する - URIN HACK">
-    <meta name="twitter:title" content="Jekyll 1.1系をWindowsに導入する - URIN HACK">
-    <meta property="og:description"  content="URIN HACK Amazing programming hacks Jekyll Ruby Windows">
-    <meta name="twitter:description" content="URIN HACK Amazing programming hacks Jekyll Ruby Windows">
+    <meta property="og:title"  content="要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js - URIN HACK">
+    <meta name="twitter:title" content="要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js - URIN HACK">
+    <meta property="og:description"  content="URIN HACK Amazing programming hacks jQuery JavaScript">
+    <meta name="twitter:description" content="URIN HACK Amazing programming hacks jQuery JavaScript">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows">
+    <meta property="og:url" content="http://urin.github.io/posts/2013/release-jquery-tile-js">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="/img/layout/apple-touch-icon-114x114.png">
     -->
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows">
+    <link rel="canonical" href="http://urin.github.io/posts/2013/release-jquery-tile-js">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -71,23 +71,21 @@
   <div class="col-sm-3 col-lg-2">
 <div class="post-aux">
   <ul class="list-inline">
-    <li><i class="icon-time"></i><span class="digits">2013-08-04</span></li>
+    <li><i class="icon-time"></i><span class="digits">2013-08-11</span></li>
 
     <li><i class="icon-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='http://disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows'></script>
+        <script type='text/javascript' src='http://disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/release-jquery-tile-js'></script>
       </span>
 
     </li>
 
   
      
-    <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="2件の記事">Jekyll <span class="badge digits">2</span></a></li>
+    <li><i class="icon-tag"></i><a href="/tags/jQuery" title="1件の記事">jQuery <span class="badge digits">1</span></a></li>
      
-    <li><i class="icon-tag"></i><a href="/tags/Ruby" title="2件の記事">Ruby <span class="badge digits">2</span></a></li>
-     
-    <li><i class="icon-tag"></i><a href="/tags/Windows" title="1件の記事">Windows <span class="badge digits">1</span></a></li>
+    <li><i class="icon-tag"></i><a href="/tags/JavaScript" title="1件の記事">JavaScript <span class="badge digits">1</span></a></li>
     
   
 
@@ -95,7 +93,7 @@
 
 
   <ul class="sns-buttons list-inline">
-    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/release-jquery-tile-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
     <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
     <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
     <li><div class="g-plusone" data-size="medium"></div></li>
@@ -114,71 +112,79 @@
 
   </div>
   <div class="post col-sm-9 col-lg-10">
-    <h1 class="well">Jekyll 1.1系をWindowsに導入する</h1>
-    <p>現時点で最新版の<code>jekyll-1.1.2</code>をインストールしてみる。Rubyは<code>1.9.3</code>でやったが<code>2.0.0</code>でも多分問題ない。</p>
+    <h1 class="well">要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</h1>
+    <p>ブロック要素の高さを揃える軽量な<code>jQuery</code>プラグイン<code>jquery.tile.js</code>。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
+このプラグインには余分な機能が一切無いため <strong>使い方がシンプルでプラグインは非常に軽量</strong> になっている。</p>
 
-<h3>Pythonをインストール</h3>
+<p><code>JavaScript</code>を使用しないで要素の高さ揃える場合は<code>HTML</code>の<code>table</code>要素を使う、<code>CSS</code>の<code>display: table</code>を使用する、<code>float: left</code>で横に並べて<code>margin-bottom</code>を大きくするなどの方法が考えられるが、デザイン面で融通が効きにくく初心者にとっては少し敷居が高い。
+要素を横に並べるには<code>float: left</code>や<code>display: inline-block</code>などを用いるのが最も簡単だが、この場合<code>HTML</code>と<code>CSS</code>だけで要素の高さを自動的に揃えるのは（特にそれが複数行あったり各要素の高さが内容物に応じて可変だった場合）簡単ではない。</p>
 
-<p>シンタックスハイライト用の<code>pygments.rb</code>が使用する。
-<code>pygments.rb</code>によると<code>python</code>のバージョン<code>2.6</code>以降であれば何でもいいと書いてあるが、python<code>3</code>系では動作しない。
-よって<code>2.7</code>をインストールする。</p>
+<p>このプラグインはブログ形式のWebサイトでサイドバーと本体の高さを揃えたい場合などにも使用することができる。</p>
 
-<p>インストールが終わったら<code>python.exe</code>のあるディレクトリを<code>PATH</code>に追加する。</p>
+<h3>デモ・ダウンロード</h3>
 
-<h3>easy_install(distribute)をインストール</h3>
+<p>以下のデモページ（画像をクリック）ではクリックすると実行結果が表示されるので実行前と実行後の見た目の変化がわかる。ダウンロードリンクはデモページの最下部にある。</p>
 
-<p><a href="http://python-distribute.org/distribute_setup.py">distribute_setup.py</a>
-をダウンロードしてきて<code>python</code>で実行するだけ。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">python distribute_setup.py
+<p><a href="/jquery.tile.js" title="デモページヘ"><img src="/img/posts/2013/2013-08-11-jquery-tile-js-demos-thumbnail.png" alt="jquery.tile.js"></a></p>
+
+<h3>使用方法１―全ての要素の高さを揃える</h3>
+
+<ul>
+<li>指定した複数の要素の高さをその中の最大の高さに揃える。
+
+<ul>
+<li>各要素の幅が同じであれば各要素のサイズ（高さ・幅）は全て同じになりタイル状に要素が並ぶ。</li>
+<li>各要素に対して<code>height</code>を指定する必要はない。</li>
+</ul></li>
+</ul>
+
+<h4>JavaScriptサンプル</h4>
+
+<p><code>tile-sample1</code>という<code>class</code>属性を持つ要素の高さをその中の最大の高さで揃えるには以下のように記述する。</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tile-sample1&quot;</span><span class="p">).</span><span class="nx">tile</span><span class="p">();</span>
+<span class="p">});</span>
 </code></pre></div>
-<h3>Pygmentsをインストール</h3>
+<h4>実行したときのイメージ</h4>
 
-<p><code>python</code>のあるディレクトリに<code>Scripts</code>フォルダができていてその中に<code>easy_install.exe</code>がある。
-ここで</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat"><span class="k">cd</span> Scripts
-easy_install Pygments
+<p><img src="/img/posts/2013/2013-08-11-tile1-before.png" alt="jquery.tile.js">
+<i class="icon-arrow-down" style="display: block; margin: 10px auto; font-size: 40px"></i>
+<img src="/img/posts/2013/2013-08-11-tile1-after.png" alt="jquery.tile.js"></p>
+
+<h3>使用方法２―同じ行にある要素の高さを揃える</h3>
+
+<p>１行に含まれる要素の数（列数）を指定して同じ行に並ぶ要素の中で最大の高さに揃える。</p>
+
+<h4>JavaScriptサンプル</h4>
+
+<p><code>tile-sample2</code>という<code>class</code>属性を持つ要素が横に４つ並んでいるとき横に並んだ要素の高さを各行毎に揃えるにはその列数（＝４）を引数に指定する。</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.tile-sample2&quot;</span><span class="p">).</span><span class="nx">tile</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
-<p>とするだけ。</p>
+<h4>実行したときのイメージ</h4>
 
-<h3>pygments.rbのダウングレード</h3>
-
-<p>シンタックスハイライトを使用しようとすると<code>posix-spawn</code>やら<code>liquid</code>やらがエラーを出す。この問題は<a href="//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working">Stack Over Flow</a>にも挙げられていて対策もあった。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem uninstall -a pygments.rb
-gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
-</code></pre></div>
-<p>とバージョンを<code>0.5.0</code>に下げる。</p>
-
-<h3>エンコーディングの固定化</h3>
-
-<p>日本語を使うと<code>jekyll build</code>でエラーになるのでファイル読み込み時のエンコーディングを<code>UTF-8</code>固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら<code>Windows-31J</code>）が、実際のファイルは全て<code>UTF-8</code>にしたいので。LinuxやMacなんかではシステムのエンコーディングが<code>UTF-8</code>だから普通は問題ない。</p>
-
-<p><code>jekyll</code>本体に手をつけるハックもネット上で見かけたがよろしくない。
-デフォルトエンコーディングを変更するだけの<code>.rb</code>ファイルを<code>_plugins</code>フォルダに置いて<code>build</code>すれば<code>jekyll</code>が<code>UTF-8</code>固定で動くようになる。</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="o">.</span><span class="n">default_external</span> <span class="o">=</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span>
-</code></pre></div>
-<p>以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは<a href="//jekyllrb.com/docs/home/">Jekyllの公式ドキュメント</a>をひと通り見ながらやれば大体OK。</p>
-
-<p>さあ、快適なJekyllライフをはじめよう。</p>
+<p><img src="/img/posts/2013/2013-08-11-tile2-before.png" alt="jquery.tile.js">
+<i class="icon-arrow-down" style="display: block; margin: 10px auto; font-size: 40px"></i>
+<img src="/img/posts/2013/2013-08-11-tile2-after.png" alt="jquery.tile.js"></p>
 
 <div class="post-aux">
   <ul class="list-inline">
-    <li><i class="icon-time"></i><span class="digits">2013-08-04</span></li>
+    <li><i class="icon-time"></i><span class="digits">2013-08-11</span></li>
 
     <li><i class="icon-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='http://disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows'></script>
+        <script type='text/javascript' src='http://disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/release-jquery-tile-js'></script>
       </span>
 
     </li>
 
   
      
-    <li><i class="icon-tag"></i><a href="/tags/Jekyll" title="2件の記事">Jekyll <span class="badge digits">2</span></a></li>
+    <li><i class="icon-tag"></i><a href="/tags/jQuery" title="1件の記事">jQuery <span class="badge digits">1</span></a></li>
      
-    <li><i class="icon-tag"></i><a href="/tags/Ruby" title="2件の記事">Ruby <span class="badge digits">2</span></a></li>
-     
-    <li><i class="icon-tag"></i><a href="/tags/Windows" title="1件の記事">Windows <span class="badge digits">1</span></a></li>
+    <li><i class="icon-tag"></i><a href="/tags/JavaScript" title="1件の記事">JavaScript <span class="badge digits">1</span></a></li>
     
   
 
@@ -186,7 +192,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
 
 
   <ul class="sns-buttons list-inline">
-    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/release-jquery-tile-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
     <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
     <li><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
     <li><div class="g-plusone" data-size="medium"></div></li>
@@ -199,8 +205,8 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows';
-      var disqus_title = 'Jekyll 1.1系をWindowsに導入する';
+      var disqus_url = 'http://urin.github.io/posts/2013/release-jquery-tile-js';
+      var disqus_title = '要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -278,17 +284,17 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
       <div class="tags col-sm-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div class="tag-cloud">
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
-<a href="/tags/jQuery" style="font-size: 70%;">jQuery</a>
-<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
-<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
-<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
-<a href="/tags/JavaScript" style="font-size: 70%;">JavaScript</a>
-<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
 <a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
+<a href="/tags/JavaScript" style="font-size: 70%;">JavaScript</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
 <a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
 <a href="/tags/C++" style="font-size: 70%;">C++</a>
+<a href="/tags/jQuery" style="font-size: 70%;">jQuery</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
 <a href="/tags/Linux" style="font-size: 70%;">Linux</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
 
         </div>
 

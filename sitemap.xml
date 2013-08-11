@@ -10,6 +10,12 @@
 
   
   <url>
+    <loc>http://urin.github.io/posts/2013/release-jquery-tile-js</loc>
+    <lastmod>2013-08-11</lastmod>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>http://urin.github.io/posts/2013/simple-makefile-for-clang</loc>
     <lastmod>2013-08-10</lastmod>
     <priority>1.0</priority>
@@ -94,6 +100,20 @@
   
   <url>
     <loc>http://urin.github.io/tags/Linux/index.html</loc>
+    <lastmod>2013-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>http://urin.github.io/tags/jQuery/index.html</loc>
+    <lastmod>2013-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>http://urin.github.io/tags/JavaScript/index.html</loc>
     <lastmod>2013-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
