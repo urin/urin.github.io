@@ -3,12 +3,12 @@
  ***********************************************************/
 
 body {
-  background-color: #e4e4e4;
-  background: -webkit-radial-gradient(65% 5%, circle, #fcfcfc, #e0e0e0);
-  background: -moz-radial-gradient   (65% 5%, circle, #fcfcfc, #e0e0e0);
-  background: -o-radial-gradient     (65% 5%, circle, #fcfcfc, #e0e0e0);
-  background: -ms-radial-gradient    (65% 5%, circle, #fcfcfc, #e0e0e0);
-  background: radial-gradient        (65% 5%, circle, #fcfcfc, #e0e0e0);
+  background-color: #fafafa;
+  background: -webkit-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
+  background:    -moz-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
+  background:      -o-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
+  background:     -ms-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
+  background:         radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
 }
 
 hr {
@@ -25,6 +25,11 @@ h1 {
 
 h2, h3 {
   margin-top: 30px;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
 }
 
 pre {
@@ -80,11 +85,15 @@ blockquote p {
 }
 
 .balloon-defaults {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .block {
   display: block;
+}
+
+.adsbygoogle {
+  margin: 30px 10px;
 }
 
 i[class^="icon-"] {
@@ -181,7 +190,7 @@ article {
 
 footer {
   margin-top:    30px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-shadow: 1px 1px 0 #fff;
   overflow: hidden;
 }
@@ -211,16 +220,36 @@ footer {
   color: #171515;
 }
 
-.adsbygoogle {
-  margin: 30px 10px;
+.technology {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
+
+.technology i {
+  display: block;
+  color: #ff7979;
+  font-size: 24px;
+  width: auto;
+}
+
+.technology-logo {
+  display: block;
+  background: url('/img/layout/technology-logo.png') no-repeat top left;
+  width: 100px; height: 50px;
+  margin: 20px auto;
+}
+.technology-logo.Boostrap-logo { background-position: 0    0px; }
+.technology-logo.jQuery-logo   { background-position: 0  -60px; }
+.technology-logo.Jekyll-logo   { background-position: 0 -120px; }
+.technology-logo.GitHub-logo   { background-position: 0 -180px; }
+.technology-logo.git-logo      { background-position: 0 -240px; }
 
 .copyright {
   text-align: center;
   color: #bbb;
   font-size: 12px;
-  padding: 20px;
-  height: 60px;
+  margin-top: 15px;
 }
 
 /***********************************************************
