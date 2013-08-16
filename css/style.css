@@ -152,7 +152,8 @@ header .sns-icons {
 }
 
 .sns-icons i {
-  margin-right: 10px;
+  margin-left:  5px;
+  margin-right: 5px;
   padding-top: 4px; width: 24px; height: 24px;
   font-size: 16px;
   -moz-border-radius:    14px;
