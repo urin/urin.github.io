@@ -6,7 +6,7 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2013-08-11T00:00:00+09:00</updated>
+  <updated>2013-08-11T00:00:00+05:30</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>
     <link href="http://urin.github.io/posts/2013/release-jquery-tile-js"/>
-    <updated>2013-08-11T00:00:00+09:00</updated>
+    <updated>2013-08-11T00:00:00+05:30</updated>
     <id>http://urin.github.io/posts/2013/release-jquery-tile-js</id>
     <content type="html">&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため &lt;strong&gt;使い方がシンプルでプラグインは非常に軽量&lt;/strong&gt; になっている。&lt;/p&gt;
@@ -88,7 +88,7 @@
   <entry>
     <title>シンプルで応用の効くmakefileとその解説</title>
     <link href="http://urin.github.io/posts/2013/simple-makefile-for-clang"/>
-    <updated>2013-08-10T00:00:00+09:00</updated>
+    <updated>2013-08-10T00:00:00+05:30</updated>
     <id>http://urin.github.io/posts/2013/simple-makefile-for-clang</id>
     <content type="html">&lt;p&gt;&lt;code&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
@@ -265,7 +265,7 @@ clean:
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
     <link href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows"/>
-    <updated>2013-08-04T00:00:00+09:00</updated>
+    <updated>2013-08-04T00:00:00+05:30</updated>
     <id>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</id>
     <content type="html">&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
@@ -317,7 +317,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
   <entry>
     <title>ブログをリニューアル</title>
     <link href="http://urin.github.io/posts/2013/Renewal"/>
-    <updated>2013-08-03T00:00:00+09:00</updated>
+    <updated>2013-08-03T00:00:00+05:30</updated>
     <id>http://urin.github.io/posts/2013/Renewal</id>
     <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
 

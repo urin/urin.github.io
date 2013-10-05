@@ -5,8 +5,8 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2013-08-17T11:13:59+09:00</lastBuildDate>
-    <pubDate>2013-08-11T00:00:00+09:00</pubDate>
+    <lastBuildDate>2013-10-05T21:55:43+05:30</lastBuildDate>
+    <pubDate>2013-08-11T00:00:00+05:30</pubDate>
     <ttl>1800</ttl>
 
     <item>
@@ -79,7 +79,7 @@
 </description>
       <link>http://urin.github.io/posts/2013/release-jquery-tile-js</link>
       <guid>http://urin.github.io//posts/2013/release-jquery-tile-js</guid>
-      <pubDate>2013-08-11T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-11T00:00:00+05:30</pubDate>
     </item>
 
     <item>
@@ -256,7 +256,7 @@ clean:
 </description>
       <link>http://urin.github.io/posts/2013/simple-makefile-for-clang</link>
       <guid>http://urin.github.io//posts/2013/simple-makefile-for-clang</guid>
-      <pubDate>2013-08-10T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-10T00:00:00+05:30</pubDate>
     </item>
 
     <item>
@@ -308,7 +308,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 </description>
       <link>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</link>
       <guid>http://urin.github.io//posts/2013/Setup-jekyll-1.1-to-windows</guid>
-      <pubDate>2013-08-04T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-04T00:00:00+05:30</pubDate>
     </item>
 
     <item>
@@ -384,7 +384,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 </description>
       <link>http://urin.github.io/posts/2013/Renewal</link>
       <guid>http://urin.github.io//posts/2013/Renewal</guid>
-      <pubDate>2013-08-03T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-03T00:00:00+05:30</pubDate>
     </item>
 
   </channel>
