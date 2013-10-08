@@ -76,10 +76,10 @@
 
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://liginc.co.jp/web/js/jquery/22340#contents&quot;&gt;見た目を綺麗に整列する！ブロックレベル要素の高さを揃えるJS3選 | 株式会社LIG&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://qiita.com/ituki_b/items/ddbf2dc96e6e746a8c1f&quot;&gt;jQuery - 横並びしてる要素の高さをそろえ、要素が削除されたあともまた高さをそろえる - Qiita&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ilovex.co.jp/blog/system/html/js2.html#main-content&quot;&gt;リストの高さを揃える便利なJS（2） | システム開発ブログ(システム開発のアイロベックス)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://1bit.mobi/20111025170154.html&quot;&gt;ブロック要素の天地を揃えるのはjquery.tile.jsが一番便利でした | 1bit::memo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//liginc.co.jp/web/js/jquery/22340#contents&quot;&gt;見た目を綺麗に整列する！ブロックレベル要素の高さを揃えるJS3選 | 株式会社LIG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//qiita.com/ituki_b/items/ddbf2dc96e6e746a8c1f&quot;&gt;jQuery - 横並びしてる要素の高さをそろえ、要素が削除されたあともまた高さをそろえる - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.ilovex.co.jp/blog/system/html/js2.html#main-content&quot;&gt;リストの高さを揃える便利なJS（2） | システム開発ブログ(システム開発のアイロベックス)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//1bit.mobi/20111025170154.html&quot;&gt;ブロック要素の天地を揃えるのはjquery.tile.jsが一番便利でした | 1bit::memo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 </content>
@@ -279,7 +279,7 @@ clean:
 
 &lt;h3&gt;easy_install(distribute)をインストール&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://python-distribute.org/distribute_setup.py&quot;&gt;distribute_setup.py&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;//python-distribute.org/distribute_setup.py&quot;&gt;distribute_setup.py&lt;/a&gt;
 をダウンロードしてきて&lt;code&gt;python&lt;/code&gt;で実行するだけ。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;python distribute_setup.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -344,13 +344,13 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 &lt;p&gt;日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ninja.co.jp/blog/&quot;&gt;忍者ブログ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.blogger.com/&quot;&gt;Blogger&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://hatenablog.com/&quot;&gt;はてなブログ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://d.hatena.ne.jp/&quot;&gt;はてなダイアリー&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://ameblo.jp/&quot;&gt;Ameba (アメーバ)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.fc2.com/&quot;&gt;FC2ブログ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.livedoor.com/&quot;&gt;ライブドアブログ(livedoor Blog)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.ninja.co.jp/blog/&quot;&gt;忍者ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.blogger.com/&quot;&gt;Blogger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//hatenablog.com/&quot;&gt;はてなブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//d.hatena.ne.jp/&quot;&gt;はてなダイアリー&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//ameblo.jp/&quot;&gt;Ameba (アメーバ)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//blog.fc2.com/&quot;&gt;FC2ブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//blog.livedoor.com/&quot;&gt;ライブドアブログ(livedoor Blog)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;・・・&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -358,14 +358,14 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 これら伝統的なブログサービス以外の選択肢としては&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.strikingly.com/&quot;&gt;Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://wordpress.com/&quot;&gt;WordPress.com - Get a Free Blog Here&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://wordpress.org/&quot;&gt;WordPress › Blog Tool, Publishing Platform, and CMS&lt;/a&gt;を何らかのサーバ上で運営&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt;をGitHubでホスティング&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.edicy.com/&quot;&gt;Edicy — Create a Website — Easy to use Website Builder&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://ja.wix.com/&quot;&gt;WIX&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.weebly.com/&quot;&gt;Weebly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://jp.jimdo.com/&quot;&gt;Jimdo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.strikingly.com/&quot;&gt;Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//wordpress.com/&quot;&gt;WordPress.com - Get a Free Blog Here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//wordpress.org/&quot;&gt;WordPress › Blog Tool, Publishing Platform, and CMS&lt;/a&gt;を何らかのサーバ上で運営&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//octopress.org/&quot;&gt;Octopress&lt;/a&gt;をGitHubでホスティング&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.edicy.com/&quot;&gt;Edicy — Create a Website — Easy to use Website Builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//ja.wix.com/&quot;&gt;WIX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//www.weebly.com/&quot;&gt;Weebly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;//jp.jimdo.com/&quot;&gt;Jimdo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、&lt;code&gt;HTML&lt;/code&gt;、&lt;code&gt;CSS&lt;/code&gt;をカスタマイズ出来ないなど色々と不都合があった。
@@ -376,13 +376,13 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 &lt;p&gt;完全にカスタマイズできて&lt;code&gt;Octopress&lt;/code&gt;のベースにもなっている&lt;code&gt;Jekyll&lt;/code&gt;が今年リリースされたバージョン&lt;code&gt;0.12.0&lt;/code&gt;あたりから
 急激に充実してもはや&lt;code&gt;Octopress&lt;/code&gt;なんていらないんじゃね？という勢いを感じたので&lt;code&gt;Jekyll&lt;/code&gt;を&lt;code&gt;GitHub Pages&lt;/code&gt;にホスティングしてもらう形とした。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;という&lt;code&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
+&lt;p&gt;&lt;code&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;a href=&quot;//jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;という&lt;code&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
 開発が停滞気味で&lt;code&gt;Jekyll&lt;/code&gt;本体と&lt;code&gt;Bootstrap&lt;/code&gt;の更新に追いついて行けなさそうな予感がしたので結局、こうした。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;常に最新の&lt;code&gt;Jekyll&lt;/code&gt;が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。&lt;/li&gt;
-&lt;li&gt;レスポンシブ対応のグリッドシステムを持っていて今後も息が長い&lt;code&gt;CSS&lt;/code&gt;フレームワークを使いたい。ということで&lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap 3 RC1&lt;/a&gt;を導入。&lt;/li&gt;
-&lt;li&gt;アイコンは&lt;code&gt;Web font&lt;/code&gt;がいいので&lt;code&gt;Bootstrap&lt;/code&gt;との相性も良い&lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/&quot;&gt;Font Awesome, the iconic font designed for Bootstrap&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;レスポンシブ対応のグリッドシステムを持っていて今後も息が長い&lt;code&gt;CSS&lt;/code&gt;フレームワークを使いたい。ということで&lt;a href=&quot;//getbootstrap.com/&quot;&gt;Bootstrap 3 RC1&lt;/a&gt;を導入。&lt;/li&gt;
+&lt;li&gt;アイコンは&lt;code&gt;Web font&lt;/code&gt;がいいので&lt;code&gt;Bootstrap&lt;/code&gt;との相性も良い&lt;a href=&quot;//fortawesome.github.io/Font-Awesome/&quot;&gt;Font Awesome, the iconic font designed for Bootstrap&lt;/a&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
