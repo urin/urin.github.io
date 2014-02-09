@@ -3,6 +3,8 @@
  ***********************************************************/
 
 body {
+  font-family: "メイリオ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.9;
   background-color: #fafafa;
   background: -webkit-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
   background:    -moz-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
@@ -25,6 +27,29 @@ h1 {
 
 h2, h3 {
   margin-top: 30px;
+}
+
+a {
+  transition-property: all;
+  transition: 0.3s linear;
+}
+
+a:focus {
+  outline: thin dotted #888;
+}
+
+dt,
+dd {
+  line-height: 1.9;
+}
+
+.table thead > tr > th,
+.table tbody > tr > th,
+.table tfoot > tr > th,
+.table thead > tr > td,
+.table tbody > tr > td,
+.table tfoot > tr > td {
+  line-height: 1.9;
 }
 
 article img {
@@ -268,7 +293,19 @@ footer {
 .post h5,
 .post h6
 {
-  text-shadow: 1px 1px 1px #fff;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6
+{
+  font-weight: bold;
+  line-height: 1.9;
+  color: #554444;
 }
 
 article img {
