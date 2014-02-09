@@ -163,7 +163,10 @@ header .sns-icons {
 }
 
 .fb_iframe_widget {
-  margin: 10px 5px;
+  margin-left: 5px;
+}
+.fb_iframe_widget > span {
+  vertical-align: top; !important
 }
 
 article {
