@@ -118,7 +118,8 @@
 このプラグインには余分な機能が一切無いため <strong>使い方がシンプルでプラグインは非常に軽量</strong> になっている。</p>
 
 <p><code>JavaScript</code>を使用しないで要素の高さ揃える場合は<code>HTML</code>の<code>table</code>要素を使う、<code>CSS</code>の<code>display: table</code>を使用する、<code>float: left</code>で横に並べて<code>margin-bottom</code>を大きくするなどの方法が考えられるが、デザイン面で融通が効きにくく初心者にとっては少し敷居が高い。
-要素を横に並べるには<code>float: left</code>や<code>display: inline-block</code>などを用いるのが最も簡単だが、この場合<code>HTML</code>と<code>CSS</code>だけで要素の高さを自動的に揃えるのは（特にそれが複数行あったり各要素の高さが内容物に応じて可変だった場合）簡単ではない。</p>
+要素を横に並べるには<code>float: left</code>や<code>display: inline-block</code>などを用いるのが最も簡単だが、この場合<code>HTML</code>と<code>CSS</code>だけで要素の高さを自動的に揃えるのは（特にそれが複数行あったり各要素の高さが内容物に応じて可変だった場合）簡単ではない。
+CSS3の使用が認められる場合には<code>flexbox</code>レイアウトを用いるのが最もスマートであるが現時点でCSS3の使用が全面的に認められるケースはそう多くはない。</p>
 
 <p>このプラグインはブログ形式のWebサイトでサイドバーと本体の高さを揃えたい場合などにも使用することができる。</p>
 
@@ -173,6 +174,7 @@
 
 <blockquote>
 <ul>
+<li><a href="http://furoshiki.hatenadiary.jp/entry/2014/01/20/044348">日本人が開発したJavaScriptライブラリ、エンジニア別国内利用率ランキング - ふろしき.js</a></li>
 <li><a href="//liginc.co.jp/web/js/jquery/22340#contents">見た目を綺麗に整列する！ブロックレベル要素の高さを揃えるJS3選 | 株式会社LIG</a></li>
 <li><a href="//qiita.com/ituki_b/items/ddbf2dc96e6e746a8c1f">jQuery - 横並びしてる要素の高さをそろえ、要素が削除されたあともまた高さをそろえる - Qiita</a></li>
 <li><a href="//www.ilovex.co.jp/blog/system/html/js2.html#main-content">リストの高さを揃える便利なJS（2） | システム開発ブログ(システム開発のアイロベックス)</a></li>
@@ -314,17 +316,17 @@
       <div class="tags col-sm-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div class="tag-cloud">
-<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
-<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
 <a href="/tags/makefile" style="font-size: 70%;">makefile</a>
-<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
-<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
 <a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
-<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
-<a href="/tags/jQuery" style="font-size: 70%;">jQuery</a>
-<a href="/tags/C++" style="font-size: 70%;">C++</a>
-<a href="/tags/JavaScript" style="font-size: 70%;">JavaScript</a>
 <a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/C++" style="font-size: 70%;">C++</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/JavaScript" style="font-size: 70%;">JavaScript</a>
+<a href="/tags/jQuery" style="font-size: 70%;">jQuery</a>
+<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
 
         </div>
 
