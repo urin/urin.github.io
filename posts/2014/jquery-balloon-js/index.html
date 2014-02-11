@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js - URIN HACK</title>
+    <meta name="description" content="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.jsの使い方。設置方法はjQueryと本プラグインのjavascriptファイルのみでCSSや画像などは不要。どこにでも簡単に設置することができる。設置方法プラグインをダウンロードして、jQueryの後にスクリプトファイルを読み込む。&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.balloon.js&quot;&gt;&lt;/script&gt;ドキュメントのreadyイベント（など）で$().balloon(options)を実行する。$(function() {  $(&quot;selectors&quot;).balloon(options);});デモとダウンロード以下がデモページ。最新版のダウンロードリンクはデモページ内にある。オプションオプションデフォルト値説明contentsnull吹き出しの内容。文字列（HTML）、jQueryオブジェクト、nullのいずれか。nullの場合は、対象となる要素のtitle属性を使用する。urlnull吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、contentsが使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。ajaxCompletenullAjaxでのデータ取得完了時コールバック関数。classnamenull吹き出しに付加されるclass名。position"top"吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。"top", "bottom", "left", "right"のいずれか（２つまで）をスペースで区切って指定。例えば"bottom"を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。nullの場合は、要素の中心と吹き出しの中心が同じになる。offsetX0微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。offsetY0微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。tipSize12吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。minLifeTime200マウスポインタが対象の要素から離れて（mouseleave）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。showDuration100吹き出しを表示するときのアニメーション時間。showAnimationnull吹き出しを表示するときのアニメーション関数。この関数にはonDurationが引数として与えられる。nullを指定した場合は$().show()を使用する。hideDuration80吹き出しを非表示にするときのアニメーション時間。hideAnimationfunction (d) { this.fadeOut(d); }吹き出しを非表示にするときのアニメーション関数。この関数にはoffDurationが引数として与えられる。nullを指定した場合は$().hide()を使用する。cssminWidth"20px"吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。cssにnullを設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。padding"5px"borderRadius"6px"border"solid 1px #777"boxShadow"4px 4px 4px #555"color"#666"backgroundColor"#efefef"opacity"0.85"zIndex"32767"textAlign"left"以下で紹介されていますもうユーザーを迷わせない！ナビゲーションメニュー設置のコツ | WebクリエイターボックスEasy &amp; User-friendly Tooltip Plugin For jQuery - balloon.js | Free jQuery PluginsjQuery: tips with jquery.balloon.js | the web thoughtjQueryプラグインballoon.jsを使って吹き出し表示したり非表示にする方法。入力値をチェックして、注意書きを吹き出しで表示するサンプルを作ってみる。 - 感謝のプログラミング 10000時間jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマjQueryで簡単に吹き出しをポップアップ | PbTimes 情報誌">
+    <meta name="keywords" content="Programming, jQuery, JavaScript">
+
+    <meta property="fb:admins" content="100001990741720">
+    <meta property="fb:app_id" content="494189017339311">
+    <meta property="og:title"  content="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js - URIN HACK">
+    <meta name="twitter:title" content="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js - URIN HACK">
+    <meta property="og:description"  content="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.jsの使い方。設置方法はjQueryと本プラグインのjavascriptファイルのみでCSSや画像などは不要。どこにでも簡単に設置することができる。設置方法プラグインをダウンロードして、jQueryの後にスクリプトファイルを読み込む。&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.balloon.js&quot;&gt;&lt;/script&gt;ドキュメントのreadyイベント（など）で$().balloon(options)を実行する。$(function() {  $(&quot;selectors&quot;).balloon(options);});デモとダウンロード以下がデモページ。最新版のダウンロードリンクはデモページ内にある。オプションオプションデフォルト値説明contentsnull吹き出しの内容。文字列（HTML）、jQueryオブジェクト、nullのいずれか。nullの場合は、対象となる要素のtitle属性を使用する。urlnull吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、contentsが使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。ajaxCompletenullAjaxでのデータ取得完了時コールバック関数。classnamenull吹き出しに付加されるclass名。position"top"吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。"top", "bottom", "left", "right"のいずれか（２つまで）をスペースで区切って指定。例えば"bottom"を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。nullの場合は、要素の中心と吹き出しの中心が同じになる。offsetX0微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。offsetY0微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。tipSize12吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。minLifeTime200マウスポインタが対象の要素から離れて（mouseleave）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。showDuration100吹き出しを表示するときのアニメーション時間。showAnimationnull吹き出しを表示するときのアニメーション関数。この関数にはonDurationが引数として与えられる。nullを指定した場合は$().show()を使用する。hideDuration80吹き出しを非表示にするときのアニメーション時間。hideAnimationfunction (d) { this.fadeOut(d); }吹き出しを非表示にするときのアニメーション関数。この関数にはoffDurationが引数として与えられる。nullを指定した場合は$().hide()を使用する。cssminWidth"20px"吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。cssにnullを設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。padding"5px"borderRadius"6px"border"solid 1px #777"boxShadow"4px 4px 4px #555"color"#666"backgroundColor"#efefef"opacity"0.85"zIndex"32767"textAlign"left"以下で紹介されていますもうユーザーを迷わせない！ナビゲーションメニュー設置のコツ | WebクリエイターボックスEasy &amp; User-friendly Tooltip Plugin For jQuery - balloon.js | Free jQuery PluginsjQuery: tips with jquery.balloon.js | the web thoughtjQueryプラグインballoon.jsを使って吹き出し表示したり非表示にする方法。入力値をチェックして、注意書きを吹き出しで表示するサンプルを作ってみる。 - 感謝のプログラミング 10000時間jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマjQueryで簡単に吹き出しをポップアップ | PbTimes 情報誌">
+    <meta name="twitter:description" content="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.jsの使い方。設置方法はjQueryと本プラグインのjavascriptファイルのみでCSSや画像などは不要。どこにでも簡単に設置することができる。設置方法プラグインをダウンロードして、jQueryの後にスクリプトファイルを読み込む。&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.balloon.js&quot;&gt;&lt;/script&gt;ドキュメントのreadyイベント（など）で$().balloon(options)を実行する。$(function() {  $(&quot;selectors&quot;).balloon(options);});デモとダウンロード以下がデモページ。最新版のダウンロードリンクはデモページ内にある。オプションオプションデフォルト値説明contentsnull吹き出しの内容。文字列（HTML）、jQueryオブジェクト、nullのいずれか。nullの場合は、対象となる要素のtitle属性を使用する。urlnull吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、contentsが使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。ajaxCompletenullAjaxでのデータ取得完了時コールバック関数。classnamenull吹き出しに付加されるclass名。position"top"吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。"top", "bottom", "left", "right"のいずれか（２つまで）をスペースで区切って指定。例えば"bottom"を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。nullの場合は、要素の中心と吹き出しの中心が同じになる。offsetX0微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。offsetY0微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。tipSize12吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。minLifeTime200マウスポインタが対象の要素から離れて（mouseleave）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。showDuration100吹き出しを表示するときのアニメーション時間。showAnimationnull吹き出しを表示するときのアニメーション関数。この関数にはonDurationが引数として与えられる。nullを指定した場合は$().show()を使用する。hideDuration80吹き出しを非表示にするときのアニメーション時間。hideAnimationfunction (d) { this.fadeOut(d); }吹き出しを非表示にするときのアニメーション関数。この関数にはoffDurationが引数として与えられる。nullを指定した場合は$().hide()を使用する。cssminWidth"20px"吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。cssにnullを設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。padding"5px"borderRadius"6px"border"solid 1px #777"boxShadow"4px 4px 4px #555"color"#666"backgroundColor"#efefef"opacity"0.85"zIndex"32767"textAlign"left"以下で紹介されていますもうユーザーを迷わせない！ナビゲーションメニュー設置のコツ | WebクリエイターボックスEasy &amp; User-friendly Tooltip Plugin For jQuery - balloon.js | Free jQuery PluginsjQuery: tips with jquery.balloon.js | the web thoughtjQueryプラグインballoon.jsを使って吹き出し表示したり非表示にする方法。入力値をチェックして、注意書きを吹き出しで表示するサンプルを作ってみる。 - 感謝のプログラミング 10000時間jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマjQueryで簡単に吹き出しをポップアップ | PbTimes 情報誌">
+    <meta property="og:type" content="article">
+    <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
+    <meta property="og:site_name" content="URIN HACK">
+    <meta property="og:url" content="http://urin.github.io/posts/2014/jquery-balloon-js">
+    <meta property="twitter:card" content="summary">
+    <meta name="twitter:site" content="@urinhack">
+
+    <!--
+    <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/layout/apple-touch-icon-114x114.png">
+    -->
+    <link rel="author" href="urinkun@gmail.com">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="http://urin.github.io/posts/2014/jquery-balloon-js">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet" media="screen">
+    <link href="/css/syntax.css" rel="stylesheet" media="screen">
+    <link href="/css/style.css" rel="stylesheet" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="container">
+    <header class="row">
+      <div class="header-logo col-xs-6 col-sm-3">
+        <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
+        <a href="/rss.xml" title="RSSフィード"><i class="icon-rss"></i></a>
+      </div>
+      <nav class="sns-icons col-xs-6 col-sm-3 col-sm-offset-6">
+        <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+        <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+        <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+      </nav>
+    </header>
+    <hr>
+    <article>
+      <div class="row">
+  <div class="col-md-3 col-lg-2">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i>
+      <span class="digits">2014-02-12</span>
+    </li>
+    <li><i class="icon-comments"></i>
+      <a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/jquery-balloon-js'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/jQuery" title="2件の記事">jQuery</a>
+      <span class="badge digits">2</span>
+    </li>
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/JavaScript" title="2件の記事">JavaScript</a>
+      <span class="badge digits">2</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2014/jquery-balloon-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+
+</div>
+
+
+  <style scoped="scoped">
+    .ads-responsive3 { width: 234px; height: 60px; }
+    @media(min-width:  768px) { .ads-responsive3 { width: 120px; height: 600px; } }
+  </style>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- レスポンシブ３ -->
+  <ins class="adsbygoogle ads-responsive3"
+    style="display:inline-block"
+    data-ad-client="ca-pub-8915879811522337"
+    data-ad-slot="5406132601"></ins>
+  <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+
+  </div>
+  <div class="post col-md-9 col-lg-10">
+    <h1 class="well well-lg">設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</h1>
+    <p>設置が超簡単でカスタマイズ性の高い吹き出しホバー用<code>jQuery</code>プラグイン<code>jquery.balloon.js</code>の使い方。
+設置方法は<code>jQuery</code>と本プラグインの<code>javascript</code>ファイルのみで<code>CSS</code>や画像などは不要。どこにでも簡単に設置することができる。</p>
+
+<p><a href="/jquery.balloon.js" title="デモページヘ" class="block"><img src="/img/posts/2014/2014-02-11-jquery.balloon.js-demo-screenshot.png" alt="jquery.balloon.js demo page"></a></p>
+
+<h3>設置方法</h3>
+
+<ol>
+<li>プラグインをダウンロードして、<code>jQuery</code>の後にスクリプトファイルを読み込む。</li>
+</ol>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;js/jquery.balloon.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<ol>
+<li>ドキュメントの<code>ready</code>イベント（など）で<code>$().balloon(options)</code>を実行する。</li>
+</ol>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;selectors&quot;</span><span class="p">).</span><span class="nx">balloon</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3>デモとダウンロード</h3>
+
+<p>以下がデモページ。最新版のダウンロードリンクはデモページ内にある。</p>
+
+<p><a href="/jquery.balloon.js" title="デモページヘ" class="block"><img src="/img/posts/2014/2014-02-11-jquery.balloon.js-demo-thumbnail.png" alt="jquery.balloon.js demo page"></a></p>
+
+<h3>オプション</h3>
+
+<table cellpadding="10">
+<tbody>
+<tr><th colspan="2" style="width: 250px;">オプション</th><th style="width: 250px;">デフォルト値</th><th>説明</th></tr>
+<tr>
+<td colspan="2">contents</td>
+<td>null</td>
+<td>吹き出しの内容。文字列（HTML）、jQueryオブジェクト、<code>null</code>のいずれか。<code>null</code>の場合は、対象となる要素の<code>title</code>属性を使用する。</td>
+</tr>
+<tr>
+<td colspan="2">url</td>
+<td>null</td>
+<td>吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、<code>contents</code>が使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。</td>
+</tr>
+<tr>
+<td colspan="2">ajaxComplete</td>
+<td>null</td>
+<td>Ajaxでのデータ取得完了時コールバック関数。</td>
+</tr>
+<tr>
+<td colspan="2">classname</td>
+<td>null</td>
+<td>吹き出しに付加されるclass名。</td>
+</tr>
+<tr>
+<td colspan="2">position</td>
+<td>"top"</td>
+<td>吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。<code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>のいずれか（２つまで）をスペースで区切って指定。例えば<code>"bottom"</code>を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。<code>null</code>の場合は、要素の中心と吹き出しの中心が同じになる。</td>
+</tr>
+<tr>
+<td colspan="2">offsetX</td>
+<td>0</td>
+<td>微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。</td>
+</tr>
+<tr>
+<td colspan="2">offsetY</td>
+<td>0</td>
+<td>微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。</td>
+</tr>
+<tr>
+<td colspan="2">tipSize</td>
+<td>12</td>
+<td>吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。</td>
+</tr>
+<tr>
+<td colspan="2">minLifeTime<br />
+<td>200</td>
+<td>マウスポインタが対象の要素から離れて（<code>mouseleave</code>）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。</td>
+</tr>
+<tr>
+<td colspan="2">showDuration<br />
+<td>100</td>
+<td>吹き出しを表示するときのアニメーション時間。</td>
+</tr>
+<tr>
+<td colspan="2">showAnimation<br />
+<td>null</td>
+<td>吹き出しを表示するときのアニメーション関数。この関数には<code>onDuration</code>が引数として与えられる。<code>null</code>を指定した場合は<code>$().show()</code>を使用する。</td>
+</tr>
+<tr>
+<td colspan="2">hideDuration<br />
+<td>80</td>
+<td>吹き出しを非表示にするときのアニメーション時間。</td>
+</tr>
+<tr>
+<td colspan="2">hideAnimation<br />
+<td>function (d) { this.fadeOut(d); }</td>
+<td>吹き出しを非表示にするときのアニメーション関数。この関数には<code>offDuration</code>が引数として与えられる。<code>null</code>を指定した場合は<code>$().hide()</code>を使用する。</td>
+</tr>
+<tr>
+<td rowspan="11" style="padding-left: 20px; padding-right: 20px;">css</td>
+</tr>
+<tr>
+<td>minWidth</td>
+<td>"20px"</td>
+<td rowspan="10">吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。<code>css</code>に<code>null</code>を設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>"5px"</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>"6px"</td>
+</tr>
+<tr>
+<td>border</td>
+<td>"solid 1px #777"</td>
+</tr>
+<tr>
+<td>boxShadow</td>
+<td>"4px 4px 4px #555"</td>
+</tr>
+<tr>
+<td>color</td>
+<td>"#666"</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>"#efefef"</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>"0.85"</td>
+</tr>
+<tr>
+<td>zIndex</td>
+<td>"32767"</td>
+</tr>
+<tr>
+<td>textAlign</td>
+<td>"left"</td>
+</tr>
+</tbody>
+</table>
+
+<h3>以下で紹介されています</h3>
+
+<blockquote>
+<ul>
+<li><a href="http://www.webcreatorbox.com/tech/nav-menu/">もうユーザーを迷わせない！ナビゲーションメニュー設置のコツ | Webクリエイターボックス</a></li>
+<li><a href="http://www.jqueryscript.net/tooltip/Easy-User-friendly-Tooltip-Plugin-For-jQuery-balloon-js.html">Easy &amp; User-friendly Tooltip Plugin For jQuery - balloon.js | Free jQuery Plugins</a></li>
+<li><a href="http://thewebthought.blogspot.com/2011/06/jquery-tips-with-jqueryballoonjs.html">jQuery: tips with jquery.balloon.js | the web thought</a></li>
+<li><a href="http://programming-10000.hatenadiary.jp/entry/20130926/1380175857">jQueryプラグインballoon.jsを使って吹き出し表示したり非表示にする方法。入力値をチェックして、注意書きを吹き出しで表示するサンプルを作ってみる。 - 感謝のプログラミング 10000時間</a></li>
+<li><a href="http://ginpro.winofsql.jp/article/386285907.html">jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマ</a></li>
+<li><a href="http://pb-times.jp/P_51f721519314d">jQueryで簡単に吹き出しをポップアップ | PbTimes 情報誌</a></li>
+</ul>
+</blockquote>
+
+<div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i>
+      <span class="digits">2014-02-12</span>
+    </li>
+    <li><i class="icon-comments"></i>
+      <a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/jquery-balloon-js'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/jQuery" title="2件の記事">jQuery</a>
+      <span class="badge digits">2</span>
+    </li>
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/JavaScript" title="2件の記事">JavaScript</a>
+      <span class="badge digits">2</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2014/jquery-balloon-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+    <li><a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+  </ul>
+
+</div>
+
+    <hr>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = 'urinhack';
+      var disqus_url = 'http://urin.github.io/posts/2014/jquery-balloon-js';
+      var disqus_title = '設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+
+<!-- Facebook button -->
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName("div")[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- Twitter button -->
+<style scoped="scoped">iframe.twitter-share-button { width: 90px !important } </style>
+<script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){
+      js=d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document, 'script', 'twitter-wjs');
+</script>
+<!-- Google +1 button -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- Hatena bookmark button -->
+<script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+    </article>
+    <hr>
+    <footer class="text-muted">
+      <div class="recent-posts col-sm-4">
+        <h4><i class="icon-paper-clip"></i>最近の記事</h4>
+        <dl class="list-unstyled">
+
+          <dt>
+            <span class="digits">2014-02-12</span>
+          </dt>
+          <dd>
+            <a href="/posts/2014/jquery-balloon-js">設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</a>
+          </dd>
+
+          <dt>
+            <span class="digits">2013-08-11</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/release-jquery-tile-js">要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</a>
+          </dd>
+
+          <dt>
+            <span class="digits">2013-08-10</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a>
+          </dd>
+
+          <dt>
+            <span class="digits">2013-08-04</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/Setup-jekyll-1.1-to-windows">Jekyll 1.1系をWindowsに導入する</a>
+          </dd>
+
+          <dt>
+            <span class="digits">2013-08-03</span>
+          </dt>
+          <dd>
+            <a href="/posts/2013/Renewal">ブログをリニューアル</a>
+          </dd>
+
+        </dl>
+      </div>
+      <div class="tags col-sm-4">
+        <h4><i class="icon-tags"></i>タグ</h4>
+        <div class="tag-cloud">
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
+<a href="/tags/Windows" style="font-size: 70%;">Windows</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/C++" style="font-size: 70%;">C++</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/JavaScript" style="font-size: 170%;">JavaScript</a>
+<a href="/tags/jQuery" style="font-size: 170%;">jQuery</a>
+<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
+
+        </div>
+
+        <div>
+          <style scoped="scoped">
+            .ads-responsive2 { width: 250px; height: 250px; }
+            @media(min-width: 1200px) { .ads-responsive2 { width: 300px; height: 250px; } }
+          </style>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- レスポンシブ２ -->
+          <ins class="adsbygoogle ads-responsive2"
+            style="display:inline-block"
+            data-ad-client="ca-pub-8915879811522337"
+            data-ad-slot="4415580601"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </div>
+      <div class="repos col-sm-4">
+        <h4><i class="icon-github"></i>レポジトリ</h4>
+        <dl>
+          <dt>
+            <a href="//github.com/urin/wers">wers</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=wers&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>Windows用Rubyバージョン管理ツール<br>(rbenvのWindows版)生まれたて。</dd>
+          <dt>
+            <a href="/jquery.tile.js">jquery.tile.js</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
+          <dt>
+            <a href="/jquery.balloon.js">jquery.balloon.js</a>
+
+            <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+          </dt>
+          <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js</a>
+          </dt>
+          <dd>要素を浮かせて伸ばすボタンを付けるjQueryプラグイン</dd>
+          <dt>
+            <a href="//github.com/urin/.vimrc">.vimrc</a>
+          </dt>
+          <dd>Vim用設定ファイル</dd>
+        </dl>
+      </div>
+      <hr>
+      <div class="row technology digits">
+        <i class="icon-heart" title="Thanks a lot!"></i>
+        <div class="col-sm-2 col-sm-offset-1">
+          <a href="//getbootstrap.com/" class="technology-logo Bootstrap-logo" title="Twitter Bootstrap"></a>
+          <div>Styled with Twitter Bootstrap 3.</div>
+        </div>
+        <div class="col-sm-2">
+          <a href="//jquery.com/" class="technology-logo jQuery-logo" title="jQuery"></a>
+          <div>Scripted with jQuery<span id="jquery-version"></span>.</div>
+        </div>
+        <div class="col-sm-2">
+          <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
+          <div>Powered by Jekyll version 1.1.2.</div>
+        </div>
+        <div class="col-sm-2">
+          <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>
+          <div>Hosted on GitHub.</div>
+        </div>
+        <div class="col-sm-2">
+          <a href="//git-scm.com/" class="technology-logo git-logo" title="git"></a>
+          <div>Managed with git.</div>
+        </div>
+      </div>
+      <hr>
+      <div class="copyright">
+        <span class="col-sm-2 col-sm-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
+        <span class="sns-icons col-sm-3">
+          <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
+          <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
+          <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
+        </span>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//urin.github.io/jquery.balloon.js/js/jquery.balloon.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37966978-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
+

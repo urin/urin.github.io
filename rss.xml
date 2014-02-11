@@ -5,9 +5,171 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2014-02-10T14:13:28+05:30</lastBuildDate>
-    <pubDate>2013-08-11T00:00:00+05:30</pubDate>
+    <lastBuildDate>2014-02-12T01:04:17+05:30</lastBuildDate>
+    <pubDate>2014-02-12T00:00:00+05:30</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>
+      <description>&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.balloon.js&lt;/code&gt;の使い方。
+設置方法は&lt;code&gt;jQuery&lt;/code&gt;と本プラグインの&lt;code&gt;javascript&lt;/code&gt;ファイルのみで&lt;code&gt;CSS&lt;/code&gt;や画像などは不要。どこにでも簡単に設置することができる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/jquery.balloon.js&quot; title=&quot;デモページヘ&quot; class=&quot;block&quot;&gt;&lt;img src=&quot;/img/posts/2014/2014-02-11-jquery.balloon.js-demo-screenshot.png&quot; alt=&quot;jquery.balloon.js demo page&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;設置方法&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;プラグインをダウンロードして、&lt;code&gt;jQuery&lt;/code&gt;の後にスクリプトファイルを読み込む。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;js/jquery.balloon.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;ドキュメントの&lt;code&gt;ready&lt;/code&gt;イベント（など）で&lt;code&gt;$().balloon(options)&lt;/code&gt;を実行する。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;selectors&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;balloon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;デモとダウンロード&lt;/h3&gt;
+
+&lt;p&gt;以下がデモページ。最新版のダウンロードリンクはデモページ内にある。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/jquery.balloon.js&quot; title=&quot;デモページヘ&quot; class=&quot;block&quot;&gt;&lt;img src=&quot;/img/posts/2014/2014-02-11-jquery.balloon.js-demo-thumbnail.png&quot; alt=&quot;jquery.balloon.js demo page&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;オプション&lt;/h3&gt;
+
+&lt;table cellpadding=&quot;10&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;th colspan=&quot;2&quot; style=&quot;width: 250px;&quot;&gt;オプション&lt;/th&gt;&lt;th style=&quot;width: 250px;&quot;&gt;デフォルト値&lt;/th&gt;&lt;th&gt;説明&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;contents&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;吹き出しの内容。文字列（HTML）、jQueryオブジェクト、&lt;code&gt;null&lt;/code&gt;のいずれか。&lt;code&gt;null&lt;/code&gt;の場合は、対象となる要素の&lt;code&gt;title&lt;/code&gt;属性を使用する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;url&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、&lt;code&gt;contents&lt;/code&gt;が使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;ajaxComplete&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;Ajaxでのデータ取得完了時コールバック関数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;classname&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;吹き出しに付加されるclass名。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;position&lt;/td&gt;
+&lt;td&gt;&quot;top&quot;&lt;/td&gt;
+&lt;td&gt;吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。&lt;code&gt;&quot;top&quot;&lt;/code&gt;, &lt;code&gt;&quot;bottom&quot;&lt;/code&gt;, &lt;code&gt;&quot;left&quot;&lt;/code&gt;, &lt;code&gt;&quot;right&quot;&lt;/code&gt;のいずれか（２つまで）をスペースで区切って指定。例えば&lt;code&gt;&quot;bottom&quot;&lt;/code&gt;を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。&lt;code&gt;null&lt;/code&gt;の場合は、要素の中心と吹き出しの中心が同じになる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;offsetX&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;offsetY&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;tipSize&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;minLifeTime&lt;br /&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;td&gt;マウスポインタが対象の要素から離れて（&lt;code&gt;mouseleave&lt;/code&gt;）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;showDuration&lt;br /&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;td&gt;吹き出しを表示するときのアニメーション時間。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;showAnimation&lt;br /&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;吹き出しを表示するときのアニメーション関数。この関数には&lt;code&gt;onDuration&lt;/code&gt;が引数として与えられる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().show()&lt;/code&gt;を使用する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;hideDuration&lt;br /&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;吹き出しを非表示にするときのアニメーション時間。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot;&gt;hideAnimation&lt;br /&gt;
+&lt;td&gt;function (d) { this.fadeOut(d); }&lt;/td&gt;
+&lt;td&gt;吹き出しを非表示にするときのアニメーション関数。この関数には&lt;code&gt;offDuration&lt;/code&gt;が引数として与えられる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().hide()&lt;/code&gt;を使用する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;11&quot; style=&quot;padding-left: 20px; padding-right: 20px;&quot;&gt;css&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;minWidth&lt;/td&gt;
+&lt;td&gt;&quot;20px&quot;&lt;/td&gt;
+&lt;td rowspan=&quot;10&quot;&gt;吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。&lt;code&gt;css&lt;/code&gt;に&lt;code&gt;null&lt;/code&gt;を設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;padding&lt;/td&gt;
+&lt;td&gt;&quot;5px&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;borderRadius&lt;/td&gt;
+&lt;td&gt;&quot;6px&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;border&lt;/td&gt;
+&lt;td&gt;&quot;solid 1px #777&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxShadow&lt;/td&gt;
+&lt;td&gt;&quot;4px 4px 4px #555&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;color&lt;/td&gt;
+&lt;td&gt;&quot;#666&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;backgroundColor&lt;/td&gt;
+&lt;td&gt;&quot;#efefef&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;opacity&lt;/td&gt;
+&lt;td&gt;&quot;0.85&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zIndex&lt;/td&gt;
+&lt;td&gt;&quot;32767&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;textAlign&lt;/td&gt;
+&lt;td&gt;&quot;left&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;以下で紹介されています&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webcreatorbox.com/tech/nav-menu/&quot;&gt;もうユーザーを迷わせない！ナビゲーションメニュー設置のコツ | Webクリエイターボックス&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jqueryscript.net/tooltip/Easy-User-friendly-Tooltip-Plugin-For-jQuery-balloon-js.html&quot;&gt;Easy &amp;amp; User-friendly Tooltip Plugin For jQuery - balloon.js | Free jQuery Plugins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://thewebthought.blogspot.com/2011/06/jquery-tips-with-jqueryballoonjs.html&quot;&gt;jQuery: tips with jquery.balloon.js | the web thought&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://programming-10000.hatenadiary.jp/entry/20130926/1380175857&quot;&gt;jQueryプラグインballoon.jsを使って吹き出し表示したり非表示にする方法。入力値をチェックして、注意書きを吹き出しで表示するサンプルを作ってみる。 - 感謝のプログラミング 10000時間&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ginpro.winofsql.jp/article/386285907.html&quot;&gt;jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://pb-times.jp/P_51f721519314d&quot;&gt;jQueryで簡単に吹き出しをポップアップ | PbTimes 情報誌&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+      <link>http://urin.github.io/posts/2014/jquery-balloon-js</link>
+      <guid>http://urin.github.io//posts/2014/jquery-balloon-js</guid>
+      <pubDate>2014-02-12T00:00:00+05:30</pubDate>
+    </item>
 
     <item>
       <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>

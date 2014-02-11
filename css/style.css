@@ -4,6 +4,7 @@
 
 body {
   font-family: "メイリオ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.9;
   background-color: #fafafa;
   background: -webkit-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
@@ -242,7 +243,6 @@ footer {
  * Post
  ***********************************************************/
 .post p {
-  font-size: 16px;
   margin-bottom: 10px;
 }
 
@@ -313,9 +313,58 @@ article img {
   max-width: 100%;
   height: auto;
   margin: 30px auto;
-  -moz-border-radius:    4px;
-  -webkit-border-radius: 4px;
-  border-radius:         4px;
+  -moz-border-radius:    6px;
+  -webkit-border-radius: 6px;
+  border-radius:         6px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+article table {
+  width: 100%;
+  -moz-border-radius:    8px;
+  -webkit-border-radius: 8px;
+  border-radius:         8px;
+  border-collapse: collapse;
+  box-shadow:
+    1px 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+article th,
+article td {
+  padding: 0.5em;
+  border: 2px solid #f6f4f4;
+}
+article th {
+  background-color: #776666;
+  color: #fffefe;
+}
+article td {
+  vertical-align: top;
+  font-size: 90%;
+}
+tr:nth-child(even) td {  
+  background-color: rgba(64,0,0,0.05);  
+}  
+tr:nth-child(odd) td {  
+  background-color: rgba(48,0,0,0.08);  
+}  
+
+article tr:first-child > th:first-child,
+article tr:first-child > td:first-child {
+  border-top-left-radius: 8px;
+}
+article tr:first-child > th:last-child,
+article tr:first-child > td:last-child {
+  border-top-right-radius: 8px;
+}
+article tr:last-child > th:first-child,
+article tr:last-child > td:first-child {
+  border-bottom-left-radius: 8px;
+}
+article tr:last-child > th:last-child,
+article tr:last-child > td:last-child {
+  border-bottom-right-radius: 8px;
 }
 
 .post-aux .badge {
@@ -329,6 +378,7 @@ article img {
 
 .post-aux {
   color: #888;
+  font-size: 14px;
   margin-top: 20px;
   line-height: 2.4;
   opacity: 0.7;
