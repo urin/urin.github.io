@@ -93,117 +93,119 @@ $(function() {
 
 
   
-    オプションデフォルト値説明
-  
-  
     
-      contents
-      null
-      吹き出しの内容。文字列（HTML）、jQueryオブジェクト、nullのいずれか。nullの場合は、対象となる要素のtitle属性を使用する。
+      オプションデフォルト値説明
     
     
-      url
-      null
-      吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、contentsが使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。
-    
-    
-      ajaxComplete
-      null
-      Ajaxでのデータ取得完了時コールバック関数。
-    
-    
-      classname
-      null
-      吹き出しに付加されるclass名。
-    
-    
-      position
-      "top"
-      吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。"top", "bottom", "left", "right"のいずれか（２つまで）をスペースで区切って指定。例えば"bottom"を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。nullの場合は、要素の中心と吹き出しの中心が同じになる。
-    
-    
-      offsetX
-      0
-      微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。
-    
-    
-      offsetY
-      0
-      微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。
-    
-    
-      tipSize
-      12
-      吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。
-    
-    
-      minLifeTime
-      200
-      マウスポインタが対象の要素から離れて（mouseleave）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。
-    
-    
-      showDuration
-      100
-      吹き出しを表示するときのアニメーション時間。
-    
-    
-      showAnimation
-      null
-      吹き出しを表示するときのアニメーション関数。この関数にはonDurationが引数として与えられる。nullを指定した場合は$().show()を使用する。
-    
-    
-      hideDuration
-      80
-      吹き出しを非表示にするときのアニメーション時間。
-    
-    
-      hideAnimation
-      function (d) { this.fadeOut(d); }
-      吹き出しを非表示にするときのアニメーション関数。この関数にはoffDurationが引数として与えられる。nullを指定した場合は$().hide()を使用する。
-    
-    
-      css
-    
-    
-      minWidth
-      "20px"
-      吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。cssにnullを設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。
-    
-    
-      padding
-      "5px"
-    
-    
-      borderRadius
-      "6px"
-    
-    
-      border
-      "solid 1px #777"
-    
-    
-      boxShadow
-      "4px 4px 4px #555"
-    
-    
-      color
-      "#666"
-    
-    
-      backgroundColor
-      "#efefef"
-    
-    
-      opacity
-      "0.85"
-    
-    
-      zIndex
-      "32767"
-    
-    
-      textAlign
-      "left"
+      
+        contents
+        null
+        吹き出しの内容。文字列（HTML）、jQueryオブジェクト、nullのいずれか。nullの場合は、対象となる要素のtitle属性を使用する。
+      
+      
+        url
+        null
+        吹き出しの内容をAjax取得する場合に使用されるURL。Ajaxでの取得完了までの間は、contentsが使用され、Ajaxでのデータ取得完了で、その内容に置き換えられる。
+      
+      
+        ajaxComplete
+        null
+        Ajaxでのデータ取得完了時コールバック関数。
+      
+      
+        classname
+        null
+        吹き出しに付加されるclass名。
+      
+      
+        position
+        "top"
+        吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。"top", "bottom", "left", "right"のいずれか（２つまで）をスペースで区切って指定。例えば"bottom"を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。nullの場合は、要素の中心と吹き出しの中心が同じになる。
+      
+      
+        offsetX
+        0
+        微調整用の横方向位置オフセット。プラスの値を指定すると画面右方向にシフトする。
+      
+      
+        offsetY
+        0
+        微調整用の縦方向位置オフセット。プラスの値を指定すると画面上方向にシフトする。
+      
+      
+        tipSize
+        12
+        吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。
+      
+      
+        minLifeTime
+        200
+        マウスポインタが対象の要素から離れて（mouseleave）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。
+      
+      
+        showDuration
+        100
+        吹き出しを表示するときのアニメーション時間。
+      
+      
+        showAnimation
+        null
+        吹き出しを表示するときのアニメーション関数。この関数にはonDurationが引数として与えられる。nullを指定した場合は$().show()を使用する。
+      
+      
+        hideDuration
+        80
+        吹き出しを非表示にするときのアニメーション時間。
+      
+      
+        hideAnimation
+        function (d) { this.fadeOut(d); }
+        吹き出しを非表示にするときのアニメーション関数。この関数にはoffDurationが引数として与えられる。nullを指定した場合は$().hide()を使用する。
+      
+      
+        css
+      
+      
+        minWidth
+        "20px"
+        吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。cssにnullを設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。
+      
+      
+        padding
+        "5px"
+      
+      
+        borderRadius
+        "6px"
+      
+      
+        border
+        "solid 1px #777"
+      
+      
+        boxShadow
+        "4px 4px 4px #555"
+      
+      
+        color
+        "#666"
+      
+      
+        backgroundColor
+        "#efefef"
+      
+      
+        opacity
+        "0.85"
+      
+      
+        zIndex
+        "32767"
+      
+      
+        textAlign
+        "left"
+      
     
   
 
