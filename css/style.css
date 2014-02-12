@@ -334,7 +334,7 @@ article table {
 article th,
 article td {
   padding: 0.5em;
-  border: 2px solid #f6f4f4;
+  border: 2px solid #dddddd;
 }
 article th {
   background-color: #776666;
