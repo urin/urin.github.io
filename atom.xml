@@ -6,11 +6,27 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2014-02-12T00:00:00+05:30</updated>
+  <updated>2014-02-14T00:00:00+05:30</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
   </author>
+
+  <entry>
+    <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
+    <link href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows"/>
+    <updated>2014-02-14T00:00:00+05:30</updated>
+    <id>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</id>
+    <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1.4.2&amp;quot;&lt;/span&gt;
+gem uninstall pygments.rb
+gem install pygments.rb --version&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;0.5.0&amp;quot;&lt;/span&gt;
+gem update listen
+gem install wdm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;gem&lt;/code&gt;インストール以外については&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ&lt;/a&gt;にある通り。&lt;/p&gt;
+</content>
+  </entry>
 
   <entry>
     <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>

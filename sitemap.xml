@@ -4,10 +4,16 @@
 
   <url>
     <loc>http://urin.github.io</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 
+  
+  <url>
+    <loc>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</loc>
+    <lastmod>2014-02-14</lastmod>
+    <priority>1.0</priority>
+  </url>
   
   <url>
     <loc>http://urin.github.io/posts/2014/jquery-balloon-js</loc>
@@ -43,84 +49,84 @@
   
   <url>
     <loc>http://urin.github.io/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/Jekyll/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/GitHub/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/Octopress/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/Ruby/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/Windows/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/C++/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/makefile/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/gcc/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/Linux/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/jQuery/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>http://urin.github.io/tags/JavaScript/index.html</loc>
-    <lastmod>2014-02-13</lastmod>
+    <lastmod>2014-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
