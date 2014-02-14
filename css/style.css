@@ -1,9 +1,10 @@
+@charset "UTF-8";
 /***********************************************************
  * Global
  ***********************************************************/
 
 body {
-  font-family: "メイリオ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Verdana, Arial, YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 16px;
   line-height: 1.9;
   background-color: #fafafa;
@@ -199,6 +200,10 @@ footer {
   text-align: center;
 }
 
+.repos dd {
+  font-size: 80%;
+}
+
 .repos .github-btn {
   position: relative;
   top: 4px;
@@ -285,7 +290,7 @@ footer {
 .post code {
   border: 1px solid #f3d5dc;
   font-family: inherit;
-  font-size: 90%;
+  font-size: 100%;
   padding-left:  3px;
   padding-right: 3px;
   margin-left:   3px;
@@ -375,7 +380,7 @@ article th {
   font-size: 100px;
   font-weight: 100;
   line-height: 1.4;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: inherit;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, .3), 0 1px 1px rgba(255, 255, 255, .90);
   color: #eee4e4;
 }
