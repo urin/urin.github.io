@@ -45,10 +45,10 @@
 
   <body class="container">
     <header class="row">
-      <div class="header-logo col-xs-6 col-sm-3">
+      <nav class="header-logo col-xs-6 col-sm-3">
         <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
         <a href="/rss.xml" title="RSSフィード"><i class="icon-rss"></i></a>
-      </div>
+      </nav>
       <nav class="sns-icons col-xs-6 col-sm-3 col-sm-offset-6">
         <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
         <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
@@ -57,62 +57,8 @@
     </header>
     <hr>
     <article>
-      <div class="row">
-  <div class="col-md-3 col-lg-2">
-<div class="post-aux">
-  <ul class="list-inline">
-    <li><i class="icon-time"></i>
-      <span class="digits">2013-08-11</span>
-    </li>
-    <li><i class="icon-comments"></i>
-      <a href="#disqus_thread">コメント</a>
-
-      <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/release-jquery-tile-js'></script>
-      </span>
-
-    </li>
-
-  
-     
-    <li><i class="icon-tag"></i>
-      <a href="/tags/jQuery" title="2件の記事">jQuery</a>
-      <span class="badge digits">2</span>
-    </li>
-     
-    <li><i class="icon-tag"></i>
-      <a href="/tags/JavaScript" title="2件の記事">JavaScript</a>
-      <span class="badge digits">2</span>
-    </li>
-    
-  
-
-  </ul>
-
-  <ul class="sns-buttons list-inline">
-    <li><a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
-    <li><a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
-    <li><div class="g-plusone" data-size="medium"></div></li>
-    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/release-jquery-tile-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
-  </ul>
-
-</div>
-
-
-  <style scoped="scoped">
-    .ads-responsive3 { width: 234px; height: 60px; }
-    @media(min-width:  768px) { .ads-responsive3 { width: 120px; height: 600px; } }
-  </style>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- レスポンシブ３ -->
-  <ins class="adsbygoogle ads-responsive3"
-    style="display:inline-block"
-    data-ad-client="ca-pub-8915879811522337"
-    data-ad-slot="5406132601"></ins>
-  <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
-
-  </div>
-  <div class="post col-md-9 col-lg-10">
+      <article class="row">
+  <div class="post col-md-9 col-lg-10 pull-right">
     <h1 class="well well-lg">要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</h1>
     <p>ブロック要素の高さを揃える軽量な<code>jQuery</code>プラグイン<code>jquery.tile.js</code>。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため <strong>使い方がシンプルでプラグインは非常に軽量</strong> になっている。</p>
@@ -238,7 +184,61 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
     <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
   </div>
+  <aside class="col-md-3 col-lg-2">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li><i class="icon-time"></i>
+      <span class="digits">2013-08-11</span>
+    </li>
+    <li><i class="icon-comments"></i>
+      <a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/release-jquery-tile-js'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/jQuery" title="2件の記事">jQuery</a>
+      <span class="badge digits">2</span>
+    </li>
+     
+    <li><i class="icon-tag"></i>
+      <a href="/tags/JavaScript" title="2件の記事">JavaScript</a>
+      <span class="badge digits">2</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li><a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack"></a></li>
+    <li><a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+    <li><div class="g-plusone" data-size="medium"></div></li>
+    <li><div class="fb-like" data-href="http://urin.github.io/posts/2013/release-jquery-tile-js" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
+  </ul>
+
 </div>
+
+
+    <style scoped="scoped">
+      .ads-responsive3 { width: 234px; height: 60px; }
+      @media(min-width:  768px) { .ads-responsive3 { width: 120px; height: 600px; } }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- レスポンシブ３ -->
+    <ins class="adsbygoogle ads-responsive3"
+      style="display:inline-block"
+      data-ad-client="ca-pub-8915879811522337"
+      data-ad-slot="5406132601"></ins>
+    <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+
+  </aside>
+</article>
 
 
 <!-- Facebook button -->
@@ -279,7 +279,7 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
     </article>
     <hr>
     <footer class="text-muted">
-      <div class="recent-posts col-sm-4">
+      <nav class="recent-posts col-sm-4">
         <h4><i class="icon-paper-clip"></i>最近の記事</h4>
         <dl class="list-unstyled">
 
@@ -326,8 +326,8 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
           </dd>
 
         </dl>
-      </div>
-      <div class="tags col-sm-4">
+      </nav>
+      <nav class="tags col-sm-4">
         <h4><i class="icon-tags"></i>タグ</h4>
         <div class="tag-cloud">
 <a href="/tags/jQuery" style="font-size: 133%;">jQuery</a>
@@ -358,8 +358,8 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-      </div>
-      <div class="repos col-sm-4">
+      </nav>
+      <nav class="repos col-sm-4">
         <h4><i class="icon-github"></i>レポジトリ</h4>
         <dl>
           <dt>
@@ -392,9 +392,9 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
           </dt>
           <dd>Vim用設定ファイル</dd>
         </dl>
-      </div>
+      </nav>
       <hr>
-      <div class="row technology digits">
+      <aside class="row technology digits">
         <i class="icon-heart" title="Thanks a lot!"></i>
         <div class="col-sm-2 col-sm-offset-1">
           <a href="//getbootstrap.com/" class="technology-logo Bootstrap-logo" title="Twitter Bootstrap"></a>
@@ -416,16 +416,16 @@ CSS3の使用が認められる場合には<code>flexbox</code>レイアウト�
           <a href="//git-scm.com/" class="technology-logo git-logo" title="git"></a>
           <div>Managed with git.</div>
         </div>
-      </div>
+      </aside>
       <hr>
-      <div class="copyright">
-        <span class="col-sm-2 col-sm-offset-5"><span class="digits">&copy; 2013</span> うりん</span>
+      <p class="copyright">
+        <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2014</span> うりん</small></span>
         <span class="sns-icons col-sm-3">
           <a href="//github.com/urin" title="GitHub"><i class="icon-github"></i></a>
           <a href="//twitter.com/urinhack" title="Twitter"><i class="icon-twitter"></i></a>
           <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="icon-facebook"></i></a>
         </span>
-      </div>
+      </p>
     </footer>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//urin.github.io/jquery.balloon.js/js/jquery.balloon.js"></script>

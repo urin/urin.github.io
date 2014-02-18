@@ -23,14 +23,6 @@ hr {
   box-shadow:         0 -1px 1px rgba(0, 0, 0, 0.07), 0 0 2px rgba(255, 255, 255, 0.97);
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
-h2, h3 {
-  margin-top: 30px;
-}
-
 a {
   transition-property: all;
   transition: 0.3s linear;
@@ -54,9 +46,12 @@ dd {
   line-height: 1.9;
 }
 
-header a:hover,
-footer a:hover {
+a:hover {
   text-decoration: none;
+}
+
+article a:hover {
+  text-shadow: 0 0 1px rgba(0,24,32,0.1);
 }
 
 blockquote {
@@ -171,7 +166,7 @@ header .sns-icons {
   vertical-align: top !important;
 }
 
-article {
+body > article {
   margin-top: 10px;
   margin-bottom: 30px;
 }
@@ -241,13 +236,21 @@ footer {
 .copyright {
   text-align: center;
   color: #bbb;
-  font-size: 12px;
   margin-top: 15px;
 }
 
 /***********************************************************
  * Post
  ***********************************************************/
+
+.post h1 {
+  margin-bottom: 20px;
+}
+
+.post h2, h3 {
+  margin-top: 30px;
+}
+
 .post p {
   margin-bottom: 10px;
 }
@@ -306,7 +309,7 @@ footer {
   margin:   0;
 }
 
-article a[href*="//"]:after {
+body > article a[href*="//"]:after {
   content: "\f08e";
   vertical-align: super;
   font-size: 0.8em;
@@ -314,7 +317,7 @@ article a[href*="//"]:after {
   font-family: FontAwesome;
 }
 
-article img {
+body > article img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -325,13 +328,13 @@ article img {
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-article .table {
+body > article .table {
   -moz-box-shadow:    1px 1px 1px rgba(0, 0, 0, 0.07);
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
   box-shadow:         1px 1px 1px rgba(0, 0, 0, 0.07);
 }
 
-article th {
+body > article th {
   font-weight: normal;
   background-color: #776666;
   color: #fcfcfc
