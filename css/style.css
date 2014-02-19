@@ -7,12 +7,12 @@ body {
   font-family: "Helvetica Neue", Verdana, Arial, YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 16px;
   line-height: 1.9;
-  background-color: #fafafa;
-  background: -webkit-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
-  background:    -moz-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
-  background:      -o-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
-  background:     -ms-radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
-  background:         radial-gradient(65%  5%, circle, #fdfdfd, #eeeeee);
+  background-color: #fbfafa;
+  background: -webkit-radial-gradient(65%  5%, circle, #fffdfd, #eeeeee);
+  background:    -moz-radial-gradient(65%  5%, circle, #fffdfd, #eeeeee);
+  background:      -o-radial-gradient(65%  5%, circle, #fffdfd, #eeeeee);
+  background:     -ms-radial-gradient(65%  5%, circle, #fffdfd, #eeeeee);
+  background:         radial-gradient(65%  5%, circle, #fffdfd, #eeeeee);
 }
 
 hr {
@@ -166,7 +166,7 @@ header .sns-icons {
   vertical-align: top !important;
 }
 
-body > article {
+.main-content {
   margin-top: 10px;
   margin-bottom: 30px;
 }
@@ -294,8 +294,7 @@ footer {
   border: 1px solid #f3d5dc;
   font-family: inherit;
   font-size: 100%;
-  padding-left:  3px;
-  padding-right: 3px;
+  padding: 4px;
   margin-left:   3px;
   margin-right:  3px;
 }
@@ -309,7 +308,7 @@ footer {
   margin:   0;
 }
 
-body > article a[href*="//"]:after {
+.main-content a[href*="//"]:after {
   content: "\f08e";
   vertical-align: super;
   font-size: 0.8em;
@@ -317,7 +316,7 @@ body > article a[href*="//"]:after {
   font-family: FontAwesome;
 }
 
-body > article img {
+.main-content img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -328,13 +327,13 @@ body > article img {
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-body > article .table {
+.main-content .table {
   -moz-box-shadow:    1px 1px 1px rgba(0, 0, 0, 0.07);
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
   box-shadow:         1px 1px 1px rgba(0, 0, 0, 0.07);
 }
 
-body > article th {
+.main-content th {
   font-weight: normal;
   background-color: #776666;
   color: #fcfcfc
