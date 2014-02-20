@@ -128,7 +128,7 @@ header i[class^="icon-"] {
 }
 
 header .icon-rss {
-  text-indent: -1em;
+  margin-left: -1em;
   font-size: 22px;
   color: #ee802f;
 }
