@@ -113,11 +113,22 @@ header {
   opacity: 1;
 }
 
+h1.header-logo {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom 0;
+}
+h1.header-logo img {
+  vertical-align: top;
+}
+
 header i[class^="icon-"] {
   vertical-align: middle;
 }
 
 header .icon-rss {
+  text-indent: -1em;
   font-size: 22px;
   color: #ee802f;
 }
