@@ -380,6 +380,33 @@ footer {
   margin-top: 20px;
 }
 
+.sns-buttons > li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.twitter-share-button,
+.hatena-bookmark-button,
+.g-plusone,
+.fb-like,
+.pocket-btn {
+  display: inline-block;
+}
+
+.hatena-bookmark-button {
+  margin-right: 10px;
+}
+
+.fb-like {
+  margin-right: 10px;
+  margin-left: -10px;
+}
+
+.pocket-btn {
+  margin-left: -20px;
+  margin-right: -30px;
+}
+
 /***********************************************************
  * Post list related tag
  ***********************************************************/
