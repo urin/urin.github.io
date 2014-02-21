@@ -174,13 +174,6 @@ header .sns-icons {
   background-color: #3b5998;
 }
 
-.fb_iframe_widget {
-  margin-left: 5px;
-}
-.fb_iframe_widget > span {
-  vertical-align: top !important;
-}
-
 .main-content {
   margin-top: 10px;
   margin-bottom: 30px;
@@ -383,6 +376,7 @@ footer {
 .sns-buttons > li {
   display: inline-block;
   vertical-align: top;
+  padding: 0;
 }
 
 .twitter-share-button,
@@ -400,6 +394,11 @@ footer {
 .fb-like {
   margin-right: 10px;
   margin-left: -10px;
+}
+
+.fb_iframe_widget > span {
+  vertical-align: top !important;
+  margin-top: 2px;
 }
 
 .pocket-btn {
