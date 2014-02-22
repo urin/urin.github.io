@@ -5,7 +5,7 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2014-02-22T06:58:57+05:30</lastBuildDate>
+    <lastBuildDate>2014-02-23T00:37:05+05:30</lastBuildDate>
     <pubDate>2014-02-14T00:00:00+05:30</pubDate>
     <ttl>1800</ttl>
 
@@ -63,7 +63,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;contents&lt;/td&gt;
         &lt;td&gt;null&lt;/td&gt;
-        &lt;td&gt;吹き出しの内容。文字列（HTML）、jQueryオブジェクト、&lt;code&gt;null&lt;/code&gt;のいずれか。&lt;code&gt;null&lt;/code&gt;の場合は、対象となる要素の&lt;code&gt;title&lt;/code&gt;属性を使用する。&lt;/td&gt;
+        &lt;td&gt;吹き出しの内容。文字列（HTML）、jQueryオブジェクト、&lt;code&gt;null&lt;/code&gt;のいずれか。&lt;code&gt;null&lt;/code&gt;の場合は、対象となる要素の&lt;code&gt;title&lt;/code&gt;もしくは&lt;code&gt;alt&lt;/code&gt;属性を使用する。吹き出しの中身となるべきものが存在しなければ吹き出し自体が表示されない。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;url&lt;/td&gt;
@@ -83,7 +83,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;position&lt;/td&gt;
         &lt;td&gt;&quot;top&quot;&lt;/td&gt;
-        &lt;td&gt;吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。&lt;code&gt;&quot;top&quot;&lt;/code&gt;, &lt;code&gt;&quot;bottom&quot;&lt;/code&gt;, &lt;code&gt;&quot;left&quot;&lt;/code&gt;, &lt;code&gt;&quot;right&quot;&lt;/code&gt;のいずれか（２つまで）をスペースで区切って指定。例えば&lt;code&gt;&quot;bottom&quot;&lt;/code&gt;を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。&lt;code&gt;null&lt;/code&gt;の場合は、要素の中心と吹き出しの中心が同じになる。&lt;/td&gt;
+        &lt;td&gt;吹き出し表示の位置。対象の要素位置（中心）からの相対位置を文字列で指定する。&lt;code&gt;&quot;top&quot;&lt;/code&gt;, &lt;code&gt;&quot;bottom&quot;&lt;/code&gt;, &lt;code&gt;&quot;left&quot;&lt;/code&gt;, &lt;code&gt;&quot;right&quot;&lt;/code&gt;のいずれか２つまでをスペースで区切って指定。例えば&lt;code&gt;&quot;bottom&quot;&lt;/code&gt;を指定した場合、縦方向の位置は要素の下端で、横方向の位置は対象の中心となる。&lt;code&gt;null&lt;/code&gt;の場合は、要素の中心と吹き出しの中心が同じになる。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;offsetX&lt;/td&gt;
@@ -113,7 +113,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;showAnimation&lt;br /&gt;
         &lt;td&gt;null&lt;/td&gt;
-        &lt;td&gt;吹き出しを表示するときのアニメーション関数。この関数には&lt;code&gt;onDuration&lt;/code&gt;が引数として与えられる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().show()&lt;/code&gt;を使用する。&lt;/td&gt;
+        &lt;td&gt;吹き出しを表示するときのアニメーション関数。この関数には&lt;code&gt;onDuration&lt;/code&gt;が引数として与えられ&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().show()&lt;/code&gt;を使用する。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;hideDuration&lt;br /&gt;
@@ -123,7 +123,17 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;hideAnimation&lt;br /&gt;
         &lt;td&gt;function (d) { this.fadeOut(d); }&lt;/td&gt;
-        &lt;td&gt;吹き出しを非表示にするときのアニメーション関数。この関数には&lt;code&gt;offDuration&lt;/code&gt;が引数として与えられる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().hide()&lt;/code&gt;を使用する。&lt;/td&gt;
+        &lt;td&gt;吹き出しを非表示にするときのアニメーション関数。この関数には&lt;code&gt;offDuration&lt;/code&gt;が引数として与えられ、&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().hide()&lt;/code&gt;を使用する。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td colspan=&quot;2&quot;&gt;showComplete&lt;br /&gt;
+        &lt;td&gt;null&lt;/td&gt;
+        &lt;td&gt;吹き出しの表示（アニメーション）完了時に実行される関数。&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td colspan=&quot;2&quot;&gt;hideComplete&lt;br /&gt;
+        &lt;td&gt;null&lt;/td&gt;
+        &lt;td&gt;吹き出しの非表示（アニメーション）完了時に実行される関数。&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td rowspan=&quot;11&quot; style=&quot;padding-left: 20px; padding-right: 20px; border-bottom: none; border-right: 1px solid #dddddd; background-color: #fafafa;&quot;&gt;css&lt;/td&gt;
@@ -131,7 +141,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td&gt;minWidth&lt;/td&gt;
         &lt;td&gt;&quot;20px&quot;&lt;/td&gt;
-        &lt;td rowspan=&quot;10&quot;&gt;吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。&lt;code&gt;css&lt;/code&gt;に&lt;code&gt;null&lt;/code&gt;を設定すると、本プラグインデフォルトで指定されているcssがキャンセルされる。&lt;/td&gt;
+        &lt;td rowspan=&quot;10&quot;&gt;吹き出しのスタイル。jQueryのcssと同様で、キャメルケースのオブジェクトを用いてスタイルを指定する。この表に書かれているのはデフォルト値が設定されているもののみで、これら以外も自由に指定可能。&lt;code&gt;css&lt;/code&gt;に&lt;code&gt;null&lt;/code&gt;を設定すると、本プラグインデフォルトで指定されているこれらのスタイルが全てキャンセルされる。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td&gt;padding&lt;/td&gt;
