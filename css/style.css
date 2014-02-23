@@ -7,6 +7,7 @@ body {
   font-family: "Helvetica Neue", Verdana, Arial, YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.9;
   font-size: 18px;
+  color: #555;
   background-color: #fbf9fa;
   background: -webkit-radial-gradient(65%  5%, circle, #fffdfe, #efeeee);
   background:    -moz-radial-gradient(65%  5%, circle, #fffdfe, #efeeee);
@@ -91,21 +92,21 @@ blockquote {
   margin: 30px 10px;
 }
 
-i[class^="icon-"] {
+i.fa {
   display: inline-block;
   width: 1.2em;
   text-align: center;
 }
 
-.icon-time {
+.fa-clock-o {
   color: #79543a;
 }
 
-.icon-tag, .icon-tags {
+.fa-tag, .fa-tags {
   color: #4e793a;
 }
 
-.icon-comments {
+.fa-comments {
   color: #ebc344;
 }
 
@@ -139,11 +140,11 @@ h1.header-logo img {
   vertical-align: top;
 }
 
-header i[class^="icon-"] {
+header i.fa {
   vertical-align: middle;
 }
 
-header .icon-rss {
+header .fa-rss {
   margin-left: -1em;
   font-size: 22px;
   color: #ee802f;
@@ -175,17 +176,17 @@ header .sns-icons {
   opacity: 1;
 }
 
-.sns-icons i.icon-github {
+.sns-icons i.fa-github {
   color: #171515;
   background-color: #ddd;
 }
 
-.sns-icons i.icon-twitter {
+.sns-icons i.fa-twitter {
   color: #fff;
   background-color: #00acee;
 }
 
-.sns-icons i.icon-facebook {
+.sns-icons i.fa-facebook {
   color: #fff;
   background-color: #3b5998;
 }
@@ -203,7 +204,7 @@ footer {
   overflow: hidden;
 }
 
-.recent-posts .icon-paper-clip {
+.recent-posts .fa-paperclip {
   color: #a00;
 }
 
@@ -239,7 +240,7 @@ footer {
   top: 4px;
 }
 
-.repos .icon-github {
+.repos .fa-github {
   color: #171515;
 }
 
@@ -282,8 +283,17 @@ footer {
   margin-bottom: 20px;
 }
 
-.post h2, h3 {
-  margin-top: 30px;
+.post h2, .post h3 {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.post h3:before {
+  font-family: FontAwesome;
+  content: "\f0c8";
+  vertical-align: 1em;
+  font-size: 0.6em;
+  margin-right: 0.5em;
 }
 
 .post p {
@@ -310,7 +320,7 @@ footer {
 {
   font-weight: bold;
   line-height: 1.9;
-  color: #554444;
+  color: #664455;
 }
 
 .post pre {
@@ -378,6 +388,22 @@ footer {
   color: #fcfcfc
 }
 
+.post-aux {
+  color: #888;
+  font-size: 14px;
+  margin-top: 20px;
+  padding-left: 20px;
+  line-height: 2.4;
+  opacity: 0.6;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.post-aux:hover {
+  transition-property: all;
+  transition: 0.5s linear;
+  opacity: 1;
+}
+
 .post-aux .badge {
   vertical-align: super;
   font-size: 70%;
@@ -385,19 +411,6 @@ footer {
   font-weight: normal;
   color: #428bca;
   text-shadow: none;
-}
-
-.post-aux {
-  color: #888;
-  font-size: 14px;
-  margin-top: 20px;
-  line-height: 2.4;
-  opacity: 0.7;
-  text-shadow: 1px 1px 0 #fff;
-}
-
-.post-aux:hover {
-  opacity: 1;
 }
 
 #disqus_thread {
