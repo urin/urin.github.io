@@ -451,9 +451,9 @@ footer {
 .sns-buttons > li {
   display: inline-block;
   vertical-align: top;
-  height: 35px;
+  height: 50px;
   padding: 0;
-  min-width: 110px;
+  min-width: 100px;
 }
 
 .twitter-share-button,
@@ -466,7 +466,15 @@ footer {
 }
 
 .twitter-share-button {
-  margin-right: 0;
+  margin-right: -20px;
+}
+
+.hatena-bookmark-button-frame {
+  margin-right: 15px;
+}
+
+.fb-like {
+  margin-right: 10px;
 }
 
 .fb_iframe_widget > span {
@@ -476,11 +484,12 @@ footer {
 
 .pocket-btn {
   margin-top: 2px;
-  margin-right: -50px;
+  margin-right: -35px;
 }
 
 .fi-btn {
   margin-top: 2px;
+  margin-right: 5px;
 }
 
 .fi-btn > * {
