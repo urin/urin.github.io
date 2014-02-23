@@ -456,7 +456,6 @@ footer {
 .fi-btn,
 .pocket-btn {
   display: inline-block;
-  vertical-align: top;
 }
 
 .hatena-bookmark-button {
@@ -475,6 +474,10 @@ footer {
 .pocket-btn {
   margin-top: 2px;
   margin-right: -40px;
+}
+
+.fi-btn {
+  margin-top: 2px;
 }
 
 .fi-btn > * {
