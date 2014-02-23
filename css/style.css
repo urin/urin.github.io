@@ -451,7 +451,7 @@ footer {
 .sns-buttons > li {
   display: inline-block;
   vertical-align: top;
-  height: 50px;
+  height: 40px;
   padding: 0;
   min-width: 100px;
 }
