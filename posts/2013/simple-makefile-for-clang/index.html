@@ -417,7 +417,9 @@ clean:
 <!-- Pocket button -->
 <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 <!-- Twitter button -->
-<style scoped="scoped">iframe.twitter-share-button { width: 90px !important } </style>
+<style scoped="scoped">
+  iframe.twitter-share-button { width: 80px !important; min-width: 80px; }
+</style>
 <script>
   !function(d,s,id){
     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
