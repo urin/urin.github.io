@@ -456,6 +456,7 @@ footer {
 .fi-btn,
 .pocket-btn {
   display: inline-block;
+  vertical-align: top;
 }
 
 .hatena-bookmark-button {
@@ -476,6 +477,10 @@ footer {
   margin-right: -40px;
 }
 
+.fi-btn > * {
+  vertical-align: top;
+}
+
 .fi-count {
   display: inline-block;
   position: relative;
@@ -485,7 +490,6 @@ footer {
   padding: 0 5px;
   margin-left: 4px;
   font-size: 12px;
-  vertical-align: middle;
   border: 1px solid #ddd;
   -moz-border-radius:    3px;
   -webkit-border-radius: 3px;
