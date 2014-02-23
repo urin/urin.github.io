@@ -1,1 +1,1 @@
-# [URIN HACK](//urin.github.io)
+# [URIN HACK](http://urin.github.io)
