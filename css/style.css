@@ -445,6 +445,7 @@ footer {
 
 .sns-buttons {
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 .sns-buttons > li {
@@ -452,7 +453,7 @@ footer {
   vertical-align: top;
   height: 35px;
   padding: 0;
-  margin-left: 15px;
+  min-width: 110px;
 }
 
 .twitter-share-button,
@@ -464,6 +465,10 @@ footer {
   display: inline-block;
 }
 
+.twitter-share-button {
+  margin-right: 0;
+}
+
 .fb_iframe_widget > span {
   vertical-align: top !important;
   margin-top: 2px;
@@ -471,7 +476,7 @@ footer {
 
 .pocket-btn {
   margin-top: 2px;
-  margin-right: -20px;
+  margin-right: -50px;
 }
 
 .fi-btn {
