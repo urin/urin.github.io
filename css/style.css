@@ -444,7 +444,8 @@ footer {
 }
 
 .sns-buttons {
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: 10px;
 }
 
@@ -453,8 +454,6 @@ footer {
   vertical-align: top;
   height: 40px;
   padding: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
   min-width: 100px;
 }
 
