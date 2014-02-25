@@ -38,8 +38,8 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
-    <script src="/js/html5shiv.js"></script>
-    <script src="/js/respond.min.js"></script>
+    <script async src="/js/html5shiv.js"></script>
+    <script async src="/js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -252,7 +252,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
 
     <hr>
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
+    <script>
       var disqus_shortname = 'urinhack';
       var disqus_url = 'http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows';
       var disqus_title = 'Jekyll 1.1系をWindowsに導入する';
@@ -280,7 +280,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
   }(document, 'script', 'facebook-jssdk'));
 </script>
 <!-- Pocket button -->
-<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+<script>!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 <!-- Twitter button -->
 <style scoped="scoped">
   iframe.twitter-share-button { width: 80px !important; min-width: 80px; }
@@ -295,9 +295,9 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
   }(document, 'script', 'twitter-wjs');
 </script>
 <!-- Hatena bookmark button -->
-<script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+<script src="//b.st-hatena.com/js/bookmark_button.js" async></script>
 <!-- Google +1 button -->
-<script type="text/javascript">
+<script>
   window.___gcfg = {lang: 'ja'};
   (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -306,7 +306,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
   })();
 </script>
 <!-- Feedly button -->
-<script type="text/javascript">
+<script>
   $(function() {
     var q = ('http://query.yahooapis.com/v1/public/yql?q='
       + encodeURIComponent(
