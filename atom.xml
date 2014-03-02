@@ -25,9 +25,10 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;RubyInstaller for Windows&lt;/a&gt;で&lt;code&gt;Ruby 2.0.0&lt;/code&gt;と&lt;code&gt;DevKit&lt;/code&gt;をインストール&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Python&lt;/code&gt;、&lt;code&gt;pygments&lt;/code&gt;はインストール済み。
-これらは&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ&lt;/a&gt;にある通り。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Python&lt;/code&gt;、&lt;code&gt;pygments&lt;/code&gt;はインストール済み。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;これらは&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ&lt;/a&gt;にある通り。&lt;/p&gt;
 
 &lt;h3&gt;Jekyllのバージョン&lt;/h3&gt;
 
