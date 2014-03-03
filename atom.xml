@@ -6,7 +6,7 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2014-02-14T00:00:00+05:30</updated>
+  <updated>2014-03-02T13:47:46Z</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows"/>
-    <updated>2014-02-14T00:00:00+05:30</updated>
+    <updated>2014-03-02T13:47:46Z</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
