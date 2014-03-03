@@ -277,6 +277,13 @@ footer {
 }
 
 /***********************************************************
+ * Post list related tag
+ ***********************************************************/
+.post-list-row {
+  margin-bottom: 20px;
+}
+
+/***********************************************************
  * Post
  ***********************************************************/
 
@@ -289,6 +296,8 @@ footer {
   margin-bottom: 20px;
 }
 
+.post-list-row h2:before,
+.post-list-row h3:before,
 .post h2:before,
 .post h3:before {
   font-family: FontAwesome;
@@ -537,13 +546,6 @@ footer {
   width: 8px;
   border-width: 4px 4px 4px 0;
   border-color: transparent #fff;
-}
-
-/***********************************************************
- * Post list related tag
- ***********************************************************/
-.post-list-row {
-  margin-bottom: 20px;
 }
 
 /***********************************************************
