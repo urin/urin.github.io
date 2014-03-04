@@ -187,7 +187,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;showAnimation&lt;br /&gt;
         &lt;td&gt;null&lt;/td&gt;
-        &lt;td&gt;吹き出しを表示するときのアニメーション関数。この関数には&lt;code&gt;onDuration&lt;/code&gt;が引数として与えられ&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().show()&lt;/code&gt;を使用する。&lt;/td&gt;
+        &lt;td&gt;吹き出しを表示するときのアニメーション関数。この関数には&lt;code&gt;showDuration&lt;/code&gt;が引数として与えられ&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().show()&lt;/code&gt;を使用する。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;hideDuration&lt;br /&gt;
@@ -197,7 +197,7 @@ gem install wdm
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;hideAnimation&lt;br /&gt;
         &lt;td&gt;function (d) { this.fadeOut(d); }&lt;/td&gt;
-        &lt;td&gt;吹き出しを非表示にするときのアニメーション関数。この関数には&lt;code&gt;offDuration&lt;/code&gt;が引数として与えられ、&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().hide()&lt;/code&gt;を使用する。&lt;/td&gt;
+        &lt;td&gt;吹き出しを非表示にするときのアニメーション関数。この関数には&lt;code&gt;hideDuration&lt;/code&gt;が引数として与えられ、&lt;code&gt;this&lt;/code&gt;はその吹き出しのjQueryオブジェクトとなる。&lt;code&gt;null&lt;/code&gt;を指定した場合は&lt;code&gt;$().hide()&lt;/code&gt;を使用する。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td colspan=&quot;2&quot;&gt;showComplete&lt;br /&gt;
