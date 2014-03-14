@@ -7,12 +7,12 @@ $(function() {
       'select * from json where url="'
       + 'http://cloud.feedly.com/v3/feeds/feed%2F'
       + encodeURIComponent('{{ site.production_url }}/rss.xml')
-      + '"')
-    + '&format=json&callback=?'
+      + '"'
+    ) + '&format=json&callback=?'
   );
   $.getJSON(q, function(data) {
     var c = data.query.results;
-    $(".fi-count").text(c ? "?" : c.json["subscribers"]);
+    $(".fi-count").text(c ? c.json["subscribers"] : "?");
   });
 });
 
