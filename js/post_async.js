@@ -67,6 +67,7 @@ $(function() {
       + '"')
     + '&format=json&callback=?'
   );
+console.log("feedly");
   $.getJSON(q, function(data) {
     $(".fi-count").text(data.query.results.json["subscribers"]);
   });
