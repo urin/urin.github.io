@@ -21,8 +21,8 @@ $(function() {
     + '&format=json&callback=?'
   );
   $.getJSON(q, function(data) {
-console.log(data);
-    $(".fi-count").text(data.query.results.json["subscribers"]);
+    var c = data.query.results;
+    if(c) { $(".fi-count").text(c.json["subscribers"]); }
   });
 });
 
