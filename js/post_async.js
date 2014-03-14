@@ -43,21 +43,3 @@ window.___gcfg = {lang: 'ja'};
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
 
-//------------------------------------------------------------------------------
-// Feedly button
-//------------------------------------------------------------------------------
-$(function() {
-  var q = ('http://query.yahooapis.com/v1/public/yql?q='
-    + encodeURIComponent(
-      'select * from json where url="'
-      + 'http://cloud.feedly.com/v3/feeds/feed%2F'
-      + encodeURIComponent('{{ site.production_url }}/rss.xml')
-      + '"')
-    + '&format=json&callback=?'
-  );
-console.log("feedly");
-  $.getJSON(q, function(data) {
-    $(".fi-count").text(data.query.results.json["subscribers"]);
-  });
-});
-
