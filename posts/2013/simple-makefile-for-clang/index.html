@@ -2,12 +2,13 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no">
     <title>シンプルで応用の効くmakefileとその解説 - URIN HACK</title>
     <meta name="description" content="makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。">
     <meta name="keywords" content="Programming, C++, makefile, gcc, Linux">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
@@ -22,6 +23,10 @@
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/syntax.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <!--
     <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
@@ -32,10 +37,6 @@
     <link rel="canonical" href="http://urin.github.io/posts/2013/simple-makefile-for-clang">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/syntax.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script async src="/js/html5shiv.js"></script>
     <![endif]-->
@@ -401,10 +402,6 @@ clean:
 
 <!-- Facebook button -->
 <div id="fb-root"></div>
-<!-- Twitter button -->
-<style scoped="scoped">
-  iframe.twitter-share-button { width: 80px !important; min-width: 80px; }
-</style>
 <!-- Hatena bookmark button -->
 <script async src="//b.st-hatena.com/js/bookmark_button.js"></script>
 <!-- Others -->
