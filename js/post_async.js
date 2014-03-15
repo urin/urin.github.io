@@ -12,6 +12,7 @@ $(function() {
   );
   $.getJSON(q, function(data) {
     var c = data.query.results;
+console.log(data);
     $(".fi-count").text(c ? c.json["subscribers"] : "?");
   });
 });
