@@ -10,6 +10,7 @@ $(function() {
       + '"'
     ) + '&format=json&callback=?'
   );
+console.log(q);
   $.getJSON(q, function(data) {
     var c = data.query.results;
 console.log(data);
