@@ -6,14 +6,12 @@ $(function() {
     + encodeURIComponent(
       'select * from json where url="'
       + 'http://cloud.feedly.com/v3/feeds/feed%2F'
-      + encodeURIComponent('{{ site.production_url }}/rss.xml')
+      + encodeURIComponent('http://urin.github.io/rss.xml')
       + '"'
     ) + '&format=json&callback=?'
   );
-console.log(q);
   $.getJSON(q, function(data) {
     var c = data.query.results;
-console.log(data);
     $(".fi-count").text(c ? c.json["subscribers"] : "?");
   });
 });
