@@ -449,6 +449,43 @@ footer {
   text-shadow: none;
 }
 
+.pagenation > a {
+  display: block;
+  line-height: 36px;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.pagenation > a > * {
+  display: block;
+  line-height: 36px;
+}
+
+.pagenation.prev i {
+  float: left;
+}
+
+.pagenation.next i {
+  float: right;
+}
+
+.pagenation.next {
+  text-align: right;
+}
+
+.pagenation > a > i {
+  color: #ddd;
+  font-size: 30px;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, .2), 0 1px 1px rgba(255, 255, 255, .90);
+}
+
+.pagenation > a > small {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  line-height: inherit;
+}
+
 #disqus_thread {
   margin-top: 20px;
 }
