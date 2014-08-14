@@ -155,39 +155,39 @@
 <p><a href="http://stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve">ruby - Jekyll - Error Running &#39;Jekyll Serve&#39; - Stack Overflow</a></p>
 
 <p>というわけで<code>1.4.2</code>をインストール。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem install jekyll --version <span class="s2">&quot;=1.4.2&quot;</span>
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">gem install jekyll --version "=1.4.2"
 </code></pre></div>
 <p>で、とりあえずサイトを新規作成。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">mkdir jekyll-install-test
-<span class="k">cd</span> jekyll-install-test
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">mkdir jekyll-install-test
+cd jekyll-install-test
 jekyll new .
 </code></pre></div>
 <h3>yajl-rubyのバージョン</h3>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">jekyll build
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">jekyll build
 </code></pre></div>
 <p>するとエラー。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
+<div class="highlight"><pre><code class="language-" data-lang="">Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
 </code></pre></div>
 <p><a href="http://www.kahfei.com/?cat=17">kahfei | jekyll</a>の通り<code>yajl-ruby</code>を更新する必要がある。</p>
 
 <p><code>gem list</code>して yajl-ruby (1.1.0 x86-mingw32) となっているなら<code>yajl-ruby</code>を再インストールする。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem uninstall yajl-ruby
-gem install yajl-ruby --version <span class="s2">&quot;=1.1.0&quot;</span> --platform<span class="o">=</span>ruby
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">gem uninstall yajl-ruby
+gem install yajl-ruby --version "=1.1.0" --platform=ruby
 </code></pre></div>
 <p>途中で依存関係の問い合わせがあるがYesで続行。<code>gem list</code>で<code>yajl-ruby (1.1.0)</code>となっていればOK。</p>
 
 <h3>pygments.rbのバージョン</h3>
 
 <p>まだ<code>jekyll build</code>は通らない。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
+<div class="highlight"><pre><code class="language-" data-lang="">Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
 </code></pre></div>
 <p><a href="http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/">こちら</a>にもある通り<code>pygments.rb</code>は<code>0.5.0</code>にする必要がある。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem uninstall pygments.rb
-gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
-</code></pre></div><div class="highlight"><pre><code class="bat language-bat" data-lang="bat">C:\path\to\jekyll-install-test<span class="p">&gt;</span><span class="n">jekyll</span> build
-Configuration file: C:<span class="n">/path/to/jekyll-install-test/_config.yml</span>
-            Source: C:<span class="n">/path/to/jekyll-install-test</span>
-       Destination: C:<span class="n">/path/to/jekyll-install-test/_site</span>
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">gem uninstall pygments.rb
+gem install pygments.rb --version "=0.5.0"
+</code></pre></div><div class="highlight"><pre><code class="language-bat" data-lang="bat">C:\path\to\jekyll-install-test&gt;jekyll build
+Configuration file: C:/path/to/jekyll-install-test/_config.yml
+            Source: C:/path/to/jekyll-install-test
+       Destination: C:/path/to/jekyll-install-test/_site
       Generating... done.
 </code></pre></div>
 <p>これでシンタックスハイライトを含んだ投稿の<code>jekyll build</code>はできるようになった。</p>
@@ -195,25 +195,25 @@ Configuration file: C:<span class="n">/path/to/jekyll-install-test/_config.yml</
 <h3>wdmのインストール</h3>
 
 <p>ローカル環境で確認するときに<code>--watch</code>を使おうとするとエラーとなる。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">C:\path\to\jekyll-install-test<span class="p">&gt;</span><span class="n">jekyll</span> serve --watch
-Configuration file: C:<span class="n">/Users/urin/Desktop/fda/_config.yml</span>
-            Source: C:<span class="n">/Users/urin/Desktop/fda</span>
-       Destination: C:<span class="n">/Users/urin/Desktop/fda/_site</span>
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">C:\path\to\jekyll-install-test&gt;jekyll serve --watch
+Configuration file: C:/Users/urin/Desktop/fda/_config.yml
+            Source: C:/Users/urin/Desktop/fda
+       Destination: C:/Users/urin/Desktop/fda/_site
       Generating... done.
  Auto-regeneration: enabled
-C:<span class="n">/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in</span> `require&#39;: cannot load such file -- wdm (LoadError)
+C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require': cannot load such file -- wdm (LoadError)
 </code></pre></div>
 <p><code>wdm</code>がインストールされていないだけ。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem install wdm
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">gem install wdm
 </code></pre></div>
 <p>以上で環境構築は終わり。</p>
 
 <h2>まとめると</h2>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem install jekyll --version <span class="s2">&quot;=1.4.2&quot;</span>
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">gem install jekyll --version "=1.4.2"
 gem uninstall yajl-ruby
-gem install yajl-ruby --version <span class="s2">&quot;=1.1.0&quot;</span> --platform<span class="o">=</span>ruby
+gem install yajl-ruby --version "=1.1.0" --platform=ruby
 gem uninstall pygments.rb
-gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
+gem install pygments.rb --version "=0.5.0"
 gem install wdm
 </code></pre></div>
   </article>
@@ -449,7 +449,7 @@ gem install wdm
           </div>
           <div class="col-sm-2">
             <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
-            <div>Powered by Jekyll version 1.4.2.</div>
+            <div>Powered by Jekyll version 2.3.0.</div>
           </div>
           <div class="col-sm-2">
             <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>

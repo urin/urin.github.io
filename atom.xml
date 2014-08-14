@@ -6,7 +6,7 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2014-03-02T13:47:46Z</updated>
+  <updated>2014-03-02T22:47:46+09:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows"/>
-    <updated>2014-03-02T13:47:46Z</updated>
+    <updated>2014-03-02T22:47:46+09:00</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
@@ -37,39 +37,39 @@
 &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve&quot;&gt;ruby - Jekyll - Error Running &amp;#39;Jekyll Serve&amp;#39; - Stack Overflow&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;というわけで&lt;code&gt;1.4.2&lt;/code&gt;をインストール。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=1.4.2&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &quot;=1.4.2&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;で、とりあえずサイトを新規作成。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;mkdir jekyll-install-test
-&lt;span class=&quot;k&quot;&gt;cd&lt;/span&gt; jekyll-install-test
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;mkdir jekyll-install-test
+cd jekyll-install-test
 jekyll new .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;yajl-rubyのバージョン&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;jekyll build
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;jekyll build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;するとエラー。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.kahfei.com/?cat=17&quot;&gt;kahfei | jekyll&lt;/a&gt;の通り&lt;code&gt;yajl-ruby&lt;/code&gt;を更新する必要がある。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;gem list&lt;/code&gt;して yajl-ruby (1.1.0 x86-mingw32) となっているなら&lt;code&gt;yajl-ruby&lt;/code&gt;を再インストールする。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall yajl-ruby
-gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=1.1.0&amp;quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall yajl-ruby
+gem install yajl-ruby --version &quot;=1.1.0&quot; --platform=ruby
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;途中で依存関係の問い合わせがあるがYesで続行。&lt;code&gt;gem list&lt;/code&gt;で&lt;code&gt;yajl-ruby (1.1.0)&lt;/code&gt;となっていればOK。&lt;/p&gt;
 
 &lt;h3&gt;pygments.rbのバージョン&lt;/h3&gt;
 
 &lt;p&gt;まだ&lt;code&gt;jekyll build&lt;/code&gt;は通らない。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code&gt;pygments.rb&lt;/code&gt;は&lt;code&gt;0.5.0&lt;/code&gt;にする必要がある。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.5.0&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; build
-Configuration file: C:&lt;span class=&quot;n&quot;&gt;/path/to/jekyll-install-test/_config.yml&lt;/span&gt;
-            Source: C:&lt;span class=&quot;n&quot;&gt;/path/to/jekyll-install-test&lt;/span&gt;
-       Destination: C:&lt;span class=&quot;n&quot;&gt;/path/to/jekyll-install-test/_site&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall pygments.rb
+gem install pygments.rb --version &quot;=0.5.0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll build
+Configuration file: C:/path/to/jekyll-install-test/_config.yml
+            Source: C:/path/to/jekyll-install-test
+       Destination: C:/path/to/jekyll-install-test/_site
       Generating... done.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;これでシンタックスハイライトを含んだ投稿の&lt;code&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
@@ -77,25 +77,25 @@ Configuration file: C:&lt;span class=&quot;n&quot;&gt;/path/to/jekyll-install-te
 &lt;h3&gt;wdmのインストール&lt;/h3&gt;
 
 &lt;p&gt;ローカル環境で確認するときに&lt;code&gt;--watch&lt;/code&gt;を使おうとするとエラーとなる。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; serve --watch
-Configuration file: C:&lt;span class=&quot;n&quot;&gt;/Users/urin/Desktop/fda/_config.yml&lt;/span&gt;
-            Source: C:&lt;span class=&quot;n&quot;&gt;/Users/urin/Desktop/fda&lt;/span&gt;
-       Destination: C:&lt;span class=&quot;n&quot;&gt;/Users/urin/Desktop/fda/_site&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll serve --watch
+Configuration file: C:/Users/urin/Desktop/fda/_config.yml
+            Source: C:/Users/urin/Desktop/fda
+       Destination: C:/Users/urin/Desktop/fda/_site
       Generating... done.
  Auto-regeneration: enabled
-C:&lt;span class=&quot;n&quot;&gt;/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in&lt;/span&gt; `require&amp;#39;: cannot load such file -- wdm (LoadError)
+C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require&#39;: cannot load such file -- wdm (LoadError)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;wdm&lt;/code&gt;がインストールされていないだけ。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install wdm
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
 
 &lt;h2&gt;まとめると&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=1.4.2&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &quot;=1.4.2&quot;
 gem uninstall yajl-ruby
-gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=1.1.0&amp;quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
+gem install yajl-ruby --version &quot;=1.1.0&quot; --platform=ruby
 gem uninstall pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.5.0&amp;quot;&lt;/span&gt;
+gem install pygments.rb --version &quot;=0.5.0&quot;
 gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
   </entry>
@@ -103,7 +103,7 @@ gem install wdm
   <entry>
     <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>
     <link href="http://urin.github.io/posts/2014/jquery-balloon-js"/>
-    <updated>2014-02-12T00:00:00+05:30</updated>
+    <updated>2014-02-12T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2014/jquery-balloon-js</id>
     <content type="html">&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.balloon.js&lt;/code&gt;の使い方。
 設置方法は&lt;code&gt;jQuery&lt;/code&gt;と本プラグインの&lt;code&gt;javascript&lt;/code&gt;ファイルのみで&lt;code&gt;CSS&lt;/code&gt;や画像などは不要。どこにでも簡単に設置することができる。&lt;/p&gt;
@@ -113,11 +113,11 @@ gem install wdm
 &lt;h3&gt;設置方法&lt;/h3&gt;
 
 &lt;p&gt;(1) プラグインをダウンロードして、&lt;code&gt;jQuery&lt;/code&gt;の後にスクリプトファイルを読み込む。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;js/jquery.balloon.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;js/jquery.balloon.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(2) ドキュメントの&lt;code&gt;ready&lt;/code&gt;イベント（など）で&lt;code&gt;$().balloon(options)&lt;/code&gt;を実行する。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;selectors&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;balloon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;selectors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;balloon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;デモとダウンロード&lt;/h3&gt;
@@ -276,7 +276,7 @@ gem install wdm
   <entry>
     <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>
     <link href="http://urin.github.io/posts/2013/release-jquery-tile-js"/>
-    <updated>2013-08-11T00:00:00+05:30</updated>
+    <updated>2013-08-11T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/release-jquery-tile-js</id>
     <content type="html">&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため &lt;strong&gt;使い方がシンプルでプラグインは非常に軽量&lt;/strong&gt; になっている。&lt;/p&gt;
@@ -307,8 +307,8 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;h4&gt;JavaScriptサンプル&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;tile-sample1&lt;/code&gt;という&lt;code&gt;class&lt;/code&gt;属性を持つ要素の高さをその中の最大の高さで揃えるには以下のように記述する。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.tile-sample1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.tile-sample1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;実行したときのイメージ&lt;/h4&gt;
@@ -324,8 +324,8 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;h4&gt;JavaScriptサンプル&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;tile-sample2&lt;/code&gt;という&lt;code&gt;class&lt;/code&gt;属性を持つ要素が横に４つ並んでいるとき横に並んだ要素の高さを各行毎に揃えるにはその列数（＝４）を引数に指定する。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.tile-sample2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.tile-sample2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;実行したときのイメージ&lt;/h4&gt;
@@ -352,7 +352,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
   <entry>
     <title>シンプルで応用の効くmakefileとその解説</title>
     <link href="http://urin.github.io/posts/2013/simple-makefile-for-clang"/>
-    <updated>2013-08-10T00:00:00+05:30</updated>
+    <updated>2013-08-10T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/simple-makefile-for-clang</id>
     <content type="html">&lt;p&gt;&lt;code&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
@@ -368,37 +368,35 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 
 &lt;h2&gt;makefile&lt;/h2&gt;
 
-&lt;p&gt;※makefileではタブ文字に重要な意味があるが都合によりタブ文字をスペース４文字に置き換えている。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;そのまま使えるソースはこちら&lt;/a&gt;。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;makefile language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
+&lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;Gistはこちら&lt;/a&gt;。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
 &lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -Wextra -g -MMD -MP
 &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I../include
-&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ../bin/&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;shell basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f ..&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ../bin/&lt;span class=&quot;nf&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;shell&lt;/span&gt; basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f ..&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./obj
-&lt;span class=&quot;cp&quot;&gt;ifeq &amp;quot;$(strip $(OBJDIR))&amp;quot; &amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(OBJDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
   &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
-&lt;span class=&quot;cp&quot;&gt;endif&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;wildcard *.cpp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;addprefix &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/, &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;wildcard &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addprefix &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/, &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;LIBS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;COMPILER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;LDFLAGS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;$(TARGET)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJECTS) $(LIBS)&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(LDFLAGS)&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/%.o: %.cpp
-    @&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -d &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; mkdir -p &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;COMPILER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;INCLUDE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; -c &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;$(OBJDIR)/%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;%.cpp&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; mkdir -p &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(CFLAGS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(INCLUDE)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; -c &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;
 
-all: clean &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean $(TARGET)&lt;/span&gt;
 
-clean:
-    rm -f &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJECTS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;DEPENDS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;TARGET&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-    @rmdir --ignore-fail-on-non-empty &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;OBJDIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	rm -f &lt;span class=&quot;nv&quot;&gt;$(OBJECTS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(DEPENDS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(TARGET)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;rmdir --ignore-fail-on-non-empty &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
 
-&lt;span class=&quot;cp&quot;&gt;-include $(DEPENDS)&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;-include&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(DEPENDS)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;使用方法&lt;/h2&gt;
 
@@ -420,7 +418,7 @@ clean:
 
 &lt;p&gt;下記のようなディレクトリツリーで初期設定の&lt;code&gt;makefile&lt;/code&gt;を用いて&lt;code&gt;make&lt;/code&gt;を実行した場合、以下の矢印(&amp;lt;-)ようにファイルが生成される。
 同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;example
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;example
 |-- bin
 |   `-- example    &amp;lt;- (TARGET) 実行ファイル
 |-- include
@@ -491,7 +489,7 @@ clean:
 生成される実行ファイル名は &lt;code&gt; $(shell basename `readlink -f ..`) &lt;/code&gt;である。
 これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの親ディレクトリの名前である。
 つまり、以下の様なディレクトリ構成の場合、&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;example
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;example
 |-- bin
 `-- source
     |-- main.cpp
@@ -529,7 +527,7 @@ clean:
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
     <link href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows"/>
-    <updated>2013-08-04T00:00:00+05:30</updated>
+    <updated>2013-08-04T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</id>
     <content type="html">&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
@@ -545,13 +543,13 @@ clean:
 
 &lt;p&gt;&lt;a href=&quot;//python-distribute.org/distribute_setup.py&quot;&gt;distribute_setup.py&lt;/a&gt;
 をダウンロードしてきて&lt;code&gt;python&lt;/code&gt;で実行するだけ。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;python distribute_setup.py
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;python distribute_setup.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Pygmentsをインストール&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;python&lt;/code&gt;のあるディレクトリに&lt;code&gt;Scripts&lt;/code&gt;フォルダができていてその中に&lt;code&gt;easy_install.exe&lt;/code&gt;がある。
 ここで&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;&lt;span class=&quot;k&quot;&gt;cd&lt;/span&gt; Scripts
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Scripts
 easy_install Pygments
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;とするだけ。&lt;/p&gt;
@@ -559,8 +557,8 @@ easy_install Pygments
 &lt;h3&gt;pygments.rbのダウングレード&lt;/h3&gt;
 
 &lt;p&gt;シンタックスハイライトを使用しようとすると&lt;code&gt;posix-spawn&lt;/code&gt;やら&lt;code&gt;liquid&lt;/code&gt;やらがエラーを出す。この問題は&lt;a href=&quot;//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working&quot;&gt;Stack Over Flow&lt;/a&gt;にも挙げられていて対策もあった。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bat language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall -a pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.5.0&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem uninstall -a pygments.rb
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;とバージョンを&lt;code&gt;0.5.0&lt;/code&gt;に下げる。&lt;/p&gt;
 
@@ -570,7 +568,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
 
 &lt;p&gt;&lt;code&gt;jekyll&lt;/code&gt;本体に手をつけるハックもネット上で見かけたがよろしくない。
 デフォルトエンコーディングを変更するだけの&lt;code&gt;.rb&lt;/code&gt;ファイルを&lt;code&gt;_plugins&lt;/code&gt;フォルダに置いて&lt;code&gt;build&lt;/code&gt;すれば&lt;code&gt;jekyll&lt;/code&gt;が&lt;code&gt;UTF-8&lt;/code&gt;固定で動くようになる。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UTF_8&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UTF_8&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;
 
@@ -581,7 +579,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&amp;quot;=0.
   <entry>
     <title>ブログをリニューアル</title>
     <link href="http://urin.github.io/posts/2013/Renewal"/>
-    <updated>2013-08-03T00:00:00+05:30</updated>
+    <updated>2013-08-03T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/Renewal</id>
     <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
 

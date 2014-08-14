@@ -154,37 +154,35 @@
 
 <h2>makefile</h2>
 
-<p>※makefileではタブ文字に重要な意味があるが都合によりタブ文字をスペース４文字に置き換えている。</p>
-
-<p><a href="//gist.github.com/urin/5971408#file-makefile">そのまま使えるソースはこちら</a>。</p>
-<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="nv">COMPILER</span> <span class="o">=</span> g++
+<p><a href="//gist.github.com/urin/5971408#file-makefile">Gistはこちら</a>。</p>
+<div class="highlight"><pre><code class="language-makefile" data-lang="makefile"><span class="nv">COMPILER</span> <span class="o">=</span> g++
 <span class="nv">CFLAGS</span>   <span class="o">=</span> -Wextra -g -MMD -MP
 <span class="nv">LDFLAGS</span>  <span class="o">=</span>
 <span class="nv">LIBS</span>     <span class="o">=</span>
 <span class="nv">INCLUDE</span>  <span class="o">=</span> -I../include
-<span class="nv">TARGET</span>   <span class="o">=</span> ../bin/<span class="k">$(</span>shell basename <span class="sb">`</span>readlink -f ..<span class="sb">`</span><span class="k">)</span>
+<span class="nv">TARGET</span>   <span class="o">=</span> ../bin/<span class="nf">$(</span><span class="nb">shell</span> basename <span class="sb">`</span>readlink -f ..<span class="sb">`</span><span class="nv">)</span>
 <span class="nv">OBJDIR</span>   <span class="o">=</span> ./obj
-<span class="cp">ifeq &quot;$(strip $(OBJDIR))&quot; &quot;&quot;</span>
+<span class="err">ifeq</span> <span class="s2">"$(strip $(OBJDIR))"</span> <span class="s2">""</span>
   <span class="nv">OBJDIR</span> <span class="o">=</span> .
-<span class="cp">endif</span>
-<span class="nv">SOURCES</span>  <span class="o">=</span> <span class="k">$(</span>wildcard *.cpp<span class="k">)</span>
-<span class="nv">OBJECTS</span>  <span class="o">=</span> <span class="k">$(</span>addprefix <span class="k">$(</span>OBJDIR<span class="k">)</span>/, <span class="k">$(</span>SOURCES:.cpp<span class="o">=</span>.o<span class="k">))</span>
-<span class="nv">DEPENDS</span>  <span class="o">=</span> <span class="k">$(</span>OBJECTS:.o<span class="o">=</span>.d<span class="k">)</span>
+<span class="err">endif</span>
+<span class="nv">SOURCES</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>wildcard <span class="k">*</span>.cpp<span class="o">)</span>
+<span class="nv">OBJECTS</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="err">$</span><span class="o">(</span>SOURCES:.cpp<span class="o">=</span>.o<span class="o">))</span>
+<span class="nv">DEPENDS</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>OBJECTS:.o<span class="o">=</span>.d<span class="o">)</span>
 
-<span class="k">$(</span>TARGET<span class="k">)</span>: <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>LIBS<span class="k">)</span>
-    <span class="k">$(</span>COMPILER<span class="k">)</span> -o <span class="nv">$@</span> <span class="nv">$^</span> <span class="k">$(</span>LDFLAGS<span class="k">)</span>
+<span class="nl">$(TARGET)</span><span class="o">:</span> <span class="nf">$(OBJECTS) $(LIBS)</span>
+	<span class="nv">$(COMPILER)</span> -o <span class="nv">$@</span> <span class="nv">$^</span> <span class="nv">$(LDFLAGS)</span>
 
-<span class="k">$(</span>OBJDIR<span class="k">)</span>/%.o: %.cpp
-    @<span class="o">[</span> -d <span class="k">$(</span>OBJDIR<span class="k">)</span> <span class="o">]</span> <span class="o">||</span> mkdir -p <span class="k">$(</span>OBJDIR<span class="k">)</span>
-    <span class="k">$(</span>COMPILER<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>INCLUDE<span class="k">)</span> -o <span class="nv">$@</span> -c <span class="nv">$&lt;</span>
+<span class="nl">$(OBJDIR)/%.o</span><span class="o">:</span> <span class="nf">%.cpp</span>
+	<span class="p">@</span><span class="o">[</span> -d <span class="nv">$(OBJDIR)</span> <span class="o">]</span> <span class="o">||</span> mkdir -p <span class="nv">$(OBJDIR)</span>
+	<span class="nv">$(COMPILER)</span> <span class="nv">$(CFLAGS)</span> <span class="nv">$(INCLUDE)</span> -o <span class="nv">$@</span> -c <span class="nv">$&lt;</span>
 
-all: clean <span class="k">$(</span>TARGET<span class="k">)</span>
+<span class="nl">all</span><span class="o">:</span> <span class="nf">clean $(TARGET)</span>
 
-clean:
-    rm -f <span class="k">$(</span>OBJECTS<span class="k">)</span> <span class="k">$(</span>DEPENDS<span class="k">)</span> <span class="k">$(</span>TARGET<span class="k">)</span>
-    @rmdir --ignore-fail-on-non-empty <span class="sb">`</span>readlink -f <span class="k">$(</span>OBJDIR<span class="k">)</span><span class="sb">`</span>
+<span class="nl">clean</span><span class="o">:</span>
+	rm -f <span class="nv">$(OBJECTS)</span> <span class="nv">$(DEPENDS)</span> <span class="nv">$(TARGET)</span>
+	<span class="p">@</span>rmdir --ignore-fail-on-non-empty <span class="sb">`</span>readlink -f <span class="nv">$(OBJDIR)</span><span class="sb">`</span>
 
-<span class="cp">-include $(DEPENDS)</span>
+<span class="err">-include</span> <span class="err">$(DEPENDS)</span>
 </code></pre></div>
 <h2>使用方法</h2>
 
@@ -206,7 +204,7 @@ clean:
 
 <p>下記のようなディレクトリツリーで初期設定の<code>makefile</code>を用いて<code>make</code>を実行した場合、以下の矢印(&lt;-)ようにファイルが生成される。
 同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">example
+<div class="highlight"><pre><code class="language-" data-lang="">example
 |-- bin
 |   `-- example    &lt;- (TARGET) 実行ファイル
 |-- include
@@ -277,7 +275,7 @@ clean:
 生成される実行ファイル名は <code> $(shell basename `readlink -f ..`) </code>である。
 これは<code>makefile</code>の存在するディレクトリの親ディレクトリの名前である。
 つまり、以下の様なディレクトリ構成の場合、</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">example
+<div class="highlight"><pre><code class="language-" data-lang="">example
 |-- bin
 `-- source
     |-- main.cpp
@@ -550,7 +548,7 @@ clean:
           </div>
           <div class="col-sm-2">
             <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
-            <div>Powered by Jekyll version 1.4.2.</div>
+            <div>Powered by Jekyll version 2.3.0.</div>
           </div>
           <div class="col-sm-2">
             <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>

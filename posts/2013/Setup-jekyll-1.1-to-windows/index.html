@@ -149,13 +149,13 @@
 
 <p><a href="//python-distribute.org/distribute_setup.py">distribute_setup.py</a>
 をダウンロードしてきて<code>python</code>で実行するだけ。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">python distribute_setup.py
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">python distribute_setup.py
 </code></pre></div>
 <h3>Pygmentsをインストール</h3>
 
 <p><code>python</code>のあるディレクトリに<code>Scripts</code>フォルダができていてその中に<code>easy_install.exe</code>がある。
 ここで</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat"><span class="k">cd</span> Scripts
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd </span>Scripts
 easy_install Pygments
 </code></pre></div>
 <p>とするだけ。</p>
@@ -163,8 +163,8 @@ easy_install Pygments
 <h3>pygments.rbのダウングレード</h3>
 
 <p>シンタックスハイライトを使用しようとすると<code>posix-spawn</code>やら<code>liquid</code>やらがエラーを出す。この問題は<a href="//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working">Stack Over Flow</a>にも挙げられていて対策もあった。</p>
-<div class="highlight"><pre><code class="bat language-bat" data-lang="bat">gem uninstall -a pygments.rb
-gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem uninstall -a pygments.rb
+gem install pygments.rb --version <span class="s2">"=0.5.0"</span>
 </code></pre></div>
 <p>とバージョンを<code>0.5.0</code>に下げる。</p>
 
@@ -174,7 +174,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
 
 <p><code>jekyll</code>本体に手をつけるハックもネット上で見かけたがよろしくない。
 デフォルトエンコーディングを変更するだけの<code>.rb</code>ファイルを<code>_plugins</code>フォルダに置いて<code>build</code>すれば<code>jekyll</code>が<code>UTF-8</code>固定で動くようになる。</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="o">.</span><span class="n">default_external</span> <span class="o">=</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="no">Encoding</span><span class="o">::</span><span class="no">UTF_8</span>
 </code></pre></div>
 <p>以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは<a href="//jekyllrb.com/docs/home/">Jekyllの公式ドキュメント</a>をひと通り見ながらやれば大体OK。</p>
 
@@ -415,7 +415,7 @@ gem install pygments.rb --version <span class="s2">&quot;=0.5.0&quot;</span>
           </div>
           <div class="col-sm-2">
             <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
-            <div>Powered by Jekyll version 1.4.2.</div>
+            <div>Powered by Jekyll version 2.3.0.</div>
           </div>
           <div class="col-sm-2">
             <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>
