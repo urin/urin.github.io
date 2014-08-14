@@ -37,15 +37,15 @@
 &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve&quot;&gt;ruby - Jekyll - Error Running &amp;#39;Jekyll Serve&amp;#39; - Stack Overflow&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;というわけで&lt;code&gt;1.4.2&lt;/code&gt;をインストール。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &quot;=1.4.2&quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;で、とりあえずサイトを新規作成。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;mkdir jekyll-install-test
-cd jekyll-install-test
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;mkdir jekyll-install-test
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
 jekyll new .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;yajl-rubyのバージョン&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;jekyll build
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;jekyll build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;するとエラー。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
@@ -53,8 +53,8 @@ jekyll new .
 &lt;p&gt;&lt;a href=&quot;http://www.kahfei.com/?cat=17&quot;&gt;kahfei | jekyll&lt;/a&gt;の通り&lt;code&gt;yajl-ruby&lt;/code&gt;を更新する必要がある。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;gem list&lt;/code&gt;して yajl-ruby (1.1.0 x86-mingw32) となっているなら&lt;code&gt;yajl-ruby&lt;/code&gt;を再インストールする。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall yajl-ruby
-gem install yajl-ruby --version &quot;=1.1.0&quot; --platform=ruby
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem uninstall yajl-ruby
+gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;途中で依存関係の問い合わせがあるがYesで続行。&lt;code&gt;gem list&lt;/code&gt;で&lt;code&gt;yajl-ruby (1.1.0)&lt;/code&gt;となっていればOK。&lt;/p&gt;
 
@@ -64,38 +64,38 @@ gem install yajl-ruby --version &quot;=1.1.0&quot; --platform=ruby
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code&gt;pygments.rb&lt;/code&gt;は&lt;code&gt;0.5.0&lt;/code&gt;にする必要がある。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem uninstall pygments.rb
-gem install pygments.rb --version &quot;=0.5.0&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll build
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem uninstall pygments.rb
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;C:&lt;span class=&quot;se&quot;&gt;\p&lt;/span&gt;ath&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;o&lt;span class=&quot;se&quot;&gt;\j&lt;/span&gt;ekyll-install-test&amp;gt;jekyll build
 Configuration file: C:/path/to/jekyll-install-test/_config.yml
             Source: C:/path/to/jekyll-install-test
        Destination: C:/path/to/jekyll-install-test/_site
-      Generating... done.
+      Generating... &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;これでシンタックスハイライトを含んだ投稿の&lt;code&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
 
 &lt;h3&gt;wdmのインストール&lt;/h3&gt;
 
 &lt;p&gt;ローカル環境で確認するときに&lt;code&gt;--watch&lt;/code&gt;を使おうとするとエラーとなる。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll serve --watch
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;C:&lt;span class=&quot;se&quot;&gt;\p&lt;/span&gt;ath&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;o&lt;span class=&quot;se&quot;&gt;\j&lt;/span&gt;ekyll-install-test&amp;gt;jekyll serve --watch
 Configuration file: C:/Users/urin/Desktop/fda/_config.yml
             Source: C:/Users/urin/Desktop/fda
        Destination: C:/Users/urin/Desktop/fda/_site
-      Generating... done.
+      Generating... &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;.
  Auto-regeneration: enabled
-C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require&#39;: cannot load such file -- wdm (LoadError)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;require&lt;span class=&quot;s1&quot;&gt;&#39;: cannot load such file -- wdm (LoadError)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;wdm&lt;/code&gt;がインストールされていないだけ。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install wdm
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
 
 &lt;h2&gt;まとめると&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;gem install jekyll --version &quot;=1.4.2&quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
 gem uninstall yajl-ruby
-gem install yajl-ruby --version &quot;=1.1.0&quot; --platform=ruby
+gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
 gem uninstall pygments.rb
-gem install pygments.rb --version &quot;=0.5.0&quot;
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
 gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
   </entry>
