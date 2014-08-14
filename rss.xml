@@ -5,9 +5,62 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2014-03-02T22:47:46+09:00</lastBuildDate>
-    <pubDate>2014-03-02T22:47:46+09:00</pubDate>
+    <lastBuildDate>2014-08-14T23:59:32+09:00</lastBuildDate>
+    <pubDate>2014-08-14T23:59:32+09:00</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>Jekyll 2.3.0をWindowsに導入</title>
+      <description>&lt;p&gt;&lt;code&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll
+jekyll new jekyll-install-test
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;pygments.rbの代わりに&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;rouge&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;jekyll build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;するとエラー。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;Generating... {...略...}/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code&gt;Windows&lt;/code&gt;に導入する場合は&lt;code&gt;pygments.rb&lt;/code&gt;は&lt;code&gt;0.5.0&lt;/code&gt;にする必要があるのだが、&lt;code&gt;Jekyll 2.3.0&lt;/code&gt;は&lt;code&gt;pygments.rb 0.6.0&lt;/code&gt;に依存しているためバージョンダウンできない。&lt;/p&gt;
+
+&lt;p&gt;代わりに&lt;code&gt;Ruby&lt;/code&gt;製の&lt;code&gt;rouge&lt;/code&gt;が使えるようになっているのでそれを使うようにすれば問題ない。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rouge&lt;/code&gt;の方が対応言語は少ないが基本的に&lt;code&gt;pygments&lt;/code&gt;互換で動作するので既に&lt;code&gt;pygments&lt;/code&gt;で動いていた記事はほぼそのまま使える。&lt;/p&gt;
+
+&lt;p&gt;無理に&lt;code&gt;Python&lt;/code&gt;製の&lt;code&gt;pygments&lt;/code&gt;を動かすより軽くて良い。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install rouge
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;で&lt;code&gt;rouge&lt;/code&gt;をインストールしたら&lt;code&gt;_config.yml&lt;/code&gt;で&lt;code&gt;rouge&lt;/code&gt;を使うよう以下の行を追加する。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これでシンタックスハイライトを含んだ記事の&lt;code&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
+
+&lt;h3&gt;wdmのインストール&lt;/h3&gt;
+
+&lt;p&gt;ローカル環境で確認するときに&lt;code&gt;--watch&lt;/code&gt;を使おうとすると警告が出る。警告の内容は、&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;wdm&lt;/code&gt;が入ってないからディレクトリのポーリングが必要だよ（ちょっと重いってことだよ）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これが嫌なら単にインストールすれば良い。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install wdm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;まとめると&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll
+gem install rouge
+gem install wdm
+jekyll new jekyll-install-test
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;highlighter: rouge&amp;gt;&amp;gt; _config.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
+</description>
+      <link>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</link>
+      <guid>http://urin.github.io//posts/2014/install-jekyll-2.3.0-to-windows</guid>
+      <pubDate>2014-08-14T23:59:32+09:00</pubDate>
+    </item>
 
     <item>
       <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
