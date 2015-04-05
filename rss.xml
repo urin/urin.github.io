@@ -417,7 +417,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 
 &lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;Gistはこちら&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
-&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -Wextra -g -MMD -MP
+&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal
 &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I../include
@@ -490,11 +490,12 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;p&gt;以下は初期値の解説。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-Wextra&lt;/code&gt;
+&lt;li&gt;&lt;code&gt;-Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal&lt;/code&gt;
 
 &lt;ul&gt;
-&lt;li&gt;コンパイルワーニングのレベルを最大にする。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;よりも強力。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt; : コンパイルワーニングのレベルを最大にする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wextra&lt;/code&gt; : 歴史的理由により&lt;code&gt;-Wall&lt;/code&gt;を使用でも抑制される警告を抑制しない。つまり可能な限り全ての警告を出す。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-W*&lt;/code&gt; （それ以外） : 詳しくは&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html&quot;&gt;Warning Options - Using the GNU Compiler Collection (GCC)&lt;/a&gt;を参照されたし。&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-g&lt;/code&gt;
 
@@ -514,12 +515,13 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;h3&gt;リンクオプション (&lt;code&gt;LDFLAGS&lt;/code&gt;)&lt;/h3&gt;
 
 &lt;p&gt;リンクオプションとして&lt;code&gt;LDFLAGS&lt;/code&gt;の値を用いる。初期値は空。
-標準ライブラリをリンクする&lt;code&gt;-l&lt;/code&gt;オプションやコードカバレッジ用の&lt;code&gt;-coverage&lt;/code&gt;などを用いる場合はここに記述する。&lt;/p&gt;
+動的ライブラリをリンクする&lt;code&gt;-l&lt;/code&gt;オプションを用いる場合はここに記述する。
+パスの通っていない動的ライブラリをリンクするならここにそのファイル名(&lt;code&gt;*.so&lt;/code&gt;みたいな)を書いても良い。&lt;/p&gt;
 
 &lt;h3&gt;ライブラリの指定 (&lt;code&gt;LIBS&lt;/code&gt;)&lt;/h3&gt;
 
 &lt;p&gt;リンクするライブラリとして&lt;code&gt;LIBS&lt;/code&gt;の値を用いる。初期値は空。
-静的ライブラリ（&lt;code&gt;*.a&lt;/code&gt;）や動的ライブラリ（&lt;code&gt;*.so&lt;/code&gt;）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
+静的ライブラリ（&lt;code&gt;*.a&lt;/code&gt;）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
 ここで指定したライブラリが更新された場合、&lt;code&gt;make&lt;/code&gt;は再コンパイルが必要だと認識する。&lt;/p&gt;
 
 &lt;h3&gt;インクルードパスの指定 (&lt;code&gt;INCLUDE&lt;/code&gt;)&lt;/h3&gt;
@@ -567,7 +569,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;p&gt;依存関係ファイルとして&lt;code&gt;DEPENDS&lt;/code&gt;の値を用いる。
 初期値&lt;code&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code&gt;.d&lt;/code&gt;に置換したものである。&lt;/p&gt;
 
-&lt;p&gt;そんじゃーね。&lt;/p&gt;
+&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;
 </description>
       <link>http://urin.github.io/posts/2013/simple-makefile-for-clang</link>
       <guid>http://urin.github.io//posts/2013/simple-makefile-for-clang</guid>
