@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>ブログをリニューアル - URIN HACK</title>
-    <meta name="description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
-    <meta name="keywords" content="Programming, Jekyll, GitHub, Octopress, Ruby">
+    <title>C++で無名関数の関数ポインタを作る - URIN HACK</title>
+    <meta name="description" content="無名関数（ラムダ(lambda)とも呼ばれる）が使えるメリットは大きい。">
+    <meta name="keywords" content="Programming, C++">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="ブログをリニューアル - URIN HACK">
-    <meta name="twitter:title" content="ブログをリニューアル - URIN HACK">
-    <meta property="og:description"  content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
-    <meta name="twitter:description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
+    <meta property="og:title"  content="C++で無名関数の関数ポインタを作る - URIN HACK">
+    <meta name="twitter:title" content="C++で無名関数の関数ポインタを作る - URIN HACK">
+    <meta property="og:description"  content="無名関数（ラムダ(lambda)とも呼ばれる）が使えるメリットは大きい。">
+    <meta name="twitter:description" content="無名関数（ラムダ(lambda)とも呼ばれる）が使えるメリットは大きい。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2013/Renewal">
+    <meta property="og:url" content="http://urin.github.io/posts/2015/labmda-without-stdcpp">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2013/Renewal">
+    <link rel="canonical" href="http://urin.github.io/posts/2015/labmda-without-stdcpp">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -65,12 +65,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-04-05</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/labmda-without-stdcpp'></script>
       </span>
 
     </li>
@@ -78,23 +78,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="4件の記事">Ruby</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/C++" title="2件の記事">C++</a>
+      <span class="badge digits">2</span>
     </li>
     
   
@@ -109,10 +94,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -139,76 +124,62 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">ブログをリニューアル</h1>
-    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。</p>
+    <h1 class="well well-lg">C++で無名関数の関数ポインタを作る</h1>
+    <p>無名関数（ラムダ(lambda)とも呼ばれる）が使えるメリットは大きい。</p>
 
-<p><a href="//jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a></p>
+<p>プログラミングに費やす時間の中でかなりの比重を占めるのは命名だ。プログラマが「名付け」を省略できるのはコーディングの効率を大幅に上げ、命名ミスによるバグを心配する必要もなくなる。</p>
 
-<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。</p>
+<p><code>qsort</code>やスレッド生成のAPIを使うときに関数ポインタを引数として渡す必要があるが、このような場合、１度限り（再利用されない）処理だとしてもわざわざ関数化する必要があり、その関数に名前を付ける意味があまりないときがある。</p>
 
-<p>何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。</p>
+<p>更に、その１度限りの関数はその関数を呼び出す側の関数の外側に定義（実装）する必要があるため必然的にコードが分散してしまう。</p>
 
-<h2>Jekyllを選択したわけ</h2>
+<p>最新の<code>C++</code>では<a href="http://ja.wikipedia.org/wiki/C%2B%2B11#.E3.83.A9.E3.83.A0.E3.83.80.E9.96.A2.E6.95.B0.E3.81.A8.E3.83.A9.E3.83.A0.E3.83.80.E5.BC.8F">ラムダ</a>が言語仕様として正式に規定されており単純な関数ポインタ以上の高度な機能を持っている。コンパイルオプションで<code>-std=c++11</code>などを使えばラムダを使用することができる。</p>
 
-<p>ブログサービスを選ぶ判断基準は以下。</p>
+<p>コンパイルオプションを指定しなくても、その場で無名関数を定義し、その関数ポインタを得るだけであれば以下のようにすればよい。内部的には<code>C++</code>の<code>struct</code>の機能を使用しているため<code>C</code>としてはコンパイルできない（はず）。</p>
 
-<ul>
-<li>無料で容量制限が厳しくない</li>
-<li>将来性がある（１０年間くらいはサービスが継続すると思われる）</li>
-<li><code>HTML</code>や<code>CSS</code>、<code>Javascript</code>含めてほぼ完全にカスタマイズできる</li>
-<li>余計な広告が入らない</li>
-<li>記事にも<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
-</ul>
+<h3>無名関数を定義するマクロ</h3>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// 無名関数ポインタを返す。
+// argumentsは括弧で囲った引数リスト。
+// contentsは({})のように中括弧と括弧で処理本体を囲う。
+</span><span class="cp">#define lambda(return_type, arguments, contents) ({ \
+  struct { static return_type _ arguments { (contents); } } _; _._; \
+})
+</span></code></pre></div>
+<h3>サンプル</h3>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+</span>
+<span class="cp">#define lambda(return_type, arguments, contents) ({ \
+  struct { static return_type _ arguments { (contents); } } _; _._; \
+})
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//
+</span>  <span class="c1">// qsortの引数に無名関数を渡すサンプル
+</span>  <span class="c1">//
+</span>  <span class="kt">int</span> <span class="n">data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+  <span class="n">qsort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span>
+    <span class="n">lambda</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="p">({</span>
+      <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">a</span> <span class="o">-</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
+    <span class="p">}))</span>
+  <span class="p">);</span>
 
-<h3>無料のブログサービスを調べる</h3>
-
-<p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
-
-<ul>
-<li><a href="//www.ninja.co.jp/blog/">忍者ブログ</a></li>
-<li><a href="//www.blogger.com/">Blogger</a></li>
-<li><a href="//hatenablog.com/">はてなブログ</a></li>
-<li><a href="//d.hatena.ne.jp/">はてなダイアリー</a></li>
-<li><a href="//ameblo.jp/">Ameba (アメーバ)</a></li>
-<li><a href="//blog.fc2.com/">FC2ブログ</a></li>
-<li><a href="//blog.livedoor.com/">ライブドアブログ(livedoor Blog)</a></li>
-<li>・・・</li>
-</ul>
-
-<p>正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に<code>HTML</code>を使うのが難しくなったのが致命的だった。
-これら伝統的なブログサービス以外の選択肢としては</p>
-
-<ul>
-<li><a href="//www.strikingly.com/">Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成</a></li>
-<li><a href="//wordpress.com/">WordPress.com - Get a Free Blog Here</a></li>
-<li><a href="//wordpress.org/">WordPress › Blog Tool, Publishing Platform, and CMS</a>を何らかのサーバ上で運営</li>
-<li><a href="//octopress.org/">Octopress</a>をGitHubでホスティング</li>
-<li><a href="//www.edicy.com/">Edicy — Create a Website — Easy to use Website Builder</a></li>
-<li><a href="//ja.wix.com/">WIX</a></li>
-<li><a href="//www.weebly.com/">Weebly</a></li>
-<li><a href="//jp.jimdo.com/">Jimdo</a></li>
-</ul>
-
-<p>というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、<code>HTML</code>、<code>CSS</code>をカスタマイズ出来ないなど色々と不都合があった。
-で、この中では<code>Octopress</code>が<code>Compass</code>が使えたり色々といいように見えた。しかし・・・</p>
-
-<h3>結論</h3>
-
-<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされたバージョン<code>0.12.0</code>あたりから
-急激に充実してもはや<code>Octopress</code>なんていらないんじゃね？という勢いを感じたので<code>Jekyll</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
-
-<p><code>Jekyll</code>のスターターキットとして<a href="//jekyllbootstrap.com/">Jekyll-Bootstrap</a>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
-開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、こうした。</p>
-
-<ul>
-<li>常に最新の<code>Jekyll</code>が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。</li>
-<li>レスポンシブ対応のグリッドシステムを持っていて今後も息が長い<code>CSS</code>フレームワークを使いたい。ということで<a href="//getbootstrap.com/">Bootstrap 3 RC1</a>を導入。</li>
-<li>アイコンは<code>Web font</code>がいいので<code>Bootstrap</code>との相性も良い<a href="//fortawesome.github.io/Font-Awesome/">Font Awesome, the iconic font designed for Bootstrap</a>。</li>
-</ul>
-
-<p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ依存関係が少ない。安定依存の原則。これ重要。</p>
-
+  <span class="c1">//
+</span>  <span class="c1">// pthread_createの引数に無名関数を渡すサンプル
+</span>  <span class="c1">//
+</span>  <span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
+  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span>
+    <span class="n">lambda</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="p">({</span>
+      <span class="n">puts</span><span class="p">(</span><span class="s">"I'm thread."</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">})),</span>
+    <span class="nb">NULL</span>
+  <span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
   </article>
 </div>
 
@@ -217,12 +188,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-04-05</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/labmda-without-stdcpp'></script>
       </span>
 
     </li>
@@ -230,23 +201,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="4件の記事">Ruby</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/C++" title="2件の記事">C++</a>
+      <span class="badge digits">2</span>
     </li>
     
   
@@ -261,10 +217,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -282,10 +238,10 @@
 
     <div class="col-md-6 pagenation prev">
 
+      <a rel="prev" href="/posts/2014/install-jekyll-2.3.0-to-windows" title="Jekyll 2.3.0をWindowsに導入"><i class="fa fa-chevron-circle-left"></i><small>Jekyll 2.3.0をWindowsに導入</small></a>
+
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2013/Setup-jekyll-1.1-to-windows" title="Jekyll 1.1系をWindowsに導入する"><i class="fa fa-chevron-circle-right"></i><small>Jekyll 1.1系をWindowsに導入する</small></a>
 
     </div>
 
@@ -293,8 +249,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2013/Renewal';
-      var disqus_title = 'ブログをリニューアル';
+      var disqus_url = 'http://urin.github.io/posts/2015/labmda-without-stdcpp';
+      var disqus_title = 'C++で無名関数の関数ポインタを作る';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
