@@ -140,9 +140,9 @@
 <h3>無名関数を定義するマクロ</h3>
 <div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// 無名関数ポインタを返す。
 // argumentsは括弧で囲った引数リスト。
-// contentsは({})のように中括弧と括弧で処理本体を囲う。
+// contentsは (({})) のように中括弧と２つの括弧で処理本体を囲う。
 </span><span class="cp">#define lambda(return_type, arguments, contents) ({ \
-  struct { static return_type _ arguments { (contents); } } _; _._; \
+  struct { static return_type _ arguments { contents; } } _; _._; \
 })
 </span></code></pre></div>
 <h3>サンプル</h3>
@@ -151,7 +151,7 @@
 #include &lt;pthread.h&gt;
 </span>
 <span class="cp">#define lambda(return_type, arguments, contents) ({ \
-  struct { static return_type _ arguments { (contents); } } _; _._; \
+  struct { static return_type _ arguments { contents; } } _; _._; \
 })
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -161,9 +161,9 @@
 </span>  <span class="c1">//
 </span>  <span class="kt">int</span> <span class="n">data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
   <span class="n">qsort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span>
-    <span class="n">lambda</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="p">({</span>
+    <span class="n">lambda</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="p">(({</span>
       <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">a</span> <span class="o">-</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
-    <span class="p">}))</span>
+    <span class="p">})))</span>
   <span class="p">);</span>
 
   <span class="c1">//
@@ -171,10 +171,10 @@
 </span>  <span class="c1">//
 </span>  <span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
   <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span>
-    <span class="n">lambda</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="p">({</span>
+    <span class="n">lambda</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="p">(({</span>
       <span class="n">puts</span><span class="p">(</span><span class="s">"I'm thread."</span><span class="p">);</span>
       <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="p">})),</span>
+    <span class="p">}))),</span>
     <span class="nb">NULL</span>
   <span class="p">);</span>
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
