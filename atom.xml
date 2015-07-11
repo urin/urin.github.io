@@ -6,11 +6,67 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2015-04-05T22:00:40+09:00</updated>
+  <updated>2015-07-11T16:08:31+09:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
   </author>
+
+  <entry>
+    <title>できる？できない？という問いかけ</title>
+    <link href="http://urin.github.io/posts/2015/everything-is-possible"/>
+    <updated>2015-07-11T16:08:31+09:00</updated>
+    <id>http://urin.github.io/posts/2015/everything-is-possible</id>
+    <content type="html">&lt;p&gt;できる？できない？という問いかけを考え直そう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://konifar.hatenablog.com/entry/2015/06/07/105035&quot;&gt;エンジニアの「できない」という言葉の裏側 - Konifar&amp;#39;s WIP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;「～～できるんだっけ？」「～～ということは実現可能？」と問いかけられると猛烈にモヤモヤすると同時に「あ、この人、思考停止したな。」と思う。&lt;/p&gt;
+
+&lt;p&gt;「これってできるかな？」と考えることはほぼ間違いなく「できる」と言ってもいい。&lt;/p&gt;
+
+&lt;p&gt;技術的に出来ないことなんてまずない。タイムマシンを作れるか、などと言われない限りは。&lt;/p&gt;
+
+&lt;p&gt;だからその質問に純粋に回答すれば「できる」と言うしかない。だとすると・・・？&lt;/p&gt;
+
+&lt;h2&gt;そこでエンジニアは考えてしまう&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;質問者が本当に知りたいことは技術的に「できる」「できない」ということじゃない。&lt;/li&gt;
+&lt;li&gt;じゃあエンジニアの自分に本当に聞きたいことはなんだろう？&lt;/li&gt;
+&lt;li&gt;何か条件や前提があるのか？&lt;/li&gt;
+&lt;li&gt;それを聞いて何を判断しようとしている？&lt;/li&gt;
+&lt;li&gt;そもそも何のためにしたいの？&lt;/li&gt;
+&lt;li&gt;もしかしてすぐやれってこと？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;と一瞬で色々な事を考える必要があるので答えに詰まる。&lt;/p&gt;
+
+&lt;p&gt;多くの場合、質問者が「やる」「やらない」という決断に迫られている。&lt;/p&gt;
+
+&lt;p&gt;決断を迫られているのであれば何か判断基準を作ってそれを満たせるか、を問うべきだ。&lt;/p&gt;
+
+&lt;p&gt;その判断基準を考えずに単に「できる？」と聞く人間は思考停止していると感じてしまう。&lt;/p&gt;
+
+&lt;h2&gt;エンジニアに技術的に可能かどうかを聞いても意味は無い&lt;/h2&gt;
+
+&lt;p&gt;だからこんな感じに問いかけたほうが良いだろう。&lt;/p&gt;
+
+&lt;p&gt;「～～できるようにしたいんだけど～～に影響が出ないように&lt;/p&gt;
+
+&lt;p&gt;　～～の期間と～～の予算と～～の人員でなんとかなりそう？」&lt;/p&gt;
+
+&lt;p&gt;とか&lt;/p&gt;
+
+&lt;p&gt;「～～については変更せずに～～できるようにするのは難しい？」&lt;/p&gt;
+
+&lt;p&gt;とか&lt;/p&gt;
+
+&lt;p&gt;「～～する場合、どの程度の規模感（期間・費用・誰）になりそう？」&lt;/p&gt;
+
+&lt;p&gt;こうすればお互いハッピーになるんじゃないかな。&lt;/p&gt;
+</content>
+  </entry>
 
   <entry>
     <title>C++で無名関数の関数ポインタを作る</title>

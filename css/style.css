@@ -359,7 +359,6 @@ footer {
 }
 
 .post pre {
-  font-family: Osaka-mono, monospace;
   font-size: inherit;
   line-height: 1.4;
   overflow: auto;
