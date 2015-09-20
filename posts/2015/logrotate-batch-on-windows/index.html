@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>logrotate.bat - Windowsバッチでログローテート - URIN HACK</title>
-    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
+    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。">
     <meta name="keywords" content="Programming, Windows, Batch">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
     <meta property="fb:app_id" content="494189017339311">
     <meta property="og:title"  content="logrotate.bat - Windowsバッチでログローテート - URIN HACK">
     <meta name="twitter:title" content="logrotate.bat - Windowsバッチでログローテート - URIN HACK">
-    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
-    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
+    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。">
+    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
@@ -132,57 +132,9 @@
     <h1 class="well well-lg">logrotate.bat - Windowsバッチでログローテート</h1>
     <p>Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。
 ということで、とりあえず現状の決定版かなと。</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">@echo off
-::
-:: logrotate.bat - Log rotation <span class="k">for </span>windows
-::
-:: Usage: logrotate.bat filename maxfilecount <span class="o">[</span>maxfilesize]
-::
-::   filename    : The file name to rotate.
-::   maxfilecount: Number of backup files.
-::   maxfilesize : Rotated <span class="k">if </span>the size of file exceeds specified size.
-::                 <span class="o">(</span>Default is 0. Unit notation is available <span class="o">(</span>K, M and G<span class="o">)</span>
-::
-:: Example:
-::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 1
-::     The file is renamed to path<span class="se">\t</span>o<span class="se">\f</span>ile.1.
-::     The file path<span class="se">\t</span>o<span class="se">\f</span>ile.1 is deleted <span class="k">if </span>exists.
-::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 100 128
-::     The file is rotated from path<span class="se">\t</span>o<span class="se">\f</span>ile.1 to file<span class="se">\t</span>o<span class="se">\f</span>ile.100
-::     <span class="k">if </span>the size exeeds 128 bytes.
-::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 10 10M
-::     The file is rotated from path<span class="se">\t</span>o<span class="se">\f</span>ile.1 to file<span class="se">\t</span>o<span class="se">\f</span>ile.10
-::     <span class="k">if </span>the size exeeds 10 Mega-bytes.
-::
-setlocal enabledelayedexpansion
 
-<span class="k">if</span> <span class="s2">"%~1"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">exit</span> /b 1<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set </span><span class="nv">file</span><span class="o">=</span><span class="s2">"%~1"</span><span class="o">)</span>
-<span class="k">if</span> <span class="s2">"%~2"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">exit</span> /b 1<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set</span> /a <span class="nv">maxfilecount</span><span class="o">=</span>%~2<span class="o">)</span>
-<span class="k">if</span> <span class="s2">"%~3"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>0<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set </span><span class="nv">maxfilesize</span><span class="o">=</span>%~3<span class="o">)</span>
+<script src="https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat"> </script>
 
-<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:K=%"</span> <span class="o">(</span>
-  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:K<span class="o">=</span> <span class="k">*</span> 1024%
-<span class="o">)</span>
-<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:M=%"</span> <span class="o">(</span>
-  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:M<span class="o">=</span> <span class="k">*</span> 1048576%
-<span class="o">)</span>
-<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:G=%"</span> <span class="o">(</span>
-  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:G<span class="o">=</span> <span class="k">*</span> 1073741824%
-<span class="o">)</span>
-
-<span class="k">if </span>exist %file% <span class="o">(</span>
-  <span class="k">for</span> %%i <span class="k">in</span> <span class="o">(</span>%file%<span class="o">)</span> <span class="k">do</span> <span class="o">(</span><span class="nb">set </span><span class="nv">size</span><span class="o">=</span>%%~zi<span class="o">)</span>
-  <span class="k">if</span> !size! geq %maxfilesize% <span class="o">(</span>
-    <span class="k">for</span> %%i <span class="k">in</span> <span class="o">(</span>%file%<span class="o">)</span> <span class="k">do</span> <span class="o">(</span><span class="nb">set </span><span class="nv">fn</span><span class="o">=</span><span class="s2">"%%~nxi"</span><span class="o">)</span>
-    <span class="k">if </span>exist %file%.%maxfilecount% <span class="o">(</span>del %file%.%maxfilecount% &gt; nul<span class="o">)</span>
-    <span class="k">for</span> /l %%i <span class="k">in</span> <span class="o">(</span>%maxfilecount%,-1,2<span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
-      <span class="nb">set</span> /a <span class="nv">old</span><span class="o">=</span>%%i - 1
-      <span class="k">if </span>exist %file%.!old! <span class="o">(</span>rename %file%.!old! !fn!.%%i &gt; nul<span class="o">)</span>
-    <span class="o">)</span>
-    rename %file% !fn!.1 &gt; nul
-  <span class="o">)</span>
-<span class="o">)</span>
-</code></pre></div>
   </article>
 </div>
 
