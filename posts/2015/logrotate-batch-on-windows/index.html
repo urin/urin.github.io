@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Jekyll 2.3.0をWindowsに導入 - URIN HACK</title>
-    <meta name="description" content="Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。">
-    <meta name="keywords" content="Programming, Jekyll, Ruby, Windows">
+    <title>logrotate.bat - Windowsバッチでログローテート - URIN HACK</title>
+    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
+    <meta name="keywords" content="Programming, Windows, Batch">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="Jekyll 2.3.0をWindowsに導入 - URIN HACK">
-    <meta name="twitter:title" content="Jekyll 2.3.0をWindowsに導入 - URIN HACK">
-    <meta property="og:description"  content="Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。">
-    <meta name="twitter:description" content="Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。">
+    <meta property="og:title"  content="logrotate.bat - Windowsバッチでログローテート - URIN HACK">
+    <meta name="twitter:title" content="logrotate.bat - Windowsバッチでログローテート - URIN HACK">
+    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
+    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。ということで、とりあえず現状の決定版かなと。@echo off:::: logrotate.bat - Log rotation for windows:::: Usage: logrotate.bat filename maxfilecount [maxfilesize]::::   filename    : The file name to rotate.::   maxfilecount: Number of backup files.::   maxfilesize : Rotated if the size of file exceeds specified size.::                 (Default is 0. Unit notation is available (K, M and G):::: Example:::   logrotate.bat path\to\file 1::     The file is renamed to path\to\file.1.::     The file path\to\file.1 is deleted if exists.::   logrotate.bat path\to\file 100 128::     The file is rotated from path\to\file.1 to file\to\file.100::     if the size exeeds 128 bytes.::   logrotate.bat path\to\file 10 10M::     The file is rotated from path\to\file.1 to file\to\file.10::     if the size exeeds 10 Mega-bytes.::setlocal enabledelayedexpansionif "%~1" == "" (exit /b 1) else (set file="%~1")if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)if not "%maxfilesize%" == "%maxfilesize:K=%" (  set /a maxfilesize=%maxfilesize:K= * 1024%)if not "%maxfilesize%" == "%maxfilesize:M=%" (  set /a maxfilesize=%maxfilesize:M= * 1048576%)if not "%maxfilesize%" == "%maxfilesize:G=%" (  set /a maxfilesize=%maxfilesize:G= * 1073741824%)if exist %file% (  for %%i in (%file%) do (set size=%%~zi)  if !size! geq %maxfilesize% (    for %%i in (%file%) do (set fn="%%~nxi")    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)    for /l %%i in (%maxfilecount%,-1,2) do (      set /a old=%%i - 1      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)    )    rename %file% !fn!.1 &gt; nul  ))">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows">
+    <meta property="og:url" content="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows">
+    <link rel="canonical" href="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -65,12 +65,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2014-08-14</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
       </span>
 
     </li>
@@ -78,18 +78,13 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="4件の記事">Ruby</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
       <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
       <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
+      <span class="badge digits">1</span>
     </li>
     
   
@@ -104,10 +99,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -134,53 +129,60 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">Jekyll 2.3.0をWindowsに導入</h1>
-    <p><code>Jekyll 2.3.0</code>を<code>Ruby 2.0.0</code>+<code>Windows</code>へ導入する方法。</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install jekyll
-jekyll new jekyll-install-test
-<span class="nb">cd </span>jekyll-install-test
+    <h1 class="well well-lg">logrotate.bat - Windowsバッチでログローテート</h1>
+    <p>Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。
+ということで、とりあえず現状の決定版かなと。</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">@echo off
+::
+:: logrotate.bat - Log rotation <span class="k">for </span>windows
+::
+:: Usage: logrotate.bat filename maxfilecount <span class="o">[</span>maxfilesize]
+::
+::   filename    : The file name to rotate.
+::   maxfilecount: Number of backup files.
+::   maxfilesize : Rotated <span class="k">if </span>the size of file exceeds specified size.
+::                 <span class="o">(</span>Default is 0. Unit notation is available <span class="o">(</span>K, M and G<span class="o">)</span>
+::
+:: Example:
+::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 1
+::     The file is renamed to path<span class="se">\t</span>o<span class="se">\f</span>ile.1.
+::     The file path<span class="se">\t</span>o<span class="se">\f</span>ile.1 is deleted <span class="k">if </span>exists.
+::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 100 128
+::     The file is rotated from path<span class="se">\t</span>o<span class="se">\f</span>ile.1 to file<span class="se">\t</span>o<span class="se">\f</span>ile.100
+::     <span class="k">if </span>the size exeeds 128 bytes.
+::   logrotate.bat path<span class="se">\t</span>o<span class="se">\f</span>ile 10 10M
+::     The file is rotated from path<span class="se">\t</span>o<span class="se">\f</span>ile.1 to file<span class="se">\t</span>o<span class="se">\f</span>ile.10
+::     <span class="k">if </span>the size exeeds 10 Mega-bytes.
+::
+setlocal enabledelayedexpansion
+
+<span class="k">if</span> <span class="s2">"%~1"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">exit</span> /b 1<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set </span><span class="nv">file</span><span class="o">=</span><span class="s2">"%~1"</span><span class="o">)</span>
+<span class="k">if</span> <span class="s2">"%~2"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">exit</span> /b 1<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set</span> /a <span class="nv">maxfilecount</span><span class="o">=</span>%~2<span class="o">)</span>
+<span class="k">if</span> <span class="s2">"%~3"</span> <span class="o">==</span> <span class="s2">""</span> <span class="o">(</span><span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>0<span class="o">)</span> <span class="k">else</span> <span class="o">(</span><span class="nb">set </span><span class="nv">maxfilesize</span><span class="o">=</span>%~3<span class="o">)</span>
+
+<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:K=%"</span> <span class="o">(</span>
+  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:K<span class="o">=</span> <span class="k">*</span> 1024%
+<span class="o">)</span>
+<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:M=%"</span> <span class="o">(</span>
+  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:M<span class="o">=</span> <span class="k">*</span> 1048576%
+<span class="o">)</span>
+<span class="k">if </span>not <span class="s2">"%maxfilesize%"</span> <span class="o">==</span> <span class="s2">"%maxfilesize:G=%"</span> <span class="o">(</span>
+  <span class="nb">set</span> /a <span class="nv">maxfilesize</span><span class="o">=</span>%maxfilesize:G<span class="o">=</span> <span class="k">*</span> 1073741824%
+<span class="o">)</span>
+
+<span class="k">if </span>exist %file% <span class="o">(</span>
+  <span class="k">for</span> %%i <span class="k">in</span> <span class="o">(</span>%file%<span class="o">)</span> <span class="k">do</span> <span class="o">(</span><span class="nb">set </span><span class="nv">size</span><span class="o">=</span>%%~zi<span class="o">)</span>
+  <span class="k">if</span> !size! geq %maxfilesize% <span class="o">(</span>
+    <span class="k">for</span> %%i <span class="k">in</span> <span class="o">(</span>%file%<span class="o">)</span> <span class="k">do</span> <span class="o">(</span><span class="nb">set </span><span class="nv">fn</span><span class="o">=</span><span class="s2">"%%~nxi"</span><span class="o">)</span>
+    <span class="k">if </span>exist %file%.%maxfilecount% <span class="o">(</span>del %file%.%maxfilecount% &gt; nul<span class="o">)</span>
+    <span class="k">for</span> /l %%i <span class="k">in</span> <span class="o">(</span>%maxfilecount%,-1,2<span class="o">)</span> <span class="k">do</span> <span class="o">(</span>
+      <span class="nb">set</span> /a <span class="nv">old</span><span class="o">=</span>%%i - 1
+      <span class="k">if </span>exist %file%.!old! <span class="o">(</span>rename %file%.!old! !fn!.%%i &gt; nul<span class="o">)</span>
+    <span class="o">)</span>
+    rename %file% !fn!.1 &gt; nul
+  <span class="o">)</span>
+<span class="o">)</span>
 </code></pre></div>
-<h3>pygments.rbの代わりに<a href="https://github.com/jneen/rouge">rouge</a></h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">jekyll build
-</code></pre></div>
-<p>するとエラー。</p>
-<div class="highlight"><pre><code class="language-" data-lang="">Generating... {...略...}/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
-</code></pre></div>
-<p><a href="http://tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/">こちら</a>にもある通り<code>Windows</code>に導入する場合は<code>pygments.rb</code>は<code>0.5.0</code>にする必要があるのだが、<code>Jekyll 2.3.0</code>は<code>pygments.rb 0.6.0</code>に依存しているためバージョンダウンできない。</p>
-
-<p>代わりに<code>Ruby</code>製の<code>rouge</code>が使えるようになっているのでそれを使うようにすれば問題ない。</p>
-
-<p><code>rouge</code>の方が対応言語は少ないが基本的に<code>pygments</code>互換で動作するので既に<code>pygments</code>で動いていた記事はほぼそのまま使える。</p>
-
-<p>無理に<code>Python</code>製の<code>pygments</code>を動かすより軽くて良い。</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install rouge
-</code></pre></div>
-<p>で<code>rouge</code>をインストールしたら<code>_config.yml</code>で<code>rouge</code>を使うよう以下の行を追加する。</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
-</code></pre></div>
-<p>これでシンタックスハイライトを含んだ記事の<code>jekyll build</code>はできるようになった。</p>
-
-<h3>wdmのインストール</h3>
-
-<p>ローカル環境で確認するときに<code>--watch</code>を使おうとすると警告が出る。警告の内容は、</p>
-
-<blockquote>
-<p><code>wdm</code>が入ってないからディレクトリのポーリングが必要だよ（ちょっと重いってことだよ）</p>
-</blockquote>
-
-<p>これが嫌なら単にインストールすれば良い。</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install wdm
-</code></pre></div>
-<h2>まとめると</h2>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install jekyll
-gem install rouge
-gem install wdm
-jekyll new jekyll-install-test
-<span class="nb">cd </span>jekyll-install-test
-<span class="nb">echo </span>highlighter: rouge&gt;&gt; _config.yml
-</code></pre></div>
-<p>以上で環境構築は終わり。</p>
-
   </article>
 </div>
 
@@ -189,12 +191,12 @@ jekyll new jekyll-install-test
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2014-08-14</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
       </span>
 
     </li>
@@ -202,18 +204,13 @@ jekyll new jekyll-install-test
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="4件の記事">Ruby</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
       <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
       <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
+      <span class="badge digits">1</span>
     </li>
     
   
@@ -228,10 +225,10 @@ jekyll new jekyll-install-test
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -249,12 +246,10 @@ jekyll new jekyll-install-test
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2014/install-jekyll-1.4.2-to-windows" title="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入"><i class="fa fa-chevron-circle-left"></i><small>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</small></a>
+      <a rel="prev" href="/posts/2015/everything-is-possible" title="できる？できない？という問いかけ"><i class="fa fa-chevron-circle-left"></i><small>できる？できない？という問いかけ</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2015/labmda-without-stdcpp" title="C++で無名関数の関数ポインタを作る"><i class="fa fa-chevron-circle-right"></i><small>C++で無名関数の関数ポインタを作る</small></a>
 
     </div>
 
@@ -262,8 +257,8 @@ jekyll new jekyll-install-test
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows';
-      var disqus_title = 'Jekyll 2.3.0をWindowsに導入';
+      var disqus_url = 'http://urin.github.io/posts/2015/logrotate-batch-on-windows';
+      var disqus_title = 'logrotate.bat - Windowsバッチでログローテート';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

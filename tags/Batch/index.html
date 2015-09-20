@@ -19,7 +19,7 @@
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/tags/gcc/">
+    <meta property="og:url" content="http://urin.github.io/tags/Batch/">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/tags/gcc/">
+    <link rel="canonical" href="http://urin.github.io/tags/Batch/">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -60,16 +60,65 @@
 
     <div class="container">
       <div class="main-content">
-        <h2 class="well well-lg"><i class="fa fa-tag"></i> gccに関連する記事<span class="digits badge pull-right">1</span></h2>
+        <h2 class="well well-lg"><i class="fa fa-tag"></i> Batchに関連する記事<span class="digits badge pull-right">1</span></h2>
 
 <hr>
 <div class="row post-list-row">
-  <div class="post-aux col-sm-2"><i class="fa fa-edit"></i><span class="digits">2013-08-10</span></div>
+  <div class="post-aux col-sm-2"><i class="fa fa-edit"></i><span class="digits">2015-09-19</span></div>
   <article class="col-sm-10">
-    <h3><a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a></h3>
-    <section>makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。
+    <h3><a href="/posts/2015/logrotate-batch-on-windows">logrotate.bat - Windowsバッチでログローテート</a></h3>
+    <section>Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。
+ということで、とりあえず現状の決定版かなと。
+@echo off
+::
+:: logrotate.bat - Log rotation for windows
+::
+:: Usage: logrotate.bat filename maxfilecount [maxfilesize]
+::
+::   filename    : The file name to rotate.
+::   maxfilecount: Number of backup files.
+::   maxfilesize : Rotated if the size of file exceeds specified size.
+::                 (Default is 0. Unit notation is available (K, M and G)
+::
+:: Example:
+::   logrotate.bat path\to\file 1
+::     The file is renamed to path\to\file.1.
+::     The file path\to\file.1 is deleted if exists.
+::   logrotate.bat path\to\file 100 128
+::     The file is rotated from path\to\file.1 to file\to\file.100
+::     if the size exeeds 128 bytes.
+::   logrotate.bat path\to\file 10 10M
+::     The file is rotated from path\to\file.1 to file\to\file.10
+::     if the size exeeds 10 Mega-bytes.
+::
+setlocal enabledelayedexpansion
 
-Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。
+if "%~1" == "" (exit /b 1) else (set file="%~1")
+if "%~2" == "" (exit /b 1) else (set /a maxfilecount=%~2)
+if "%~3" == "" (set /a maxfilesize=0) else (set maxfilesize=%~3)
+
+if not "%maxfilesize%" == "%maxfilesize:K=%" (
+  set /a maxfilesize=%maxfilesize:K= * 1024%
+)
+if not "%maxfilesize%" == "%maxfilesize:M=%" (
+  set /a maxfilesize=%maxfilesize:M= * 1048576%
+)
+if not "%maxfilesize%" == "%maxfilesize:G=%" (
+  set /a maxfilesize=%maxfilesize:G= * 1073741824%
+)
+
+if exist %file% (
+  for %%i in (%file%) do (set size=%%~zi)
+  if !size! geq %maxfilesize% (
+    for %%i in (%file%) do (set fn="%%~nxi")
+    if exist %file%.%maxfilecount% (del %file%.%maxfilecount% &gt; nul)
+    for /l %%i in (%maxfilecount%,-1,2) do (
+      set /a old=%%i - 1
+      if exist %file%.!old! (rename %file%.!old! !fn!.%%i &gt; nul)
+    )
+    rename %file% !fn!.1 &gt; nul
+  )
+)
 </section>
   </article>
 </div>
