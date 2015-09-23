@@ -21,6 +21,15 @@
 ということで、とりあえず現状の決定版かなと。&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;set logfile=&quot;path\to\logfile.log&quot;
+logrotate.bat %logfile% 1 10K
+echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。&lt;/p&gt;
+
+&lt;p&gt;常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。&lt;/p&gt;
 </content>
   </entry>
 
