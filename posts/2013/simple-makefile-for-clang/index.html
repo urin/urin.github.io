@@ -155,32 +155,39 @@
 <h2>makefile</h2>
 
 <p><a href="//gist.github.com/urin/5971408#file-makefile">Gistはこちら</a>。</p>
-<div class="highlight"><pre><code class="language-makefile" data-lang="makefile"><span class="nv">COMPILER</span> <span class="o">=</span> g++
-<span class="nv">CFLAGS</span>   <span class="o">=</span> -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal
-<span class="nv">LDFLAGS</span>  <span class="o">=</span>
-<span class="nv">LIBS</span>     <span class="o">=</span>
-<span class="nv">INCLUDE</span>  <span class="o">=</span> -I../include
-<span class="nv">TARGET</span>   <span class="o">=</span> ../bin/<span class="nf">$(</span><span class="nb">shell</span> basename <span class="sb">`</span>readlink -f ..<span class="sb">`</span><span class="nv">)</span>
-<span class="nv">OBJDIR</span>   <span class="o">=</span> ./obj
-<span class="err">ifeq</span> <span class="s2">"$(strip $(OBJDIR))"</span> <span class="s2">""</span>
-  <span class="nv">OBJDIR</span> <span class="o">=</span> .
+<div class="highlight"><pre><code class="language-makefile" data-lang="makefile"><span class="nv">COMPILER</span>  <span class="o">=</span> g++
+<span class="nv">CFLAGS</span>    <span class="o">=</span> -g -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+<span class="err">ifeq</span> <span class="s2">"$(shell getconf LONG_BIT)"</span> <span class="s2">"64"</span>
+  <span class="nv">LDFLAGS</span> <span class="o">=</span>
+<span class="err">else</span>
+  <span class="nv">LDFLAGS</span> <span class="o">=</span>
 <span class="err">endif</span>
-<span class="nv">SOURCES</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>wildcard <span class="k">*</span>.cpp<span class="o">)</span>
-<span class="nv">OBJECTS</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="err">$</span><span class="o">(</span>SOURCES:.cpp<span class="o">=</span>.o<span class="o">))</span>
-<span class="nv">DEPENDS</span>  <span class="o">=</span> <span class="err">$</span><span class="o">(</span>OBJECTS:.o<span class="o">=</span>.d<span class="o">)</span>
+<span class="nv">LIBS</span>      <span class="o">=</span>
+<span class="nv">INCLUDE</span>   <span class="o">=</span> -I./include
+<span class="nv">TARGET</span>    <span class="o">=</span> ./bin/<span class="nf">$(</span><span class="nb">shell</span> basename <span class="sb">`</span>readlink -f .<span class="sb">`</span><span class="nv">)</span>
+<span class="nv">SRCDIR</span>    <span class="o">=</span> ./source
+<span class="err">ifeq</span> <span class="s2">"$(strip $(SRCDIR))"</span> <span class="s2">""</span>
+  <span class="nv">SRCDIR</span>  <span class="o">=</span> .
+<span class="err">endif</span>
+<span class="nv">SOURCES</span>   <span class="o">=</span> <span class="err">$</span><span class="o">(</span>wildcard <span class="nv">$(SRCDIR)</span>/<span class="k">*</span>.cpp<span class="o">)</span>
+<span class="nv">OBJDIR</span>    <span class="o">=</span> ./obj
+<span class="err">ifeq</span> <span class="s2">"$(strip $(OBJDIR))"</span> <span class="s2">""</span>
+  <span class="nv">OBJDIR</span>  <span class="o">=</span> .
+<span class="err">endif</span>
+<span class="nv">OBJECTS</span>   <span class="o">=</span> <span class="err">$</span><span class="o">(</span>addprefix <span class="nv">$(OBJDIR)</span>/, <span class="err">$</span><span class="o">(</span>notdir <span class="err">$</span><span class="o">(</span>SOURCES:.cpp<span class="o">=</span>.o<span class="o">)))</span>
+<span class="nv">DEPENDS</span>   <span class="o">=</span> <span class="err">$</span><span class="o">(</span>OBJECTS:.o<span class="o">=</span>.d<span class="o">)</span>
 
 <span class="nl">$(TARGET)</span><span class="o">:</span> <span class="nf">$(OBJECTS) $(LIBS)</span>
 	<span class="nv">$(COMPILER)</span> -o <span class="nv">$@</span> <span class="nv">$^</span> <span class="nv">$(LDFLAGS)</span>
 
-<span class="nl">$(OBJDIR)/%.o</span><span class="o">:</span> <span class="nf">%.cpp</span>
-	<span class="p">@</span><span class="o">[</span> -d <span class="nv">$(OBJDIR)</span> <span class="o">]</span> <span class="o">||</span> mkdir -p <span class="nv">$(OBJDIR)</span>
+<span class="nl">$(OBJDIR)/%.o</span><span class="o">:</span> <span class="nf">$(SRCDIR)/%.cpp</span>
+	<span class="p">-</span>mkdir -p <span class="nv">$(OBJDIR)</span>
 	<span class="nv">$(COMPILER)</span> <span class="nv">$(CFLAGS)</span> <span class="nv">$(INCLUDE)</span> -o <span class="nv">$@</span> -c <span class="nv">$&lt;</span>
 
 <span class="nl">all</span><span class="o">:</span> <span class="nf">clean $(TARGET)</span>
 
 <span class="nl">clean</span><span class="o">:</span>
-	rm -f <span class="nv">$(OBJECTS)</span> <span class="nv">$(DEPENDS)</span> <span class="nv">$(TARGET)</span>
-	<span class="p">@</span>rmdir --ignore-fail-on-non-empty <span class="sb">`</span>readlink -f <span class="nv">$(OBJDIR)</span><span class="sb">`</span>
+	<span class="p">-</span>rm -f <span class="nv">$(OBJECTS)</span> <span class="nv">$(DEPENDS)</span> <span class="nv">$(TARGET)</span>
 
 <span class="err">-include</span> <span class="err">$(DEPENDS)</span>
 </code></pre></div>
@@ -205,16 +212,16 @@
 <p>下記のようなディレクトリツリーで初期設定の<code>makefile</code>を用いて<code>make</code>を実行した場合、以下の矢印(&lt;-)ようにファイルが生成される。
 同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。</p>
 <div class="highlight"><pre><code class="language-" data-lang="">example
+|-- makefile
 |-- bin
-|   `-- example    &lt;- (TARGET) 実行ファイル
+|   `-- example       &lt;- (TARGET) 実行ファイル
 |-- include
-|   `-- main.h
+|   `-- example.h
 `-- source
-    |-- main.cpp
-    |-- makefile
-    `-- obj        &lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
-        |-- main.d &lt;- (DEPENDS) 依存関係ファイル
-        `-- main.o &lt;- (OBJECTS) オブジェクトファイル
+    |-- example.cpp
+    `-- obj           &lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
+        |-- example.d &lt;- (DEPENDS) 依存関係ファイル
+        `-- example.o &lt;- (OBJECTS) オブジェクトファイル
 </code></pre></div>
 <h2>解説</h2>
 
@@ -229,7 +236,7 @@
 <p>以下は初期値の解説。</p>
 
 <ul>
-<li><code>-Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal</code>
+<li><code>-Wall -Wextra -Winit-self -Wno-missing-field-initializers</code>
 
 <ul>
 <li><code>-Wall</code> : コンパイルワーニングのレベルを最大にする。</li>
@@ -259,31 +266,23 @@
 
 <h3>ライブラリの指定 (<code>LIBS</code>)</h3>
 
-<p>リンクするライブラリとして<code>LIBS</code>の値を用いる。初期値は空。
-静的ライブラリ（<code>*.a</code>）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
+<p>静的リンクするライブラリとして<code>LIBS</code>の値を用いる。初期値は空。
+静的ライブラリ（<code>*.a</code>）を用いる場合、空白区切りでファイル名を記述する。
 ここで指定したライブラリが更新された場合、<code>make</code>は再コンパイルが必要だと認識する。</p>
 
 <h3>インクルードパスの指定 (<code>INCLUDE</code>)</h3>
 
-<p>インクルードパスとして<code>INCLUDE</code>の値を用いる。初期値は<code>-I../include</code>。
+<p>インクルードパスとして<code>INCLUDE</code>の値を用いる。初期値は<code>-I./include</code>。
 ソースファイル中の<code>#include</code>ファイル検索パスに加えるパスを<code>-I</code>オプションにて指定する。<code>-I</code>オプションとディレクトリ名の間に空白を書くことはできない。
 複数ディレクトリを指定したい場合は<code>-I</code>オプションを空白区切りで複数指定する。</p>
 
 <h3>実行ファイルの指定 (<code>TARGET</code>)</h3>
 
 <p>実行ファイル名として<code>TARGET</code>の値を用いる。
-以下は初期値 <code> ../bin/$(shell basename `readlink -f ..`) </code>の解説。
-実行ファイルの生成先のディレクトリは<code>../bin</code>。
-生成される実行ファイル名は <code> $(shell basename `readlink -f ..`) </code>である。
-これは<code>makefile</code>の存在するディレクトリの親ディレクトリの名前である。
-つまり、以下の様なディレクトリ構成の場合、</p>
-<div class="highlight"><pre><code class="language-" data-lang="">example
-|-- bin
-`-- source
-    |-- main.cpp
-    `-- makefile
-</code></pre></div>
-<p><code>example</code>という名前の実行ファイルが<code>example/bin</code>に生成されることになる。</p>
+以下は初期値 <code> ./bin/$(shell basename `readlink -f .`) </code>の解説。
+実行ファイルの生成先のディレクトリは<code>./bin</code>。
+生成される実行ファイル名は <code> $(shell basename `readlink -f .`) </code>である。
+これは<code>makefile</code>の存在するディレクトリの名前である。</p>
 
 <h3>中間ファイル生成先ディレクトリの指定 (<code>OBJDIR</code>)</h3>
 
@@ -292,16 +291,16 @@
 
 <h3>ソースファイルの指定 (<code>SOURCES</code>)</h3>
 
-<p>コンパイル対象となるソースファイルとして<code>SOURCES</code>の値を用いる。初期値は<code>$(wildcard *.cpp)</code>。
-これは<code>makefile</code>と同一ディレクトリに存在する拡張子<code>cpp</code>のファイル全てをコンパイル対象とすることを意味する。別の拡張子(<code>.c</code>など)に変更したい場合は、<code>makefile</code>内の<code>cpp</code>を全て変更する。</p>
+<p>コンパイル対象となるソースファイルとして<code>SOURCES</code>の値を用いる。初期値は<code>$(wildcard $(SRCDIR)/*.cpp)</code>。
+<code>SRCDIR</code>に存在する拡張子<code>cpp</code>のファイル全てをコンパイル対象とすることを意味する。別の拡張子(<code>.c</code>など)に変更したい場合は、<code>makefile</code>内の<code>cpp</code>を全て変更する。</p>
 
 <h3>オブジェクトファイルの指定 (<code>OBJECTS</code>)</h3>
 
 <p>オブジェクトファイルとして<code>OBJECTS</code>の値を用いる。
-以下は初期値 <code>$(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))</code>の解説。
+以下は初期値 <code>$(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))</code>の解説。
 オブジェクトファイルの生成先ディレクトリは<code>OBJDIR</code>。
 オブジェクトファイル名はソースファイル(<code>SOURCES</code>)の拡張子を<code>.o</code>に置換したものである。
-<code>OBJDIR</code>が空の場合はソースファイルと同一のディレクトリに生成される。</p>
+<code>OBJDIR</code>が空の場合は<code>makefile</code>と同一のディレクトリに生成される。</p>
 
 <h3>依存関係ファイルの指定 (<code>DEPENDS</code>)</h3>
 

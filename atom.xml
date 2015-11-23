@@ -6,7 +6,7 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2015-09-19T22:23:55+09:00</updated>
+  <updated>2015-09-19T20:23:55+07:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>logrotate.bat - Windowsバッチでログローテート</title>
     <link href="http://urin.github.io/posts/2015/logrotate-batch-on-windows"/>
-    <updated>2015-09-19T22:23:55+09:00</updated>
+    <updated>2015-09-19T20:23:55+07:00</updated>
     <id>http://urin.github.io/posts/2015/logrotate-batch-on-windows</id>
     <content type="html">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。
 ということで、とりあえず現状の決定版かなと。&lt;/p&gt;
@@ -36,7 +36,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   <entry>
     <title>できる？できない？という問いかけ</title>
     <link href="http://urin.github.io/posts/2015/everything-is-possible"/>
-    <updated>2015-07-11T16:08:31+09:00</updated>
+    <updated>2015-07-11T14:08:31+07:00</updated>
     <id>http://urin.github.io/posts/2015/everything-is-possible</id>
     <content type="html">&lt;p&gt;できる？できない？という問いかけを考え直そう。&lt;/p&gt;
 
@@ -92,7 +92,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   <entry>
     <title>C++で無名関数の関数ポインタを作る</title>
     <link href="http://urin.github.io/posts/2015/labmda-without-stdcpp"/>
-    <updated>2015-04-05T22:00:40+09:00</updated>
+    <updated>2015-04-05T20:00:40+07:00</updated>
     <id>http://urin.github.io/posts/2015/labmda-without-stdcpp</id>
     <content type="html">&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
 
@@ -154,7 +154,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   <entry>
     <title>Jekyll 2.3.0をWindowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows"/>
-    <updated>2014-08-14T23:59:32+09:00</updated>
+    <updated>2014-08-14T21:59:32+07:00</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll
@@ -207,7 +207,7 @@ jekyll new jekyll-install-test
   <entry>
     <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows"/>
-    <updated>2014-03-02T22:47:46+09:00</updated>
+    <updated>2014-03-02T20:47:46+07:00</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
@@ -295,7 +295,7 @@ gem install wdm
   <entry>
     <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>
     <link href="http://urin.github.io/posts/2014/jquery-balloon-js"/>
-    <updated>2014-02-12T00:00:00+09:00</updated>
+    <updated>2014-02-12T00:00:00+07:00</updated>
     <id>http://urin.github.io/posts/2014/jquery-balloon-js</id>
     <content type="html">&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.balloon.js&lt;/code&gt;の使い方。
 設置方法は&lt;code&gt;jQuery&lt;/code&gt;と本プラグインの&lt;code&gt;javascript&lt;/code&gt;ファイルのみで&lt;code&gt;CSS&lt;/code&gt;や画像などは不要。どこにでも簡単に設置することができる。&lt;/p&gt;
@@ -468,7 +468,7 @@ gem install wdm
   <entry>
     <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>
     <link href="http://urin.github.io/posts/2013/release-jquery-tile-js"/>
-    <updated>2013-08-11T00:00:00+09:00</updated>
+    <updated>2013-08-11T00:00:00+07:00</updated>
     <id>http://urin.github.io/posts/2013/release-jquery-tile-js</id>
     <content type="html">&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため &lt;strong&gt;使い方がシンプルでプラグインは非常に軽量&lt;/strong&gt; になっている。&lt;/p&gt;
@@ -544,7 +544,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
   <entry>
     <title>シンプルで応用の効くmakefileとその解説</title>
     <link href="http://urin.github.io/posts/2013/simple-makefile-for-clang"/>
-    <updated>2013-08-10T00:00:00+09:00</updated>
+    <updated>2013-08-10T00:00:00+07:00</updated>
     <id>http://urin.github.io/posts/2013/simple-makefile-for-clang</id>
     <content type="html">&lt;p&gt;&lt;code&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
@@ -561,32 +561,39 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;h2&gt;makefile&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;Gistはこちら&lt;/a&gt;。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
-&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal
-&lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I../include
-&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ../bin/&lt;span class=&quot;nf&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;shell&lt;/span&gt; basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f ..&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./obj
-&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(OBJDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
+&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -g -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(shell getconf LONG_BIT)&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;64&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;wildcard &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addprefix &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/, &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I./include
+&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./bin/&lt;span class=&quot;nf&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;shell&lt;/span&gt; basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f .&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./source
+&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(SRCDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
+&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;wildcard &lt;span class=&quot;nv&quot;&gt;$(SRCDIR)&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./obj
+&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(OBJDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
+&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addprefix &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/, &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;notdir &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;nl&quot;&gt;$(TARGET)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJECTS) $(LIBS)&lt;/span&gt;
 	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(LDFLAGS)&lt;/span&gt;
 
-&lt;span class=&quot;nl&quot;&gt;$(OBJDIR)/%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;%.cpp&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; mkdir -p &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;$(OBJDIR)/%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(SRCDIR)/%.cpp&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;mkdir -p &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;
 	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(CFLAGS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(INCLUDE)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; -c &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;
 
 &lt;span class=&quot;nl&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean $(TARGET)&lt;/span&gt;
 
 &lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	rm -f &lt;span class=&quot;nv&quot;&gt;$(OBJECTS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(DEPENDS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(TARGET)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;rmdir --ignore-fail-on-non-empty &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;rm -f &lt;span class=&quot;nv&quot;&gt;$(OBJECTS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(DEPENDS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(TARGET)&lt;/span&gt;
 
 &lt;span class=&quot;err&quot;&gt;-include&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(DEPENDS)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -611,16 +618,16 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;p&gt;下記のようなディレクトリツリーで初期設定の&lt;code&gt;makefile&lt;/code&gt;を用いて&lt;code&gt;make&lt;/code&gt;を実行した場合、以下の矢印(&amp;lt;-)ようにファイルが生成される。
 同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;example
+|-- makefile
 |-- bin
-|   `-- example    &amp;lt;- (TARGET) 実行ファイル
+|   `-- example       &amp;lt;- (TARGET) 実行ファイル
 |-- include
-|   `-- main.h
+|   `-- example.h
 `-- source
-    |-- main.cpp
-    |-- makefile
-    `-- obj        &amp;lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
-        |-- main.d &amp;lt;- (DEPENDS) 依存関係ファイル
-        `-- main.o &amp;lt;- (OBJECTS) オブジェクトファイル
+    |-- example.cpp
+    `-- obj           &amp;lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
+        |-- example.d &amp;lt;- (DEPENDS) 依存関係ファイル
+        `-- example.o &amp;lt;- (OBJECTS) オブジェクトファイル
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;解説&lt;/h2&gt;
 
@@ -635,7 +642,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;p&gt;以下は初期値の解説。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal&lt;/code&gt;
+&lt;li&gt;&lt;code&gt;-Wall -Wextra -Winit-self -Wno-missing-field-initializers&lt;/code&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt; : コンパイルワーニングのレベルを最大にする。&lt;/li&gt;
@@ -665,31 +672,23 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 
 &lt;h3&gt;ライブラリの指定 (&lt;code&gt;LIBS&lt;/code&gt;)&lt;/h3&gt;
 
-&lt;p&gt;リンクするライブラリとして&lt;code&gt;LIBS&lt;/code&gt;の値を用いる。初期値は空。
-静的ライブラリ（&lt;code&gt;*.a&lt;/code&gt;）などを用いる場合、空白区切りでファイル名（相対パス、絶対パス）を記述する。
+&lt;p&gt;静的リンクするライブラリとして&lt;code&gt;LIBS&lt;/code&gt;の値を用いる。初期値は空。
+静的ライブラリ（&lt;code&gt;*.a&lt;/code&gt;）を用いる場合、空白区切りでファイル名を記述する。
 ここで指定したライブラリが更新された場合、&lt;code&gt;make&lt;/code&gt;は再コンパイルが必要だと認識する。&lt;/p&gt;
 
 &lt;h3&gt;インクルードパスの指定 (&lt;code&gt;INCLUDE&lt;/code&gt;)&lt;/h3&gt;
 
-&lt;p&gt;インクルードパスとして&lt;code&gt;INCLUDE&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;-I../include&lt;/code&gt;。
+&lt;p&gt;インクルードパスとして&lt;code&gt;INCLUDE&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;-I./include&lt;/code&gt;。
 ソースファイル中の&lt;code&gt;#include&lt;/code&gt;ファイル検索パスに加えるパスを&lt;code&gt;-I&lt;/code&gt;オプションにて指定する。&lt;code&gt;-I&lt;/code&gt;オプションとディレクトリ名の間に空白を書くことはできない。
 複数ディレクトリを指定したい場合は&lt;code&gt;-I&lt;/code&gt;オプションを空白区切りで複数指定する。&lt;/p&gt;
 
 &lt;h3&gt;実行ファイルの指定 (&lt;code&gt;TARGET&lt;/code&gt;)&lt;/h3&gt;
 
 &lt;p&gt;実行ファイル名として&lt;code&gt;TARGET&lt;/code&gt;の値を用いる。
-以下は初期値 &lt;code&gt; ../bin/$(shell basename `readlink -f ..`) &lt;/code&gt;の解説。
-実行ファイルの生成先のディレクトリは&lt;code&gt;../bin&lt;/code&gt;。
-生成される実行ファイル名は &lt;code&gt; $(shell basename `readlink -f ..`) &lt;/code&gt;である。
-これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの親ディレクトリの名前である。
-つまり、以下の様なディレクトリ構成の場合、&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;example
-|-- bin
-`-- source
-    |-- main.cpp
-    `-- makefile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;example&lt;/code&gt;という名前の実行ファイルが&lt;code&gt;example/bin&lt;/code&gt;に生成されることになる。&lt;/p&gt;
+以下は初期値 &lt;code&gt; ./bin/$(shell basename `readlink -f .`) &lt;/code&gt;の解説。
+実行ファイルの生成先のディレクトリは&lt;code&gt;./bin&lt;/code&gt;。
+生成される実行ファイル名は &lt;code&gt; $(shell basename `readlink -f .`) &lt;/code&gt;である。
+これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの名前である。&lt;/p&gt;
 
 &lt;h3&gt;中間ファイル生成先ディレクトリの指定 (&lt;code&gt;OBJDIR&lt;/code&gt;)&lt;/h3&gt;
 
@@ -698,16 +697,16 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 
 &lt;h3&gt;ソースファイルの指定 (&lt;code&gt;SOURCES&lt;/code&gt;)&lt;/h3&gt;
 
-&lt;p&gt;コンパイル対象となるソースファイルとして&lt;code&gt;SOURCES&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;$(wildcard *.cpp)&lt;/code&gt;。
-これは&lt;code&gt;makefile&lt;/code&gt;と同一ディレクトリに存在する拡張子&lt;code&gt;cpp&lt;/code&gt;のファイル全てをコンパイル対象とすることを意味する。別の拡張子(&lt;code&gt;.c&lt;/code&gt;など)に変更したい場合は、&lt;code&gt;makefile&lt;/code&gt;内の&lt;code&gt;cpp&lt;/code&gt;を全て変更する。&lt;/p&gt;
+&lt;p&gt;コンパイル対象となるソースファイルとして&lt;code&gt;SOURCES&lt;/code&gt;の値を用いる。初期値は&lt;code&gt;$(wildcard $(SRCDIR)/*.cpp)&lt;/code&gt;。
+&lt;code&gt;SRCDIR&lt;/code&gt;に存在する拡張子&lt;code&gt;cpp&lt;/code&gt;のファイル全てをコンパイル対象とすることを意味する。別の拡張子(&lt;code&gt;.c&lt;/code&gt;など)に変更したい場合は、&lt;code&gt;makefile&lt;/code&gt;内の&lt;code&gt;cpp&lt;/code&gt;を全て変更する。&lt;/p&gt;
 
 &lt;h3&gt;オブジェクトファイルの指定 (&lt;code&gt;OBJECTS&lt;/code&gt;)&lt;/h3&gt;
 
 &lt;p&gt;オブジェクトファイルとして&lt;code&gt;OBJECTS&lt;/code&gt;の値を用いる。
-以下は初期値 &lt;code&gt;$(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))&lt;/code&gt;の解説。
+以下は初期値 &lt;code&gt;$(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))&lt;/code&gt;の解説。
 オブジェクトファイルの生成先ディレクトリは&lt;code&gt;OBJDIR&lt;/code&gt;。
 オブジェクトファイル名はソースファイル(&lt;code&gt;SOURCES&lt;/code&gt;)の拡張子を&lt;code&gt;.o&lt;/code&gt;に置換したものである。
-&lt;code&gt;OBJDIR&lt;/code&gt;が空の場合はソースファイルと同一のディレクトリに生成される。&lt;/p&gt;
+&lt;code&gt;OBJDIR&lt;/code&gt;が空の場合は&lt;code&gt;makefile&lt;/code&gt;と同一のディレクトリに生成される。&lt;/p&gt;
 
 &lt;h3&gt;依存関係ファイルの指定 (&lt;code&gt;DEPENDS&lt;/code&gt;)&lt;/h3&gt;
 
@@ -721,7 +720,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
     <link href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows"/>
-    <updated>2013-08-04T00:00:00+09:00</updated>
+    <updated>2013-08-04T00:00:00+07:00</updated>
     <id>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</id>
     <content type="html">&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
@@ -773,7 +772,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
   <entry>
     <title>ブログをリニューアル</title>
     <link href="http://urin.github.io/posts/2013/Renewal"/>
-    <updated>2013-08-03T00:00:00+09:00</updated>
+    <updated>2013-08-03T00:00:00+07:00</updated>
     <id>http://urin.github.io/posts/2013/Renewal</id>
     <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
 
