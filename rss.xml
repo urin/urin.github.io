@@ -469,7 +469,7 @@ gem install wdm
 
 &lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt;を使用しないで要素の高さ揃える場合は&lt;code&gt;HTML&lt;/code&gt;の&lt;code&gt;table&lt;/code&gt;要素を使う、&lt;code&gt;CSS&lt;/code&gt;の&lt;code&gt;display: table&lt;/code&gt;を使用する、&lt;code&gt;float: left&lt;/code&gt;で横に並べて&lt;code&gt;margin-bottom&lt;/code&gt;を大きくするなどの方法が考えられるが、デザイン面で融通が効きにくく初心者にとっては少し敷居が高い。
 要素を横に並べるには&lt;code&gt;float: left&lt;/code&gt;や&lt;code&gt;display: inline-block&lt;/code&gt;などを用いるのが最も簡単だが、この場合&lt;code&gt;HTML&lt;/code&gt;と&lt;code&gt;CSS&lt;/code&gt;だけで要素の高さを自動的に揃えるのは（特にそれが複数行あったり各要素の高さが内容物に応じて可変だった場合）簡単ではない。
-CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レイアウトを用いるのが最もスマートであるが現時点でCSS3の使用が全面的に認められるケースはそう多くはない。&lt;/p&gt;
+CSS3の使用が認められる場合には&lt;code&gt;flex&lt;/code&gt;レイアウトを用いるのが最もスマートだが現時点でCSS3の使用が全面的に認められるケースはそう多くはない。&lt;/p&gt;
 
 &lt;p&gt;このプラグインはブログ形式のWebサイトでサイドバーと本体の高さを揃えたい場合などにも使用することができる。&lt;/p&gt;
 
@@ -682,7 +682,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 以下は初期値 &lt;code&gt; ./bin/$(shell basename `readlink -f .`) &lt;/code&gt;の解説。
 実行ファイルの生成先のディレクトリは&lt;code&gt;./bin&lt;/code&gt;。
 生成される実行ファイル名は &lt;code&gt; $(shell basename `readlink -f .`) &lt;/code&gt;である。
-これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの名前である。&lt;/p&gt;
+これは&lt;code&gt;makefile&lt;/code&gt;の存在するディレクトリの名前。&lt;/p&gt;
 
 &lt;h3&gt;中間ファイル生成先ディレクトリの指定 (&lt;code&gt;OBJDIR&lt;/code&gt;)&lt;/h3&gt;
 
@@ -699,13 +699,13 @@ CSS3の使用が認められる場合には&lt;code&gt;flexbox&lt;/code&gt;レ�
 &lt;p&gt;オブジェクトファイルとして&lt;code&gt;OBJECTS&lt;/code&gt;の値を用いる。
 以下は初期値 &lt;code&gt;$(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))&lt;/code&gt;の解説。
 オブジェクトファイルの生成先ディレクトリは&lt;code&gt;OBJDIR&lt;/code&gt;。
-オブジェクトファイル名はソースファイル(&lt;code&gt;SOURCES&lt;/code&gt;)の拡張子を&lt;code&gt;.o&lt;/code&gt;に置換したものである。
+オブジェクトファイル名はソースファイル(&lt;code&gt;SOURCES&lt;/code&gt;)の拡張子を&lt;code&gt;.o&lt;/code&gt;に置換したもの。
 &lt;code&gt;OBJDIR&lt;/code&gt;が空の場合は&lt;code&gt;makefile&lt;/code&gt;と同一のディレクトリに生成される。&lt;/p&gt;
 
 &lt;h3&gt;依存関係ファイルの指定 (&lt;code&gt;DEPENDS&lt;/code&gt;)&lt;/h3&gt;
 
 &lt;p&gt;依存関係ファイルとして&lt;code&gt;DEPENDS&lt;/code&gt;の値を用いる。
-初期値&lt;code&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code&gt;.d&lt;/code&gt;に置換したものである。&lt;/p&gt;
+初期値&lt;code&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code&gt;.d&lt;/code&gt;に置換したもの。&lt;/p&gt;
 
 &lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;
 </description>

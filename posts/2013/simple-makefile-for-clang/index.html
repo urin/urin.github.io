@@ -282,7 +282,7 @@
 以下は初期値 <code> ./bin/$(shell basename `readlink -f .`) </code>の解説。
 実行ファイルの生成先のディレクトリは<code>./bin</code>。
 生成される実行ファイル名は <code> $(shell basename `readlink -f .`) </code>である。
-これは<code>makefile</code>の存在するディレクトリの名前である。</p>
+これは<code>makefile</code>の存在するディレクトリの名前。</p>
 
 <h3>中間ファイル生成先ディレクトリの指定 (<code>OBJDIR</code>)</h3>
 
@@ -299,13 +299,13 @@
 <p>オブジェクトファイルとして<code>OBJECTS</code>の値を用いる。
 以下は初期値 <code>$(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))</code>の解説。
 オブジェクトファイルの生成先ディレクトリは<code>OBJDIR</code>。
-オブジェクトファイル名はソースファイル(<code>SOURCES</code>)の拡張子を<code>.o</code>に置換したものである。
+オブジェクトファイル名はソースファイル(<code>SOURCES</code>)の拡張子を<code>.o</code>に置換したもの。
 <code>OBJDIR</code>が空の場合は<code>makefile</code>と同一のディレクトリに生成される。</p>
 
 <h3>依存関係ファイルの指定 (<code>DEPENDS</code>)</h3>
 
 <p>依存関係ファイルとして<code>DEPENDS</code>の値を用いる。
-初期値<code>$(OBJECTS:.o=.d)</code>はオブジェクトファイルの拡張子を<code>.d</code>に置換したものである。</p>
+初期値<code>$(OBJECTS:.o=.d)</code>はオブジェクトファイルの拡張子を<code>.d</code>に置換したもの。</p>
 
 <p>そんじゃーね。に花束を。</p>
 
