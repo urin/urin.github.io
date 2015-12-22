@@ -214,14 +214,14 @@
 <div class="highlight"><pre><code class="language-" data-lang="">example
 |-- makefile
 |-- bin
-|   `-- example       &lt;- (TARGET) 実行ファイル
+|   `-- example   &lt;- (TARGET) 実行ファイル
 |-- include
 |   `-- example.h
+|-- obj           &lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
+|   |-- example.d &lt;- (DEPENDS) 依存関係ファイル
+|   `-- example.o &lt;- (OBJECTS) オブジェクトファイル
 `-- source
-    |-- example.cpp
-    `-- obj           &lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
-        |-- example.d &lt;- (DEPENDS) 依存関係ファイル
-        `-- example.o &lt;- (OBJECTS) オブジェクトファイル
+    `-- example.cpp
 </code></pre></div>
 <h2>解説</h2>
 
