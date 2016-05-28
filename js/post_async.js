@@ -1,22 +1,4 @@
 //------------------------------------------------------------------------------
-// Feedly button
-//------------------------------------------------------------------------------
-$(function() {
-  var q = ('http://query.yahooapis.com/v1/public/yql?q='
-    + encodeURIComponent(
-      'select * from json where url="'
-      + 'http://cloud.feedly.com/v3/feeds/feed%2F'
-      + encodeURIComponent('http://urin.github.io/rss.xml')
-      + '"'
-    ) + '&format=json&callback=?'
-  );
-  $.getJSON(q, function(data) {
-    var c = data.query.results;
-    $(".fi-count").text(c ? c.json["subscribers"] : "?");
-  });
-});
-
-//------------------------------------------------------------------------------
 // Facebook button
 //------------------------------------------------------------------------------
 (function(d, s, id) {
