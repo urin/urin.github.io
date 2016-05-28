@@ -10,8 +10,8 @@
     <ttl>1800</ttl>
 
     <item>
-      <title>logrotate.bat - Windowsバッチでログローテート</title>
-      <description>&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだとまだ本気でバッチファイルでやろうと思った人はいなかったみたい。
+      <title>logrotate.bat - Windowsバッチで（指定サイズ指定を超えたら）ログローテート</title>
+      <description>&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。
 ということで、とりあえず現状の決定版かなと。&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat&quot;&gt; &lt;/script&gt;
