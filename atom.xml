@@ -6,7 +6,7 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2015-09-19T21:23:55+08:00</updated>
+  <updated>2015-09-19T22:23:55+09:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>logrotate.bat - Windowsバッチで（指定サイズ指定を超えたら）ログローテート</title>
     <link href="http://urin.github.io/posts/2015/logrotate-batch-on-windows"/>
-    <updated>2015-09-19T21:23:55+08:00</updated>
+    <updated>2015-09-19T22:23:55+09:00</updated>
     <id>http://urin.github.io/posts/2015/logrotate-batch-on-windows</id>
     <content type="html">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。
 ということで、とりあえず現状の決定版かなと。&lt;/p&gt;
@@ -36,7 +36,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   <entry>
     <title>C++で無名関数の関数ポインタを作る</title>
     <link href="http://urin.github.io/posts/2015/labmda-without-stdcpp"/>
-    <updated>2015-04-05T21:00:40+08:00</updated>
+    <updated>2015-04-05T22:00:40+09:00</updated>
     <id>http://urin.github.io/posts/2015/labmda-without-stdcpp</id>
     <content type="html">&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
 
@@ -98,7 +98,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   <entry>
     <title>Jekyll 2.3.0をWindowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows"/>
-    <updated>2014-08-14T22:59:32+08:00</updated>
+    <updated>2014-08-14T23:59:32+09:00</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll
@@ -151,7 +151,7 @@ jekyll new jekyll-install-test
   <entry>
     <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
     <link href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows"/>
-    <updated>2014-03-02T21:47:46+08:00</updated>
+    <updated>2014-03-02T22:47:46+09:00</updated>
     <id>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</id>
     <content type="html">&lt;p&gt;&lt;code&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
@@ -239,7 +239,7 @@ gem install wdm
   <entry>
     <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>
     <link href="http://urin.github.io/posts/2014/jquery-balloon-js"/>
-    <updated>2014-02-12T00:00:00+08:00</updated>
+    <updated>2014-02-12T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2014/jquery-balloon-js</id>
     <content type="html">&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.balloon.js&lt;/code&gt;の使い方。
 設置方法は&lt;code&gt;jQuery&lt;/code&gt;と本プラグインの&lt;code&gt;javascript&lt;/code&gt;ファイルのみで&lt;code&gt;CSS&lt;/code&gt;や画像などは不要。どこにでも簡単に設置することができる。&lt;/p&gt;
@@ -311,7 +311,7 @@ gem install wdm
         &lt;td&gt;吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-        &lt;td colspan=&quot;2&quot;&gt;minLifeTime&lt;br /&gt;
+        &lt;td colspan=&quot;2&quot;&gt;minLifetime&lt;br /&gt;
         &lt;td&gt;200&lt;/td&gt;
         &lt;td&gt;マウスポインタが対象の要素から離れて（&lt;code&gt;mouseleave&lt;/code&gt;）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。&lt;/td&gt;
       &lt;/tr&gt;
@@ -412,7 +412,7 @@ gem install wdm
   <entry>
     <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>
     <link href="http://urin.github.io/posts/2013/release-jquery-tile-js"/>
-    <updated>2013-08-11T00:00:00+08:00</updated>
+    <updated>2013-08-11T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/release-jquery-tile-js</id>
     <content type="html">&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code&gt;jQuery&lt;/code&gt;プラグイン&lt;code&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため &lt;strong&gt;使い方がシンプルでプラグインは非常に軽量&lt;/strong&gt; になっている。&lt;/p&gt;
@@ -488,7 +488,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flex&lt;/code&gt;レイ�
   <entry>
     <title>シンプルで応用の効くmakefileとその解説</title>
     <link href="http://urin.github.io/posts/2013/simple-makefile-for-clang"/>
-    <updated>2013-08-10T00:00:00+08:00</updated>
+    <updated>2013-08-10T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/simple-makefile-for-clang</id>
     <content type="html">&lt;p&gt;&lt;code&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
@@ -664,7 +664,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flex&lt;/code&gt;レイ�
   <entry>
     <title>Jekyll 1.1系をWindowsに導入する</title>
     <link href="http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows"/>
-    <updated>2013-08-04T00:00:00+08:00</updated>
+    <updated>2013-08-04T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</id>
     <content type="html">&lt;p&gt;現時点で最新版の&lt;code&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code&gt;1.9.3&lt;/code&gt;でやったが&lt;code&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
@@ -716,7 +716,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
   <entry>
     <title>ブログをリニューアル</title>
     <link href="http://urin.github.io/posts/2013/Renewal"/>
-    <updated>2013-08-03T00:00:00+08:00</updated>
+    <updated>2013-08-03T00:00:00+09:00</updated>
     <id>http://urin.github.io/posts/2013/Renewal</id>
     <content type="html">&lt;p&gt;ブログを&lt;code&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code&gt;Jekyll&lt;/code&gt;でホストは&lt;code&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
 

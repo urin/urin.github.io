@@ -5,8 +5,8 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2015-09-19T21:23:55+08:00</lastBuildDate>
-    <pubDate>2015-09-19T21:23:55+08:00</pubDate>
+    <lastBuildDate>2015-09-19T22:23:55+09:00</lastBuildDate>
+    <pubDate>2015-09-19T22:23:55+09:00</pubDate>
     <ttl>1800</ttl>
 
     <item>
@@ -27,7 +27,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 </description>
       <link>http://urin.github.io/posts/2015/logrotate-batch-on-windows</link>
       <guid>http://urin.github.io//posts/2015/logrotate-batch-on-windows</guid>
-      <pubDate>2015-09-19T21:23:55+08:00</pubDate>
+      <pubDate>2015-09-19T22:23:55+09:00</pubDate>
     </item>
 
     <item>
@@ -89,7 +89,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <link>http://urin.github.io/posts/2015/labmda-without-stdcpp</link>
       <guid>http://urin.github.io//posts/2015/labmda-without-stdcpp</guid>
-      <pubDate>2015-04-05T21:00:40+08:00</pubDate>
+      <pubDate>2015-04-05T22:00:40+09:00</pubDate>
     </item>
 
     <item>
@@ -142,7 +142,7 @@ jekyll new jekyll-install-test
 </description>
       <link>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</link>
       <guid>http://urin.github.io//posts/2014/install-jekyll-2.3.0-to-windows</guid>
-      <pubDate>2014-08-14T22:59:32+08:00</pubDate>
+      <pubDate>2014-08-14T23:59:32+09:00</pubDate>
     </item>
 
     <item>
@@ -230,7 +230,7 @@ gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <link>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</link>
       <guid>http://urin.github.io//posts/2014/install-jekyll-1.4.2-to-windows</guid>
-      <pubDate>2014-03-02T21:47:46+08:00</pubDate>
+      <pubDate>2014-03-02T22:47:46+09:00</pubDate>
     </item>
 
     <item>
@@ -305,7 +305,7 @@ gem install wdm
         &lt;td&gt;吹き出し端に付く正三角形のサイズ（高さ）をピクセル単位の整数値で指定する。0だと三角形はつかない。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-        &lt;td colspan=&quot;2&quot;&gt;minLifeTime&lt;br /&gt;
+        &lt;td colspan=&quot;2&quot;&gt;minLifetime&lt;br /&gt;
         &lt;td&gt;200&lt;/td&gt;
         &lt;td&gt;マウスポインタが対象の要素から離れて（&lt;code&gt;mouseleave&lt;/code&gt;）から、この時間（ミリ秒）の間は吹き出しを表示し続ける。&lt;/td&gt;
       &lt;/tr&gt;
@@ -403,7 +403,7 @@ gem install wdm
 </description>
       <link>http://urin.github.io/posts/2014/jquery-balloon-js</link>
       <guid>http://urin.github.io//posts/2014/jquery-balloon-js</guid>
-      <pubDate>2014-02-12T00:00:00+08:00</pubDate>
+      <pubDate>2014-02-12T00:00:00+09:00</pubDate>
     </item>
 
     <item>
@@ -479,7 +479,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flex&lt;/code&gt;レイ�
 </description>
       <link>http://urin.github.io/posts/2013/release-jquery-tile-js</link>
       <guid>http://urin.github.io//posts/2013/release-jquery-tile-js</guid>
-      <pubDate>2013-08-11T00:00:00+08:00</pubDate>
+      <pubDate>2013-08-11T00:00:00+09:00</pubDate>
     </item>
 
     <item>
@@ -655,7 +655,7 @@ CSS3の使用が認められる場合には&lt;code&gt;flex&lt;/code&gt;レイ�
 </description>
       <link>http://urin.github.io/posts/2013/simple-makefile-for-clang</link>
       <guid>http://urin.github.io//posts/2013/simple-makefile-for-clang</guid>
-      <pubDate>2013-08-10T00:00:00+08:00</pubDate>
+      <pubDate>2013-08-10T00:00:00+09:00</pubDate>
     </item>
 
     <item>
@@ -707,7 +707,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
 </description>
       <link>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</link>
       <guid>http://urin.github.io//posts/2013/Setup-jekyll-1.1-to-windows</guid>
-      <pubDate>2013-08-04T00:00:00+08:00</pubDate>
+      <pubDate>2013-08-04T00:00:00+09:00</pubDate>
     </item>
 
     <item>
@@ -783,7 +783,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
 </description>
       <link>http://urin.github.io/posts/2013/Renewal</link>
       <guid>http://urin.github.io//posts/2013/Renewal</guid>
-      <pubDate>2013-08-03T00:00:00+08:00</pubDate>
+      <pubDate>2013-08-03T00:00:00+09:00</pubDate>
     </item>
 
   </channel>
