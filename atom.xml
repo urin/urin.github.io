@@ -13,12 +13,11 @@
   </author>
 
   <entry>
-    <title>logrotate.bat - Windowsバッチで（指定サイズ指定を超えたら）ログローテート</title>
+    <title>logrotate.bat - Windowsのバッチファイルでログローテート</title>
     <link href="http://urin.github.io/posts/2015/logrotate-batch-on-windows"/>
     <updated>2015-09-19T22:23:55+09:00</updated>
     <id>http://urin.github.io/posts/2015/logrotate-batch-on-windows</id>
-    <content type="html">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。
-ということで、とりあえず現状の決定版かなと。&lt;/p&gt;
+    <content type="html">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat&quot;&gt; &lt;/script&gt;
 
