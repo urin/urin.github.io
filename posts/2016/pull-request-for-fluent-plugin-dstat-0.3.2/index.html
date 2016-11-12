@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>C++で無名関数の関数ポインタを作る - URIN HACK</title>
-    <meta name="description" content="無名関数（ラムダとも呼ばれる）のメリットは大きい。">
-    <meta name="keywords" content="Programming, C++">
+    <title>fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK</title>
+    <meta name="description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
+    <meta name="keywords" content="Programming, fluentd, Ruby, Linux">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="C++で無名関数の関数ポインタを作る - URIN HACK">
-    <meta name="twitter:title" content="C++で無名関数の関数ポインタを作る - URIN HACK">
-    <meta property="og:description"  content="無名関数（ラムダとも呼ばれる）のメリットは大きい。">
-    <meta name="twitter:description" content="無名関数（ラムダとも呼ばれる）のメリットは大きい。">
+    <meta property="og:title"  content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
+    <meta name="twitter:title" content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
+    <meta property="og:description"  content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
+    <meta name="twitter:description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2015/labmda-without-stdcpp">
+    <meta property="og:url" content="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2015/labmda-without-stdcpp">
+    <link rel="canonical" href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -65,12 +65,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-04-05</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2016-11-12</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/labmda-without-stdcpp'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2'></script>
       </span>
 
     </li>
@@ -78,7 +78,17 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/C++" title="2件の記事">C++</a>
+      <i class="fa fa-tag"></i><a href="/tags/fluentd" title="1件の記事">fluentd</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
+      <span class="badge digits">5</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="2件の記事">Linux</a>
       <span class="badge digits">2</span>
     </li>
     
@@ -93,10 +103,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -123,62 +133,63 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">C++で無名関数の関数ポインタを作る</h1>
-    <p>無名関数（ラムダとも呼ばれる）のメリットは大きい。</p>
+    <h1 class="well well-lg">fluent-plugin-dstatで取得した値が不正になる問題を解決</h1>
+    <p><a href="//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2">shun0102/fluent-plugin-dstat at v0.3.2</a>で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>した。</p>
 
-<p>プログラミングで頭を悩ませるのは命名だ。プログラマが「名付け」を省略できるとコーディングの効率が大幅に上がり、命名ミスによって引き起こされる勘違い（バグ）もなくなる。</p>
+<h2>問題を確認した環境</h2>
 
-<p>シグナルハンドラや<code>qsort</code>、スレッド生成等のAPIを使うときに関数ポインタを引数として渡す必要があるが、たとえそれが１度限りの再利用されない処理だとしてもわざわざ関数化する必要がある。こういう時はなおさら命名に困る。</p>
+<ul>
+<li>Red Hat Enterprise Linux 5.2 x86_64</li>
+<li>td-agent 2.3.1 (fluentd 0.12.20)</li>
+</ul>
 
-<p>更に悪いことに、その１度限りの関数は呼び出し元となる関数の外側に定義（実装）する必要があるためコードが分散してしまう。</p>
+<h2>問題の内容</h2>
 
-<p>最新の<code>C++</code>では<a href="http://ja.wikipedia.org/wiki/C%2B%2B11#.E3.83.A9.E3.83.A0.E3.83.80.E9.96.A2.E6.95.B0.E3.81.A8.E3.83.A9.E3.83.A0.E3.83.80.E5.BC.8F">ラムダ</a>が言語仕様として正式に規定されており単純な関数ポインタ以上の高度な機能を持っている。コンパイルオプションで<code>-std=c++11</code>などを使えばラムダを使用することができる。</p>
+<p><a href="//github.com/dagwieers/dstat">dstat</a>から取得した値がリソースなどに依らず全て不正な値となることがある。
+常時ある程度の負荷（CPU負荷20%程度）がかかっている環境で1秒周期で収集した場合、発生頻度は５～１５分に１度程度。</p>
 
-<p>コンパイルオプションを指定せずとも、無名関数を定義しその関数ポインタを得るだけであれば以下のようにすればよい。内部的には<code>C++</code>の<code>struct</code>の機能を使用しているため<code>C</code>としてはコンパイルできない。</p>
+<h2>原因</h2>
 
-<h3>無名関数を定義するマクロ</h3>
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// 無名関数ポインタを返す。
-// argumentsは括弧で囲った引数リスト。
-// contentsは (({})) のように中括弧と２つの括弧で処理本体を囲う。
-</span><span class="cp">#define lambda(return_type, arguments, contents) ({ \
-  struct { static return_type _ arguments { contents; } } _; _._; \
-})
-</span></code></pre></div>
-<h3>サンプル</h3>
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;pthread.h&gt;
-</span>
-<span class="cp">#define lambda(return_type, arguments, contents) ({ \
-  struct { static return_type _ arguments { contents; } } _; _._; \
-})
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="c1">//
-</span>  <span class="c1">// qsortの引数に無名関数を渡すサンプル
-</span>  <span class="c1">//
-</span>  <span class="kt">int</span> <span class="n">data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
-  <span class="n">qsort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span>
-    <span class="n">lambda</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="p">(({</span>
-      <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">a</span> <span class="o">-</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
-    <span class="p">})))</span>
-  <span class="p">);</span>
+<p><code>fluent-plugin-dstat</code> は 子プロセスとして <code>dstat</code> プロセスを生成し <code>dstat</code> は <code>/tmp/dstat.csv</code> というファイルに収集したデータを書く。
+<code>fluent-plugin-dstat</code> はそのファイルを0.5秒周期で監視し変化があった時、ファイルの内容を解析しJSON化する。</p>
 
-  <span class="c1">//
-</span>  <span class="c1">// pthread_createの引数に無名関数を渡すサンプル
-</span>  <span class="c1">//
-</span>  <span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
-  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span>
-    <span class="n">lambda</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="p">(({</span>
-      <span class="n">puts</span><span class="p">(</span><span class="s">"I'm thread."</span><span class="p">);</span>
-      <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="p">}))),</span>
-    <span class="nb">NULL</span>
-  <span class="p">);</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<p>このように一時ファイル経由でのデータ授受をしているが、読みだす側のプロセス <code>fluent-plugin-dstat</code> と書き込む側のプロセス <code>dstat</code> 間で同期（排他）を取っていない。
+つまり何らかの要因（主にOS）で書き込み側のバッファがflushされた時、読み込んだデータは不完全な（カラムが欠落した）行を含む可能性があるが、それが考慮されていなかった。</p>
+
+<h2>対策</h2>
+
+<p>ファイルから読み込んだデータが改行で終わっていなかったら、その行はJSON化せず内部に保持し、次に読み込んだ先頭行と連結するようにした。</p>
+
+<p>これで不正値になることはなくなりかなり安定した。が、ほぼ一定の周期でデータが数点抜ける。</p>
+
+<p>ソースを見ると <code>fluent-plugin-dstat</code> は100行読み込む度に <code>/tmp/dstat.csv</code> をクリアしていた。
+同期なしに２つのプロセスが同一のファイルに書き込むので、データ抜けが起こるのも当然だった。</p>
+
+<p>確かに誰かが一時ファイルをクリアしないとファイルが肥大化し続けてしまう。</p>
+
+<p>そもそも <code>dstat</code> が標準出力に吐いてくれればファイルの肥大化など気にする必要もないのだが、解析に適したCSV形式の出力先に標準出力や標準エラー出力を選ぶオプションはなかった。</p>
+
+<p>やりたいことは単なるデータの受け渡しで、しかも <code>dstat</code> はLinux限定のコマンドなので、一時ファイルとして<a href="//ja.wikipedia.org/wiki/%E5%90%8D%E5%89%8D%E4%BB%98%E3%81%8D%E3%83%91%E3%82%A4%E3%83%97">fifo(名前付きパイプ)</a>を使うことにした。そうするとファイルのクリア処理自体が不要となる。</p>
+
+<h2>解決！と思ったら・・・</h2>
+
+<p>まだほぼ一定の周期（15分程度）でデータが数点抜ける・・・。調べるとほぼ一定の周期で <code>dstat</code> が死んで <code>fluent-plugin-dstat</code> が <code>dstat</code> プロセスを再生成してた。</p>
+
+<h2>原因と対策</h2>
+
+<p><code>fluent-plugin-dstat</code> は<a href="//docs.ruby-lang.org/ja/latest/method/IO/s/popen.html">IO.popen</a>で <code>dstat</code> プロセスを生成していたが、ここで作成されるパイプが満杯になると <code>dstat</code> が死ぬようだった。パイプのサイズは大体 65536 バイト。対策は簡単。パイプが満杯にならないよう標準出力と標準エラー出力を捨てるようにすればいい。</p>
+
+<h2>結論</h2>
+
+<p><a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>した。</p>
+
+<p>本記事執筆時点ではまだ本家へマージされていないので、今すぐ使いたい人は<a href="//github.com/urin/fluent-plugin-dstat/raw/pr16/pkg/fluent-plugin-dstat-0.3.2.gem">これ</a>をダウンロードして</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install --local fluent-plugin-dstat-0.3.2.gem
 </code></pre></div>
+<p>すればよい。</p>
+
+<p>将来、本家にマージされたらこのブランチは削除するので<a href="//github.com/shun0102/fluent-plugin-dstat">本家</a>を使うこと。</p>
+
   </article>
 </div>
 
@@ -187,12 +198,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-04-05</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2016-11-12</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/labmda-without-stdcpp'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2'></script>
       </span>
 
     </li>
@@ -200,7 +211,17 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/C++" title="2件の記事">C++</a>
+      <i class="fa fa-tag"></i><a href="/tags/fluentd" title="1件の記事">fluentd</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
+      <span class="badge digits">5</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="2件の記事">Linux</a>
       <span class="badge digits">2</span>
     </li>
     
@@ -215,10 +236,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/labmda-without-stdcpp" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -236,12 +257,10 @@
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2014/install-jekyll-2.3.0-to-windows" title="Jekyll 2.3.0をWindowsに導入"><i class="fa fa-chevron-circle-left"></i><small>Jekyll 2.3.0をWindowsに導入</small></a>
+      <a rel="prev" href="/posts/2015/logrotate-batch-on-windows" title="logrotate.bat - Windowsのバッチファイルでログローテート"><i class="fa fa-chevron-circle-left"></i><small>logrotate.bat - Windowsのバッチファイルでログローテート</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2015/logrotate-batch-on-windows" title="logrotate.bat - Windowsのバッチファイルでログローテート"><i class="fa fa-chevron-circle-right"></i><small>logrotate.bat - Windowsのバッチファイルでログローテート</small></a>
 
     </div>
 
@@ -249,8 +268,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2015/labmda-without-stdcpp';
-      var disqus_title = 'C++で無名関数の関数ポインタを作る';
+      var disqus_url = 'http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2';
+      var disqus_title = 'fluent-plugin-dstatで取得した値が不正になる問題を解決';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

@@ -6,11 +6,74 @@
 
   <link href="http://urin.superfeedr.com" rel="hub"/>
 
-  <updated>2015-09-19T22:23:55+09:00</updated>
+  <updated>2016-11-12T13:02:30+09:00</updated>
   <id>http://urin.github.io</id>
   <author>
     <name>うりん</name>
   </author>
+
+  <entry>
+    <title>fluent-plugin-dstatで取得した値が不正になる問題を解決</title>
+    <link href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2"/>
+    <updated>2016-11-12T13:02:30+09:00</updated>
+    <id>http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</id>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2&quot;&gt;shun0102/fluent-plugin-dstat at v0.3.2&lt;/a&gt;で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;した。&lt;/p&gt;
+
+&lt;h2&gt;問題を確認した環境&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Red Hat Enterprise Linux 5.2 x86_64&lt;/li&gt;
+&lt;li&gt;td-agent 2.3.1 (fluentd 0.12.20)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;問題の内容&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/dagwieers/dstat&quot;&gt;dstat&lt;/a&gt;から取得した値がリソースなどに依らず全て不正な値となることがある。
+常時ある程度の負荷（CPU負荷20%程度）がかかっている環境で1秒周期で収集した場合、発生頻度は５～１５分に１度程度。&lt;/p&gt;
+
+&lt;h2&gt;原因&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;fluent-plugin-dstat&lt;/code&gt; は 子プロセスとして &lt;code&gt;dstat&lt;/code&gt; プロセスを生成し &lt;code&gt;dstat&lt;/code&gt; は &lt;code&gt;/tmp/dstat.csv&lt;/code&gt; というファイルに収集したデータを書く。
+&lt;code&gt;fluent-plugin-dstat&lt;/code&gt; はそのファイルを0.5秒周期で監視し変化があった時、ファイルの内容を解析しJSON化する。&lt;/p&gt;
+
+&lt;p&gt;このように一時ファイル経由でのデータ授受をしているが、読みだす側のプロセス &lt;code&gt;fluent-plugin-dstat&lt;/code&gt; と書き込む側のプロセス &lt;code&gt;dstat&lt;/code&gt; 間で同期（排他）を取っていない。
+つまり何らかの要因（主にOS）で書き込み側のバッファがflushされた時、読み込んだデータは不完全な（カラムが欠落した）行を含む可能性があるが、それが考慮されていなかった。&lt;/p&gt;
+
+&lt;h2&gt;対策&lt;/h2&gt;
+
+&lt;p&gt;ファイルから読み込んだデータが改行で終わっていなかったら、その行はJSON化せず内部に保持し、次に読み込んだ先頭行と連結するようにした。&lt;/p&gt;
+
+&lt;p&gt;これで不正値になることはなくなりかなり安定した。が、ほぼ一定の周期でデータが数点抜ける。&lt;/p&gt;
+
+&lt;p&gt;ソースを見ると &lt;code&gt;fluent-plugin-dstat&lt;/code&gt; は100行読み込む度に &lt;code&gt;/tmp/dstat.csv&lt;/code&gt; をクリアしていた。
+同期なしに２つのプロセスが同一のファイルに書き込むので、データ抜けが起こるのも当然だった。&lt;/p&gt;
+
+&lt;p&gt;確かに誰かが一時ファイルをクリアしないとファイルが肥大化し続けてしまう。&lt;/p&gt;
+
+&lt;p&gt;そもそも &lt;code&gt;dstat&lt;/code&gt; が標準出力に吐いてくれればファイルの肥大化など気にする必要もないのだが、解析に適したCSV形式の出力先に標準出力や標準エラー出力を選ぶオプションはなかった。&lt;/p&gt;
+
+&lt;p&gt;やりたいことは単なるデータの受け渡しで、しかも &lt;code&gt;dstat&lt;/code&gt; はLinux限定のコマンドなので、一時ファイルとして&lt;a href=&quot;//ja.wikipedia.org/wiki/%E5%90%8D%E5%89%8D%E4%BB%98%E3%81%8D%E3%83%91%E3%82%A4%E3%83%97&quot;&gt;fifo(名前付きパイプ)&lt;/a&gt;を使うことにした。そうするとファイルのクリア処理自体が不要となる。&lt;/p&gt;
+
+&lt;h2&gt;解決！と思ったら・・・&lt;/h2&gt;
+
+&lt;p&gt;まだほぼ一定の周期（15分程度）でデータが数点抜ける・・・。調べるとほぼ一定の周期で &lt;code&gt;dstat&lt;/code&gt; が死んで &lt;code&gt;fluent-plugin-dstat&lt;/code&gt; が &lt;code&gt;dstat&lt;/code&gt; プロセスを再生成してた。&lt;/p&gt;
+
+&lt;h2&gt;原因と対策&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;fluent-plugin-dstat&lt;/code&gt; は&lt;a href=&quot;//docs.ruby-lang.org/ja/latest/method/IO/s/popen.html&quot;&gt;IO.popen&lt;/a&gt;で &lt;code&gt;dstat&lt;/code&gt; プロセスを生成していたが、ここで作成されるパイプが満杯になると &lt;code&gt;dstat&lt;/code&gt; が死ぬようだった。パイプのサイズは大体 65536 バイト。対策は簡単。パイプが満杯にならないよう標準出力と標準エラー出力を捨てるようにすればいい。&lt;/p&gt;
+
+&lt;h2&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;した。&lt;/p&gt;
+
+&lt;p&gt;本記事執筆時点ではまだ本家へマージされていないので、今すぐ使いたい人は&lt;a href=&quot;//github.com/urin/fluent-plugin-dstat/raw/pr16/pkg/fluent-plugin-dstat-0.3.2.gem&quot;&gt;これ&lt;/a&gt;をダウンロードして&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install --local fluent-plugin-dstat-0.3.2.gem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;すればよい。&lt;/p&gt;
+
+&lt;p&gt;将来、本家にマージされたらこのブランチは削除するので&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat&quot;&gt;本家&lt;/a&gt;を使うこと。&lt;/p&gt;
+</content>
+  </entry>
 
   <entry>
     <title>logrotate.bat - Windowsのバッチファイルでログローテート</title>
@@ -19,7 +82,8 @@
     <id>http://urin.github.io/posts/2015/logrotate-batch-on-windows</id>
     <content type="html">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat&quot;&gt; &lt;/script&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request
+&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;set logfile=&quot;path\to\logfile.log&quot;

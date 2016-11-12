@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK</title>
-    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
+    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。400: Invalid request例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
     <meta name="keywords" content="Programming, Windows, Batch">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
     <meta property="fb:app_id" content="494189017339311">
     <meta property="og:title"  content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
     <meta name="twitter:title" content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
-    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
-    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
+    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。400: Invalid request例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
+    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。400: Invalid request例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。set logfile="path\to\logfile.log"logrotate.bat %logfile% 1 10Kecho The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
@@ -131,7 +131,8 @@
     <h1 class="well well-lg">logrotate.bat - Windowsのバッチファイルでログローテート</h1>
     <p>Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</p>
 
-<script src="https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat"> </script>
+<p><noscript><pre>400: Invalid request
+</pre></noscript><script src="https://gist.github.com/3b68e8388cc34a688d13.js?file=logrotate.bat"> </script></p>
 
 <p>例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。</p>
 <div class="highlight"><pre><code class="language-" data-lang="">set logfile="path\to\logfile.log"
@@ -209,6 +210,8 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
     </div>
     <div class="col-md-6 pagenation next">
 
+      <a rel="next" href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" title="fluent-plugin-dstatで取得した値が不正になる問題を解決"><i class="fa fa-chevron-circle-right"></i><small>fluent-plugin-dstatで取得した値が不正になる問題を解決</small></a>
+
     </div>
 
     <hr>
@@ -247,6 +250,13 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
           <nav class="recent-posts col-sm-4">
             <h3><i class="fa fa-paperclip"></i>Recent Entries</h3>
             <dl class="list-unstyled">
+
+              <dt>
+                <span class="digits">2016-11-12</span>
+              </dt>
+              <dd>
+                <a href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">fluent-plugin-dstatで取得した値が不正になる問題を解決</a>
+              </dd>
 
               <dt>
                 <span class="digits">2015-09-19</span>
@@ -316,18 +326,19 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
           <nav class="tags col-sm-4">
             <h3><i class="fa fa-tags"></i>Tags</h3>
             <div class="tag-cloud">
-<a href="/tags/Linux" style="font-size: 70%;">Linux</a>
-<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
 <a href="/tags/gcc" style="font-size: 70%;">gcc</a>
-<a href="/tags/JavaScript" style="font-size: 120%;">JavaScript</a>
-<a href="/tags/Windows" style="font-size: 170%;">Windows</a>
-<a href="/tags/Batch" style="font-size: 70%;">Batch</a>
-<a href="/tags/jQuery" style="font-size: 120%;">jQuery</a>
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
-<a href="/tags/C++" style="font-size: 120%;">C++</a>
-<a href="/tags/Jekyll" style="font-size: 170%;">Jekyll</a>
-<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/Windows" style="font-size: 156%;">Windows</a>
+<a href="/tags/Jekyll" style="font-size: 156%;">Jekyll</a>
+<a href="/tags/jQuery" style="font-size: 113%;">jQuery</a>
 <a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/Linux" style="font-size: 113%;">Linux</a>
+<a href="/tags/fluentd" style="font-size: 70%;">fluentd</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/Batch" style="font-size: 70%;">Batch</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/JavaScript" style="font-size: 113%;">JavaScript</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/C++" style="font-size: 113%;">C++</a>
 
             </div>
 
