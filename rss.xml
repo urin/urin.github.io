@@ -16,8 +16,8 @@
 &lt;h2&gt;問題を確認した環境&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Red Hat Enterprise Linux 5.2 x86_64&lt;/li&gt;
 &lt;li&gt;td-agent 2.3.1 (fluentd 0.12.20)&lt;/li&gt;
+&lt;li&gt;fluent-plugin-dstat 0.3.2&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2&gt;問題の内容&lt;/h2&gt;
@@ -194,9 +194,7 @@ jekyll new jekyll-install-test
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install wdm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;まとめると&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll
-gem install rouge
-gem install wdm
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install jekyll rouge wdm
 jekyll new jekyll-install-test
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
 &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;highlighter: rouge&amp;gt;&amp;gt; _config.yml
