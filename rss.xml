@@ -60,8 +60,8 @@
 
 &lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;した。&lt;/p&gt;
 
-&lt;p&gt;本記事執筆時点ではまだ本家へマージされていないので、今すぐ使いたい人は&lt;a href=&quot;//github.com/urin/fluent-plugin-dstat/raw/pr16/pkg/fluent-plugin-dstat-0.3.2.gem&quot;&gt;これ&lt;/a&gt;をダウンロードして&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install --local fluent-plugin-dstat-0.3.2.gem
+&lt;p&gt;本記事執筆時点ではまだ本家へマージされていないので、今すぐ使いたい人は&lt;a href=&quot;//github.com/urin/fluent-plugin-dstat/raw/pr16dist/pkg/fluent-plugin-dstat-0.3.2a.gem&quot;&gt;これ&lt;/a&gt;をダウンロードして&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install --no-document --local fluent-plugin-dstat-0.3.2a.gem
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;すればよい。&lt;/p&gt;
 
