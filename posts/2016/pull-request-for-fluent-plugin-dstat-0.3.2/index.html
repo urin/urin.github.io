@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK</title>
-    <meta name="description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
+    <meta name="description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
     <meta name="keywords" content="Programming, fluentd, Ruby, Linux">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
     <meta property="fb:app_id" content="494189017339311">
     <meta property="og:title"  content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
     <meta name="twitter:title" content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
-    <meta property="og:description"  content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
-    <meta name="twitter:description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestした。">
+    <meta property="og:description"  content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
+    <meta name="twitter:description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
@@ -134,7 +134,7 @@
 
   <article class="post col-md-10 col-lg-10">
     <h1 class="well well-lg">fluent-plugin-dstatで取得した値が不正になる問題を解決</h1>
-    <p><a href="//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2">shun0102/fluent-plugin-dstat at v0.3.2</a>で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>した。</p>
+    <p><a href="//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2">shun0102/fluent-plugin-dstat at v0.3.2</a>で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>し<a href="https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3">v0.3.3</a>としてマージされた。</p>
 
 <h2>問題を確認した環境</h2>
 
@@ -148,7 +148,7 @@
 <p><a href="//github.com/dagwieers/dstat">dstat</a>から取得した値がリソースなどに依らず全て不正な値となることがある。
 常時ある程度の負荷（CPU負荷20%程度）がかかっている環境で1秒周期で収集した場合、発生頻度は５～１５分に１度程度。</p>
 
-<h2>原因</h2>
+<h2>不正な値となる原因</h2>
 
 <p><code>fluent-plugin-dstat</code> は 子プロセスとして <code>dstat</code> プロセスを生成し <code>dstat</code> は <code>/tmp/dstat.csv</code> というファイルに収集したデータを書く。
 <code>fluent-plugin-dstat</code> はそのファイルを0.5秒周期で監視し変化があった時、ファイルの内容を解析しJSON化する。</p>
@@ -175,20 +175,13 @@
 
 <p>まだほぼ一定の周期（15分程度）でデータが数点抜ける・・・。調べるとほぼ一定の周期で <code>dstat</code> が死んで <code>fluent-plugin-dstat</code> が <code>dstat</code> プロセスを再生成してた。</p>
 
-<h2>原因と対策</h2>
+<h2>dstatが死ぬ原因と対策</h2>
 
 <p><code>fluent-plugin-dstat</code> は<a href="//docs.ruby-lang.org/ja/latest/method/IO/s/popen.html">IO.popen</a>で <code>dstat</code> プロセスを生成していたが、ここで作成されるパイプが満杯になると <code>dstat</code> が死ぬようだった。パイプのサイズは大体 65536 バイト。対策は簡単。パイプが満杯にならないよう標準出力と標準エラー出力を捨てるようにすればいい。</p>
 
-<h2>結論</h2>
+<h2>結果</h2>
 
-<p><a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>した。</p>
-
-<p>本記事執筆時点ではまだ本家へマージされていないので、今すぐ使いたい人は<a href="//github.com/urin/fluent-plugin-dstat/raw/pr16dist/pkg/fluent-plugin-dstat-0.3.2a.gem">これ</a>をダウンロードして</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">gem install --no-document --local fluent-plugin-dstat-0.3.2a.gem
-</code></pre></div>
-<p>すればよい。</p>
-
-<p>将来、本家にマージされたらこのブランチは削除するので<a href="//github.com/shun0102/fluent-plugin-dstat">本家</a>を使うこと。</p>
+<p>これらを全て解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>し<a href="https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3">v0.3.3</a>としてマージされた。</p>
 
   </article>
 </div>
@@ -465,7 +458,7 @@
         </aside>
         <hr>
         <div class="copyright">
-          <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2016</span> うりん</small></span>
+          <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2017</span> うりん</small></span>
           <span class="sns-icons col-sm-3">
             <a href="//github.com/urin" title="GitHub"><i class="fa fa-github"></i></a>
             <a href="//twitter.com/urinhack" title="Twitter"><i class="fa fa-twitter"></i></a>
