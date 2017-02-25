@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>ブログをリニューアル - URIN HACK</title>
-    <meta name="description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
-    <meta name="keywords" content="Programming, Jekyll, GitHub, Octopress, Ruby">
+    <title>Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK</title>
+    <meta name="description" content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
+    <meta name="keywords" content="Programming, Linux, bash">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="ブログをリニューアル - URIN HACK">
-    <meta name="twitter:title" content="ブログをリニューアル - URIN HACK">
-    <meta property="og:description"  content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
-    <meta name="twitter:description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
+    <meta property="og:title"  content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
+    <meta name="twitter:title" content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
+    <meta property="og:description"  content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
+    <meta name="twitter:description" content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2013/Renewal">
+    <meta property="og:url" content="http://urin.github.io/posts/2017/create-local-minimal-yum-repository">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2013/Renewal">
+    <link rel="canonical" href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -65,12 +65,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-02-25</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/create-local-minimal-yum-repository'></script>
       </span>
 
     </li>
@@ -78,23 +78,13 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="3件の記事">Linux</a>
+      <span class="badge digits">3</span>
     </li>
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
+      <i class="fa fa-tag"></i><a href="/tags/bash" title="1件の記事">bash</a>
       <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
     </li>
     
   
@@ -108,10 +98,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -138,76 +128,77 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">ブログをリニューアル</h1>
-    <p>ブログを<code>GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code>Jekyll</code>でホストは<code>GitHub</code>。</p>
+    <h1 class="well well-lg">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</h1>
+    <p>環境的に<code>yum</code>が使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンに<code>yum</code>でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。</p>
 
-<p><a href="//jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a></p>
+<h2>概略</h2>
 
-<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。</p>
+<p><code>yum</code>が使えないFedora系Linux（Red Hat Enterprise Linux, CentOS等）マシンを target と呼ぶ。</p>
 
-<p>何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。</p>
+<ol>
+<li>target と同じバージョンの Linux 仮想マシンを最小インストールで新規作成する。これを source と呼ぶ。
+source はインターネットもしくはOSメディアなどを利用して<code>yum</code>が利用できる環境とする。
+今回ここについては説明しない。</li>
+<li>source 上でローカル環境向けのリポジトリを作成する。これを repo と呼ぶ。</li>
+<li>target に repo をコピーして<code>yum</code>で repo 内のパッケージを target にインストールする。</li>
+</ol>
 
-<h2>Jekyllを選択したわけ</h2>
+<h2>repo の作成</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<span class="c">#</span>
+<span class="c"># makelocalrepo.sh - Make local minimal yum repository</span>
+<span class="c">#</span>
+<span class="nb">set</span> -eu
 
-<p>ブログサービスを選ぶ判断基準は以下。</p>
+<span class="o">[[</span> <span class="nv">$# </span><span class="o">==</span> 0 <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"Specify packages!"</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="k">$(</span>basename <span class="nv">$0</span><span class="k">)</span><span class="s2"> packages..."</span>
+  <span class="nb">exit</span>
+<span class="o">}</span>
+
+<span class="nv">resource</span><span class="o">=</span>./resource
+<span class="nv">repo</span><span class="o">=</span><span class="nv">$resource</span>/repo
+
+rpm -q --quiet yum-utils <span class="o">||</span> yum install -y yum-utils
+<span class="o">[[</span> -d <span class="nv">$repo</span> <span class="o">]]</span> <span class="o">||</span> mkdir -p <span class="nv">$repo</span>
+yumdownloader --resolve --destdir<span class="o">=</span><span class="nv">$repo</span> <span class="nv">$*</span>
+rpm -q --quiet createrepo <span class="o">||</span> yum install -y createrepo
+createrepo <span class="nv">$repo</span>
+
+cat &gt; <span class="nv">$resource</span>/install.sh <span class="sh">&lt;&lt; EOS
+#!/bin/bash
+set -eu
+
+cat &gt; /etc/yum.repo.d/localrepo.repo &lt;&lt; EOF
+[localrepo]
+name=localrepo
+baseurl=file://\$(readlink -f \$(dirname \$0))/repo
+enabled=0
+gpgcheck=0
+EOF
+
+yum --disablerepo=* --enablerepo=localrepo -y install $*
+EOS
+
+</span>chmod +x <span class="nv">$resource</span>/install.sh
+tar czf localrepo.tar.gz <span class="nv">$resource</span>
+</code></pre></div>
+<p>というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行するとカレントディレクトリに localrepo.tar.gz というファイルが作成される。
+このファイルにインストーラとリポジトリが含まれる。</p>
+
+<p>ちなみに</p>
 
 <ul>
-<li>無料で容量制限が厳しくない</li>
-<li>将来性がある（１０年間くらいはサービスが継続すると思われる）</li>
-<li><code>HTML</code>や<code>CSS</code>、<code>Javascript</code>含めてほぼ完全にカスタマイズできる</li>
-<li>余計な広告が入らない</li>
-<li>記事にも<code>HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
+<li><code>yum</code>のdownloadonlyプラグインは非推奨となっており<code>yumdownloader</code>が今後の推奨になっている。</li>
+<li><code>yumdownloader</code>の resolve オプションで依存関係も全て解決される。ありがたい。</li>
 </ul>
 
-<h3>無料のブログサービスを調べる</h3>
+<h2>target へ repo をインストール</h2>
 
-<p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
-
-<ul>
-<li><a href="//www.ninja.co.jp/blog/">忍者ブログ</a></li>
-<li><a href="//www.blogger.com/">Blogger</a></li>
-<li><a href="//hatenablog.com/">はてなブログ</a></li>
-<li><a href="//d.hatena.ne.jp/">はてなダイアリー</a></li>
-<li><a href="//ameblo.jp/">Ameba (アメーバ)</a></li>
-<li><a href="//blog.fc2.com/">FC2ブログ</a></li>
-<li><a href="//blog.livedoor.com/">ライブドアブログ(livedoor Blog)</a></li>
-<li>・・・</li>
-</ul>
-
-<p>正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に<code>HTML</code>を使うのが難しくなったのが致命的だった。
-これら伝統的なブログサービス以外の選択肢としては</p>
-
-<ul>
-<li><a href="//www.strikingly.com/">Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成</a></li>
-<li><a href="//wordpress.com/">WordPress.com - Get a Free Blog Here</a></li>
-<li><a href="//wordpress.org/">WordPress › Blog Tool, Publishing Platform, and CMS</a>を何らかのサーバ上で運営</li>
-<li><a href="//octopress.org/">Octopress</a>をGitHubでホスティング</li>
-<li><a href="//www.edicy.com/">Edicy — Create a Website — Easy to use Website Builder</a></li>
-<li><a href="//ja.wix.com/">WIX</a></li>
-<li><a href="//www.weebly.com/">Weebly</a></li>
-<li><a href="//jp.jimdo.com/">Jimdo</a></li>
-</ul>
-
-<p>というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、<code>HTML</code>、<code>CSS</code>をカスタマイズ出来ないなど色々と不都合があった。
-で、この中では<code>Octopress</code>が<code>Compass</code>が使えたり色々といいように見えた。しかし・・・</p>
-
-<h3>結論</h3>
-
-<p>完全にカスタマイズできて<code>Octopress</code>のベースにもなっている<code>Jekyll</code>が今年リリースされたバージョン<code>0.12.0</code>あたりから
-急激に充実してもはや<code>Octopress</code>なんていらないんじゃね？という勢いを感じたので<code>Jekyll</code>を<code>GitHub Pages</code>にホスティングしてもらう形とした。</p>
-
-<p><code>Jekyll</code>のスターターキットとして<a href="//jekyllbootstrap.com/">Jekyll-Bootstrap</a>という<code>Twitter Bootstrap 2</code>を適用したものが良さげではあったが
-開発が停滞気味で<code>Jekyll</code>本体と<code>Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、こうした。</p>
-
-<ul>
-<li>常に最新の<code>Jekyll</code>が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。</li>
-<li>レスポンシブ対応のグリッドシステムを持っていて今後も息が長い<code>CSS</code>フレームワークを使いたい。ということで<a href="//getbootstrap.com/">Bootstrap 3 RC1</a>を導入。</li>
-<li>アイコンは<code>Web font</code>がいいので<code>Bootstrap</code>との相性も良い<a href="//fortawesome.github.io/Font-Awesome/">Font Awesome, the iconic font designed for Bootstrap</a>。</li>
-</ul>
-
-<p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ依存関係が少ない。安定依存の原則。これ重要。</p>
-
+<p>localrepo.tar.gz を target へコピーして以下を target 上で実行する。</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xzf localrepo.tar.gz
+<span class="nb">cd </span>resource <span class="o">&amp;&amp;</span> ./install.sh
+</code></pre></div>
   </article>
 </div>
 
@@ -216,12 +207,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-02-25</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/create-local-minimal-yum-repository'></script>
       </span>
 
     </li>
@@ -229,23 +220,13 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="3件の記事">Linux</a>
+      <span class="badge digits">3</span>
     </li>
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
+      <i class="fa fa-tag"></i><a href="/tags/bash" title="1件の記事">bash</a>
       <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
     </li>
     
   
@@ -259,10 +240,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -280,10 +261,10 @@
 
     <div class="col-md-6 pagenation prev">
 
+      <a rel="prev" href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" title="fluent-plugin-dstatで取得した値が不正になる問題を解決"><i class="fa fa-chevron-circle-left"></i><small>fluent-plugin-dstatで取得した値が不正になる問題を解決</small></a>
+
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2013/Setup-jekyll-1.1-to-windows" title="Jekyll 1.1系をWindowsに導入する"><i class="fa fa-chevron-circle-right"></i><small>Jekyll 1.1系をWindowsに導入する</small></a>
 
     </div>
 
@@ -291,8 +272,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2013/Renewal';
-      var disqus_title = 'ブログをリニューアル';
+      var disqus_url = 'http://urin.github.io/posts/2017/create-local-minimal-yum-repository';
+      var disqus_title = 'Linuxローカル環境用に最小限のyumリポジトリを作成する方法';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
