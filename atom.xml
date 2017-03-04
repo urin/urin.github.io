@@ -17,16 +17,16 @@
     <link href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository"/>
     <updated>2017-02-25T14:36:25+09:00</updated>
     <id>http://urin.github.io/posts/2017/create-local-minimal-yum-repository</id>
-    <content type="html">&lt;p&gt;環境的に&lt;code&gt;yum&lt;/code&gt;が使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。&lt;/p&gt;
+    <content type="html">&lt;p&gt;環境的に&lt;code&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
 
 &lt;h2&gt;概略&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;yum&lt;/code&gt;が使えないFedora系Linux（Red Hat Enterprise Linux, CentOS等）マシンを target と呼ぶ。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;yum&lt;/code&gt;が使えないRed Hat Enterprise LinuxもしくはCentOSマシンを target と呼ぶ。&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;target と同じバージョンの Linux 仮想マシンを最小インストールで新規作成する。これを source と呼ぶ。
 source はインターネットもしくはOSメディアなどを利用して&lt;code&gt;yum&lt;/code&gt;が利用できる環境とする。
-今回ここについては説明しない。&lt;/li&gt;
+仮想マシンを作成する方法は割愛。&lt;/li&gt;
 &lt;li&gt;source 上でローカル環境向けのリポジトリを作成する。これを repo と呼ぶ。&lt;/li&gt;
 &lt;li&gt;target に repo をコピーして&lt;code&gt;yum&lt;/code&gt;で repo 内のパッケージを target にインストールする。&lt;/li&gt;
 &lt;/ol&gt;
@@ -38,54 +38,67 @@ source はインターネットもしくはOSメディアなどを利用して&l
 &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -eu
 
-&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; 0 &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Specify packages!&quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;basename &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; packages...&quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt;&amp;gt; 1 &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;basename &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; dest package...&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;  dest:    Name of local repository to create. dest.tar.gz is created.&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;  package: Name of yum package to include into dest.&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;nv&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./resource
-&lt;span class=&quot;nv&quot;&gt;repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$resource&lt;/span&gt;/repo
+&lt;span class=&quot;nv&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%.tar.gz&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; ! -e &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; should not exist.&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;shift
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/repo&quot;&lt;/span&gt;
 
 rpm -q --quiet yum-utils &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; yum install -y yum-utils
-&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; mkdir -p &lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt;
-yumdownloader --resolve --destdir&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;
+mkdir -p &lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt;
+yumdownloader --resolve --destdir&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$packages&lt;/span&gt;
 rpm -q --quiet createrepo &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; yum install -y createrepo
 createrepo &lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt;
 
-cat &amp;gt; &lt;span class=&quot;nv&quot;&gt;$resource&lt;/span&gt;/install.sh &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt; EOS
+cat &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/install.sh&quot;&lt;/span&gt; &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOS
 #!/bin/bash
 set -eu
 
-cat &amp;gt; /etc/yum.repo.d/localrepo.repo &amp;lt;&amp;lt; EOF
+cat &amp;gt; /etc/yum.repo.d/localrepo.repo &amp;lt;&amp;lt;EOF
 [localrepo]
 name=localrepo
-baseurl=file://\$(readlink -f \$(dirname \$0))/repo
+baseurl=file://\$(readlink -f \$(dirname &quot;\$0&quot;))/repo
 enabled=0
 gpgcheck=0
 EOF
 
-yum --disablerepo=* --enablerepo=localrepo -y install $*
+yum --disablerepo=* --enablerepo=localrepo -y install $packages
 EOS
 
-&lt;/span&gt;chmod +x &lt;span class=&quot;nv&quot;&gt;$resource&lt;/span&gt;/install.sh
-tar czf localrepo.tar.gz &lt;span class=&quot;nv&quot;&gt;$resource&lt;/span&gt;
+&lt;/span&gt;chmod +x &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/install.sh&quot;&lt;/span&gt;
+tar czf &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.tar.gz&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$dest&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行するとカレントディレクトリに localrepo.tar.gz というファイルが作成される。
-このファイルにインストーラとリポジトリが含まれる。&lt;/p&gt;
+&lt;p&gt;というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行する。&lt;/p&gt;
+
+&lt;p&gt;例えば &lt;code&gt;jq&lt;/code&gt; と &lt;code&gt;tree&lt;/code&gt; をインストールしたければ&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo makelocalrepo.sh localrepo jq tree
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;とするとカレントディレクトリに localrepo というディレクトリと localrepo.tar.gz というファイルが作成される。
+localrepo.tar.gz にインストーラとリポジトリが含まれる。&lt;/p&gt;
 
 &lt;p&gt;ちなみに&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;yum&lt;/code&gt;のdownloadonlyプラグインは非推奨となっており&lt;code&gt;yumdownloader&lt;/code&gt;が今後の推奨になっている。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yum&lt;/code&gt;の downloadonly プラグインは非推奨となっており&lt;code&gt;yumdownloader&lt;/code&gt;が今後の推奨になっている。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;yumdownloader&lt;/code&gt;の resolve オプションで依存関係も全て解決される。ありがたい。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2&gt;target へ repo をインストール&lt;/h2&gt;
 
-&lt;p&gt;localrepo.tar.gz を target へコピーして以下を target 上で実行する。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;tar xzf localrepo.tar.gz
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;resource &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./install.sh
+&lt;p&gt;出来上がったファイル（上の例では localrepo.tar.gz ）を target へコピーして以下を target 上で実行する。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo tar xzf localrepo.tar.gz
+sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;resource &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./install.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
   </entry>
 

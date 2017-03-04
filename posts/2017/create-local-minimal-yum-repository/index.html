@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK</title>
-    <meta name="description" content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
+    <meta name="description" content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
     <meta name="keywords" content="Programming, Linux, bash">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
     <meta property="fb:app_id" content="494189017339311">
     <meta property="og:title"  content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
     <meta name="twitter:title" content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
-    <meta property="og:description"  content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
-    <meta name="twitter:description" content="環境的にyumが使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。">
+    <meta property="og:description"  content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
+    <meta name="twitter:description" content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
@@ -129,16 +129,16 @@
 
   <article class="post col-md-10 col-lg-10">
     <h1 class="well well-lg">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</h1>
-    <p>環境的に<code>yum</code>が使えない（インターネット接続がない、OSメディアをマウントできない）Linuxマシンに<code>yum</code>でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する。</p>
+    <p>環境的に<code>yum</code>が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに<code>yum</code>でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。</p>
 
 <h2>概略</h2>
 
-<p><code>yum</code>が使えないFedora系Linux（Red Hat Enterprise Linux, CentOS等）マシンを target と呼ぶ。</p>
+<p><code>yum</code>が使えないRed Hat Enterprise LinuxもしくはCentOSマシンを target と呼ぶ。</p>
 
 <ol>
 <li>target と同じバージョンの Linux 仮想マシンを最小インストールで新規作成する。これを source と呼ぶ。
 source はインターネットもしくはOSメディアなどを利用して<code>yum</code>が利用できる環境とする。
-今回ここについては説明しない。</li>
+仮想マシンを作成する方法は割愛。</li>
 <li>source 上でローカル環境向けのリポジトリを作成する。これを repo と呼ぶ。</li>
 <li>target に repo をコピーして<code>yum</code>で repo 内のパッケージを target にインストールする。</li>
 </ol>
@@ -150,54 +150,67 @@ source はインターネットもしくはOSメディアなどを利用して<c
 <span class="c">#</span>
 <span class="nb">set</span> -eu
 
-<span class="o">[[</span> <span class="nv">$# </span><span class="o">==</span> 0 <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
-  <span class="nb">echo</span> <span class="s2">"Specify packages!"</span>
-  <span class="nb">echo</span> <span class="s2">"</span><span class="k">$(</span>basename <span class="nv">$0</span><span class="k">)</span><span class="s2"> packages..."</span>
-  <span class="nb">exit</span>
+<span class="o">[[</span> <span class="nv">$# </span>&gt; 1 <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="k">$(</span>basename <span class="nv">$0</span><span class="k">)</span><span class="s2"> dest package..."</span>
+  <span class="nb">echo</span> <span class="s2">"  dest:    Name of local repository to create. dest.tar.gz is created."</span>
+  <span class="nb">echo</span> <span class="s2">"  package: Name of yum package to include into dest."</span>
+  <span class="nb">exit </span>1
 <span class="o">}</span>
 
-<span class="nv">resource</span><span class="o">=</span>./resource
-<span class="nv">repo</span><span class="o">=</span><span class="nv">$resource</span>/repo
+<span class="nv">dest</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="p">%.tar.gz</span><span class="k">}</span>
+<span class="o">[[</span> ! -e <span class="s2">"</span><span class="nv">$dest</span><span class="s2">"</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$dest</span><span class="s2"> should not exist."</span>
+  <span class="nb">exit </span>1
+<span class="o">}</span>
+
+<span class="nb">shift
+</span><span class="nv">packages</span><span class="o">=</span><span class="nv">$*</span>
+<span class="nv">repo</span><span class="o">=</span><span class="s2">"</span><span class="nv">$dest</span><span class="s2">/repo"</span>
 
 rpm -q --quiet yum-utils <span class="o">||</span> yum install -y yum-utils
-<span class="o">[[</span> -d <span class="nv">$repo</span> <span class="o">]]</span> <span class="o">||</span> mkdir -p <span class="nv">$repo</span>
-yumdownloader --resolve --destdir<span class="o">=</span><span class="nv">$repo</span> <span class="nv">$*</span>
+mkdir -p <span class="nv">$repo</span>
+yumdownloader --resolve --destdir<span class="o">=</span><span class="nv">$repo</span> <span class="nv">$packages</span>
 rpm -q --quiet createrepo <span class="o">||</span> yum install -y createrepo
 createrepo <span class="nv">$repo</span>
 
-cat &gt; <span class="nv">$resource</span>/install.sh <span class="sh">&lt;&lt; EOS
+cat &gt; <span class="s2">"</span><span class="nv">$dest</span><span class="s2">/install.sh"</span> <span class="sh">&lt;&lt;EOS
 #!/bin/bash
 set -eu
 
-cat &gt; /etc/yum.repo.d/localrepo.repo &lt;&lt; EOF
+cat &gt; /etc/yum.repo.d/localrepo.repo &lt;&lt;EOF
 [localrepo]
 name=localrepo
-baseurl=file://\$(readlink -f \$(dirname \$0))/repo
+baseurl=file://\$(readlink -f \$(dirname "\$0"))/repo
 enabled=0
 gpgcheck=0
 EOF
 
-yum --disablerepo=* --enablerepo=localrepo -y install $*
+yum --disablerepo=* --enablerepo=localrepo -y install $packages
 EOS
 
-</span>chmod +x <span class="nv">$resource</span>/install.sh
-tar czf localrepo.tar.gz <span class="nv">$resource</span>
+</span>chmod +x <span class="s2">"</span><span class="nv">$dest</span><span class="s2">/install.sh"</span>
+tar czf <span class="s2">"</span><span class="nv">$dest</span><span class="s2">.tar.gz"</span> <span class="s2">"</span><span class="nv">$dest</span><span class="s2">"</span>
 </code></pre></div>
-<p>というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行するとカレントディレクトリに localrepo.tar.gz というファイルが作成される。
-このファイルにインストーラとリポジトリが含まれる。</p>
+<p>というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行する。</p>
+
+<p>例えば <code>jq</code> と <code>tree</code> をインストールしたければ</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo makelocalrepo.sh localrepo jq tree
+</code></pre></div>
+<p>とするとカレントディレクトリに localrepo というディレクトリと localrepo.tar.gz というファイルが作成される。
+localrepo.tar.gz にインストーラとリポジトリが含まれる。</p>
 
 <p>ちなみに</p>
 
 <ul>
-<li><code>yum</code>のdownloadonlyプラグインは非推奨となっており<code>yumdownloader</code>が今後の推奨になっている。</li>
+<li><code>yum</code>の downloadonly プラグインは非推奨となっており<code>yumdownloader</code>が今後の推奨になっている。</li>
 <li><code>yumdownloader</code>の resolve オプションで依存関係も全て解決される。ありがたい。</li>
 </ul>
 
 <h2>target へ repo をインストール</h2>
 
-<p>localrepo.tar.gz を target へコピーして以下を target 上で実行する。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar xzf localrepo.tar.gz
-<span class="nb">cd </span>resource <span class="o">&amp;&amp;</span> ./install.sh
+<p>出来上がったファイル（上の例では localrepo.tar.gz ）を target へコピーして以下を target 上で実行する。</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo tar xzf localrepo.tar.gz
+sudo <span class="nb">cd </span>resource <span class="o">&amp;&amp;</span> ./install.sh
 </code></pre></div>
   </article>
 </div>
