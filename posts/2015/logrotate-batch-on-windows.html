@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>タグ別記事一覧 - URIN HACK</title>
-    <meta name="description" content="Amazing programming">
-    <meta name="keywords" content="Programming, ">
+    <title>logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK</title>
+    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
+    <meta name="keywords" content="Programming, Windows, Batch">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="タグ別記事一覧 - URIN HACK">
-    <meta name="twitter:title" content="タグ別記事一覧 - URIN HACK">
-    <meta property="og:description"  content="Amazing programming">
-    <meta name="twitter:description" content="Amazing programming">
+    <meta property="og:title"  content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
+    <meta name="twitter:title" content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
+    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
+    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/tags/gcc/">
+    <meta property="og:url" content="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/tags/gcc/">
+    <link rel="canonical" href="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -60,20 +60,187 @@
 
     <div class="container">
       <div class="main-content">
-        <h2 class="well well-lg"><i class="fa fa-tag"></i> gccに関連する記事<span class="digits badge pull-right">1</span></h2>
+        <div class="row">
+  <aside class="col-md-2 col-lg-2 hidden-sm hidden-xs">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
+    </li>
+    <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
-<hr>
-<div class="row post-list-row">
-  <div class="post-aux col-sm-2"><i class="fa fa-edit"></i><span class="digits">2013-08-10</span></div>
-  <article class="col-sm-10">
-    <h3><a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a></h3>
-    <section>makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
+      </span>
 
-Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。
+    </li>
 
-</section>
+  
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
+      <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
+      <span class="badge digits">1</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li>
+      <a class="fi-btn" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Furin.github.io%2Frss.xml" title="Feedlyでフォロー">
+        <img src="http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-small_2x.png" alt="follow us in feedly" width="66" height="20">
+      </a>
+    </li>
+    <li>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+    </li>
+    <li>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+    </li>
+    <li>
+      <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
+    </li>
+    <li>
+      <a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack" data-lang="en" title="Twitterでつぶやく"></a>
+    </li>
+    <li>
+      <div class="g-plusone" data-size="medium" title="Google+でシェア"></div>
+    </li>
+  </ul>
+
+</div>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- レスポンシブ３ -->
+    <ins class="adsbygoogle ads-responsive3"
+      style="display:inline-block"
+      data-ad-client="ca-pub-8915879811522337"
+      data-ad-slot="5406132601"></ins>
+
+  </aside>
+
+  <article class="post col-md-10 col-lg-10">
+    <h1 class="well well-lg">logrotate.bat - Windowsのバッチファイルでログローテート</h1>
+    <p>Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</p>
+
+<script src="https://gist.github.com/urin/3b68e8388cc34a688d13.js"></script>
+
+<p>例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>set logfile="path\to\logfile.log"
+logrotate.bat %logfile% 1 10K
+echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
+</code></pre>
+</div>
+
+<p>こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。</p>
+
+<p>常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。</p>
+
+
   </article>
 </div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
+    </li>
+    <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
+      <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
+      <span class="badge digits">1</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li>
+      <a class="fi-btn" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Furin.github.io%2Frss.xml" title="Feedlyでフォロー">
+        <img src="http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-small_2x.png" alt="follow us in feedly" width="66" height="20">
+      </a>
+    </li>
+    <li>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+    </li>
+    <li>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+    </li>
+    <li>
+      <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
+    </li>
+    <li>
+      <a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack" data-lang="en" title="Twitterでつぶやく"></a>
+    </li>
+    <li>
+      <div class="g-plusone" data-size="medium" title="Google+でシェア"></div>
+    </li>
+  </ul>
+
+</div>
+
+
+    <div class="col-md-6 pagenation prev">
+
+      <a rel="prev" href="/posts/2015/labmda-without-stdcpp" title="C++で無名関数の関数ポインタを作る"><i class="fa fa-chevron-circle-left"></i><small>C++で無名関数の関数ポインタを作る</small></a>
+
+    </div>
+    <div class="col-md-6 pagenation next">
+
+      <a rel="next" href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" title="fluent-plugin-dstatで取得した値が不正になる問題を解決"><i class="fa fa-chevron-circle-right"></i><small>fluent-plugin-dstatで取得した値が不正になる問題を解決</small></a>
+
+    </div>
+
+    <hr>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_shortname = 'urinhack';
+      var disqus_url = 'http://urin.github.io/posts/2015/logrotate-batch-on-windows';
+      var disqus_title = 'logrotate.bat - Windowsのバッチファイルでログローテート';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+</div>
+
+
+<!-- Facebook button -->
+<div id="fb-root"></div>
+<!-- Hatena bookmark button -->
+<script async src="//b.st-hatena.com/js/bookmark_button.js"></script>
+<!-- Others -->
+<script defer src="/js/post_async.js"></script>
 
 
 

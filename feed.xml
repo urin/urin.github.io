@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-  <channel>
-    <title>URIN HACK</title>
-    <description>URIN HACK - うりん</description>
-    <link>http://urin.github.io/rss.xml</link>
-    <link>http://urin.github.io</link>
-    <lastBuildDate>2017-02-25T14:36:25+09:00</lastBuildDate>
-    <pubDate>2017-02-25T14:36:25+09:00</pubDate>
-    <ttl>1800</ttl>
-
-    <item>
-      <title>Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title>
-      <description>&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-03-08T13:28:17+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title><link href="/posts/2017/create-local-minimal-yum-repository" rel="alternate" type="text/html" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法" /><published>2017-02-25T14:36:25+09:00</published><updated>2017-02-25T14:36:25+09:00</updated><id>/posts/2017/create-local-minimal-yum-repository</id><content type="html" xml:base="/posts/2017/create-local-minimal-yum-repository">&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
 
 &lt;h2 id=&quot;概略&quot;&gt;概略&lt;/h2&gt;
 
@@ -99,17 +86,7 @@ localrepo.tar.gz にインストーラとリポジトリが含まれる。&lt;/p
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo tar xzf localrepo.tar.gz
 sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./install.sh
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2017/create-local-minimal-yum-repository</link>
-      <guid>http://urin.github.io//posts/2017/create-local-minimal-yum-repository</guid>
-      <pubDate>2017-02-25T14:36:25+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>fluent-plugin-dstatで取得した値が不正になる問題を解決</title>
-      <description>&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2&quot;&gt;shun0102/fluent-plugin-dstat at v0.3.2&lt;/a&gt;で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="Linux" /><category term="bash" /><summary type="html">環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。</summary></entry><entry><title type="html">fluent-plugin-dstatで取得した値が不正になる問題を解決</title><link href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" rel="alternate" type="text/html" title="fluent-plugin-dstatで取得した値が不正になる問題を解決" /><published>2016-11-12T13:02:30+09:00</published><updated>2016-11-12T13:02:30+09:00</updated><id>/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</id><content type="html" xml:base="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2&quot;&gt;shun0102/fluent-plugin-dstat at v0.3.2&lt;/a&gt;で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;
 
 &lt;h2 id=&quot;問題を確認した環境&quot;&gt;問題を確認した環境&lt;/h2&gt;
 
@@ -156,17 +133,7 @@ sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&
 
 &lt;h2 id=&quot;結果&quot;&gt;結果&lt;/h2&gt;
 
-&lt;p&gt;これらを全て解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</link>
-      <guid>http://urin.github.io//posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</guid>
-      <pubDate>2016-11-12T13:02:30+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>logrotate.bat - Windowsのバッチファイルでログローテート</title>
-      <description>&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
+&lt;p&gt;これらを全て解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;</content><author><name>うりん</name></author><category term="fluentd" /><category term="Ruby" /><category term="Linux" /><summary type="html">shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。</summary></entry><entry><title type="html">logrotate.bat - Windowsのバッチファイルでログローテート</title><link href="/posts/2015/logrotate-batch-on-windows" rel="alternate" type="text/html" title="logrotate.bat - Windowsのバッチファイルでログローテート" /><published>2015-09-19T22:23:55+09:00</published><updated>2015-09-19T22:23:55+09:00</updated><id>/posts/2015/logrotate-batch-on-windows</id><content type="html" xml:base="/posts/2015/logrotate-batch-on-windows">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/urin/3b68e8388cc34a688d13.js&quot;&gt;&lt;/script&gt;
 
@@ -180,17 +147,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 
 &lt;p&gt;こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。&lt;/p&gt;
 
-&lt;p&gt;常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2015/logrotate-batch-on-windows</link>
-      <guid>http://urin.github.io//posts/2015/logrotate-batch-on-windows</guid>
-      <pubDate>2015-09-19T22:23:55+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>C++で無名関数の関数ポインタを作る</title>
-      <description>&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
+&lt;p&gt;常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Windows" /><category term="Batch" /><summary type="html">Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</summary></entry><entry><title type="html">C++で無名関数の関数ポインタを作る</title><link href="/posts/2015/labmda-without-stdcpp" rel="alternate" type="text/html" title="C++で無名関数の関数ポインタを作る" /><published>2015-04-05T22:00:40+09:00</published><updated>2015-04-05T22:00:40+09:00</updated><id>/posts/2015/labmda-without-stdcpp</id><content type="html" xml:base="/posts/2015/labmda-without-stdcpp">&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
 
 &lt;p&gt;プログラミングで頭を悩ませるのは命名だ。プログラマが「名付け」を省略できるとコーディングの効率が大幅に上がり、命名ミスによって引き起こされる勘違い（バグ）もなくなる。&lt;/p&gt;
 
@@ -249,17 +206,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2015/labmda-without-stdcpp</link>
-      <guid>http://urin.github.io//posts/2015/labmda-without-stdcpp</guid>
-      <pubDate>2015-04-05T22:00:40+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>Jekyll 2.3.0をWindowsに導入</title>
-      <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="C++" /><summary type="html">無名関数（ラムダとも呼ばれる）のメリットは大きい。</summary></entry><entry><title type="html">Jekyll 2.3.0をWindowsに導入</title><link href="/posts/2014/install-jekyll-2.3.0-to-windows" rel="alternate" type="text/html" title="Jekyll 2.3.0をWindowsに導入" /><published>2014-08-14T23:59:32+09:00</published><updated>2014-08-14T23:59:32+09:00</updated><id>/posts/2014/install-jekyll-2.3.0-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-2.3.0-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
 jekyll new jekyll-install-test
@@ -322,17 +269,7 @@ jekyll new jekyll-install-test
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</link>
-      <guid>http://urin.github.io//posts/2014/install-jekyll-2.3.0-to-windows</guid>
-      <pubDate>2014-08-14T23:59:32+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title>
-      <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry><entry><title type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title><link href="/posts/2014/install-jekyll-1.4.2-to-windows" rel="alternate" type="text/html" title="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入" /><published>2014-03-02T22:47:46+09:00</published><updated>2014-03-02T22:47:46+09:00</updated><id>/posts/2014/install-jekyll-1.4.2-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-1.4.2-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
 &lt;h2 id=&quot;導入してみる&quot;&gt;導入してみる&lt;/h2&gt;
 &lt;p&gt;前提は以下の通り。&lt;/p&gt;
@@ -442,17 +379,7 @@ gem uninstall pygments.rb
 gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
 gem install wdm
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</link>
-      <guid>http://urin.github.io//posts/2014/install-jekyll-1.4.2-to-windows</guid>
-      <pubDate>2014-03-02T22:47:46+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title>
-      <description>&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;プラグイン&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery.balloon.js&lt;/code&gt;の使い方。
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。</summary></entry><entry><title type="html">設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</title><link href="/posts/2014/jquery-balloon-js" rel="alternate" type="text/html" title="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js" /><published>2014-02-12T00:00:00+09:00</published><updated>2014-02-12T00:00:00+09:00</updated><id>/posts/2014/jquery-balloon-js</id><content type="html" xml:base="/posts/2014/jquery-balloon-js">&lt;p&gt;設置が超簡単でカスタマイズ性の高い吹き出しホバー用&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;プラグイン&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery.balloon.js&lt;/code&gt;の使い方。
 設置方法は&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;と本プラグインの&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript&lt;/code&gt;ファイルのみで&lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt;や画像などは不要。どこにでも簡単に設置することができる。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/jquery.balloon.js&quot; title=&quot;デモページヘ&quot; class=&quot;block&quot;&gt;&lt;img src=&quot;/img/posts/2014/2014-02-11-jquery.balloon.js-demo-screenshot.png&quot; alt=&quot;jquery.balloon.js demo page&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -621,16 +548,7 @@ gem install wdm
     &lt;li&gt;&lt;a href=&quot;//ginpro.winofsql.jp/article/386285907.html&quot;&gt;jQuery プラグイン jquery.balloon.js の外部からのコントロール : GINPRO / SQLの窓と銀プログラマ&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;//pb-times.jp/P_51f721519314d&quot;&gt;jQueryで簡単に吹き出しをポップアップ ｜ PbTimes 情報誌&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
-      <link>http://urin.github.io/posts/2014/jquery-balloon-js</link>
-      <guid>http://urin.github.io//posts/2014/jquery-balloon-js</guid>
-      <pubDate>2014-02-12T00:00:00+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title>
-      <description>&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;プラグイン&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
+&lt;/blockquote&gt;</content><author><name>うりん</name></author><category term="jQuery" /><category term="JavaScript" /><summary type="html">設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.jsの使い方。 設置方法はjQueryと本プラグインのjavascriptファイルのみでCSSや画像などは不要。どこにでも簡単に設置することができる。</summary></entry><entry><title type="html">要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</title><link href="/posts/2013/release-jquery-tile-js" rel="alternate" type="text/html" title="要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js" /><published>2013-08-11T00:00:00+09:00</published><updated>2013-08-11T00:00:00+09:00</updated><id>/posts/2013/release-jquery-tile-js</id><content type="html" xml:base="/posts/2013/release-jquery-tile-js">&lt;p&gt;ブロック要素の高さを揃える軽量な&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;プラグイン&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery.tile.js&lt;/code&gt;。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。
 このプラグインには余分な機能が一切無いため &lt;strong&gt;使い方がシンプルでプラグインは非常に軽量&lt;/strong&gt; になっている。&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScript&lt;/code&gt;を使用しないで要素の高さ揃える場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;の&lt;code class=&quot;highlighter-rouge&quot;&gt;table&lt;/code&gt;要素を使う、&lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt;の&lt;code class=&quot;highlighter-rouge&quot;&gt;display: table&lt;/code&gt;を使用する、&lt;code class=&quot;highlighter-rouge&quot;&gt;float: left&lt;/code&gt;で横に並べて&lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt;を大きくするなどの方法が考えられるが、デザイン面で融通が効きにくく初心者にとっては少し敷居が高い。
@@ -699,16 +617,7 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
     &lt;li&gt;&lt;a href=&quot;//1bit.mobi/20111025170154.html&quot;&gt;ブロック要素の天地を揃えるのはjquery.tile.jsが一番便利でした - 1bit::memo&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;//www.jqueryrain.com/2014/02/jquery-tile-js-lightest-jquery-plugin-tile-boxes/&quot;&gt;jQuery tile.js : Lightest jQuery plugin to Tile boxes&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
-      <link>http://urin.github.io/posts/2013/release-jquery-tile-js</link>
-      <guid>http://urin.github.io//posts/2013/release-jquery-tile-js</guid>
-      <pubDate>2013-08-11T00:00:00+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>シンプルで応用の効くmakefileとその解説</title>
-      <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>うりん</name></author><category term="jQuery" /><category term="JavaScript" /><summary type="html">ブロック要素の高さを揃える軽量なjQueryプラグインjquery.tile.js。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。 このプラグインには余分な機能が一切無いため 使い方がシンプルでプラグインは非常に軽量 になっている。</summary></entry><entry><title type="html">シンプルで応用の効くmakefileとその解説</title><link href="/posts/2013/simple-makefile-for-clang" rel="alternate" type="text/html" title="シンプルで応用の効くmakefileとその解説" /><published>2013-08-10T00:00:00+09:00</published><updated>2013-08-10T00:00:00+09:00</updated><id>/posts/2013/simple-makefile-for-clang</id><content type="html" xml:base="/posts/2013/simple-makefile-for-clang">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
 &lt;p&gt;Linux系OS上（正確に言うとGNU MakeとGCC）で複数の&lt;code class=&quot;highlighter-rouge&quot;&gt;C/C++&lt;/code&gt;ソースファイルから１つの実行ファイルを作成(&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;)するための汎用的な&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;をカスタマイズする必要があると思うがそのベースにする。&lt;/p&gt;
 
@@ -880,17 +789,7 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
 &lt;p&gt;依存関係ファイルとして&lt;code class=&quot;highlighter-rouge&quot;&gt;DEPENDS&lt;/code&gt;の値を用いる。
 初期値&lt;code class=&quot;highlighter-rouge&quot;&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code class=&quot;highlighter-rouge&quot;&gt;.d&lt;/code&gt;に置換したもの。&lt;/p&gt;
 
-&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2013/simple-makefile-for-clang</link>
-      <guid>http://urin.github.io//posts/2013/simple-makefile-for-clang</guid>
-      <pubDate>2013-08-10T00:00:00+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>Jekyll 1.1系をWindowsに導入する</title>
-      <description>&lt;p&gt;現時点で最新版の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code class=&quot;highlighter-rouge&quot;&gt;1.9.3&lt;/code&gt;でやったが&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
+&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;</content><author><name>うりん</name></author><category term="C++" /><category term="makefile" /><category term="gcc" /><category term="Linux" /><summary type="html">makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。 Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。</summary></entry><entry><title type="html">Jekyll 1.1系をWindowsに導入する</title><link href="/posts/2013/Setup-jekyll-1.1-to-windows" rel="alternate" type="text/html" title="Jekyll 1.1系をWindowsに導入する" /><published>2013-08-04T00:00:00+09:00</published><updated>2013-08-04T00:00:00+09:00</updated><id>/posts/2013/Setup-jekyll-1.1-to-windows</id><content type="html" xml:base="/posts/2013/Setup-jekyll-1.1-to-windows">&lt;p&gt;現時点で最新版の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code class=&quot;highlighter-rouge&quot;&gt;1.9.3&lt;/code&gt;でやったが&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
 
 &lt;h3 id=&quot;pythonをインストール&quot;&gt;Pythonをインストール&lt;/h3&gt;
 
@@ -945,90 +844,4 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
 
 &lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;
 
-&lt;p&gt;さあ、快適なJekyllライフをはじめよう。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</link>
-      <guid>http://urin.github.io//posts/2013/Setup-jekyll-1.1-to-windows</guid>
-      <pubDate>2013-08-04T00:00:00+09:00</pubDate>
-    </item>
-
-    <item>
-      <title>ブログをリニューアル</title>
-      <description>&lt;p&gt;ブログを&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;に移転して完全にリニューアルした。CMSは&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;でホストは&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//jekyllrb.com/&quot;&gt;Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。&lt;/p&gt;
-
-&lt;p&gt;何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyllを選択したわけ&quot;&gt;Jekyllを選択したわけ&lt;/h2&gt;
-
-&lt;p&gt;ブログサービスを選ぶ判断基準は以下。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;無料で容量制限が厳しくない&lt;/li&gt;
-  &lt;li&gt;将来性がある（１０年間くらいはサービスが継続すると思われる）&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;Javascript&lt;/code&gt;含めてほぼ完全にカスタマイズできる&lt;/li&gt;
-  &lt;li&gt;余計な広告が入らない&lt;/li&gt;
-  &lt;li&gt;記事にも&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;が使えてコードのシンタックスハイライトなどもできる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;無料のブログサービスを調べる&quot;&gt;無料のブログサービスを調べる&lt;/h3&gt;
-
-&lt;p&gt;日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;//www.ninja.co.jp/blog/&quot;&gt;忍者ブログ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//www.blogger.com/&quot;&gt;Blogger&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//hatenablog.com/&quot;&gt;はてなブログ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//d.hatena.ne.jp/&quot;&gt;はてなダイアリー&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//ameblo.jp/&quot;&gt;Ameba (アメーバ)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//blog.fc2.com/&quot;&gt;FC2ブログ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//blog.livedoor.com/&quot;&gt;ライブドアブログ(livedoor Blog)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;・・・&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;を使うのが難しくなったのが致命的だった。
-これら伝統的なブログサービス以外の選択肢としては&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;//www.strikingly.com/&quot;&gt;Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//wordpress.com/&quot;&gt;WordPress.com - Get a Free Blog Here&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//wordpress.org/&quot;&gt;WordPress › Blog Tool, Publishing Platform, and CMS&lt;/a&gt;を何らかのサーバ上で運営&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//octopress.org/&quot;&gt;Octopress&lt;/a&gt;をGitHubでホスティング&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//www.edicy.com/&quot;&gt;Edicy — Create a Website — Easy to use Website Builder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//ja.wix.com/&quot;&gt;WIX&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//www.weebly.com/&quot;&gt;Weebly&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;//jp.jimdo.com/&quot;&gt;Jimdo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt;をカスタマイズ出来ないなど色々と不都合があった。
-で、この中では&lt;code class=&quot;highlighter-rouge&quot;&gt;Octopress&lt;/code&gt;が&lt;code class=&quot;highlighter-rouge&quot;&gt;Compass&lt;/code&gt;が使えたり色々といいように見えた。しかし・・・&lt;/p&gt;
-
-&lt;h3 id=&quot;結論&quot;&gt;結論&lt;/h3&gt;
-
-&lt;p&gt;完全にカスタマイズできて&lt;code class=&quot;highlighter-rouge&quot;&gt;Octopress&lt;/code&gt;のベースにもなっている&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;が今年リリースされたバージョン&lt;code class=&quot;highlighter-rouge&quot;&gt;0.12.0&lt;/code&gt;あたりから
-急激に充実してもはや&lt;code class=&quot;highlighter-rouge&quot;&gt;Octopress&lt;/code&gt;なんていらないんじゃね？という勢いを感じたので&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;にホスティングしてもらう形とした。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;のスターターキットとして&lt;a href=&quot;//jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;という&lt;code class=&quot;highlighter-rouge&quot;&gt;Twitter Bootstrap 2&lt;/code&gt;を適用したものが良さげではあったが
-開発が停滞気味で&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;本体と&lt;code class=&quot;highlighter-rouge&quot;&gt;Bootstrap&lt;/code&gt;の更新に追いついて行けなさそうな予感がしたので結局、こうした。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;常に最新の&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。&lt;/li&gt;
-  &lt;li&gt;レスポンシブ対応のグリッドシステムを持っていて今後も息が長い&lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt;フレームワークを使いたい。ということで&lt;a href=&quot;//getbootstrap.com/&quot;&gt;Bootstrap 3 RC1&lt;/a&gt;を導入。&lt;/li&gt;
-  &lt;li&gt;アイコンは&lt;code class=&quot;highlighter-rouge&quot;&gt;Web font&lt;/code&gt;がいいので&lt;code class=&quot;highlighter-rouge&quot;&gt;Bootstrap&lt;/code&gt;との相性も良い&lt;a href=&quot;//fortawesome.github.io/Font-Awesome/&quot;&gt;Font Awesome, the iconic font designed for Bootstrap&lt;/a&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
-なにせ依存関係が少ない。安定依存の原則。これ重要。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2013/Renewal</link>
-      <guid>http://urin.github.io//posts/2013/Renewal</guid>
-      <pubDate>2013-08-03T00:00:00+09:00</pubDate>
-    </item>
-
-  </channel>
-</rss>
+&lt;p&gt;さあ、快適なJekyllライフをはじめよう。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">現時点で最新版のjekyll-1.1.2をインストールしてみる。Rubyは1.9.3でやったが2.0.0でも多分問題ない。</summary></entry></feed>

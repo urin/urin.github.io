@@ -69,17 +69,6 @@
     <h3><a href="/posts/2015/logrotate-batch-on-windows">logrotate.bat - Windowsのバッチファイルでログローテート</a></h3>
     <section>Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。
 
-400: Invalid request
-
-
-例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。
-set logfile="path\to\logfile.log"
-logrotate.bat %logfile% 1 10K
-echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
-
-こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。
-
-常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。
 </section>
   </article>
 </div>
@@ -90,6 +79,7 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
   <article class="col-sm-10">
     <h3><a href="/posts/2014/install-jekyll-2.3.0-to-windows">Jekyll 2.3.0をWindowsに導入</a></h3>
     <section>Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。
+
 </section>
   </article>
 </div>
@@ -100,6 +90,7 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
   <article class="col-sm-10">
     <h3><a href="/posts/2014/install-jekyll-1.4.2-to-windows">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</a></h3>
     <section>Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。
+
 </section>
   </article>
 </div>
@@ -110,6 +101,7 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
   <article class="col-sm-10">
     <h3><a href="/posts/2013/Setup-jekyll-1.1-to-windows">Jekyll 1.1系をWindowsに導入する</a></h3>
     <section>現時点で最新版のjekyll-1.1.2をインストールしてみる。Rubyは1.9.3でやったが2.0.0でも多分問題ない。
+
 </section>
   </article>
 </div>
@@ -278,7 +270,7 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
           </div>
           <div class="col-sm-2">
             <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
-            <div>Powered by Jekyll version 2.3.0.</div>
+            <div>Powered by Jekyll version 3.4.1.</div>
           </div>
           <div class="col-sm-2">
             <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>

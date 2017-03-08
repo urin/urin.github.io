@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ブログをリニューアル - URIN HACK</title>
+    <meta name="description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
+    <meta name="keywords" content="Programming, Jekyll, GitHub, Octopress, Ruby">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta property="fb:admins" content="100001990741720">
+    <meta property="fb:app_id" content="494189017339311">
+    <meta property="og:title"  content="ブログをリニューアル - URIN HACK">
+    <meta name="twitter:title" content="ブログをリニューアル - URIN HACK">
+    <meta property="og:description"  content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
+    <meta name="twitter:description" content="ブログをGitHub Pagesに移転して完全にリニューアルした。CMSはJekyllでホストはGitHub。Jekyll • Simple, blog-aware, static sites去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。">
+    <meta property="og:type" content="article">
+    <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
+    <meta property="og:site_name" content="URIN HACK">
+    <meta property="og:url" content="http://urin.github.io/posts/2013/Renewal">
+    <meta property="twitter:card" content="summary">
+    <meta name="twitter:site" content="@urinhack">
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/syntax.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <!--
+    <link rel="apple-touch-icon" href="/img/layout/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/layout/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/layout/apple-touch-icon-114x114.png">
+    -->
+    <link rel="author" href="urinkun@gmail.com">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="http://urin.github.io/posts/2013/Renewal">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <!--[if lt IE 9]>
+    <script async src="/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="container row">
+        <h1 class="header-logo col-xs-6 col-sm-3">
+          <a href="/"><img src="/img/layout/header-logo.png" alt="URIN HACK" width="105" height="40"></a>
+          <a href="/rss.xml"><i class="fa fa-rss"></i></a>
+        </h1>
+        <div class="sns-icons col-xs-6 col-sm-3 col-sm-offset-6">
+          <a href="//github.com/urin" title="GitHub"><i class="fa fa-github"></i></a>
+          <a href="//twitter.com/urinhack" title="Twitter"><i class="fa fa-twitter"></i></a>
+          <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="fa fa-facebook"></i></a>
+        </div>
+      </header>
+    </div>
+    <hr>
+
+    <div class="container">
+      <div class="main-content">
+        <div class="row">
+  <aside class="col-md-2 col-lg-2 hidden-sm hidden-xs">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+    </li>
+    <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
+      <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
+      <span class="badge digits">5</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li>
+      <a class="fi-btn" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Furin.github.io%2Frss.xml" title="Feedlyでフォロー">
+        <img src="http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-small_2x.png" alt="follow us in feedly" width="66" height="20">
+      </a>
+    </li>
+    <li>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+    </li>
+    <li>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+    </li>
+    <li>
+      <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
+    </li>
+    <li>
+      <a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack" data-lang="en" title="Twitterでつぶやく"></a>
+    </li>
+    <li>
+      <div class="g-plusone" data-size="medium" title="Google+でシェア"></div>
+    </li>
+  </ul>
+
+</div>
+
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- レスポンシブ３ -->
+    <ins class="adsbygoogle ads-responsive3"
+      style="display:inline-block"
+      data-ad-client="ca-pub-8915879811522337"
+      data-ad-slot="5406132601"></ins>
+
+  </aside>
+
+  <article class="post col-md-10 col-lg-10">
+    <h1 class="well well-lg">ブログをリニューアル</h1>
+    <p>ブログを<code class="highlighter-rouge">GitHub Pages</code>に移転して完全にリニューアルした。CMSは<code class="highlighter-rouge">Jekyll</code>でホストは<code class="highlighter-rouge">GitHub</code>。</p>
+
+<p><a href="//jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a></p>
+
+<p>去年あたりから忍者ブログのサービス内容がどんどん劣化していってついに我慢が限界に達した。</p>
+
+<p>何か新しいことが始まるとき、その多くは「負（怒りや悲しみ）」のモチベーションからスタートすると聞いたことがある。まさに、それだ。</p>
+
+<h2 id="jekyllを選択したわけ">Jekyllを選択したわけ</h2>
+
+<p>ブログサービスを選ぶ判断基準は以下。</p>
+
+<ul>
+  <li>無料で容量制限が厳しくない</li>
+  <li>将来性がある（１０年間くらいはサービスが継続すると思われる）</li>
+  <li><code class="highlighter-rouge">HTML</code>や<code class="highlighter-rouge">CSS</code>、<code class="highlighter-rouge">Javascript</code>含めてほぼ完全にカスタマイズできる</li>
+  <li>余計な広告が入らない</li>
+  <li>記事にも<code class="highlighter-rouge">HTML</code>が使えてコードのシンタックスハイライトなどもできる</li>
+</ul>
+
+<h3 id="無料のブログサービスを調べる">無料のブログサービスを調べる</h3>
+
+<p>日本向けのブログサービスを見てみたが、どれも数年前と大きく状況が変わっていないようだった。</p>
+
+<ul>
+  <li><a href="//www.ninja.co.jp/blog/">忍者ブログ</a></li>
+  <li><a href="//www.blogger.com/">Blogger</a></li>
+  <li><a href="//hatenablog.com/">はてなブログ</a></li>
+  <li><a href="//d.hatena.ne.jp/">はてなダイアリー</a></li>
+  <li><a href="//ameblo.jp/">Ameba (アメーバ)</a></li>
+  <li><a href="//blog.fc2.com/">FC2ブログ</a></li>
+  <li><a href="//blog.livedoor.com/">ライブドアブログ(livedoor Blog)</a></li>
+  <li>・・・</li>
+</ul>
+
+<p>正直どれもパッとしない。忍者ブログはデザインのカスタマイズ性が高いが記事に<code class="highlighter-rouge">HTML</code>を使うのが難しくなったのが致命的だった。
+これら伝統的なブログサービス以外の選択肢としては</p>
+
+<ul>
+  <li><a href="//www.strikingly.com/">Strikingly - わずか数分でシンプルで美しいモバイルサイトを作成</a></li>
+  <li><a href="//wordpress.com/">WordPress.com - Get a Free Blog Here</a></li>
+  <li><a href="//wordpress.org/">WordPress › Blog Tool, Publishing Platform, and CMS</a>を何らかのサーバ上で運営</li>
+  <li><a href="//octopress.org/">Octopress</a>をGitHubでホスティング</li>
+  <li><a href="//www.edicy.com/">Edicy — Create a Website — Easy to use Website Builder</a></li>
+  <li><a href="//ja.wix.com/">WIX</a></li>
+  <li><a href="//www.weebly.com/">Weebly</a></li>
+  <li><a href="//jp.jimdo.com/">Jimdo</a></li>
+</ul>
+
+<p>というのもあったが、Googleアナリティクスが使えない、Googleアドセンスが使えない、<code class="highlighter-rouge">HTML</code>、<code class="highlighter-rouge">CSS</code>をカスタマイズ出来ないなど色々と不都合があった。
+で、この中では<code class="highlighter-rouge">Octopress</code>が<code class="highlighter-rouge">Compass</code>が使えたり色々といいように見えた。しかし・・・</p>
+
+<h3 id="結論">結論</h3>
+
+<p>完全にカスタマイズできて<code class="highlighter-rouge">Octopress</code>のベースにもなっている<code class="highlighter-rouge">Jekyll</code>が今年リリースされたバージョン<code class="highlighter-rouge">0.12.0</code>あたりから
+急激に充実してもはや<code class="highlighter-rouge">Octopress</code>なんていらないんじゃね？という勢いを感じたので<code class="highlighter-rouge">Jekyll</code>を<code class="highlighter-rouge">GitHub Pages</code>にホスティングしてもらう形とした。</p>
+
+<p><code class="highlighter-rouge">Jekyll</code>のスターターキットとして<a href="//jekyllbootstrap.com/">Jekyll-Bootstrap</a>という<code class="highlighter-rouge">Twitter Bootstrap 2</code>を適用したものが良さげではあったが
+開発が停滞気味で<code class="highlighter-rouge">Jekyll</code>本体と<code class="highlighter-rouge">Bootstrap</code>の更新に追いついて行けなさそうな予感がしたので結局、こうした。</p>
+
+<ul>
+  <li>常に最新の<code class="highlighter-rouge">Jekyll</code>が使えるよう余計なプラグインには頼らないようにする。最悪プラグインを自作しておけば動かなくなった時もすぐに直せる。</li>
+  <li>レスポンシブ対応のグリッドシステムを持っていて今後も息が長い<code class="highlighter-rouge">CSS</code>フレームワークを使いたい。ということで<a href="//getbootstrap.com/">Bootstrap 3 RC1</a>を導入。</li>
+  <li>アイコンは<code class="highlighter-rouge">Web font</code>がいいので<code class="highlighter-rouge">Bootstrap</code>との相性も良い<a href="//fortawesome.github.io/Font-Awesome/">Font Awesome, the iconic font designed for Bootstrap</a>。</li>
+</ul>
+
+<p>デザインやサイトの構造などにこだわりたいプログラマブルエンジニアがブログを書くには最適な環境ではないかと思う。
+なにせ依存関係が少ない。安定依存の原則。これ重要。</p>
+
+
+  </article>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+<div class="post-aux">
+  <ul class="list-inline">
+    <li>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2013-08-03</span>
+    </li>
+    <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
+
+      <span class="badge digits">
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2013/Renewal'></script>
+      </span>
+
+    </li>
+
+  
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
+      <span class="badge digits">4</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/GitHub" title="1件の記事">GitHub</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Octopress" title="1件の記事">Octopress</a>
+      <span class="badge digits">1</span>
+    </li>
+     
+    <li>
+      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
+      <span class="badge digits">5</span>
+    </li>
+    
+  
+
+  </ul>
+
+  <ul class="sns-buttons list-inline">
+    <li>
+      <a class="fi-btn" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Furin.github.io%2Frss.xml" title="Feedlyでフォロー">
+        <img src="http://s3.feedly.com/img/follows/feedly-follow-rectangle-volume-small_2x.png" alt="follow us in feedly" width="66" height="20">
+      </a>
+    </li>
+    <li>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2013/Renewal" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+    </li>
+    <li>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2013/Renewal" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+    </li>
+    <li>
+      <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
+    </li>
+    <li>
+      <a href="//twitter.com/share" class="twitter-share-button" data-via="urinhack" data-lang="en" title="Twitterでつぶやく"></a>
+    </li>
+    <li>
+      <div class="g-plusone" data-size="medium" title="Google+でシェア"></div>
+    </li>
+  </ul>
+
+</div>
+
+
+    <div class="col-md-6 pagenation prev">
+
+    </div>
+    <div class="col-md-6 pagenation next">
+
+      <a rel="next" href="/posts/2013/Setup-jekyll-1.1-to-windows" title="Jekyll 1.1系をWindowsに導入する"><i class="fa fa-chevron-circle-right"></i><small>Jekyll 1.1系をWindowsに導入する</small></a>
+
+    </div>
+
+    <hr>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_shortname = 'urinhack';
+      var disqus_url = 'http://urin.github.io/posts/2013/Renewal';
+      var disqus_title = 'ブログをリニューアル';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+</div>
+
+
+<!-- Facebook button -->
+<div id="fb-root"></div>
+<!-- Hatena bookmark button -->
+<script async src="//b.st-hatena.com/js/bookmark_button.js"></script>
+<!-- Others -->
+<script defer src="/js/post_async.js"></script>
+
+
+
+      </div>
+    </div>
+    <hr>
+    <footer class="text-muted">
+      <div class="container">
+        <section>
+          <nav class="recent-posts col-sm-4">
+            <h3><i class="fa fa-paperclip"></i>Recent Entries</h3>
+            <dl class="list-unstyled">
+
+              <dt>
+                <span class="digits">2017-02-25</span>
+              </dt>
+              <dd>
+                <a href="/posts/2017/create-local-minimal-yum-repository">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2016-11-12</span>
+              </dt>
+              <dd>
+                <a href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">fluent-plugin-dstatで取得した値が不正になる問題を解決</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2015-09-19</span>
+              </dt>
+              <dd>
+                <a href="/posts/2015/logrotate-batch-on-windows">logrotate.bat - Windowsのバッチファイルでログローテート</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2015-04-05</span>
+              </dt>
+              <dd>
+                <a href="/posts/2015/labmda-without-stdcpp">C++で無名関数の関数ポインタを作る</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2014-08-14</span>
+              </dt>
+              <dd>
+                <a href="/posts/2014/install-jekyll-2.3.0-to-windows">Jekyll 2.3.0をWindowsに導入</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2014-03-02</span>
+              </dt>
+              <dd>
+                <a href="/posts/2014/install-jekyll-1.4.2-to-windows">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2014-02-12</span>
+              </dt>
+              <dd>
+                <a href="/posts/2014/jquery-balloon-js">設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2013-08-11</span>
+              </dt>
+              <dd>
+                <a href="/posts/2013/release-jquery-tile-js">要素の高さを揃える超軽量なjQueryプラグインjquery.tile.js</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2013-08-10</span>
+              </dt>
+              <dd>
+                <a href="/posts/2013/simple-makefile-for-clang">シンプルで応用の効くmakefileとその解説</a>
+              </dd>
+
+              <dt>
+                <span class="digits">2013-08-04</span>
+              </dt>
+              <dd>
+                <a href="/posts/2013/Setup-jekyll-1.1-to-windows">Jekyll 1.1系をWindowsに導入する</a>
+              </dd>
+
+            </dl>
+          </nav>
+          <nav class="tags col-sm-4">
+            <h3><i class="fa fa-tags"></i>Tags</h3>
+            <div class="tag-cloud">
+<a href="/tags/fluentd" style="font-size: 70%;">fluentd</a>
+<a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/JavaScript" style="font-size: 113%;">JavaScript</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/bash" style="font-size: 70%;">bash</a>
+<a href="/tags/Windows" style="font-size: 156%;">Windows</a>
+<a href="/tags/C++" style="font-size: 113%;">C++</a>
+<a href="/tags/Batch" style="font-size: 70%;">Batch</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/jQuery" style="font-size: 113%;">jQuery</a>
+<a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
+<a href="/tags/Linux" style="font-size: 138%;">Linux</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/Jekyll" style="font-size: 156%;">Jekyll</a>
+
+            </div>
+
+            <div>
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- レスポンシブ２ -->
+              <ins class="adsbygoogle ads-responsive2"
+                style="display:inline-block"
+                data-ad-client="ca-pub-8915879811522337"
+                data-ad-slot="4415580601"></ins>
+            </div>
+
+          </nav>
+          <nav class="repos col-sm-4">
+            <h3><i class="fa fa-github"></i>Repositories</h3>
+            <dl>
+              <dt>
+                <a href="/jquery.tile.js">jquery.tile.js</a>
+
+                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+              </dt>
+              <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
+              <dt>
+                <a href="/jquery.balloon.js">jquery.balloon.js</a>
+
+                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+              </dt>
+              <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
+              <dt>
+                <a href="//github.com/urin/wers">wers</a>
+
+                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=wers&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+              </dt>
+              <dd>Windows用Rubyバージョン管理ツール<br>(rbenvのWindows版)</dd>
+              <dt>
+                <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js</a>
+              </dt>
+              <dd>要素を浮かせて伸ばすボタンを付けるjQueryプラグイン</dd>
+              <dt>
+                <a href="//github.com/urin/.vimrc">.vimrc</a>
+              </dt>
+              <dd>Vim用設定ファイル</dd>
+            </dl>
+          </nav>
+        </section>
+      </div>
+      <hr>
+      <div class="footer-bottom">
+        <aside class="container technology digits">
+          <i class="fa fa-heart" title="Thanks a lot!"></i>
+          <div class="col-sm-2 col-sm-offset-1">
+            <a href="//getbootstrap.com/" class="technology-logo Bootstrap-logo" title="Twitter Bootstrap"></a>
+            <div>Styled with Twitter Bootstrap 3.</div>
+          </div>
+          <div class="col-sm-2">
+            <a href="//jquery.com/" class="technology-logo jQuery-logo" title="jQuery"></a>
+            <div>Scripted with jQuery<span id="jquery-version"></span>.</div>
+          </div>
+          <div class="col-sm-2">
+            <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
+            <div>Powered by Jekyll version 3.4.1.</div>
+          </div>
+          <div class="col-sm-2">
+            <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>
+            <div>Hosted on GitHub.</div>
+          </div>
+          <div class="col-sm-2">
+            <a href="//git-scm.com/" class="technology-logo git-logo" title="git"></a>
+            <div>Managed with git.</div>
+          </div>
+        </aside>
+        <hr>
+        <div class="copyright">
+          <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2017</span> うりん</small></span>
+          <span class="sns-icons col-sm-3">
+            <a href="//github.com/urin" title="GitHub"><i class="fa fa-github"></i></a>
+            <a href="//twitter.com/urinhack" title="Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="//www.facebook.com/URIN.HACK" title="facebook"><i class="fa fa-facebook"></i></a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Google Adsense -->
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <!-- Javascripts -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//urin.github.io/jquery.balloon.js/js/jquery.balloon.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script async src="/js/main_async.js"></script>
+
+  </body>
+</html>
+

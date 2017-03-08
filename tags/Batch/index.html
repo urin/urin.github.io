@@ -69,17 +69,6 @@
     <h3><a href="/posts/2015/logrotate-batch-on-windows">logrotate.bat - Windowsのバッチファイルでログローテート</a></h3>
     <section>Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。
 
-400: Invalid request
-
-
-例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。
-set logfile="path\to\logfile.log"
-logrotate.bat %logfile% 1 10K
-echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
-
-こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。
-
-常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。
 </section>
   </article>
 </div>
@@ -248,7 +237,7 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
           </div>
           <div class="col-sm-2">
             <a href="//jekyllrb.com/" class="technology-logo Jekyll-logo" title="Jekyll"></a>
-            <div>Powered by Jekyll version 2.3.0.</div>
+            <div>Powered by Jekyll version 3.4.1.</div>
           </div>
           <div class="col-sm-2">
             <a href="//github.com/" class="technology-logo GitHub-logo" title="GitHub"></a>
