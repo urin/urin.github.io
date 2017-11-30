@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-03-08T15:24:32+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title><link href="/posts/2017/create-local-minimal-yum-repository" rel="alternate" type="text/html" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法" /><published>2017-02-25T14:36:25+09:00</published><updated>2017-02-25T14:36:25+09:00</updated><id>/posts/2017/create-local-minimal-yum-repository</id><content type="html" xml:base="/posts/2017/create-local-minimal-yum-repository">&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-30T22:54:36+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">特定のユーザ権限でのみ実行されるシェルスクリプト</title><link href="/posts/2017/run-bash-commands-as-a-user" rel="alternate" type="text/html" title="特定のユーザ権限でのみ実行されるシェルスクリプト" /><published>2017-11-30T20:15:39+09:00</published><updated>2017-11-30T20:15:39+09:00</updated><id>/posts/2017/run-bash-commands-as-a-user</id><content type="html" xml:base="/posts/2017/run-bash-commands-as-a-user">&lt;p&gt;シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;su - someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
+  command ...
+     :
+  command ...
+EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;someone のパスワードさえ知っていればこれでよい。&lt;/p&gt;
+
+&lt;p&gt;もし root 権限を持てるなら &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt; を使ってもよい。
+sudoers を適切に設定すればパスワード入力を求められずに実行することもできる。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
+  command ...
+     :
+  command ...
+EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ここで、あるシェルスクリプトを特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
+
+&lt;p&gt;そのシェルスクリプトの所有者が someone であれば sticky bit を使うだけでよい。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod u+s commands.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;所有権が自分以外に変更できなくても someone のパスワードを知っているなら最初の方法をそのままシェルスクリプトにすればよい。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+su - someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
+  command ...
+     :
+  command ...
+EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;だがこれだと someone として実行されるコマンドがテキストエディタで見たときにシンタックスハイライトされなくなる。&lt;/p&gt;
+
+&lt;p&gt;もし someone として実行させたいコマンドをたくさん作る必要があるならこれは避けたい事態だ。&lt;/p&gt;
+
+&lt;p&gt;そこで以下のような方法を考えてみた。（bash 限定）&lt;/p&gt;
+
+&lt;p&gt;as_someone というファイルを準備する。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;someone&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n &lt;span class=&quot;s1&quot;&gt;'Enter someone '&lt;/span&gt;
+  su - someone -c &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;readlink -f &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;このファイルには実行権はつけず、someone として実行させたいシェルスクリプト（commands.sh とする）と同じディレクトリに置く。&lt;/p&gt;
+
+&lt;p&gt;commands.sh は以下のようにすればよい。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+. &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/as_someone
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Following commands are executed by someone.&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;I am &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+env
+ :
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="bash" /><category term="Linux" /><summary type="html">シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。</summary></entry><entry><title type="html">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title><link href="/posts/2017/create-local-minimal-yum-repository" rel="alternate" type="text/html" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法" /><published>2017-02-25T14:36:25+09:00</published><updated>2017-02-25T14:36:25+09:00</updated><id>/posts/2017/create-local-minimal-yum-repository</id><content type="html" xml:base="/posts/2017/create-local-minimal-yum-repository">&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
 
 &lt;h2 id=&quot;概略&quot;&gt;概略&lt;/h2&gt;
 
@@ -789,59 +859,4 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
 &lt;p&gt;依存関係ファイルとして&lt;code class=&quot;highlighter-rouge&quot;&gt;DEPENDS&lt;/code&gt;の値を用いる。
 初期値&lt;code class=&quot;highlighter-rouge&quot;&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code class=&quot;highlighter-rouge&quot;&gt;.d&lt;/code&gt;に置換したもの。&lt;/p&gt;
 
-&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;</content><author><name>うりん</name></author><category term="C++" /><category term="makefile" /><category term="gcc" /><category term="Linux" /><summary type="html">makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。 Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。</summary></entry><entry><title type="html">Jekyll 1.1系をWindowsに導入する</title><link href="/posts/2013/Setup-jekyll-1.1-to-windows" rel="alternate" type="text/html" title="Jekyll 1.1系をWindowsに導入する" /><published>2013-08-04T00:00:00+09:00</published><updated>2013-08-04T00:00:00+09:00</updated><id>/posts/2013/Setup-jekyll-1.1-to-windows</id><content type="html" xml:base="/posts/2013/Setup-jekyll-1.1-to-windows">&lt;p&gt;現時点で最新版の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-1.1.2&lt;/code&gt;をインストールしてみる。Rubyは&lt;code class=&quot;highlighter-rouge&quot;&gt;1.9.3&lt;/code&gt;でやったが&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0&lt;/code&gt;でも多分問題ない。&lt;/p&gt;
-
-&lt;h3 id=&quot;pythonをインストール&quot;&gt;Pythonをインストール&lt;/h3&gt;
-
-&lt;p&gt;シンタックスハイライト用の&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb&lt;/code&gt;が使用する。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb&lt;/code&gt;によると&lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt;のバージョン&lt;code class=&quot;highlighter-rouge&quot;&gt;2.6&lt;/code&gt;以降であれば何でもいいと書いてあるが、python&lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;系では動作しない。
-よって&lt;code class=&quot;highlighter-rouge&quot;&gt;2.7&lt;/code&gt;をインストールする。&lt;/p&gt;
-
-&lt;p&gt;インストールが終わったら&lt;code class=&quot;highlighter-rouge&quot;&gt;python.exe&lt;/code&gt;のあるディレクトリを&lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;に追加する。&lt;/p&gt;
-
-&lt;h3 id=&quot;easy_installdistributeをインストール&quot;&gt;easy_install(distribute)をインストール&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;//python-distribute.org/distribute_setup.py&quot;&gt;distribute_setup.py&lt;/a&gt;
-をダウンロードしてきて&lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt;で実行するだけ。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python distribute_setup.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;pygmentsをインストール&quot;&gt;Pygmentsをインストール&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt;のあるディレクトリに&lt;code class=&quot;highlighter-rouge&quot;&gt;Scripts&lt;/code&gt;フォルダができていてその中に&lt;code class=&quot;highlighter-rouge&quot;&gt;easy_install.exe&lt;/code&gt;がある。
-ここで&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Scripts
-easy_install Pygments
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;とするだけ。&lt;/p&gt;
-
-&lt;h3 id=&quot;pygmentsrbのダウングレード&quot;&gt;pygments.rbのダウングレード&lt;/h3&gt;
-
-&lt;p&gt;シンタックスハイライトを使用しようとすると&lt;code class=&quot;highlighter-rouge&quot;&gt;posix-spawn&lt;/code&gt;やら&lt;code class=&quot;highlighter-rouge&quot;&gt;liquid&lt;/code&gt;やらがエラーを出す。この問題は&lt;a href=&quot;//stackoverflow.com/questions/17364028/jekyll-on-windows-pygments-not-working&quot;&gt;Stack Over Flow&lt;/a&gt;にも挙げられていて対策もあった。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem uninstall -a pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;とバージョンを&lt;code class=&quot;highlighter-rouge&quot;&gt;0.5.0&lt;/code&gt;に下げる。&lt;/p&gt;
-
-&lt;h3 id=&quot;エンコーディングの固定化&quot;&gt;エンコーディングの固定化&lt;/h3&gt;
-
-&lt;p&gt;日本語を使うと&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;でエラーになるのでファイル読み込み時のエンコーディングを&lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt;固定にする。デフォルトはシステム標準が採用される（つまりWindows日本語版なら&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows-31J&lt;/code&gt;）が、実際のファイルは全て&lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt;にしたいので。LinuxやMacなんかではシステムのエンコーディングが&lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt;だから普通は問題ない。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;本体に手をつけるハックもネット上で見かけたがよろしくない。
-デフォルトエンコーディングを変更するだけの&lt;code class=&quot;highlighter-rouge&quot;&gt;.rb&lt;/code&gt;ファイルを&lt;code class=&quot;highlighter-rouge&quot;&gt;_plugins&lt;/code&gt;フォルダに置いて&lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;すれば&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;が&lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt;固定で動くようになる。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UTF_8&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以上でWindows特有の環境設定関係はほぼ完了。これ以外の設定なんかは&lt;a href=&quot;//jekyllrb.com/docs/home/&quot;&gt;Jekyllの公式ドキュメント&lt;/a&gt;をひと通り見ながらやれば大体OK。&lt;/p&gt;
-
-&lt;p&gt;さあ、快適なJekyllライフをはじめよう。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">現時点で最新版のjekyll-1.1.2をインストールしてみる。Rubyは1.9.3でやったが2.0.0でも多分問題ない。</summary></entry></feed>
+&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;</content><author><name>うりん</name></author><category term="C++" /><category term="makefile" /><category term="gcc" /><category term="Linux" /><summary type="html">makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。 Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。</summary></entry></feed>

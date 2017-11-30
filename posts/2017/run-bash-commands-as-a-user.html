@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK</title>
-    <meta name="description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
-    <meta name="keywords" content="Programming, Windows, Batch">
+    <title>特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK</title>
+    <meta name="description" content="シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。">
+    <meta name="keywords" content="Programming, bash, Linux">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
-    <meta name="twitter:title" content="logrotate.bat - Windowsのバッチファイルでログローテート - URIN HACK">
-    <meta property="og:description"  content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
-    <meta name="twitter:description" content="Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。">
+    <meta property="og:title"  content="特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK">
+    <meta name="twitter:title" content="特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK">
+    <meta property="og:description"  content="シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。">
+    <meta name="twitter:description" content="シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
+    <meta property="og:url" content="http://urin.github.io/posts/2017/run-bash-commands-as-a-user">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2015/logrotate-batch-on-windows">
+    <link rel="canonical" href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <!--[if lt IE 9]>
@@ -65,12 +65,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-11-30</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/run-bash-commands-as-a-user'></script>
       </span>
 
     </li>
@@ -78,13 +78,13 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/bash" title="2件の記事">bash</a>
+      <span class="badge digits">2</span>
     </li>
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
-      <span class="badge digits">1</span>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="4件の記事">Linux</a>
+      <span class="badge digits">4</span>
     </li>
     
   
@@ -98,10 +98,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -128,22 +128,78 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">logrotate.bat - Windowsのバッチファイルでログローテート</h1>
-    <p>Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</p>
+    <h1 class="well well-lg">特定のユーザ権限でのみ実行されるシェルスクリプト</h1>
+    <p>シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。</p>
 
-<script src="https://gist.github.com/urin/3b68e8388cc34a688d13.js"></script>
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code>su - someone <span class="sh">&lt;&lt;EOF
+  command ...
+     :
+  command ...
+EOF
+</span></code></pre>
+</div>
 
-<p>例えばバッチ処理などを行う時にログを出力する処理の直前で呼び出す。</p>
+<p>someone のパスワードさえ知っていればこれでよい。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>set logfile="path\to\logfile.log"
-logrotate.bat %logfile% 1 10K
-echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
+<p>もし root 権限を持てるなら <code class="highlighter-rouge">sudo</code> を使ってもよい。
+sudoers を適切に設定すればパスワード入力を求められずに実行することもできる。</p>
+
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code>sudo -u someone <span class="sh">&lt;&lt;EOF
+  command ...
+     :
+  command ...
+EOF
+</span></code></pre>
+</div>
+
+<p>ここで、あるシェルスクリプトを特定のユーザ権限でのみ実行されるようにすることを考える。</p>
+
+<p>そのシェルスクリプトの所有者が someone であれば sticky bit を使うだけでよい。</p>
+
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code>chmod u+s commands.sh
 </code></pre>
 </div>
 
-<p>こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。</p>
+<p>所有権が自分以外に変更できなくても someone のパスワードを知っているなら最初の方法をそのままシェルスクリプトにすればよい。</p>
 
-<p>常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+su - someone <span class="sh">&lt;&lt;EOF
+  command ...
+     :
+  command ...
+EOF
+</span></code></pre>
+</div>
+
+<p>だがこれだと someone として実行されるコマンドがテキストエディタで見たときにシンタックスハイライトされなくなる。</p>
+
+<p>もし someone として実行させたいコマンドをたくさん作る必要があるならこれは避けたい事態だ。</p>
+
+<p>そこで以下のような方法を考えてみた。（bash 限定）</p>
+
+<p>as_someone というファイルを準備する。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$USER</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"someone"</span> <span class="o">]]</span>; <span class="k">then
+  </span><span class="nb">echo</span> -n <span class="s1">'Enter someone '</span>
+  su - someone -c <span class="s2">"</span><span class="k">$(</span>readlink -f <span class="nv">$0</span><span class="k">)</span><span class="s2"> </span><span class="nv">$*</span><span class="s2">"</span>
+  <span class="nb">exit
+</span><span class="k">fi</span>
+</code></pre>
+</div>
+
+<p>このファイルには実行権はつけず、someone として実行させたいシェルスクリプト（commands.sh とする）と同じディレクトリに置く。</p>
+
+<p>commands.sh は以下のようにすればよい。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+. <span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span>/as_someone
+
+<span class="nb">echo</span> <span class="s2">"Following commands are executed by someone."</span>
+<span class="nb">echo</span> <span class="s2">"I am </span><span class="nv">$USER</span><span class="s2">"</span>
+env
+ :
+</code></pre>
+</div>
 
 
   </article>
@@ -154,12 +210,12 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2015-09-19</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-11-30</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2015/logrotate-batch-on-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/run-bash-commands-as-a-user'></script>
       </span>
 
     </li>
@@ -167,13 +223,13 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/bash" title="2件の記事">bash</a>
+      <span class="badge digits">2</span>
     </li>
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Batch" title="1件の記事">Batch</a>
-      <span class="badge digits">1</span>
+      <i class="fa fa-tag"></i><a href="/tags/Linux" title="4件の記事">Linux</a>
+      <span class="badge digits">4</span>
     </li>
     
   
@@ -187,10 +243,10 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2015/logrotate-batch-on-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -208,12 +264,10 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2015/labmda-without-stdcpp" title="C++で無名関数の関数ポインタを作る"><i class="fa fa-chevron-circle-left"></i><small>C++で無名関数の関数ポインタを作る</small></a>
+      <a rel="prev" href="/posts/2017/create-local-minimal-yum-repository" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法"><i class="fa fa-chevron-circle-left"></i><small>Linuxローカル環境用に最小限のyumリポジトリを作成する方法</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" title="fluent-plugin-dstatで取得した値が不正になる問題を解決"><i class="fa fa-chevron-circle-right"></i><small>fluent-plugin-dstatで取得した値が不正になる問題を解決</small></a>
 
     </div>
 
@@ -221,8 +275,8 @@ echo The quick brown fox jumps over the lazy dog. &gt;&gt; %logfile%
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2015/logrotate-batch-on-windows';
-      var disqus_title = 'logrotate.bat - Windowsのバッチファイルでログローテート';
+      var disqus_url = 'http://urin.github.io/posts/2017/run-bash-commands-as-a-user';
+      var disqus_title = '特定のユーザ権限でのみ実行されるシェルスクリプト';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
