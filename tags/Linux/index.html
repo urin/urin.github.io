@@ -67,7 +67,43 @@
   <div class="post-aux col-sm-2"><i class="fa fa-edit"></i><span class="digits">2017-11-30</span></div>
   <article class="col-sm-10">
     <h3><a href="/posts/2017/run-bash-commands-as-a-user">特定のユーザ権限でのみ実行されるシェルスクリプト</a></h3>
-    <section>シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。
+    <section>あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。
+
+commands.sh の所有者が someone であれば sticky bit を使うだけでよい。
+
+chmod u+s commands.sh
+
+
+
+所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。
+
+以下のような方法を考えてみた。（bash 限定）
+
+as_someone というファイルを準備する。
+
+if [[ "$USER" != "someone" ]]; then
+  echo -n 'Enter someone '
+  su - someone -c "$(readlink -f $0) $*"
+  exit
+fi
+
+
+
+このファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。
+
+commands.sh は以下のようにすればよい。
+
+#!/bin/bash
+. $(dirname $0)/as_someone
+
+echo "Following commands are executed by someone."
+echo "I am $USER"
+env
+ :
+
+
+
+これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。
 
 </section>
   </article>

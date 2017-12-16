@@ -11,53 +11,17 @@
 
     <item>
       <title>特定のユーザ権限でのみ実行されるシェルスクリプト</title>
-      <description>&lt;p&gt;シェルで別ユーザとして複数のコマンドを実行したい場合は以下のようにするだろう。&lt;/p&gt;
+      <description>&lt;p&gt;あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;su - someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
-  command ...
-     :
-  command ...
-EOF
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;someone のパスワードさえ知っていればこれでよい。&lt;/p&gt;
-
-&lt;p&gt;もし root 権限を持てるなら &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt; を使ってもよい。
-sudoers を適切に設定すればパスワード入力を求められずに実行することもできる。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
-  command ...
-     :
-  command ...
-EOF
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ここで、あるシェルスクリプトを特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
-
-&lt;p&gt;そのシェルスクリプトの所有者が someone であれば sticky bit を使うだけでよい。&lt;/p&gt;
+&lt;p&gt;commands.sh の所有者が someone であれば sticky bit を使うだけでよい。&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod u+s commands.sh
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;所有権が自分以外に変更できなくても someone のパスワードを知っているなら最初の方法をそのままシェルスクリプトにすればよい。&lt;/p&gt;
+&lt;p&gt;所有権が自分以外に変更できない場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; すればいいだけだが &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; を忘れてしまうのを避けるにはどうするか。&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-su - someone &lt;span class=&quot;sh&quot;&gt;&amp;lt;&amp;lt;EOF
-  command ...
-     :
-  command ...
-EOF
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;だがこれだと someone として実行されるコマンドがテキストエディタで見たときにシンタックスハイライトされなくなる。&lt;/p&gt;
-
-&lt;p&gt;もし someone として実行させたいコマンドをたくさん作る必要があるならこれは避けたい事態だ。&lt;/p&gt;
-
-&lt;p&gt;そこで以下のような方法を考えてみた。（bash 限定）&lt;/p&gt;
+&lt;p&gt;以下のような方法を考えてみた。（&lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt; 限定）&lt;/p&gt;
 
 &lt;p&gt;as_someone というファイルを準備する。&lt;/p&gt;
 
@@ -69,7 +33,7 @@ EOF
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;このファイルには実行権はつけず、someone として実行させたいシェルスクリプト（commands.sh とする）と同じディレクトリに置く。&lt;/p&gt;
+&lt;p&gt;このファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。&lt;/p&gt;
 
 &lt;p&gt;commands.sh は以下のようにすればよい。&lt;/p&gt;
 
@@ -82,6 +46,8 @@ env
  :
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;p&gt;これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。&lt;/p&gt;
 
 </description>
       <link>http://urin.github.io/posts/2017/run-bash-commands-as-a-user</link>
