@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-02-04T17:49:13+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title><link href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" rel="alternate" type="text/html" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする" /><published>2018-02-04T15:32:56+09:00</published><updated>2018-02-04T15:32:56+09:00</updated><id>/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</id><content type="html" xml:base="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons">&lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-02-04T22:16:04+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title><link href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" rel="alternate" type="text/html" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする" /><published>2018-02-04T15:32:56+09:00</published><updated>2018-02-04T15:32:56+09:00</updated><id>/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</id><content type="html" xml:base="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons">&lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
 
 &lt;h2 id=&quot;基本形&quot;&gt;基本形&lt;/h2&gt;
 
@@ -52,9 +52,7 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nc&quot;&gt;.toggle-buttons.vertical&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;flex-direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stretch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -71,6 +69,12 @@
   &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;/* appearance: none; for IE11 */&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:-ms-lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-ms-backdrop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;radio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:-ms-lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-ms-backdrop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;checkbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;visibility&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -115,6 +119,9 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;p&gt;デフォルトのチェックボックスやラジオボタンを消す方法、その上でスタイリングする方法は以下で詳しく研究されている。
+&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Learn/HTML/Forms/Advanced_styling_for_HTML_forms&quot;&gt;HTML フォームへの高度なスタイル設定 - ウェブ開発を学ぶ | MDN&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.button&lt;/code&gt;に対するスタイルは別途指定されているものとする。これから示すサンプルでは以下を用いる。&lt;/p&gt;
 
 &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -141,6 +148,8 @@
 
 &lt;h2 id=&quot;基本形のサンプル&quot;&gt;基本形のサンプル&lt;/h2&gt;
 
+&lt;p&gt;サンプルだけのページは&lt;a href=&quot;/resources/2018-02-04/sample.html&quot;&gt;こちら&lt;/a&gt;。&lt;/p&gt;
+
 &lt;style&gt;
 .sample {
   box-sizing: border-box;
@@ -164,6 +173,7 @@
 .sample label {
   margin: 0;
   padding: 0;
+  font: inherit;
 }
 
 .sample input[type=button].button,
@@ -205,9 +215,7 @@
 }
 
 .sample .toggle-buttons.vertical {
-  display: flex;
   flex-direction: column;
-  align-items: stretch;
 }
 
 .sample .toggle-buttons label {
@@ -224,6 +232,12 @@
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* appearance: none; for IE11 */
+_:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=checkbox] {
+  visibility: hidden;
 }
 
 .sample .toggle-buttons .button {

@@ -183,9 +183,7 @@
 <span class="p">}</span>
 
 <span class="nc">.toggle-buttons.vertical</span> <span class="p">{</span>
-  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
   <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
-  <span class="nl">align-items</span><span class="p">:</span> <span class="n">stretch</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.toggle-buttons</span> <span class="nt">label</span> <span class="p">{</span>
@@ -202,6 +200,12 @@
   <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
   <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
   <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* appearance: none; for IE11 */</span>
+<span class="nt">_</span><span class="nd">:-ms-lang</span><span class="o">(</span><span class="nt">x</span><span class="o">)</span><span class="nd">::-ms-backdrop</span><span class="o">,</span> <span class="nc">.toggle-buttons</span> <span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">radio</span><span class="o">],</span>
+<span class="nt">_</span><span class="nd">:-ms-lang</span><span class="o">(</span><span class="nt">x</span><span class="o">)</span><span class="nd">::-ms-backdrop</span><span class="o">,</span> <span class="nc">.toggle-buttons</span> <span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">checkbox</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">visibility</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.toggle-buttons</span> <span class="nc">.button</span> <span class="p">{</span>
@@ -246,6 +250,9 @@
 </code></pre>
 </div>
 
+<p>デフォルトのチェックボックスやラジオボタンを消す方法、その上でスタイリングする方法は以下で詳しく研究されている。
+<a href="https://developer.mozilla.org/ja/docs/Learn/HTML/Forms/Advanced_styling_for_HTML_forms">HTML フォームへの高度なスタイル設定 - ウェブ開発を学ぶ | MDN</a></p>
+
 <p><code class="highlighter-rouge">.button</code>に対するスタイルは別途指定されているものとする。これから示すサンプルでは以下を用いる。</p>
 
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.button</span> <span class="p">{</span>
@@ -272,6 +279,8 @@
 
 <h2 id="基本形のサンプル">基本形のサンプル</h2>
 
+<p>サンプルだけのページは<a href="/resources/2018-02-04/sample.html">こちら</a>。</p>
+
 <style>
 .sample {
   box-sizing: border-box;
@@ -295,6 +304,7 @@
 .sample label {
   margin: 0;
   padding: 0;
+  font: inherit;
 }
 
 .sample input[type=button].button,
@@ -336,9 +346,7 @@
 }
 
 .sample .toggle-buttons.vertical {
-  display: flex;
   flex-direction: column;
-  align-items: stretch;
 }
 
 .sample .toggle-buttons label {
@@ -355,6 +363,12 @@
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* appearance: none; for IE11 */
+_:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=checkbox] {
+  visibility: hidden;
 }
 
 .sample .toggle-buttons .button {
