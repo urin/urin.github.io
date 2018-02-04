@@ -33,13 +33,13 @@
 .highlighter-rouge pre .s { color: #B5BD68; } /* Literal.String */
 .highlighter-rouge pre .na { color: #F0C674; } /* Name.Attribute */
 .highlighter-rouge pre .nb { color: #ccccc0; } /* Name.Builtin */
-.highlighter-rouge pre .nc { color: #ccccc0; } /* Name.Class */
+.highlighter-rouge pre .nc { color: #F0C674; } /* Name.Class */
 .highlighter-rouge pre .no { color: #CC6666; } /* Name.Constant */
 .highlighter-rouge pre .nd { color: #ccccc0; } /* Name.Decorator */
 .highlighter-rouge pre .ni { color: #B5BD68; } /* Name.Entity */
 .highlighter-rouge pre .ne { color: #ccccc0; } /* Name.Exception */
 .highlighter-rouge pre .nf { color: #F0C674; } /* Name.Function */
-.highlighter-rouge pre .nl { color: #ccccc0; } /* Name.Label */
+.highlighter-rouge pre .nl { color: #B294BB; } /* Name.Label */
 .highlighter-rouge pre .nn { color: #ccccc0; } /* Name.Namespace */
 .highlighter-rouge pre .nx { color: #ccccc0; } /* Name.Other */
 .highlighter-rouge pre .py { color: #ccccc0; } /* Name.Property */

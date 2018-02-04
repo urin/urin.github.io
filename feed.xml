@@ -1,4 +1,513 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-12-21T17:10:43+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">特定のユーザ権限でのみ実行されるシェルスクリプト</title><link href="/posts/2017/run-bash-commands-as-a-user" rel="alternate" type="text/html" title="特定のユーザ権限でのみ実行されるシェルスクリプト" /><published>2017-11-30T20:15:39+09:00</published><updated>2017-11-30T20:15:39+09:00</updated><id>/posts/2017/run-bash-commands-as-a-user</id><content type="html" xml:base="/posts/2017/run-bash-commands-as-a-user">&lt;p&gt;あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-02-04T17:49:13+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title><link href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" rel="alternate" type="text/html" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする" /><published>2018-02-04T15:32:56+09:00</published><updated>2018-02-04T15:32:56+09:00</updated><id>/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</id><content type="html" xml:base="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons">&lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
+
+&lt;h2 id=&quot;基本形&quot;&gt;基本形&lt;/h2&gt;
+
+&lt;p&gt;この方法のポイントは以下。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;JavaScript不使用&lt;/li&gt;
+  &lt;li&gt;シンプルなHTMLマークアップ&lt;/li&gt;
+  &lt;li&gt;ボタンサイズ自動調整&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;hover&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;checked&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;disabled&lt;/code&gt;などの&lt;code class=&quot;highlighter-rouge&quot;&gt;input&lt;/code&gt;要素自身の属性のみに応じて見た目が変化&lt;/li&gt;
+  &lt;li&gt;フォーカスした時にブラウザが自動で付加する枠がボタンとズレない&lt;/li&gt;
+  &lt;li&gt;HTML5バリデーション結果のフィードバックでボタンがきちんとフォーカスされる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;htmlの基本形は以下。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Radio buttons --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Checkbox --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ラジオボタンとチェックボックスのカスタマイズ方法を説明しているサイトでは以下の形式もよく紹介されるが&lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;の命名が必須となるので採用しない。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox-1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    Checkbox
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;CSSの基本形は以下の通り。色とborder関係はベースとなるボタンのデザインに合わせる必要がある。&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stretch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons.vertical&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;flex-direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stretch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;radio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;checkbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-appearance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-moz-appearance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;z-index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons.vertical&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.vertical&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:first-child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#567&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top-left-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-bottom-left-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.vertical&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:last-child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top-right-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-bottom-right-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons.vertical&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:first-child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#567&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top-left-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top-right-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons.vertical&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:last-child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-bottom-left-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-bottom-right-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:checked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#345&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.toggle-buttons&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:disabled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not-allowed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#def&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.button&lt;/code&gt;に対するスタイルは別途指定されているものとする。これから示すサンプルでは以下を用いる。&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.5em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#eff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#678&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#567&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.button&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:disabled&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not-allowed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#def&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;基本形のサンプル&quot;&gt;基本形のサンプル&lt;/h2&gt;
+
+&lt;style&gt;
+.sample {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.sample form {
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+}
+
+.sample hr {
+  height: 1px;
+  background-color: rgba(0, 0, 0, .1);
+  border: none;
+  box-shadow: none;
+  margin: 1rem 0;
+}
+
+.sample label {
+  margin: 0;
+  padding: 0;
+}
+
+.sample input[type=button].button,
+.sample input[type=submit].button,
+.sample button.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  font: inherit;
+}
+
+.sample button[type=submit].button {
+  background-color: #0b73da;
+}
+
+.sample .button {
+  display: inline-block;
+  padding: .5em 1em;
+  border-radius: 4px;
+  text-align: center;
+  color: #eff;
+  background-color: #678;
+  cursor: pointer;
+}
+
+.sample .button:hover {
+  background-color: #567;
+}
+
+.sample .button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+  color: #def;
+}
+
+.sample .toggle-buttons {
+  display: flex;
+  align-items: stretch;
+}
+
+.sample .toggle-buttons.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sample .toggle-buttons label {
+  display: flex;
+  position: relative;
+}
+
+.sample .toggle-buttons [type=radio],
+.sample .toggle-buttons [type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sample .toggle-buttons .button {
+  z-index: 1;
+}
+
+.sample .toggle-buttons.vertical .button {
+  width: 100%;
+}
+
+.sample .toggle-buttons:not(.vertical) :not(:first-child) .button {
+  border-left: 1px solid #567;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.sample .toggle-buttons:not(.vertical) :not(:last-child) .button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sample .toggle-buttons.vertical :not(:first-child) .button {
+  border-top: 1px solid #567;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.sample .toggle-buttons.vertical :not(:last-child) .button {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sample .toggle-buttons :checked + .button {
+  background-color: #345;
+}
+
+.sample .toggle-buttons :disabled + .button {
+  cursor: not-allowed;
+  opacity: .6;
+  color: #def;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;sample&quot;&gt;
+  &lt;form&gt;
+    &lt;div class=&quot;toggle-buttons&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div class=&quot;toggle-buttons&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; required=&quot;&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio (required)&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; disabled=&quot;&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Disabled&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;form&gt;
+    &lt;div class=&quot;toggle-buttons&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div class=&quot;toggle-buttons&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; disabled=&quot;&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Disabled&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div class=&quot;toggle-buttons&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;
+        &lt;div class=&quot;button&quot;&gt;
+          Multiple&lt;br /&gt;
+          lines
+        &lt;/div&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Checkbox&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio (required)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Disabled&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Submit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Disabled&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        Multiple&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+        lines
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Checkbox&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;縦型配置のサンプル&quot;&gt;縦型配置のサンプル&lt;/h2&gt;
+
+&lt;div class=&quot;sample&quot;&gt;
+  &lt;form&gt;
+    &lt;div class=&quot;toggle-buttons vertical&quot;&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; disabled=&quot;&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Disabled&lt;/span&gt;
+      &lt;/label&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot; /&gt;
+        &lt;span class=&quot;button&quot;&gt;Radio&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;toggle-buttons vertical&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Disabled&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;radio-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Radio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="html" /><category term="css" /><summary type="html">CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。</summary></entry><entry><title type="html">特定のユーザ権限でのみ実行されるシェルスクリプト</title><link href="/posts/2017/run-bash-commands-as-a-user" rel="alternate" type="text/html" title="特定のユーザ権限でのみ実行されるシェルスクリプト" /><published>2017-11-30T20:15:39+09:00</published><updated>2017-11-30T20:15:39+09:00</updated><id>/posts/2017/run-bash-commands-as-a-user</id><content type="html" xml:base="/posts/2017/run-bash-commands-as-a-user">&lt;p&gt;あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
 
 &lt;p&gt;commands.sh の所有者が someone であれば sticky bit を使うだけでよい。&lt;/p&gt;
 
@@ -653,176 +1162,4 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
     &lt;li&gt;&lt;a href=&quot;//1bit.mobi/20111025170154.html&quot;&gt;ブロック要素の天地を揃えるのはjquery.tile.jsが一番便利でした - 1bit::memo&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;//www.jqueryrain.com/2014/02/jquery-tile-js-lightest-jquery-plugin-tile-boxes/&quot;&gt;jQuery tile.js : Lightest jQuery plugin to Tile boxes&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>うりん</name></author><category term="jQuery" /><category term="JavaScript" /><summary type="html">ブロック要素の高さを揃える軽量なjQueryプラグインjquery.tile.js。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。 このプラグインには余分な機能が一切無いため 使い方がシンプルでプラグインは非常に軽量 になっている。</summary></entry><entry><title type="html">シンプルで応用の効くmakefileとその解説</title><link href="/posts/2013/simple-makefile-for-clang" rel="alternate" type="text/html" title="シンプルで応用の効くmakefileとその解説" /><published>2013-08-10T00:00:00+09:00</published><updated>2013-08-10T00:00:00+09:00</updated><id>/posts/2013/simple-makefile-for-clang</id><content type="html" xml:base="/posts/2013/simple-makefile-for-clang">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
-
-&lt;p&gt;Linux系OS上（正確に言うとGNU MakeとGCC）で複数の&lt;code class=&quot;highlighter-rouge&quot;&gt;C/C++&lt;/code&gt;ソースファイルから１つの実行ファイルを作成(&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;)するための汎用的な&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;をカスタマイズする必要があると思うがそのベースにする。&lt;/p&gt;
-
-&lt;h2 id=&quot;このmakefileのいいところ&quot;&gt;このmakefileのいいところ&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;コンパイル対象となるソースファイルをワイルドカードで指定できる。&lt;/li&gt;
-  &lt;li&gt;ヘッダファイル、ライブラリ、オブジェクトファイルなどコンパイル、リンクに関連するどのファイルが外部で変更されていてもきちんと &lt;strong&gt;差分&lt;/strong&gt; コンパイルされる。&lt;/li&gt;
-  &lt;li&gt;makefile自体に説明書（この記事）がある。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;makefile&quot;&gt;makefile&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;//gist.github.com/urin/5971408#file-makefile&quot;&gt;Gistはこちら&lt;/a&gt;。&lt;/p&gt;
-
-&lt;div class=&quot;language-makefile highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;COMPILER&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; g++
-&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -g -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
-&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(shell getconf LONG_BIT)&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;64&quot;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;else&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LIBS&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;INCLUDE&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -I./include
-&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./bin/&lt;span class=&quot;nf&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;shell&lt;/span&gt; basename &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;readlink -f .&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./source
-&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(SRCDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;SRCDIR&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
-&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SOURCES&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;wildcard &lt;span class=&quot;nv&quot;&gt;$(SRCDIR)&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ./obj
-&lt;span class=&quot;err&quot;&gt;ifeq&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;$(strip $(OBJDIR))&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;OBJDIR&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; .
-&lt;span class=&quot;err&quot;&gt;endif&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJECTS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;addprefix &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;/, &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;notdir &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SOURCES:.cpp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.o&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;DEPENDS&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OBJECTS:.o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.d&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;$(TARGET)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJECTS) $(LIBS)&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$^&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(LDFLAGS)&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;$(OBJDIR)/%.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(SRCDIR)/%.cpp&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;mkdir -p &lt;span class=&quot;nv&quot;&gt;$(OBJDIR)&lt;/span&gt;
-	&lt;span class=&quot;nv&quot;&gt;$(COMPILER)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(CFLAGS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(INCLUDE)&lt;/span&gt; -o &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt; -c &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean $(TARGET)&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;rm -f &lt;span class=&quot;nv&quot;&gt;$(OBJECTS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(DEPENDS)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$(TARGET)&lt;/span&gt;
-
-&lt;span class=&quot;err&quot;&gt;-include&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(DEPENDS)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
-
-&lt;h4 id=&quot;make&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;基本的には&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;するだけで依存関係を考慮して差分コンパイルされる。
-ソースファイルはもちろん、ヘッダファイル、ライブラリなどが更新されている場合も自動的に検出して差分コンパイルされる。&lt;/p&gt;
-
-&lt;h4 id=&quot;make-all&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;make all&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;強制的に全ソースをコンパイルしたい場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;make all&lt;/code&gt;する。
-このコマンドは全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除してから全ソースをコンパイルする。&lt;/p&gt;
-
-&lt;h4 id=&quot;make-clean&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;make clean&lt;/code&gt;&lt;/h4&gt;
-
-&lt;p&gt;全ての中間ファイル（オブジェクトファイル、依存関係ファイル）と実行ファイルを削除する。&lt;/p&gt;
-
-&lt;h2 id=&quot;初期設定状態のmakefile&quot;&gt;初期設定状態のmakefile&lt;/h2&gt;
-
-&lt;p&gt;下記のようなディレクトリツリーで初期設定の&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;を用いて&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;を実行した場合、以下の矢印(&amp;lt;-)ようにファイルが生成される。
-同一のディレクトリに存在する全てのcppファイルがコンパイル（及びリンク）対象となる。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;example
-|-- makefile
-|-- bin
-|   `-- example   &amp;lt;- (TARGET) 実行ファイル
-|-- include
-|   `-- example.h
-|-- obj           &amp;lt;- (OBJDIR) 中間ファイル生成先ディレクトリ
-|   |-- example.d &amp;lt;- (DEPENDS) 依存関係ファイル
-|   `-- example.o &amp;lt;- (OBJECTS) オブジェクトファイル
-`-- source
-    `-- example.cpp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;解説&quot;&gt;解説&lt;/h2&gt;
-
-&lt;h3 id=&quot;コンパイラの指定-compiler&quot;&gt;コンパイラの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;COMPILER&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;コンパイラは&lt;code class=&quot;highlighter-rouge&quot;&gt;COMPILER&lt;/code&gt;の値を用いる。初期値は&lt;code class=&quot;highlighter-rouge&quot;&gt;g++&lt;/code&gt;。C言語のみの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt;に変更しても良いが基本的には&lt;code class=&quot;highlighter-rouge&quot;&gt;g++&lt;/code&gt;で問題ない。&lt;/p&gt;
-
-&lt;h3 id=&quot;コンパイルオプション-cflags&quot;&gt;コンパイルオプション (&lt;code class=&quot;highlighter-rouge&quot;&gt;CFLAGS&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;コンパイルオプションとして&lt;code class=&quot;highlighter-rouge&quot;&gt;CFLAGS&lt;/code&gt;の値を用いる。&lt;code class=&quot;highlighter-rouge&quot;&gt;-D&lt;/code&gt;オプションによる&lt;code class=&quot;highlighter-rouge&quot;&gt;#define&lt;/code&gt;の追加、最適化オプション、コードカバレッジ用の&lt;code class=&quot;highlighter-rouge&quot;&gt;-coverage&lt;/code&gt;などを用いる場合はここに記述する。&lt;/p&gt;
-
-&lt;p&gt;以下は初期値の解説。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-Wall -Wextra -Winit-self -Wno-missing-field-initializers&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-Wall&lt;/code&gt; : コンパイルワーニングのレベルを最大にする。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-Wextra&lt;/code&gt; : 歴史的理由により&lt;code class=&quot;highlighter-rouge&quot;&gt;-Wall&lt;/code&gt;を使用でも抑制される警告を抑制しない。つまり可能な限り全ての警告を出す。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-W*&lt;/code&gt; （それ以外） : 詳しくは&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html&quot;&gt;Warning Options - Using the GNU Compiler Collection (GCC)&lt;/a&gt;を参照されたし。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-g&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;デバッグオプション。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gdb&lt;/code&gt;でのデバッグを可能にする。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-MMD -MP&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;ソースファイルの依存関係を中間ファイルに出力する。&lt;/li&gt;
-      &lt;li&gt;依存関係ファイルはソースファイル名の拡張子を&lt;code class=&quot;highlighter-rouge&quot;&gt;.d&lt;/code&gt;に変更したものとなり、&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJDIR&lt;/code&gt;で指定したディレクトリに生成される。&lt;/li&gt;
-      &lt;li&gt;この依存関係ファイルは&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;最後の&lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt;文にてインクルードされることで依存しているヘッダファイル等が変更された場合に自動的に再コンパイルされるようになる。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;リンクオプション-ldflags&quot;&gt;リンクオプション (&lt;code class=&quot;highlighter-rouge&quot;&gt;LDFLAGS&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;リンクオプションとして&lt;code class=&quot;highlighter-rouge&quot;&gt;LDFLAGS&lt;/code&gt;の値を用いる。初期値は空。
-動的ライブラリをリンクする&lt;code class=&quot;highlighter-rouge&quot;&gt;-l&lt;/code&gt;オプションを用いる場合はここに記述する。
-パスの通っていない動的ライブラリをリンクするならここにそのファイル名(&lt;code class=&quot;highlighter-rouge&quot;&gt;*.so&lt;/code&gt;みたいな)を書いても良い。&lt;/p&gt;
-
-&lt;h3 id=&quot;ライブラリの指定-libs&quot;&gt;ライブラリの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;LIBS&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;静的リンクするライブラリとして&lt;code class=&quot;highlighter-rouge&quot;&gt;LIBS&lt;/code&gt;の値を用いる。初期値は空。
-静的ライブラリ（&lt;code class=&quot;highlighter-rouge&quot;&gt;*.a&lt;/code&gt;）を用いる場合、空白区切りでファイル名を記述する。
-ここで指定したライブラリが更新された場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;は再コンパイルが必要だと認識する。&lt;/p&gt;
-
-&lt;h3 id=&quot;インクルードパスの指定-include&quot;&gt;インクルードパスの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;INCLUDE&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;インクルードパスとして&lt;code class=&quot;highlighter-rouge&quot;&gt;INCLUDE&lt;/code&gt;の値を用いる。初期値は&lt;code class=&quot;highlighter-rouge&quot;&gt;-I./include&lt;/code&gt;。
-ソースファイル中の&lt;code class=&quot;highlighter-rouge&quot;&gt;#include&lt;/code&gt;ファイル検索パスに加えるパスを&lt;code class=&quot;highlighter-rouge&quot;&gt;-I&lt;/code&gt;オプションにて指定する。&lt;code class=&quot;highlighter-rouge&quot;&gt;-I&lt;/code&gt;オプションとディレクトリ名の間に空白を書くことはできない。
-複数ディレクトリを指定したい場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;-I&lt;/code&gt;オプションを空白区切りで複数指定する。&lt;/p&gt;
-
-&lt;h3 id=&quot;実行ファイルの指定-target&quot;&gt;実行ファイルの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;TARGET&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;実行ファイル名として&lt;code class=&quot;highlighter-rouge&quot;&gt;TARGET&lt;/code&gt;の値を用いる。
-以下は初期値 &lt;code&gt; ./bin/$(shell basename \`readlink -f .\`) &lt;/code&gt;の解説。
-実行ファイルの生成先のディレクトリは&lt;code class=&quot;highlighter-rouge&quot;&gt;./bin&lt;/code&gt;。
-生成される実行ファイル名は &lt;code&gt; $(shell basename \`readlink -f .\`) &lt;/code&gt;である。
-これは&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;の存在するディレクトリの名前。&lt;/p&gt;
-
-&lt;h3 id=&quot;中間ファイル生成先ディレクトリの指定-objdir&quot;&gt;中間ファイル生成先ディレクトリの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJDIR&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;中間ファイル生成先ディレクトリとして&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJDIR&lt;/code&gt;の値を用いる。初期値は&lt;code class=&quot;highlighter-rouge&quot;&gt;./obj&lt;/code&gt;。
-このフォルダにオブジェクトファイル(&lt;code class=&quot;highlighter-rouge&quot;&gt;*.o&lt;/code&gt;)や依存関係ファイル(&lt;code class=&quot;highlighter-rouge&quot;&gt;*.d&lt;/code&gt;)が生成される。&lt;/p&gt;
-
-&lt;h3 id=&quot;ソースファイルの指定-sources&quot;&gt;ソースファイルの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;SOURCES&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;コンパイル対象となるソースファイルとして&lt;code class=&quot;highlighter-rouge&quot;&gt;SOURCES&lt;/code&gt;の値を用いる。初期値は&lt;code class=&quot;highlighter-rouge&quot;&gt;$(wildcard $(SRCDIR)/*.cpp)&lt;/code&gt;。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;SRCDIR&lt;/code&gt;に存在する拡張子&lt;code class=&quot;highlighter-rouge&quot;&gt;cpp&lt;/code&gt;のファイル全てをコンパイル対象とすることを意味する。別の拡張子(&lt;code class=&quot;highlighter-rouge&quot;&gt;.c&lt;/code&gt;など)に変更したい場合は、&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;内の&lt;code class=&quot;highlighter-rouge&quot;&gt;cpp&lt;/code&gt;を全て変更する。&lt;/p&gt;
-
-&lt;h3 id=&quot;オブジェクトファイルの指定-objects&quot;&gt;オブジェクトファイルの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJECTS&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;オブジェクトファイルとして&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJECTS&lt;/code&gt;の値を用いる。
-以下は初期値 &lt;code class=&quot;highlighter-rouge&quot;&gt;$(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))&lt;/code&gt;の解説。
-オブジェクトファイルの生成先ディレクトリは&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJDIR&lt;/code&gt;。
-オブジェクトファイル名はソースファイル(&lt;code class=&quot;highlighter-rouge&quot;&gt;SOURCES&lt;/code&gt;)の拡張子を&lt;code class=&quot;highlighter-rouge&quot;&gt;.o&lt;/code&gt;に置換したもの。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;OBJDIR&lt;/code&gt;が空の場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;と同一のディレクトリに生成される。&lt;/p&gt;
-
-&lt;h3 id=&quot;依存関係ファイルの指定-depends&quot;&gt;依存関係ファイルの指定 (&lt;code class=&quot;highlighter-rouge&quot;&gt;DEPENDS&lt;/code&gt;)&lt;/h3&gt;
-
-&lt;p&gt;依存関係ファイルとして&lt;code class=&quot;highlighter-rouge&quot;&gt;DEPENDS&lt;/code&gt;の値を用いる。
-初期値&lt;code class=&quot;highlighter-rouge&quot;&gt;$(OBJECTS:.o=.d)&lt;/code&gt;はオブジェクトファイルの拡張子を&lt;code class=&quot;highlighter-rouge&quot;&gt;.d&lt;/code&gt;に置換したもの。&lt;/p&gt;
-
-&lt;p&gt;そんじゃーね。に花束を。&lt;/p&gt;</content><author><name>うりん</name></author><category term="C++" /><category term="makefile" /><category term="gcc" /><category term="Linux" /><summary type="html">makefileは一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。 Linux系OS上（正確に言うとGNU MakeとGCC）で複数のC/C++ソースファイルから１つの実行ファイルを作成(make)するための汎用的なmakefileテンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従ってmakefileをカスタマイズする必要があると思うがそのベースにする。</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>うりん</name></author><category term="jQuery" /><category term="JavaScript" /><summary type="html">ブロック要素の高さを揃える軽量なjQueryプラグインjquery.tile.js。このプラグインを使用するとブロック要素を簡単にタイル状に並べることができる。 このプラグインには余分な機能が一切無いため 使い方がシンプルでプラグインは非常に軽量 になっている。</summary></entry></feed>
