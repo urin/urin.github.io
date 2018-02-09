@@ -167,7 +167,7 @@
 <p>ラジオボタンとチェックボックスのカスタマイズ方法を説明しているサイトでは以下の形式もよく紹介されるが<code class="highlighter-rouge">id</code>と<code class="highlighter-rouge">for</code>の命名が必須となるので採用しない。</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"toggle-buttons"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"checkbox-1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"checkbox-1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"checkbox-1"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>
     Checkbox
   <span class="nt">&lt;/label&gt;</span>
@@ -179,7 +179,6 @@
 
 <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.toggle-buttons</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
-  <span class="nl">align-items</span><span class="p">:</span> <span class="n">stretch</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nc">.toggle-buttons.vertical</span> <span class="p">{</span>
@@ -342,7 +341,6 @@
 
 .sample .toggle-buttons {
   display: flex;
-  align-items: stretch;
 }
 
 .sample .toggle-buttons.vertical {
