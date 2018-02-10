@@ -11,7 +11,9 @@
 
     <item>
       <title>CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title>
-      <description>&lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;https://jp.vuejs.org/index.html&quot;&gt;Vue.js&lt;/a&gt;などでデータバインディングするとき&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;要素がきちんと（セマンティックに）使われて欲しくなる。&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;などで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;の見た目はダサいので格好よくはしたい。&lt;/p&gt;
+
+&lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
 
 &lt;h2 id=&quot;基本形&quot;&gt;基本形&lt;/h2&gt;
 

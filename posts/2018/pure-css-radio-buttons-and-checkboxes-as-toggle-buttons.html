@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>CSSのみでラジオボタンとチェックボックスをトグルボタンにする - URIN HACK</title>
-    <meta name="description" content="CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
+    <meta name="description" content="Vue.jsなどでデータバインディングするとき&lt;input&gt;要素がきちんと（セマンティックに）使われて欲しくなる。jQueryなどで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;input&gt;の見た目はダサいので格好よくはしたい。CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
     <meta name="keywords" content="Programming, html, css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
     <meta property="fb:app_id" content="494189017339311">
     <meta property="og:title"  content="CSSのみでラジオボタンとチェックボックスをトグルボタンにする - URIN HACK">
     <meta name="twitter:title" content="CSSのみでラジオボタンとチェックボックスをトグルボタンにする - URIN HACK">
-    <meta property="og:description"  content="CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
-    <meta name="twitter:description" content="CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
+    <meta property="og:description"  content="Vue.jsなどでデータバインディングするとき&lt;input&gt;要素がきちんと（セマンティックに）使われて欲しくなる。jQueryなどで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;input&gt;の見た目はダサいので格好よくはしたい。CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
+    <meta name="twitter:description" content="Vue.jsなどでデータバインディングするとき&lt;input&gt;要素がきちんと（セマンティックに）使われて欲しくなる。jQueryなどで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;input&gt;の見た目はダサいので格好よくはしたい。CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
@@ -129,7 +129,9 @@
 
   <article class="post col-md-10 col-lg-10">
     <h1 class="well well-lg">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</h1>
-    <p>CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、<code class="highlighter-rouge">flexbox</code>によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。</p>
+    <p><a href="https://jp.vuejs.org/index.html">Vue.js</a>などでデータバインディングするとき<code class="highlighter-rouge">&lt;input&gt;</code>要素がきちんと（セマンティックに）使われて欲しくなる。<code class="highlighter-rouge">jQuery</code>などで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの<code class="highlighter-rouge">&lt;input&gt;</code>の見た目はダサいので格好よくはしたい。</p>
+
+<p>CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、<code class="highlighter-rouge">flexbox</code>によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。</p>
 
 <h2 id="基本形">基本形</h2>
 
