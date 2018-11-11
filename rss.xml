@@ -1338,7 +1338,7 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
       <title>シンプルで応用の効くmakefileとその解説</title>
       <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;は一度作るとそれ以降編集する機会が少なくなるので意外と真面目に考える人は少なく、ネット上でもまとまった情報は多くない。&lt;/p&gt;
 
-&lt;p&gt;Linux系OS上（正確に言うとGNU MakeとGCC）で複数の&lt;code class=&quot;highlighter-rouge&quot;&gt;C/C++&lt;/code&gt;ソースファイルから１つの実行ファイルを作成(&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;)するための汎用的な&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;をカスタマイズする必要があると思うがそのベースにする。&lt;/p&gt;
+&lt;p&gt;Linux系OS上（正確に言うとGNU MakeとGCC）で複数の&lt;code class=&quot;highlighter-rouge&quot;&gt;C C++&lt;/code&gt;ソースファイルから１つの実行ファイルを作成(&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;)するための汎用的な&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;テンプレートを作った。名前はまだない。適宜ディレクトリ構成や設計などに従って&lt;code class=&quot;highlighter-rouge&quot;&gt;makefile&lt;/code&gt;をカスタマイズする必要があると思うがそのベースにする。&lt;/p&gt;
 
 &lt;h2 id=&quot;このmakefileのいいところ&quot;&gt;このmakefileのいいところ&lt;/h2&gt;
 
