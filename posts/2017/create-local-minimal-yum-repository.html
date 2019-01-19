@@ -193,8 +193,8 @@ tar czf <span class="s2">"</span><span class="nv">$dest</span><span class="s2">.
 
 <p>というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行する。</p>
 
-<p>例えば <code class="highlighter-rouge">jq</code> と <code class="highlighter-rouge">tree</code> をインストールしたければ</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo makelocalrepo.sh localrepo jq tree
+<p>例えば <code class="highlighter-rouge">nodejs</code> と <code class="highlighter-rouge">ruby</code> をインストールしたければ</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo makelocalrepo.sh localrepo nodejs ruby
 </code></pre>
 </div>
 <p>とするとカレントディレクトリに localrepo というディレクトリと localrepo.tar.gz というファイルが作成される。
@@ -203,7 +203,7 @@ localrepo.tar.gz にインストーラとリポジトリが含まれる。</p>
 <p>ちなみに</p>
 
 <ul>
-  <li><code class="highlighter-rouge">yum</code>の downloadonly プラグインは非推奨となっており<code class="highlighter-rouge">yumdownloader</code>が今後の推奨になっている。</li>
+  <li><code class="highlighter-rouge">yum</code>の downloadonly プラグインは非推奨となっており<code class="highlighter-rouge">yumdownloader</code>が今後(CentOS 6,RHEL 6以降)の推奨になっている。</li>
   <li><code class="highlighter-rouge">yumdownloader</code>の resolve オプションで依存関係も全て解決される。ありがたい。</li>
 </ul>
 

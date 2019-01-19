@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-01-19T11:25:29+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T20:07:05+09:00</published><updated>2018-10-20T20:07:05+09:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-01-19T11:31:45+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T20:07:05+09:00</published><updated>2018-10-20T20:07:05+09:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;ul&gt;
@@ -663,8 +663,8 @@ tar czf &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot
 
 &lt;p&gt;というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行する。&lt;/p&gt;
 
-&lt;p&gt;例えば &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;tree&lt;/code&gt; をインストールしたければ&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo makelocalrepo.sh localrepo jq tree
+&lt;p&gt;例えば &lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby&lt;/code&gt; をインストールしたければ&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo makelocalrepo.sh localrepo nodejs ruby
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;とするとカレントディレクトリに localrepo というディレクトリと localrepo.tar.gz というファイルが作成される。
@@ -673,7 +673,7 @@ localrepo.tar.gz にインストーラとリポジトリが含まれる。&lt;/p
 &lt;p&gt;ちなみに&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;の downloadonly プラグインは非推奨となっており&lt;code class=&quot;highlighter-rouge&quot;&gt;yumdownloader&lt;/code&gt;が今後の推奨になっている。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;の downloadonly プラグインは非推奨となっており&lt;code class=&quot;highlighter-rouge&quot;&gt;yumdownloader&lt;/code&gt;が今後(CentOS 6,RHEL 6以降)の推奨になっている。&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yumdownloader&lt;/code&gt;の resolve オプションで依存関係も全て解決される。ありがたい。&lt;/li&gt;
 &lt;/ul&gt;
 
