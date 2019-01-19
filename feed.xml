@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-11T17:54:48+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T20:07:05+09:00</published><updated>2018-10-20T20:07:05+09:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-01-19T11:25:29+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T20:07:05+09:00</published><updated>2018-10-20T20:07:05+09:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;ul&gt;
@@ -645,7 +645,7 @@ cat &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=
 #!/bin/bash
 set -eu
 
-cat &amp;gt; /etc/yum.repo.d/localrepo.repo &amp;lt;&amp;lt;EOF
+cat &amp;gt; /etc/yum.repos.d/localrepo.repo &amp;lt;&amp;lt;EOF
 [localrepo]
 name=localrepo
 baseurl=file://\$(readlink -f \$(dirname &quot;\$0&quot;))/repo
