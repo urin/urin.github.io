@@ -1,4 +1,5 @@
 http://urin.github.ioindex.html
+http://urin.github.io/posts/2019/dtail
 http://urin.github.io/posts/2018/replace-string-by-c-lang
 http://urin.github.io/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons
 http://urin.github.io/posts/2017/run-bash-commands-as-a-user

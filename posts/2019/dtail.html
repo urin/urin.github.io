@@ -2,8 +2,8 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK</title>
-    <meta name="description" content="あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。commands.sh の所有者が someone であれば sticky bit を使うだけでよい。chmod u+s commands.sh所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。以下のような方法を考えてみた。（bash 限定）as_someone というファイルを準備する。if [[ "$USER" != "someone" ]]; then  echo -n 'Enter someone '  su - someone -c "$(readlink -f $0) $*"  exitfiこのファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。commands.sh は以下のようにすればよい。#!/bin/bash. $(dirname $0)/as_someoneecho "Following commands are executed by someone."echo "I am $USER"env :これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。">
+    <title>ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開 - URIN HACK</title>
+    <meta name="description" content="ディレクトリ内の変更内容を監視・表示するコマンドdtailを作成した。dtailはinotify-toolsでファイルの変更イベントを監視してtail -fでファイルを監視する。これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。">
     <meta name="keywords" content="Programming, bash, Linux">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK">
-    <meta name="twitter:title" content="特定のユーザ権限でのみ実行されるシェルスクリプト - URIN HACK">
-    <meta property="og:description"  content="あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。commands.sh の所有者が someone であれば sticky bit を使うだけでよい。chmod u+s commands.sh所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。以下のような方法を考えてみた。（bash 限定）as_someone というファイルを準備する。if [[ "$USER" != "someone" ]]; then  echo -n 'Enter someone '  su - someone -c "$(readlink -f $0) $*"  exitfiこのファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。commands.sh は以下のようにすればよい。#!/bin/bash. $(dirname $0)/as_someoneecho "Following commands are executed by someone."echo "I am $USER"env :これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。">
-    <meta name="twitter:description" content="あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。commands.sh の所有者が someone であれば sticky bit を使うだけでよい。chmod u+s commands.sh所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。以下のような方法を考えてみた。（bash 限定）as_someone というファイルを準備する。if [[ "$USER" != "someone" ]]; then  echo -n 'Enter someone '  su - someone -c "$(readlink -f $0) $*"  exitfiこのファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。commands.sh は以下のようにすればよい。#!/bin/bash. $(dirname $0)/as_someoneecho "Following commands are executed by someone."echo "I am $USER"env :これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。">
+    <meta property="og:title"  content="ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開 - URIN HACK">
+    <meta name="twitter:title" content="ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開 - URIN HACK">
+    <meta property="og:description"  content="ディレクトリ内の変更内容を監視・表示するコマンドdtailを作成した。dtailはinotify-toolsでファイルの変更イベントを監視してtail -fでファイルを監視する。これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。">
+    <meta name="twitter:description" content="ディレクトリ内の変更内容を監視・表示するコマンドdtailを作成した。dtailはinotify-toolsでファイルの変更イベントを監視してtail -fでファイルを監視する。これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2017/run-bash-commands-as-a-user">
+    <meta property="og:url" content="http://urin.github.io/posts/2019/dtail">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user">
+    <link rel="canonical" href="http://urin.github.io/posts/2019/dtail">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   </head>
@@ -62,12 +62,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-11-30</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2019-05-24</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/run-bash-commands-as-a-user'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2019/dtail'></script>
       </span>
 
     </li>
@@ -95,10 +95,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2019/dtail" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2019/dtail" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -125,44 +125,33 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">特定のユーザ権限でのみ実行されるシェルスクリプト</h1>
-    <p>あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。</p>
+    <h1 class="well well-lg">ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開</h1>
+    <p>ディレクトリ内の変更内容を監視・表示するコマンド<a href="//github.com/urin/dtail">dtail</a>を作成した。</p>
 
-<p>commands.sh の所有者が someone であれば sticky bit を使うだけでよい。</p>
+<p><code class="highlighter-rouge">dtail</code>は<a href="//github.com/rvoicilas/inotify-tools/wiki">inotify-tools</a>でファイルの変更イベントを監視して<code class="highlighter-rouge">tail -f</code>でファイルを監視する。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>chmod u+s commands.sh
+<p>これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Usage: dtail [options] [--] path...
+
+Options:
+  -r|--recursive
+    Watch subdirectories recursively.
+  --exclude  &lt;pattern&gt; | --excludei &lt;pattern&gt;
+    Exclude files if filename matches &lt;pattern&gt; (POSIX extended regular expression).
+    It is case insensitive with --excludei.
+  --fromfile &lt;file&gt;
+    Read filenames to watch or exclude from a file, one filename per line.
+    If filenames begin with @ they are excluded as described above.
+  -p|--poolsize &lt;num&gt;
+    Maximum number of watching processes. Default 1.
+
 </code></pre>
 </div>
 
-<p>所有権が自分以外に変更できない場合、<code class="highlighter-rouge">su</code> すればいいだけだが <code class="highlighter-rouge">su</code> を忘れてしまうのを避けるにはどうするか。</p>
+<p><code class="highlighter-rouge">tail</code>含めて<a href="//man7.org/linux/man-pages/man7/inotify.7.html">inotify</a>で変更を監視するので監視対象ファイルを周期的にポーリングするような負荷を与えることはない。</p>
 
-<p>以下のような方法を考えてみた。（<code class="highlighter-rouge">bash</code> 限定）</p>
-
-<p>as_someone というファイルを準備する。</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$USER</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"someone"</span> <span class="o">]]</span>; <span class="k">then
-  </span><span class="nb">echo</span> -n <span class="s1">'Enter someone '</span>
-  su - someone -c <span class="s2">"</span><span class="k">$(</span>readlink -f <span class="nv">$0</span><span class="k">)</span><span class="s2"> </span><span class="nv">$*</span><span class="s2">"</span>
-  <span class="nb">exit
-</span><span class="k">fi</span>
-</code></pre>
-</div>
-
-<p>このファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。</p>
-
-<p>commands.sh は以下のようにすればよい。</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-. <span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span>/as_someone
-
-<span class="nb">echo</span> <span class="s2">"Following commands are executed by someone."</span>
-<span class="nb">echo</span> <span class="s2">"I am </span><span class="nv">$USER</span><span class="s2">"</span>
-env
- :
-</code></pre>
-</div>
-
-<p>これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。</p>
+<p>監視対象となるファイルが大量の場合、全てのファイルを同時に監視するのは効率が悪いため、同時に監視できるファイル数一定に制限している。</p>
 
 
   </article>
@@ -173,12 +162,12 @@ env
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-11-30</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2019-05-24</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/run-bash-commands-as-a-user'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2019/dtail'></script>
       </span>
 
     </li>
@@ -206,10 +195,10 @@ env
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2019/dtail" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/run-bash-commands-as-a-user" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2019/dtail" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -227,12 +216,10 @@ env
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2017/create-local-minimal-yum-repository" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法"><i class="fa fa-chevron-circle-left"></i><small>Linuxローカル環境用に最小限のyumリポジトリを作成する方法</small></a>
+      <a rel="prev" href="/posts/2018/replace-string-by-c-lang" title="C言語で文字列置換"><i class="fa fa-chevron-circle-left"></i><small>C言語で文字列置換</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする"><i class="fa fa-chevron-circle-right"></i><small>CSSのみでラジオボタンとチェックボックスをトグルボタンにする</small></a>
 
     </div>
 
@@ -240,8 +227,8 @@ env
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2017/run-bash-commands-as-a-user';
-      var disqus_title = '特定のユーザ権限でのみ実行されるシェルスクリプト';
+      var disqus_url = 'http://urin.github.io/posts/2019/dtail';
+      var disqus_title = 'ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

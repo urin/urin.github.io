@@ -5,9 +5,44 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2018-10-20T20:07:05+09:00</lastBuildDate>
-    <pubDate>2018-10-20T20:07:05+09:00</pubDate>
+    <lastBuildDate>2019-05-24T16:42:22+09:00</lastBuildDate>
+    <pubDate>2019-05-24T16:42:22+09:00</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開</title>
+      <description>&lt;p&gt;ディレクトリ内の変更内容を監視・表示するコマンド&lt;a href=&quot;//github.com/urin/dtail&quot;&gt;dtail&lt;/a&gt;を作成した。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dtail&lt;/code&gt;は&lt;a href=&quot;//github.com/rvoicilas/inotify-tools/wiki&quot;&gt;inotify-tools&lt;/a&gt;でファイルの変更イベントを監視して&lt;code class=&quot;highlighter-rouge&quot;&gt;tail -f&lt;/code&gt;でファイルを監視する。&lt;/p&gt;
+
+&lt;p&gt;これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Usage: dtail [options] [--] path...
+
+Options:
+  -r|--recursive
+    Watch subdirectories recursively.
+  --exclude  &amp;lt;pattern&amp;gt; | --excludei &amp;lt;pattern&amp;gt;
+    Exclude files if filename matches &amp;lt;pattern&amp;gt; (POSIX extended regular expression).
+    It is case insensitive with --excludei.
+  --fromfile &amp;lt;file&amp;gt;
+    Read filenames to watch or exclude from a file, one filename per line.
+    If filenames begin with @ they are excluded as described above.
+  -p|--poolsize &amp;lt;num&amp;gt;
+    Maximum number of watching processes. Default 1.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt;含めて&lt;a href=&quot;//man7.org/linux/man-pages/man7/inotify.7.html&quot;&gt;inotify&lt;/a&gt;で変更を監視するので監視対象ファイルを周期的にポーリングするような負荷を与えることはない。&lt;/p&gt;
+
+&lt;p&gt;監視対象となるファイルが大量の場合、全てのファイルを同時に監視するのは効率が悪いため、同時に監視できるファイル数一定に制限している。&lt;/p&gt;
+
+</description>
+      <link>http://urin.github.io/posts/2019/dtail</link>
+      <guid>http://urin.github.io//posts/2019/dtail</guid>
+      <pubDate>2019-05-24T16:42:22+09:00</pubDate>
+    </item>
 
     <item>
       <title>C言語で文字列置換</title>
