@@ -111,15 +111,22 @@
     <footer class="text-muted">
       <div class="container">
         <section>
-          <nav class="recent-posts col-sm-4">
+          <nav class="recent-posts col-sm-6">
             <h3><i class="fa fa-paperclip"></i>Recent Entries</h3>
             <dl class="list-unstyled">
+
+              <dt>
+                <span class="digits">2020-02-28</span>
+              </dt>
+              <dd>
+                <a href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</a>
+              </dd>
 
               <dt>
                 <span class="digits">2019-05-24</span>
               </dt>
               <dd>
-                <a href="/posts/2019/dtail">ディレクトリ内の変更内容を監視・表示するコマンドdtailを公開</a>
+                <a href="/posts/2019/dtail">ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</a>
               </dd>
 
               <dt>
@@ -178,82 +185,76 @@
                 <a href="/posts/2014/install-jekyll-2.3.0-to-windows">Jekyll 2.3.0をWindowsに導入</a>
               </dd>
 
-              <dt>
-                <span class="digits">2014-03-02</span>
-              </dt>
-              <dd>
-                <a href="/posts/2014/install-jekyll-1.4.2-to-windows">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</a>
-              </dd>
-
             </dl>
           </nav>
-          <nav class="tags col-sm-4">
-            <h3><i class="fa fa-tags"></i>Tags</h3>
-            <div class="tag-cloud">
-<a href="/tags/Linux" style="font-size: 170%;">Linux</a>
-<a href="/tags/C++" style="font-size: 113%;">C++</a>
-<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
-<a href="/tags/jQuery" style="font-size: 113%;">jQuery</a>
-<a href="/tags/Jekyll" style="font-size: 156%;">Jekyll</a>
-<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
-<a href="/tags/JavaScript" style="font-size: 113%;">JavaScript</a>
-<a href="/tags/css" style="font-size: 70%;">css</a>
-<a href="/tags/Batch" style="font-size: 70%;">Batch</a>
-<a href="/tags/bash" style="font-size: 138%;">bash</a>
-<a href="/tags/html" style="font-size: 70%;">html</a>
-<a href="/tags/C" style="font-size: 138%;">C</a>
-<a href="/tags/Windows" style="font-size: 156%;">Windows</a>
+          <div class="col-sm-6">
+            <nav class="tags">
+              <h3><i class="fa fa-tags"></i>Tags</h3>
+              <div class="tag-cloud">
 <a href="/tags/Ruby" style="font-size: 170%;">Ruby</a>
-<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
 <a href="/tags/fluentd" style="font-size: 70%;">fluentd</a>
+<a href="/tags/C++" style="font-size: 113%;">C++</a>
+<a href="/tags/makefile" style="font-size: 70%;">makefile</a>
+<a href="/tags/C" style="font-size: 138%;">C</a>
+<a href="/tags/Jekyll" style="font-size: 156%;">Jekyll</a>
+<a href="/tags/Windows" style="font-size: 156%;">Windows</a>
+<a href="/tags/css" style="font-size: 70%;">css</a>
+<a href="/tags/gcc" style="font-size: 70%;">gcc</a>
+<a href="/tags/GitHub" style="font-size: 70%;">GitHub</a>
+<a href="/tags/jQuery" style="font-size: 113%;">jQuery</a>
 <a href="/tags/Octopress" style="font-size: 70%;">Octopress</a>
+<a href="/tags/bash" style="font-size: 138%;">bash</a>
+<a href="/tags/Batch" style="font-size: 70%;">Batch</a>
+<a href="/tags/Linux" style="font-size: 170%;">Linux</a>
+<a href="/tags/JavaScript" style="font-size: 138%;">JavaScript</a>
+<a href="/tags/html" style="font-size: 70%;">html</a>
 
-            </div>
+              </div>
 
-            <div>
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-              <!-- レスポンシブ２ -->
-              <ins class="adsbygoogle ads-responsive2"
-                style="display:inline-block"
-                data-ad-client="ca-pub-8915879811522337"
-                data-ad-slot="4415580601"></ins>
-            </div>
+              <div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- レスポンシブ２ -->
+                <ins class="adsbygoogle ads-responsive2"
+                  style="display:inline-block"
+                  data-ad-client="ca-pub-8915879811522337"
+                  data-ad-slot="4415580601"></ins>
+              </div>
 
-          </nav>
-          <nav class="repos col-sm-4">
-            <h3><i class="fa fa-github"></i>Repositories</h3>
-            <dl>
-              <dt>
-                <a href="/jquery.tile.js">jquery.tile.js</a>
+            </nav>
+            <nav class="repos">
+              <h3><i class="fa fa-github"></i>Repositories</h3>
+              <dl>
+                <dt>
+                  <a href="/jquery.tile.js">jquery.tile.js</a>
 
-                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+                  <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.tile.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
 
-              </dt>
-              <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
-              <dt>
-                <a href="/jquery.balloon.js">jquery.balloon.js</a>
+                </dt>
+                <dd>要素の高さを揃える超軽量なjQueryプラグイン</dd>
+                <dt>
+                  <a href="/jquery.balloon.js">jquery.balloon.js</a>
 
-                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+                  <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=jquery.balloon.js&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
 
-              </dt>
-              <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
-              <dt>
-                <a href="//github.com/urin/dtail">dtail</a>
+                </dt>
+                <dd>設置もカスタマイズも超簡単な吹き出しホバー用jQueryプラグイン</dd>
+                <dt>
+                  <a href="//github.com/urin/dtail">dtail</a>
 
-                <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=dtail&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+                  <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=dtail&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
 
-              </dt>
-              <dd>ディレクトリ内ファイル監視Bashスクリプト</dd>
-              <dt>
-                <a href="//github.com/urin/jquery.stretchable.js">jquery.stretchable.js</a>
-              </dt>
-              <dd>要素を浮かせて伸ばすボタンを付けるjQueryプラグイン</dd>
-              <dt>
-                <a href="//github.com/urin/.vimrc">.vimrc</a>
-              </dt>
-              <dd>Vim用設定ファイル</dd>
-            </dl>
-          </nav>
+                </dt>
+                <dd>ディレクトリ内ファイル監視Bashスクリプト</dd>
+                <dt>
+                  <a href="//github.com/urin/miniunit">miniunit</a>
+
+                  <iframe class="github-btn" src="//ghbtns.com/github-btn.html?user=urin&amp;repo=miniunit&amp;type=watch&amp;count=true" style="background-color:transparent;border:none;overflow:hidden" width="100" height="20"></iframe>
+
+                </dt>
+                <dd>C言語用ユニットテスト・フレームワーク</dd>
+              </dl>
+            </nav>
+          </div>
         </section>
       </div>
       <hr>
@@ -283,7 +284,7 @@
         </aside>
         <hr>
         <div class="copyright">
-          <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2019</span> うりん</small></span>
+          <span class="col-sm-2 col-sm-offset-5"><small><span class="digits">&copy; 2013 - 2020</span> うりん</small></span>
           <span class="sns-icons col-sm-3">
             <a href="//github.com/urin" title="GitHub"><i class="fa fa-github"></i></a>
             <a href="//twitter.com/urinhack" title="Twitter"><i class="fa fa-twitter"></i></a>

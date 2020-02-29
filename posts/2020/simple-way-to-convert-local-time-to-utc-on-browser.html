@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK</title>
-    <meta name="description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
-    <meta name="keywords" content="Programming, fluentd, Ruby, Linux">
+    <title>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK</title>
+    <meta name="description" content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
+    <meta name="keywords" content="Programming, JavaScript">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
-    <meta name="twitter:title" content="fluent-plugin-dstatで取得した値が不正になる問題を解決 - URIN HACK">
-    <meta property="og:description"  content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
-    <meta name="twitter:description" content="shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。">
+    <meta property="og:title"  content="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK">
+    <meta name="twitter:title" content="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK">
+    <meta property="og:description"  content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
+    <meta name="twitter:description" content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">
+    <meta property="og:url" content="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">
+    <link rel="canonical" href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   </head>
@@ -62,12 +62,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2016-11-12</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-02-28</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser'></script>
       </span>
 
     </li>
@@ -75,18 +75,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/fluentd" title="1件の記事">fluentd</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Linux" title="5件の記事">Linux</a>
-      <span class="badge digits">5</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="3件の記事">JavaScript</a>
+      <span class="badge digits">3</span>
     </li>
     
   
@@ -100,10 +90,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -130,55 +120,75 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">fluent-plugin-dstatで取得した値が不正になる問題を解決</h1>
-    <p><a href="//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2">shun0102/fluent-plugin-dstat at v0.3.2</a>で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>し<a href="https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3">v0.3.3</a>としてマージされた。</p>
-
-<h2 id="問題を確認した環境">問題を確認した環境</h2>
+    <h1 class="well well-lg">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</h1>
+    <p>世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。</p>
 
 <ul>
-  <li>td-agent 2.3.1 (fluentd 0.12.20)</li>
-  <li>fluent-plugin-dstat 0.3.2</li>
+  <li>サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。</li>
+  <li>ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。</li>
 </ul>
 
-<h2 id="問題の内容">問題の内容</h2>
+<p>というのが一般的に考えられる状況だ。</p>
 
-<p><a href="//github.com/dagwieers/dstat">dstat</a>から取得した値がリソースなどに依らず全て不正な値となることがある。
-常時ある程度の負荷（CPU負荷20%程度）がかかっている環境で1秒周期で収集した場合、発生頻度は５～１５分に１度程度。</p>
+<p>ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。</p>
 
-<h2 id="不正な値となる原因">不正な値となる原因</h2>
+<p>一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。</p>
 
-<p><code class="highlighter-rouge">fluent-plugin-dstat</code> は 子プロセスとして <code class="highlighter-rouge">dstat</code> プロセスを生成し <code class="highlighter-rouge">dstat</code> は <code class="highlighter-rouge">/tmp/dstat.csv</code> というファイルに収集したデータを書く。
-<code class="highlighter-rouge">fluent-plugin-dstat</code> はそのファイルを0.5秒周期で監視し変化があった時、ファイルの内容を解析しJSON化する。</p>
+<p>かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。</p>
 
-<p>このように一時ファイル経由でのデータ授受をしているが、読みだす側のプロセス <code class="highlighter-rouge">fluent-plugin-dstat</code> と書き込む側のプロセス <code class="highlighter-rouge">dstat</code> 間で同期（排他）を取っていない。
-つまり何らかの要因（主にOS）で書き込み側のバッファがflushされた時、読み込んだデータは不完全な（カラムが欠落した）行を含む可能性があるが、それが考慮されていなかった。</p>
+<p>例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。</p>
 
-<h2 id="対策">対策</h2>
+<p>入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。</p>
 
-<p>ファイルから読み込んだデータが改行で終わっていなかったら、その行はJSON化せず内部に保持し、次に読み込んだ先頭行と連結するようにした。</p>
+<p>こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。</p>
 
-<p>これで不正値になることはなくなりかなり安定した。が、ほぼ一定の周期でデータが数点抜ける。</p>
+<p><a href="//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment">ECMAScript® 2019 Language Specification</a> によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。</p>
 
-<p>ソースを見ると <code class="highlighter-rouge">fluent-plugin-dstat</code> は100行読み込む度に <code class="highlighter-rouge">/tmp/dstat.csv</code> をクリアしていた。
-同期なしに２つのプロセスが同一のファイルに書き込むので、データ抜けが起こるのも当然だった。</p>
+<p>つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。</p>
 
-<p>確かに誰かが一時ファイルをクリアしないとファイルが肥大化し続けてしまう。</p>
+<p>もし <a href="//momentjs.com/">moment.js</a> を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には <a href="//momentjs.com/timezone/">Moment Timezone</a> を使ってもいいだろう。</p>
 
-<p>そもそも <code class="highlighter-rouge">dstat</code> が標準出力に吐いてくれればファイルの肥大化など気にする必要もないのだが、解析に適したCSV形式の出力先に標準出力や標準エラー出力を選ぶオプションはなかった。</p>
+<p>ここではもっと簡便な手段を考えてみよう。</p>
 
-<p>やりたいことは単なるデータの受け渡しで、しかも <code class="highlighter-rouge">dstat</code> はLinux限定のコマンドなので、一時ファイルとして<a href="//ja.wikipedia.org/wiki/%E5%90%8D%E5%89%8D%E4%BB%98%E3%81%8D%E3%83%91%E3%82%A4%E3%83%97">fifo(名前付きパイプ)</a>を使うことにした。そうするとファイルのクリア処理自体が不要となる。</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">utc</span><span class="p">(</span><span class="nx">localtime</span><span class="p">,</span> <span class="nx">after</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">localtime</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">after</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">nextday</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">localtime</span><span class="p">)</span>
+    <span class="nx">nextday</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">localtime</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">date</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">getUTCHours</span><span class="p">()</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getUTCMinutes</span><span class="p">())</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="nx">time</span> <span class="o">+=</span> <span class="nx">clock</span><span class="p">(</span><span class="nx">nextday</span><span class="p">)</span> <span class="o">-</span> <span class="nx">clock</span><span class="p">(</span><span class="nx">localtime</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
-<h2 id="解決と思ったら">解決！と思ったら・・・</h2>
+<p>夏時間終了の重複時刻をローカルタイム上で翌日の同一時刻まで進めてから元の時刻とUTC時分の差をとると夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかるのでそれを元の時間に足せばよい。</p>
 
-<p>まだほぼ一定の周期（15分程度）でデータが数点抜ける・・・。調べるとほぼ一定の周期で <code class="highlighter-rouge">dstat</code> が死んで <code class="highlighter-rouge">fluent-plugin-dstat</code> が <code class="highlighter-rouge">dstat</code> プロセスを再生成してた。</p>
+<p>恐らくほとんどのケースではこの対応で十分だろうと思う。</p>
 
-<h2 id="dstatが死ぬ原因と対策">dstatが死ぬ原因と対策</h2>
+<p>ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。</p>
 
-<p><code class="highlighter-rouge">fluent-plugin-dstat</code> は<a href="//docs.ruby-lang.org/ja/latest/method/IO/s/popen.html">IO.popen</a>で <code class="highlighter-rouge">dstat</code> プロセスを生成していたが、ここで作成されるパイプが満杯になると <code class="highlighter-rouge">dstat</code> が死ぬようだった。パイプのサイズは大体 65536 バイト。対策は簡単。パイプが満杯にならないよう標準出力と標準エラー出力を捨てるようにすればいい。</p>
+<p>冒頭で</p>
 
-<h2 id="結果">結果</h2>
+<ul>
+  <li>サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。</li>
+  <li>ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。</li>
+</ul>
 
-<p>これらを全て解決して<a href="//github.com/shun0102/fluent-plugin-dstat/pull/16">Pull Request</a>し<a href="https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3">v0.3.3</a>としてマージされた。</p>
+<p>という条件を書いたが、これが本当に守られるか、よく考えてほしい。</p>
+
+<p>例えば普段は日本に住んでおり一時的にアメリカ合衆国で作業する場合も、時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現場に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが暮らすタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。このような場合はユーザ毎に固定のタイムゾーンを持つことになるだろう。</p>
+
+<p>また、実はもう一つ重要な前提が隠れている。</p>
+
+<ul>
+  <li>クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。</li>
+</ul>
+
+<p>ブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律であり年々改定されていくものだ。</p>
+
+<p>このためどこかの国で法改正されるとOSのタイムゾーンデータベースの更新が必要になる。</p>
 
 
   </article>
@@ -189,12 +199,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2016-11-12</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-02-28</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser'></script>
       </span>
 
     </li>
@@ -202,18 +212,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/fluentd" title="1件の記事">fluentd</a>
-      <span class="badge digits">1</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Linux" title="5件の記事">Linux</a>
-      <span class="badge digits">5</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="3件の記事">JavaScript</a>
+      <span class="badge digits">3</span>
     </li>
     
   
@@ -227,10 +227,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -248,12 +248,10 @@
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2015/logrotate-batch-on-windows" title="logrotate.bat - Windowsのバッチファイルでログローテート"><i class="fa fa-chevron-circle-left"></i><small>logrotate.bat - Windowsのバッチファイルでログローテート</small></a>
+      <a rel="prev" href="/posts/2019/dtail" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開"><i class="fa fa-chevron-circle-left"></i><small>ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2017/create-local-minimal-yum-repository" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法"><i class="fa fa-chevron-circle-right"></i><small>Linuxローカル環境用に最小限のyumリポジトリを作成する方法</small></a>
 
     </div>
 
@@ -261,8 +259,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2';
-      var disqus_title = 'fluent-plugin-dstatで取得した値が不正になる問題を解決';
+      var disqus_url = 'http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser';
+      var disqus_title = 'JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
