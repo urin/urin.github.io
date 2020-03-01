@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-01T10:23:22+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title><link href="/posts/2019/dtail" rel="alternate" type="text/html" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開" /><published>2019-05-24T16:42:22+09:00</published><updated>2019-05-24T16:42:22+09:00</updated><id>/posts/2019/dtail</id><content type="html" xml:base="/posts/2019/dtail">&lt;p&gt;ディレクトリ内の変更内容を監視・表示するコマンド&lt;a href=&quot;//github.com/urin/dtail&quot;&gt;dtail&lt;/a&gt;を作成した。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-29T22:25:59-05:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T07:44:08-05:00</published><updated>2020-02-28T07:44:08-05:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
+  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というのが一般的に考えられる状況だ。&lt;/p&gt;
+
+&lt;p&gt;ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。&lt;/p&gt;
+
+&lt;p&gt;一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。&lt;/p&gt;
+
+&lt;p&gt;かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。&lt;/p&gt;
+
+&lt;p&gt;例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。&lt;/p&gt;
+
+&lt;p&gt;入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。&lt;/p&gt;
+
+&lt;p&gt;こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment&quot;&gt;ECMAScript® 2019 Language Specification&lt;/a&gt; によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。&lt;/p&gt;
+
+&lt;p&gt;つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。&lt;/p&gt;
+
+&lt;p&gt;もし &lt;a href=&quot;//momentjs.com/&quot;&gt;moment.js&lt;/a&gt; を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には &lt;a href=&quot;//momentjs.com/timezone/&quot;&gt;Moment Timezone&lt;/a&gt; を使ってもいいだろう。&lt;/p&gt;
+
+&lt;p&gt;ここではもっと簡便な手段を考えてみよう。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advanced&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advancedUTC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;advanced&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advancedUTC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ローカルタイム上の翌日同一時刻と元の時刻とのUTC時分の差をとると２４時間以内に夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかる。&lt;/p&gt;
+
+&lt;p&gt;元の時刻をローカルタイム上とUTC上それぞれで重複期間だけ進め、その差がある場合、元の時刻は夏時間終了の重複時刻であることがわかることになる。&lt;/p&gt;
+
+&lt;p&gt;恐らくほとんどのケースではこの対応で十分だろうと思う。&lt;/p&gt;
+
+&lt;p&gt;ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。&lt;/p&gt;
+
+&lt;p&gt;冒頭で&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
+  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という条件を書いたが、これが本当に守られるか、よく考えてほしい。&lt;/p&gt;
+
+&lt;p&gt;例えば普段は日本に住んでおり一時的にアメリカ合衆国でアプリを使用する場合も、アプリ上の時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現地に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが欲するタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。&lt;/p&gt;
+
+&lt;p&gt;また、実はもう一つ重要な前提が隠れている。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例えばブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律で年々改定されていくためタイムゾーンデータベースの更新が必要だ。&lt;/p&gt;
+
+&lt;p&gt;もし特殊な事情でそれができないようなクローズド、アンマネージドな環境でそのアプリが使われる場合、上記のような対処では不完全だ。&lt;/p&gt;</content><author><name>うりん</name></author><category term="JavaScript" /><summary type="html">世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。 サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。 ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。 というのが一般的に考えられる状況だ。</summary></entry><entry><title type="html">ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title><link href="/posts/2019/dtail" rel="alternate" type="text/html" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開" /><published>2019-05-24T03:42:22-04:00</published><updated>2019-05-24T03:42:22-04:00</updated><id>/posts/2019/dtail</id><content type="html" xml:base="/posts/2019/dtail">&lt;p&gt;ディレクトリ内の変更内容を監視・表示するコマンド&lt;a href=&quot;//github.com/urin/dtail&quot;&gt;dtail&lt;/a&gt;を作成した。&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dtail&lt;/code&gt;は&lt;a href=&quot;//github.com/rvoicilas/inotify-tools/wiki&quot;&gt;inotify-tools&lt;/a&gt;でファイルの変更イベントを監視して&lt;code class=&quot;highlighter-rouge&quot;&gt;tail -f&lt;/code&gt;でファイルを監視する。&lt;/p&gt;
 
@@ -23,7 +99,7 @@ Options:
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt;含めて&lt;a href=&quot;//man7.org/linux/man-pages/man7/inotify.7.html&quot;&gt;inotify&lt;/a&gt;で変更を監視するので監視対象ファイルを周期的にポーリングするような負荷を与えることはない。&lt;/p&gt;
 
-&lt;p&gt;監視対象となるファイルが大量の場合、全てのファイルを同時に監視するのは効率が悪いため、同時に監視できるファイル数一定に制限している。&lt;/p&gt;</content><author><name>うりん</name></author><category term="bash" /><category term="Linux" /><summary type="html">ディレクトリ内の変更内容を監視・表示するコマンドdtailを作成した。 dtailはinotify-toolsでファイルの変更イベントを監視してtail -fでファイルを監視する。 これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。</summary></entry><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T20:07:05+09:00</published><updated>2018-10-20T20:07:05+09:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
+&lt;p&gt;監視対象となるファイルが大量の場合、全てのファイルを同時に監視するのは効率が悪いため、同時に監視できるファイル数一定に制限している。&lt;/p&gt;</content><author><name>うりん</name></author><category term="bash" /><category term="Linux" /><summary type="html">ディレクトリ内の変更内容を監視・表示するコマンドdtailを作成した。 dtailはinotify-toolsでファイルの変更イベントを監視してtail -fでファイルを監視する。 これを使ってディレクトリを監視すれば、ディレクトリ内に新しく作成されたファイルであったとしてもその内容を監視できることになる。</summary></entry><entry><title type="html">C言語で文字列置換</title><link href="/posts/2018/replace-string-by-c-lang" rel="alternate" type="text/html" title="C言語で文字列置換" /><published>2018-10-20T07:07:05-04:00</published><updated>2018-10-20T07:07:05-04:00</updated><id>/posts/2018/replace-string-by-c-lang</id><content type="html" xml:base="/posts/2018/replace-string-by-c-lang">&lt;p&gt;C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;ul&gt;
@@ -110,7 +186,7 @@ Options:
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><summary type="html">C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。</summary></entry><entry><title type="html">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title><link href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" rel="alternate" type="text/html" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする" /><published>2018-02-04T15:32:56+09:00</published><updated>2018-02-04T15:32:56+09:00</updated><id>/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</id><content type="html" xml:base="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons">&lt;p&gt;&lt;a href=&quot;https://jp.vuejs.org/index.html&quot;&gt;Vue.js&lt;/a&gt;などでデータバインディングするとき&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;要素がきちんと（セマンティックに）使われて欲しくなる。&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;などで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;の見た目はダサいので格好よくはしたい。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><summary type="html">C言語で文字列置換するコードを探すとネット上で見つかるのは以下のような感じ。</summary></entry><entry><title type="html">CSSのみでラジオボタンとチェックボックスをトグルボタンにする</title><link href="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons" rel="alternate" type="text/html" title="CSSのみでラジオボタンとチェックボックスをトグルボタンにする" /><published>2018-02-04T01:32:56-05:00</published><updated>2018-02-04T01:32:56-05:00</updated><id>/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</id><content type="html" xml:base="/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons">&lt;p&gt;&lt;a href=&quot;https://jp.vuejs.org/index.html&quot;&gt;Vue.js&lt;/a&gt;などでデータバインディングするとき&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;要素がきちんと（セマンティックに）使われて欲しくなる。&lt;code class=&quot;highlighter-rouge&quot;&gt;jQuery&lt;/code&gt;などで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;の見た目はダサいので格好よくはしたい。&lt;/p&gt;
 
 &lt;p&gt;CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、&lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;によるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。&lt;/p&gt;
 
@@ -585,7 +661,7 @@ _:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=checkbox] {
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="html" /><category term="css" /><summary type="html">Vue.jsなどでデータバインディングするとき&amp;lt;input&amp;gt;要素がきちんと（セマンティックに）使われて欲しくなる。jQueryなどで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&amp;lt;input&amp;gt;の見た目はダサいので格好よくはしたい。 CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。</summary></entry><entry><title type="html">特定のユーザ権限でのみ実行されるシェルスクリプト</title><link href="/posts/2017/run-bash-commands-as-a-user" rel="alternate" type="text/html" title="特定のユーザ権限でのみ実行されるシェルスクリプト" /><published>2017-11-30T20:15:39+09:00</published><updated>2017-11-30T20:15:39+09:00</updated><id>/posts/2017/run-bash-commands-as-a-user</id><content type="html" xml:base="/posts/2017/run-bash-commands-as-a-user">&lt;p&gt;あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="html" /><category term="css" /><summary type="html">Vue.jsなどでデータバインディングするとき&amp;lt;input&amp;gt;要素がきちんと（セマンティックに）使われて欲しくなる。jQueryなどで見かけ上の動作をされても困るのだ。かといってブラウザデフォルトの&amp;lt;input&amp;gt;の見た目はダサいので格好よくはしたい。 CSSのみでラジオボタンやチェックボックスをボタン化する方法は色々と紹介されているがフォーカス、キーボード操作、flexboxによるサイズの自動調整など細かいところまで考慮されたものが少なかったので、その方法を整理してみる。</summary></entry><entry><title type="html">特定のユーザ権限でのみ実行されるシェルスクリプト</title><link href="/posts/2017/run-bash-commands-as-a-user" rel="alternate" type="text/html" title="特定のユーザ権限でのみ実行されるシェルスクリプト" /><published>2017-11-30T06:15:39-05:00</published><updated>2017-11-30T06:15:39-05:00</updated><id>/posts/2017/run-bash-commands-as-a-user</id><content type="html" xml:base="/posts/2017/run-bash-commands-as-a-user">&lt;p&gt;あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。&lt;/p&gt;
 
 &lt;p&gt;commands.sh の所有者が someone であれば sticky bit を使うだけでよい。&lt;/p&gt;
 
@@ -621,7 +697,7 @@ env
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。&lt;/p&gt;</content><author><name>うりん</name></author><category term="bash" /><category term="Linux" /><summary type="html">あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。 commands.sh の所有者が someone であれば sticky bit を使うだけでよい。 chmod u+s commands.sh 所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。 以下のような方法を考えてみた。（bash 限定） as_someone というファイルを準備する。 if [[ &quot;$USER&quot; != &quot;someone&quot; ]]; then echo -n 'Enter someone ' su - someone -c &quot;$(readlink -f $0) $*&quot; exit fi このファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。 commands.sh は以下のようにすればよい。 #!/bin/bash . $(dirname $0)/as_someone echo &quot;Following commands are executed by someone.&quot; echo &quot;I am $USER&quot; env : これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。</summary></entry><entry><title type="html">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title><link href="/posts/2017/create-local-minimal-yum-repository" rel="alternate" type="text/html" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法" /><published>2017-02-25T14:36:25+09:00</published><updated>2017-02-25T14:36:25+09:00</updated><id>/posts/2017/create-local-minimal-yum-repository</id><content type="html" xml:base="/posts/2017/create-local-minimal-yum-repository">&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
+&lt;p&gt;これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。&lt;/p&gt;</content><author><name>うりん</name></author><category term="bash" /><category term="Linux" /><summary type="html">あるシェルスクリプト（commands.sh とする）を特定のユーザ権限でのみ実行されるようにすることを考える。 commands.sh の所有者が someone であれば sticky bit を使うだけでよい。 chmod u+s commands.sh 所有権が自分以外に変更できない場合、su すればいいだけだが su を忘れてしまうのを避けるにはどうするか。 以下のような方法を考えてみた。（bash 限定） as_someone というファイルを準備する。 if [[ &quot;$USER&quot; != &quot;someone&quot; ]]; then echo -n 'Enter someone ' su - someone -c &quot;$(readlink -f $0) $*&quot; exit fi このファイルには実行権はつけず、someone として実行させたいシェルスクリプトと同じディレクトリに置く。 commands.sh は以下のようにすればよい。 #!/bin/bash . $(dirname $0)/as_someone echo &quot;Following commands are executed by someone.&quot; echo &quot;I am $USER&quot; env : これで commands.sh は someone として実行することもできるし、間違って別ユーザで実行した場合でもパスワードさえ入力すれば someone として実行される。</summary></entry><entry><title type="html">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</title><link href="/posts/2017/create-local-minimal-yum-repository" rel="alternate" type="text/html" title="Linuxローカル環境用に最小限のyumリポジトリを作成する方法" /><published>2017-02-25T00:36:25-05:00</published><updated>2017-02-25T00:36:25-05:00</updated><id>/posts/2017/create-local-minimal-yum-repository</id><content type="html" xml:base="/posts/2017/create-local-minimal-yum-repository">&lt;p&gt;環境的に&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。&lt;/p&gt;
 
 &lt;h2 id=&quot;概略&quot;&gt;概略&lt;/h2&gt;
 
@@ -709,7 +785,7 @@ localrepo.tar.gz にインストーラとリポジトリが含まれる。&lt;/p
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo tar xzf localrepo.tar.gz
 sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./install.sh
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="Linux" /><category term="bash" /><summary type="html">環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。</summary></entry><entry><title type="html">fluent-plugin-dstatで取得した値が不正になる問題を解決</title><link href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" rel="alternate" type="text/html" title="fluent-plugin-dstatで取得した値が不正になる問題を解決" /><published>2016-11-12T13:02:30+09:00</published><updated>2016-11-12T13:02:30+09:00</updated><id>/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</id><content type="html" xml:base="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2&quot;&gt;shun0102/fluent-plugin-dstat at v0.3.2&lt;/a&gt;で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="Linux" /><category term="bash" /><summary type="html">環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。</summary></entry><entry><title type="html">fluent-plugin-dstatで取得した値が不正になる問題を解決</title><link href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" rel="alternate" type="text/html" title="fluent-plugin-dstatで取得した値が不正になる問題を解決" /><published>2016-11-11T23:02:30-05:00</published><updated>2016-11-11T23:02:30-05:00</updated><id>/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</id><content type="html" xml:base="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2">&lt;p&gt;&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/tree/v0.3.2&quot;&gt;shun0102/fluent-plugin-dstat at v0.3.2&lt;/a&gt;で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;
 
 &lt;h2 id=&quot;問題を確認した環境&quot;&gt;問題を確認した環境&lt;/h2&gt;
 
@@ -756,7 +832,7 @@ sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&
 
 &lt;h2 id=&quot;結果&quot;&gt;結果&lt;/h2&gt;
 
-&lt;p&gt;これらを全て解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;</content><author><name>うりん</name></author><category term="fluentd" /><category term="Ruby" /><category term="Linux" /><summary type="html">shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。</summary></entry><entry><title type="html">logrotate.bat - Windowsのバッチファイルでログローテート</title><link href="/posts/2015/logrotate-batch-on-windows" rel="alternate" type="text/html" title="logrotate.bat - Windowsのバッチファイルでログローテート" /><published>2015-09-19T22:23:55+09:00</published><updated>2015-09-19T22:23:55+09:00</updated><id>/posts/2015/logrotate-batch-on-windows</id><content type="html" xml:base="/posts/2015/logrotate-batch-on-windows">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
+&lt;p&gt;これらを全て解決して&lt;a href=&quot;//github.com/shun0102/fluent-plugin-dstat/pull/16&quot;&gt;Pull Request&lt;/a&gt;し&lt;a href=&quot;https://github.com/shun0102/fluent-plugin-dstat/tree/v0.3.3&quot;&gt;v0.3.3&lt;/a&gt;としてマージされた。&lt;/p&gt;</content><author><name>うりん</name></author><category term="fluentd" /><category term="Ruby" /><category term="Linux" /><summary type="html">shun0102/fluent-plugin-dstat at v0.3.2で1秒周期にデータ収集していたら取得した値が明らかに不正になる時があったので、それを解決してPull Requestしv0.3.3としてマージされた。</summary></entry><entry><title type="html">logrotate.bat - Windowsのバッチファイルでログローテート</title><link href="/posts/2015/logrotate-batch-on-windows" rel="alternate" type="text/html" title="logrotate.bat - Windowsのバッチファイルでログローテート" /><published>2015-09-19T09:23:55-04:00</published><updated>2015-09-19T09:23:55-04:00</updated><id>/posts/2015/logrotate-batch-on-windows</id><content type="html" xml:base="/posts/2015/logrotate-batch-on-windows">&lt;p&gt;Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。&lt;/p&gt;
 
 &lt;script src=&quot;https://gist.github.com/urin/3b68e8388cc34a688d13.js&quot;&gt;&lt;/script&gt;
 
@@ -770,7 +846,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 
 &lt;p&gt;こんな処理を繰返していくとログサイズが10KBを超えた時にローテートされる。&lt;/p&gt;
 
-&lt;p&gt;常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Windows" /><category term="Batch" /><summary type="html">Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</summary></entry><entry><title type="html">C++で無名関数の関数ポインタを作る</title><link href="/posts/2015/labmda-without-stdcpp" rel="alternate" type="text/html" title="C++で無名関数の関数ポインタを作る" /><published>2015-04-05T22:00:40+09:00</published><updated>2015-04-05T22:00:40+09:00</updated><id>/posts/2015/labmda-without-stdcpp</id><content type="html" xml:base="/posts/2015/labmda-without-stdcpp">&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
+&lt;p&gt;常駐プロセスの標準出力をリダイレクトしておいて定期的に呼び出しても良い。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Windows" /><category term="Batch" /><summary type="html">Windowsでログローテートするバッチを書いた。調べた感じだと上限サイズ指定ができるようなものを作った人はいなかったみたい。</summary></entry><entry><title type="html">C++で無名関数の関数ポインタを作る</title><link href="/posts/2015/labmda-without-stdcpp" rel="alternate" type="text/html" title="C++で無名関数の関数ポインタを作る" /><published>2015-04-05T09:00:40-04:00</published><updated>2015-04-05T09:00:40-04:00</updated><id>/posts/2015/labmda-without-stdcpp</id><content type="html" xml:base="/posts/2015/labmda-without-stdcpp">&lt;p&gt;無名関数（ラムダとも呼ばれる）のメリットは大きい。&lt;/p&gt;
 
 &lt;p&gt;プログラミングで頭を悩ませるのは命名だ。プログラマが「名付け」を省略できるとコーディングの効率が大幅に上がり、命名ミスによって引き起こされる勘違い（バグ）もなくなる。&lt;/p&gt;
 
@@ -829,7 +905,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><category term="C++" /><summary type="html">無名関数（ラムダとも呼ばれる）のメリットは大きい。</summary></entry><entry><title type="html">Jekyll 2.3.0をWindowsに導入</title><link href="/posts/2014/install-jekyll-2.3.0-to-windows" rel="alternate" type="text/html" title="Jekyll 2.3.0をWindowsに導入" /><published>2014-08-14T23:59:32+09:00</published><updated>2014-08-14T23:59:32+09:00</updated><id>/posts/2014/install-jekyll-2.3.0-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-2.3.0-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><category term="C++" /><summary type="html">無名関数（ラムダとも呼ばれる）のメリットは大きい。</summary></entry><entry><title type="html">Jekyll 2.3.0をWindowsに導入</title><link href="/posts/2014/install-jekyll-2.3.0-to-windows" rel="alternate" type="text/html" title="Jekyll 2.3.0をWindowsに導入" /><published>2014-08-14T10:59:32-04:00</published><updated>2014-08-14T10:59:32-04:00</updated><id>/posts/2014/install-jekyll-2.3.0-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-2.3.0-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
 jekyll new jekyll-install-test
@@ -892,114 +968,4 @@ jekyll new jekyll-install-test
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry><entry><title type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title><link href="/posts/2014/install-jekyll-1.4.2-to-windows" rel="alternate" type="text/html" title="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入" /><published>2014-03-02T22:47:46+09:00</published><updated>2014-03-02T22:47:46+09:00</updated><id>/posts/2014/install-jekyll-1.4.2-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-1.4.2-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
-
-&lt;h2 id=&quot;導入してみる&quot;&gt;導入してみる&lt;/h2&gt;
-&lt;p&gt;前提は以下の通り。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;//rubyinstaller.org/downloads/&quot;&gt;RubyInstaller for Windows&lt;/a&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;DevKit&lt;/code&gt;をインストール&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments&lt;/code&gt;はインストール済み。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらは&lt;a href=&quot;//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ&lt;/a&gt;にある通り。&lt;/p&gt;
-
-&lt;h3 id=&quot;jekyllのバージョン&quot;&gt;Jekyllのバージョン&lt;/h3&gt;
-&lt;p&gt;現時点(2014年2月)では最新版は&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll 1.4.3&lt;/code&gt;だが、調べたところ以下の通りWindowsでは&lt;code class=&quot;highlighter-rouge&quot;&gt;1.4.2&lt;/code&gt;を使ってくださいとのこと。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve&quot;&gt;ruby - Jekyll - Error Running ‘Jekyll Serve’ - Stack Overflow&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;というわけで&lt;code class=&quot;highlighter-rouge&quot;&gt;1.4.2&lt;/code&gt;をインストール。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;で、とりあえずサイトを新規作成。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir jekyll-install-test
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
-jekyll new .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;yajl-rubyのバージョン&quot;&gt;yajl-rubyのバージョン&lt;/h3&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;するとエラー。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;//www.kahfei.com/?cat=17&quot;&gt;kahfei ｜ jekyll&lt;/a&gt;の通り&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby&lt;/code&gt;を更新する必要がある。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem list&lt;/code&gt;して yajl-ruby (1.1.0 x86-mingw32) となっているなら&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby&lt;/code&gt;を再インストールする。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem uninstall yajl-ruby
-gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;途中で依存関係の問い合わせがあるがYesで続行。&lt;code class=&quot;highlighter-rouge&quot;&gt;gem list&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby (1.1.0)&lt;/code&gt;となっていればOK。&lt;/p&gt;
-
-&lt;h3 id=&quot;pygmentsrbのバージョン&quot;&gt;pygments.rbのバージョン&lt;/h3&gt;
-
-&lt;p&gt;まだ&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;は通らない。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb&lt;/code&gt;は&lt;code class=&quot;highlighter-rouge&quot;&gt;0.5.0&lt;/code&gt;にする必要がある。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem uninstall pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll build
-Configuration file: C:/path/to/jekyll-install-test/_config.yml
-            Source: C:/path/to/jekyll-install-test
-       Destination: C:/path/to/jekyll-install-test/_site
-      Generating... done.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;これでシンタックスハイライトを含んだ投稿の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
-
-&lt;h3 id=&quot;wdmのインストール&quot;&gt;wdmのインストール&lt;/h3&gt;
-
-&lt;p&gt;ローカル環境で確認するときに&lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt;を使おうとするとエラーとなる。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll serve --watch
-Configuration file: C:/Users/urin/Desktop/fda/_config.yml
-            Source: C:/Users/urin/Desktop/fda
-       Destination: C:/Users/urin/Desktop/fda/_site
-      Generating... done.
- Auto-regeneration: enabled
-C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require': cannot load such file -- wdm (LoadError)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wdm&lt;/code&gt;がインストールされていないだけ。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install wdm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
-
-&lt;h2 id=&quot;まとめると&quot;&gt;まとめると&lt;/h2&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
-gem uninstall yajl-ruby
-gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
-gem uninstall pygments.rb
-gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
-gem install wdm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。</summary></entry></feed>
+&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry></feed>

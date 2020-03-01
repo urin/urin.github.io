@@ -5,9 +5,95 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2019-05-24T16:42:22+09:00</lastBuildDate>
-    <pubDate>2019-05-24T16:42:22+09:00</pubDate>
+    <lastBuildDate>2020-02-28T07:44:08-05:00</lastBuildDate>
+    <pubDate>2020-02-28T07:44:08-05:00</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title>
+      <description>&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
+  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というのが一般的に考えられる状況だ。&lt;/p&gt;
+
+&lt;p&gt;ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。&lt;/p&gt;
+
+&lt;p&gt;一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。&lt;/p&gt;
+
+&lt;p&gt;かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。&lt;/p&gt;
+
+&lt;p&gt;例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。&lt;/p&gt;
+
+&lt;p&gt;入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。&lt;/p&gt;
+
+&lt;p&gt;こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment&quot;&gt;ECMAScript® 2019 Language Specification&lt;/a&gt; によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。&lt;/p&gt;
+
+&lt;p&gt;つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。&lt;/p&gt;
+
+&lt;p&gt;もし &lt;a href=&quot;//momentjs.com/&quot;&gt;moment.js&lt;/a&gt; を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には &lt;a href=&quot;//momentjs.com/timezone/&quot;&gt;Moment Timezone&lt;/a&gt; を使ってもいいだろう。&lt;/p&gt;
+
+&lt;p&gt;ここではもっと簡便な手段を考えてみよう。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advanced&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advancedUTC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;advanced&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;advancedUTC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ローカルタイム上の翌日同一時刻と元の時刻とのUTC時分の差をとると２４時間以内に夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかる。&lt;/p&gt;
+
+&lt;p&gt;元の時刻をローカルタイム上とUTC上それぞれで重複期間だけ進め、その差がある場合、元の時刻は夏時間終了の重複時刻であることがわかることになる。&lt;/p&gt;
+
+&lt;p&gt;恐らくほとんどのケースではこの対応で十分だろうと思う。&lt;/p&gt;
+
+&lt;p&gt;ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。&lt;/p&gt;
+
+&lt;p&gt;冒頭で&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
+  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という条件を書いたが、これが本当に守られるか、よく考えてほしい。&lt;/p&gt;
+
+&lt;p&gt;例えば普段は日本に住んでおり一時的にアメリカ合衆国でアプリを使用する場合も、アプリ上の時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現地に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが欲するタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。&lt;/p&gt;
+
+&lt;p&gt;また、実はもう一つ重要な前提が隠れている。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例えばブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律で年々改定されていくためタイムゾーンデータベースの更新が必要だ。&lt;/p&gt;
+
+&lt;p&gt;もし特殊な事情でそれができないようなクローズド、アンマネージドな環境でそのアプリが使われる場合、上記のような対処では不完全だ。&lt;/p&gt;
+
+</description>
+      <link>http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</link>
+      <guid>http://urin.github.io//posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</guid>
+      <pubDate>2020-02-28T07:44:08-05:00</pubDate>
+    </item>
 
     <item>
       <title>ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title>
@@ -41,7 +127,7 @@ Options:
 </description>
       <link>http://urin.github.io/posts/2019/dtail</link>
       <guid>http://urin.github.io//posts/2019/dtail</guid>
-      <pubDate>2019-05-24T16:42:22+09:00</pubDate>
+      <pubDate>2019-05-24T03:42:22-04:00</pubDate>
     </item>
 
     <item>
@@ -138,7 +224,7 @@ Options:
 </description>
       <link>http://urin.github.io/posts/2018/replace-string-by-c-lang</link>
       <guid>http://urin.github.io//posts/2018/replace-string-by-c-lang</guid>
-      <pubDate>2018-10-20T20:07:05+09:00</pubDate>
+      <pubDate>2018-10-20T07:07:05-04:00</pubDate>
     </item>
 
     <item>
@@ -623,7 +709,7 @@ _:-ms-lang(x)::-ms-backdrop, .toggle-buttons [type=checkbox] {
 </description>
       <link>http://urin.github.io/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</link>
       <guid>http://urin.github.io//posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons</guid>
-      <pubDate>2018-02-04T15:32:56+09:00</pubDate>
+      <pubDate>2018-02-04T01:32:56-05:00</pubDate>
     </item>
 
     <item>
@@ -669,7 +755,7 @@ env
 </description>
       <link>http://urin.github.io/posts/2017/run-bash-commands-as-a-user</link>
       <guid>http://urin.github.io//posts/2017/run-bash-commands-as-a-user</guid>
-      <pubDate>2017-11-30T20:15:39+09:00</pubDate>
+      <pubDate>2017-11-30T06:15:39-05:00</pubDate>
     </item>
 
     <item>
@@ -767,7 +853,7 @@ sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&
 </description>
       <link>http://urin.github.io/posts/2017/create-local-minimal-yum-repository</link>
       <guid>http://urin.github.io//posts/2017/create-local-minimal-yum-repository</guid>
-      <pubDate>2017-02-25T14:36:25+09:00</pubDate>
+      <pubDate>2017-02-25T00:36:25-05:00</pubDate>
     </item>
 
     <item>
@@ -824,7 +910,7 @@ sudo &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;localrepo &lt;span class=&
 </description>
       <link>http://urin.github.io/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</link>
       <guid>http://urin.github.io//posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2</guid>
-      <pubDate>2016-11-12T13:02:30+09:00</pubDate>
+      <pubDate>2016-11-11T23:02:30-05:00</pubDate>
     </item>
 
     <item>
@@ -848,7 +934,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 </description>
       <link>http://urin.github.io/posts/2015/logrotate-batch-on-windows</link>
       <guid>http://urin.github.io//posts/2015/logrotate-batch-on-windows</guid>
-      <pubDate>2015-09-19T22:23:55+09:00</pubDate>
+      <pubDate>2015-09-19T09:23:55-04:00</pubDate>
     </item>
 
     <item>
@@ -917,7 +1003,7 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
 </description>
       <link>http://urin.github.io/posts/2015/labmda-without-stdcpp</link>
       <guid>http://urin.github.io//posts/2015/labmda-without-stdcpp</guid>
-      <pubDate>2015-04-05T22:00:40+09:00</pubDate>
+      <pubDate>2015-04-05T09:00:40-04:00</pubDate>
     </item>
 
     <item>
@@ -990,7 +1076,7 @@ jekyll new jekyll-install-test
 </description>
       <link>http://urin.github.io/posts/2014/install-jekyll-2.3.0-to-windows</link>
       <guid>http://urin.github.io//posts/2014/install-jekyll-2.3.0-to-windows</guid>
-      <pubDate>2014-08-14T23:59:32+09:00</pubDate>
+      <pubDate>2014-08-14T10:59:32-04:00</pubDate>
     </item>
 
     <item>
@@ -1110,7 +1196,7 @@ gem install wdm
 </description>
       <link>http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows</link>
       <guid>http://urin.github.io//posts/2014/install-jekyll-1.4.2-to-windows</guid>
-      <pubDate>2014-03-02T22:47:46+09:00</pubDate>
+      <pubDate>2014-03-02T08:47:46-05:00</pubDate>
     </item>
 
     <item>
@@ -1288,7 +1374,7 @@ gem install wdm
 </description>
       <link>http://urin.github.io/posts/2014/jquery-balloon-js</link>
       <guid>http://urin.github.io//posts/2014/jquery-balloon-js</guid>
-      <pubDate>2014-02-12T00:00:00+09:00</pubDate>
+      <pubDate>2014-02-12T00:00:00-05:00</pubDate>
     </item>
 
     <item>
@@ -1366,7 +1452,7 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
 </description>
       <link>http://urin.github.io/posts/2013/release-jquery-tile-js</link>
       <guid>http://urin.github.io//posts/2013/release-jquery-tile-js</guid>
-      <pubDate>2013-08-11T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-11T00:00:00-04:00</pubDate>
     </item>
 
     <item>
@@ -1548,7 +1634,7 @@ CSS3の使用が認められる場合には&lt;code class=&quot;highlighter-roug
 </description>
       <link>http://urin.github.io/posts/2013/simple-makefile-for-clang</link>
       <guid>http://urin.github.io//posts/2013/simple-makefile-for-clang</guid>
-      <pubDate>2013-08-10T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-10T00:00:00-04:00</pubDate>
     </item>
 
     <item>
@@ -1613,7 +1699,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
 </description>
       <link>http://urin.github.io/posts/2013/Setup-jekyll-1.1-to-windows</link>
       <guid>http://urin.github.io//posts/2013/Setup-jekyll-1.1-to-windows</guid>
-      <pubDate>2013-08-04T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-04T00:00:00-04:00</pubDate>
     </item>
 
     <item>
@@ -1690,7 +1776,7 @@ gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&
 </description>
       <link>http://urin.github.io/posts/2013/Renewal</link>
       <guid>http://urin.github.io//posts/2013/Renewal</guid>
-      <pubDate>2013-08-03T00:00:00+09:00</pubDate>
+      <pubDate>2013-08-03T00:00:00-04:00</pubDate>
     </item>
 
   </channel>

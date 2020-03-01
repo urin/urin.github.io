@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Jekyll 1.4.2をRuby 2.0.0+Windowsに導入 - URIN HACK</title>
-    <meta name="description" content="Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。">
-    <meta name="keywords" content="Programming, Jekyll, Ruby, Windows">
+    <title>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK</title>
+    <meta name="description" content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
+    <meta name="keywords" content="Programming, JavaScript">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入 - URIN HACK">
-    <meta name="twitter:title" content="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入 - URIN HACK">
-    <meta property="og:description"  content="Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。">
-    <meta name="twitter:description" content="Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。">
+    <meta property="og:title"  content="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK">
+    <meta name="twitter:title" content="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する - URIN HACK">
+    <meta property="og:description"  content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
+    <meta name="twitter:description" content="世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。  サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。  ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。というのが一般的に考えられる状況だ。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows">
+    <meta property="og:url" content="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows">
+    <link rel="canonical" href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   </head>
@@ -62,12 +62,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2014-03-02</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-02-28</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser'></script>
       </span>
 
     </li>
@@ -75,18 +75,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="3件の記事">JavaScript</a>
+      <span class="badge digits">3</span>
     </li>
     
   
@@ -100,10 +90,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -130,118 +120,84 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</h1>
-    <p><code class="highlighter-rouge">Jekyll 1.4.2</code>を<code class="highlighter-rouge">Ruby 2.0.0</code>+<code class="highlighter-rouge">Windows</code>へ導入する方法。</p>
-
-<h2 id="導入してみる">導入してみる</h2>
-<p>前提は以下の通り。</p>
+    <h1 class="well well-lg">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</h1>
+    <p>世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。</p>
 
 <ul>
-  <li><a href="//rubyinstaller.org/downloads/">RubyInstaller for Windows</a>で<code class="highlighter-rouge">Ruby 2.0.0</code>と<code class="highlighter-rouge">DevKit</code>をインストール</li>
-  <li><code class="highlighter-rouge">Python</code>、<code class="highlighter-rouge">pygments</code>はインストール済み。</li>
+  <li>サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。</li>
+  <li>ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。</li>
 </ul>
 
-<p>これらは<a href="//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/">Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ</a>にある通り。</p>
+<p>というのが一般的に考えられる状況だ。</p>
 
-<h3 id="jekyllのバージョン">Jekyllのバージョン</h3>
-<p>現時点(2014年2月)では最新版は<code class="highlighter-rouge">jekyll 1.4.3</code>だが、調べたところ以下の通りWindowsでは<code class="highlighter-rouge">1.4.2</code>を使ってくださいとのこと。</p>
+<p>ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。</p>
 
-<p><a href="//stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve">ruby - Jekyll - Error Running ‘Jekyll Serve’ - Stack Overflow</a></p>
+<p>一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。</p>
 
-<p>というわけで<code class="highlighter-rouge">1.4.2</code>をインストール。</p>
+<p>かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>gem install jekyll --version <span class="s2">"=1.4.2"</span>
+<p>例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。</p>
+
+<p>入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。</p>
+
+<p>こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。</p>
+
+<p><a href="//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment">ECMAScript® 2019 Language Specification</a> によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。</p>
+
+<p>つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。</p>
+
+<p>もし <a href="//momentjs.com/">moment.js</a> を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には <a href="//momentjs.com/timezone/">Moment Timezone</a> を使ってもいいだろう。</p>
+
+<p>ここではもっと簡便な手段を考えてみよう。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">utc</span><span class="p">(</span><span class="nx">localtime</span><span class="p">,</span> <span class="nx">after</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">localtime</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">after</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">date</span> <span class="o">=&gt;</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getUTCHours</span><span class="p">()</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nx">date</span><span class="p">.</span><span class="nx">getUTCMinutes</span><span class="p">()</span>
+    <span class="kr">const</span> <span class="nx">nextday</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">localtime</span><span class="p">)</span>
+    <span class="nx">nextday</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">localtime</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">adjust</span> <span class="o">=</span> <span class="nx">clock</span><span class="p">(</span><span class="nx">nextday</span><span class="p">)</span> <span class="o">-</span> <span class="nx">clock</span><span class="p">(</span><span class="nx">localtime</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">adjust</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">advanced</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">localtime</span><span class="p">).</span><span class="nx">setMinutes</span><span class="p">(</span><span class="nx">localtime</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">()</span> <span class="o">+</span> <span class="nx">adjust</span><span class="p">)</span>
+      <span class="kr">const</span> <span class="nx">advancedUTC</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">localtime</span><span class="p">).</span><span class="nx">setUTCMinutes</span><span class="p">(</span><span class="nx">localtime</span><span class="p">.</span><span class="nx">getUTCMinutes</span><span class="p">()</span> <span class="o">+</span> <span class="nx">adjust</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">advanced</span> <span class="o">!==</span> <span class="nx">advancedUTC</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">setUTCMinutes</span><span class="p">(</span><span class="nx">localtime</span><span class="p">.</span><span class="nx">getUTCMinutes</span><span class="p">()</span> <span class="o">+</span> <span class="nx">adjust</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>で、とりあえずサイトを新規作成。</p>
+<p>ローカルタイム上の翌日同一時刻と元の時刻とのUTC時分の差をとると２４時間以内に夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかる。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>mkdir jekyll-install-test
-<span class="nb">cd </span>jekyll-install-test
-jekyll new .
-</code></pre>
-</div>
+<p>元の時刻をローカルタイム上とUTC上それぞれで重複期間だけ進め、その差がある場合、元の時刻は夏時間終了の重複時刻であることがわかることになる。</p>
 
-<h3 id="yajl-rubyのバージョン">yajl-rubyのバージョン</h3>
+<p>恐らくほとんどのケースではこの対応で十分だろうと思う。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>jekyll build
-</code></pre>
-</div>
+<p>ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。</p>
 
-<p>するとエラー。</p>
+<p>冒頭で</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
-</code></pre>
-</div>
+<ul>
+  <li>サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。</li>
+  <li>ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。</li>
+</ul>
 
-<p><a href="//www.kahfei.com/?cat=17">kahfei ｜ jekyll</a>の通り<code class="highlighter-rouge">yajl-ruby</code>を更新する必要がある。</p>
+<p>という条件を書いたが、これが本当に守られるか、よく考えてほしい。</p>
 
-<p><code class="highlighter-rouge">gem list</code>して yajl-ruby (1.1.0 x86-mingw32) となっているなら<code class="highlighter-rouge">yajl-ruby</code>を再インストールする。</p>
+<p>例えば普段は日本に住んでおり一時的にアメリカ合衆国でアプリを使用する場合も、アプリ上の時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現地に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが欲するタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>gem uninstall yajl-ruby
-gem install yajl-ruby --version <span class="s2">"=1.1.0"</span> --platform<span class="o">=</span>ruby
-</code></pre>
-</div>
+<p>また、実はもう一つ重要な前提が隠れている。</p>
 
-<p>途中で依存関係の問い合わせがあるがYesで続行。<code class="highlighter-rouge">gem list</code>で<code class="highlighter-rouge">yajl-ruby (1.1.0)</code>となっていればOK。</p>
+<ul>
+  <li>クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。</li>
+</ul>
 
-<h3 id="pygmentsrbのバージョン">pygments.rbのバージョン</h3>
+<p>例えばブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律で年々改定されていくためタイムゾーンデータベースの更新が必要だ。</p>
 
-<p>まだ<code class="highlighter-rouge">jekyll build</code>は通らない。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
-</code></pre>
-</div>
-
-<p><a href="//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/">こちら</a>にもある通り<code class="highlighter-rouge">pygments.rb</code>は<code class="highlighter-rouge">0.5.0</code>にする必要がある。</p>
-
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>gem uninstall pygments.rb
-gem install pygments.rb --version <span class="s2">"=0.5.0"</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>C:\path\to\jekyll-install-test&gt;jekyll build
-Configuration file: C:/path/to/jekyll-install-test/_config.yml
-            Source: C:/path/to/jekyll-install-test
-       Destination: C:/path/to/jekyll-install-test/_site
-      Generating... done.
-</code></pre>
-</div>
-
-<p>これでシンタックスハイライトを含んだ投稿の<code class="highlighter-rouge">jekyll build</code>はできるようになった。</p>
-
-<h3 id="wdmのインストール">wdmのインストール</h3>
-
-<p>ローカル環境で確認するときに<code class="highlighter-rouge">--watch</code>を使おうとするとエラーとなる。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>C:\path\to\jekyll-install-test&gt;jekyll serve --watch
-Configuration file: C:/Users/urin/Desktop/fda/_config.yml
-            Source: C:/Users/urin/Desktop/fda
-       Destination: C:/Users/urin/Desktop/fda/_site
-      Generating... done.
- Auto-regeneration: enabled
-C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require': cannot load such file -- wdm (LoadError)
-</code></pre>
-</div>
-
-<p><code class="highlighter-rouge">wdm</code>がインストールされていないだけ。</p>
-
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>gem install wdm
-</code></pre>
-</div>
-
-<p>以上で環境構築は終わり。</p>
-
-<h2 id="まとめると">まとめると</h2>
-
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>gem install jekyll --version <span class="s2">"=1.4.2"</span>
-gem uninstall yajl-ruby
-gem install yajl-ruby --version <span class="s2">"=1.1.0"</span> --platform<span class="o">=</span>ruby
-gem uninstall pygments.rb
-gem install pygments.rb --version <span class="s2">"=0.5.0"</span>
-gem install wdm
-</code></pre>
-</div>
+<p>もし特殊な事情でそれができないようなクローズド、アンマネージドな環境でそのアプリが使われる場合、上記のような対処では不完全だ。</p>
 
 
   </article>
@@ -252,12 +208,12 @@ gem install wdm
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2014-03-02</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-02-28</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser'></script>
       </span>
 
     </li>
@@ -265,18 +221,8 @@ gem install wdm
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Jekyll" title="4件の記事">Jekyll</a>
-      <span class="badge digits">4</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Ruby" title="5件の記事">Ruby</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/Windows" title="4件の記事">Windows</a>
-      <span class="badge digits">4</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="3件の記事">JavaScript</a>
+      <span class="badge digits">3</span>
     </li>
     
   
@@ -290,10 +236,10 @@ gem install wdm
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -311,12 +257,10 @@ gem install wdm
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2014/jquery-balloon-js" title="設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js"><i class="fa fa-chevron-circle-left"></i><small>設置が超簡単でカスタマイズ性の高い吹き出しホバー用jQueryプラグインjquery.balloon.js</small></a>
+      <a rel="prev" href="/posts/2019/dtail" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開"><i class="fa fa-chevron-circle-left"></i><small>ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2014/install-jekyll-2.3.0-to-windows" title="Jekyll 2.3.0をWindowsに導入"><i class="fa fa-chevron-circle-right"></i><small>Jekyll 2.3.0をWindowsに導入</small></a>
 
     </div>
 
@@ -324,8 +268,8 @@ gem install wdm
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2014/install-jekyll-1.4.2-to-windows';
-      var disqus_title = 'Jekyll 1.4.2をRuby 2.0.0+Windowsに導入';
+      var disqus_url = 'http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser';
+      var disqus_title = 'JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
