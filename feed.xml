@@ -1,71 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-02-29T11:47:22+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T21:44:08+09:00</published><updated>2020-02-28T21:44:08+09:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
-  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;というのが一般的に考えられる状況だ。&lt;/p&gt;
-
-&lt;p&gt;ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。&lt;/p&gt;
-
-&lt;p&gt;一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。&lt;/p&gt;
-
-&lt;p&gt;かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。&lt;/p&gt;
-
-&lt;p&gt;例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。&lt;/p&gt;
-
-&lt;p&gt;入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。&lt;/p&gt;
-
-&lt;p&gt;こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment&quot;&gt;ECMAScript® 2019 Language Specification&lt;/a&gt; によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。&lt;/p&gt;
-
-&lt;p&gt;つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。&lt;/p&gt;
-
-&lt;p&gt;もし &lt;a href=&quot;//momentjs.com/&quot;&gt;moment.js&lt;/a&gt; を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には &lt;a href=&quot;//momentjs.com/timezone/&quot;&gt;Moment Timezone&lt;/a&gt; を使ってもいいだろう。&lt;/p&gt;
-
-&lt;p&gt;ここではもっと簡便な手段を考えてみよう。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;夏時間終了の重複時刻をローカルタイム上で翌日の同一時刻まで進めてから元の時刻とUTC時分の差をとると夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかるのでそれを元の時間に足せばよい。&lt;/p&gt;
-
-&lt;p&gt;恐らくほとんどのケースではこの対応で十分だろうと思う。&lt;/p&gt;
-
-&lt;p&gt;ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。&lt;/p&gt;
-
-&lt;p&gt;冒頭で&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
-  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という条件を書いたが、これが本当に守られるか、よく考えてほしい。&lt;/p&gt;
-
-&lt;p&gt;例えば普段は日本に住んでおり一時的にアメリカ合衆国で作業する場合も、時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現場に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが暮らすタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。このような場合はユーザ毎に固定のタイムゾーンを持つことになるだろう。&lt;/p&gt;
-
-&lt;p&gt;また、実はもう一つ重要な前提が隠れている。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律であり年々改定されていくものだ。&lt;/p&gt;
-
-&lt;p&gt;このためどこかの国で法改正されるとOSのタイムゾーンデータベースの更新が必要になる。&lt;/p&gt;</content><author><name>うりん</name></author><category term="JavaScript" /><summary type="html">世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。 サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。 ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。 というのが一般的に考えられる状況だ。</summary></entry><entry><title type="html">ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title><link href="/posts/2019/dtail" rel="alternate" type="text/html" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開" /><published>2019-05-24T16:42:22+09:00</published><updated>2019-05-24T16:42:22+09:00</updated><id>/posts/2019/dtail</id><content type="html" xml:base="/posts/2019/dtail">&lt;p&gt;ディレクトリ内の変更内容を監視・表示するコマンド&lt;a href=&quot;//github.com/urin/dtail&quot;&gt;dtail&lt;/a&gt;を作成した。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-01T10:23:22+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title><link href="/posts/2019/dtail" rel="alternate" type="text/html" title="ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開" /><published>2019-05-24T16:42:22+09:00</published><updated>2019-05-24T16:42:22+09:00</updated><id>/posts/2019/dtail</id><content type="html" xml:base="/posts/2019/dtail">&lt;p&gt;ディレクトリ内の変更内容を監視・表示するコマンド&lt;a href=&quot;//github.com/urin/dtail&quot;&gt;dtail&lt;/a&gt;を作成した。&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dtail&lt;/code&gt;は&lt;a href=&quot;//github.com/rvoicilas/inotify-tools/wiki&quot;&gt;inotify-tools&lt;/a&gt;でファイルの変更イベントを監視して&lt;code class=&quot;highlighter-rouge&quot;&gt;tail -f&lt;/code&gt;でファイルを監視する。&lt;/p&gt;
 
@@ -959,4 +892,114 @@ jekyll new jekyll-install-test
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry></feed>
+&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry><entry><title type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsに導入</title><link href="/posts/2014/install-jekyll-1.4.2-to-windows" rel="alternate" type="text/html" title="Jekyll 1.4.2をRuby 2.0.0+Windowsに導入" /><published>2014-03-02T22:47:46+09:00</published><updated>2014-03-02T22:47:46+09:00</updated><id>/posts/2014/install-jekyll-1.4.2-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-1.4.2-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 1.4.2&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
+
+&lt;h2 id=&quot;導入してみる&quot;&gt;導入してみる&lt;/h2&gt;
+&lt;p&gt;前提は以下の通り。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;//rubyinstaller.org/downloads/&quot;&gt;RubyInstaller for Windows&lt;/a&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;DevKit&lt;/code&gt;をインストール&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments&lt;/code&gt;はインストール済み。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらは&lt;a href=&quot;//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;Windows で Jekyll 1.3 を動かすまでの手順 - てっく煮ブログ&lt;/a&gt;にある通り。&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyllのバージョン&quot;&gt;Jekyllのバージョン&lt;/h3&gt;
+&lt;p&gt;現時点(2014年2月)では最新版は&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll 1.4.3&lt;/code&gt;だが、調べたところ以下の通りWindowsでは&lt;code class=&quot;highlighter-rouge&quot;&gt;1.4.2&lt;/code&gt;を使ってくださいとのこと。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//stackoverflow.com/questions/21137096/jekyll-error-running-jekyll-serve&quot;&gt;ruby - Jekyll - Error Running ‘Jekyll Serve’ - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;というわけで&lt;code class=&quot;highlighter-rouge&quot;&gt;1.4.2&lt;/code&gt;をインストール。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;で、とりあえずサイトを新規作成。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir jekyll-install-test
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
+jekyll new .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;yajl-rubyのバージョン&quot;&gt;yajl-rubyのバージョン&lt;/h3&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;するとエラー。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Liquid Exception: cannot load such file -- yajl/2.0/yajl in _posts/2014-03-02-welcome-to-jekyll.markdown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;//www.kahfei.com/?cat=17&quot;&gt;kahfei ｜ jekyll&lt;/a&gt;の通り&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby&lt;/code&gt;を更新する必要がある。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem list&lt;/code&gt;して yajl-ruby (1.1.0 x86-mingw32) となっているなら&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby&lt;/code&gt;を再インストールする。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem uninstall yajl-ruby
+gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;途中で依存関係の問い合わせがあるがYesで続行。&lt;code class=&quot;highlighter-rouge&quot;&gt;gem list&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;yajl-ruby (1.1.0)&lt;/code&gt;となっていればOK。&lt;/p&gt;
+
+&lt;h3 id=&quot;pygmentsrbのバージョン&quot;&gt;pygments.rbのバージョン&lt;/h3&gt;
+
+&lt;p&gt;まだ&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;は通らない。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Generating... C:/Ruby/Ruby200/lib/ruby/gems/2.0.0/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb&lt;/code&gt;は&lt;code class=&quot;highlighter-rouge&quot;&gt;0.5.0&lt;/code&gt;にする必要がある。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem uninstall pygments.rb
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll build
+Configuration file: C:/path/to/jekyll-install-test/_config.yml
+            Source: C:/path/to/jekyll-install-test
+       Destination: C:/path/to/jekyll-install-test/_site
+      Generating... done.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これでシンタックスハイライトを含んだ投稿の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
+
+&lt;h3 id=&quot;wdmのインストール&quot;&gt;wdmのインストール&lt;/h3&gt;
+
+&lt;p&gt;ローカル環境で確認するときに&lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt;を使おうとするとエラーとなる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\path\to\jekyll-install-test&amp;gt;jekyll serve --watch
+Configuration file: C:/Users/urin/Desktop/fda/_config.yml
+            Source: C:/Users/urin/Desktop/fda
+       Destination: C:/Users/urin/Desktop/fda/_site
+      Generating... done.
+ Auto-regeneration: enabled
+C:/Ruby/Ruby200/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require': cannot load such file -- wdm (LoadError)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wdm&lt;/code&gt;がインストールされていないだけ。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install wdm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;
+
+&lt;h2 id=&quot;まとめると&quot;&gt;まとめると&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.4.2&quot;&lt;/span&gt;
+gem uninstall yajl-ruby
+gem install yajl-ruby --version &lt;span class=&quot;s2&quot;&gt;&quot;=1.1.0&quot;&lt;/span&gt; --platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ruby
+gem uninstall pygments.rb
+gem install pygments.rb --version &lt;span class=&quot;s2&quot;&gt;&quot;=0.5.0&quot;&lt;/span&gt;
+gem install wdm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 1.4.2をRuby 2.0.0+Windowsへ導入する方法。</summary></entry></feed>

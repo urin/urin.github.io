@@ -1,5 +1,4 @@
 http://urin.github.ioindex.html
-http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser
 http://urin.github.io/posts/2019/dtail
 http://urin.github.io/posts/2018/replace-string-by-c-lang
 http://urin.github.io/posts/2018/pure-css-radio-buttons-and-checkboxes-as-toggle-buttons

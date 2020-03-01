@@ -5,86 +5,9 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2020-02-28T21:44:08+09:00</lastBuildDate>
-    <pubDate>2020-02-28T21:44:08+09:00</pubDate>
+    <lastBuildDate>2019-05-24T16:42:22+09:00</lastBuildDate>
+    <pubDate>2019-05-24T16:42:22+09:00</pubDate>
     <ttl>1800</ttl>
-
-    <item>
-      <title>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title>
-      <description>&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
-  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;というのが一般的に考えられる状況だ。&lt;/p&gt;
-
-&lt;p&gt;ここで、ある時系列データ（UTC時刻と値のセット）からユーザが入力した時刻（ローカルタイム）範囲に含まれるデータを検索することを考える。&lt;/p&gt;
-
-&lt;p&gt;一般的に夏時間の終了日は１日２５時間となり、同一日に同じ時刻が２度現れることになる。このため論理的にはローカルタイムからUTCへの変換はできないということになる。&lt;/p&gt;
-
-&lt;p&gt;かといって時刻範囲の開始時刻、終了時刻、それぞれの時刻が夏時間かどうか、という入力を求めるのはユーザにとって面倒だ。&lt;/p&gt;
-
-&lt;p&gt;例えばアメリカ合衆国のユーザが時刻範囲の開始時刻として2018年11月4日 午前01:00（夏時間終了の重複時刻）を入力した場合、それは夏時間だろうか。終了時刻の場合はどうだろうか。&lt;/p&gt;
-
-&lt;p&gt;入力した時刻範囲で１日２５時間を網羅することを考えると、開始時刻の場合は夏時間、終了時刻なら夏時間終了後と解釈すべきだろう。&lt;/p&gt;
-
-&lt;p&gt;こんなときクライアント側で夏時間終了前後を指定してローカルタイムをUTCへ変換する簡便な手段が欲しくなる。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html#sec-local-time-zone-adjustment&quot;&gt;ECMAScript® 2019 Language Specification&lt;/a&gt; によると夏時間終了の重複時刻から生成されたDateオブジェクトは、常に夏時間終了前を指すと定義されている。&lt;/p&gt;
-
-&lt;p&gt;つまりJavaScriptで夏時間終了の重複時刻から夏時間終了「後」のUTCを指すDateオブジェクトを得るための正当な方法は無いのだ。&lt;/p&gt;
-
-&lt;p&gt;もし &lt;a href=&quot;//momentjs.com/&quot;&gt;moment.js&lt;/a&gt; を使っていたとしても、その実体はDateオブジェクトなので同じことだ。特定のタイムゾーンから別のタイムゾーンへの変換といった高度な変換が必要な場合には &lt;a href=&quot;//momentjs.com/timezone/&quot;&gt;Moment Timezone&lt;/a&gt; を使ってもいいだろう。&lt;/p&gt;
-
-&lt;p&gt;ここではもっと簡便な手段を考えてみよう。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUTCMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;夏時間終了の重複時刻をローカルタイム上で翌日の同一時刻まで進めてから元の時刻とUTC時分の差をとると夏時間終了に伴って修正された時間（重複期間、多くの場合1時間）がわかるのでそれを元の時間に足せばよい。&lt;/p&gt;
-
-&lt;p&gt;恐らくほとんどのケースではこの対応で十分だろうと思う。&lt;/p&gt;
-
-&lt;p&gt;ほとんど、と書いたのは、時刻を扱うポリシーは慎重に検討されるべきだからだ。&lt;/p&gt;
-
-&lt;p&gt;冒頭で&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
-  &lt;li&gt;ユーザの属しているタイムゾーンはクライアント環境(OS)のタイムゾーンと同じ。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という条件を書いたが、これが本当に守られるか、よく考えてほしい。&lt;/p&gt;
-
-&lt;p&gt;例えば普段は日本に住んでおり一時的にアメリカ合衆国で作業する場合も、時刻は日本時刻として扱いたい。が、OSのタイムゾーンは現場に合わせるといった使われ方をする場合、クライアント環境のタイムゾーンとユーザが暮らすタイムゾーンが違うことになり、上記の関数は意味を成さないことになる。このような場合はユーザ毎に固定のタイムゾーンを持つことになるだろう。&lt;/p&gt;
-
-&lt;p&gt;また、実はもう一つ重要な前提が隠れている。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;クライアント環境(OS)のタイムゾーンデータベースは正しくメンテナンスされている。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ブラジルの夏時間は毎年実施時期が異なるし、そもそもタイムゾーンというのは人間が決めた法律であり年々改定されていくものだ。&lt;/p&gt;
-
-&lt;p&gt;このためどこかの国で法改正されるとOSのタイムゾーンデータベースの更新が必要になる。&lt;/p&gt;
-
-</description>
-      <link>http://urin.github.io/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</link>
-      <guid>http://urin.github.io//posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</guid>
-      <pubDate>2020-02-28T21:44:08+09:00</pubDate>
-    </item>
 
     <item>
       <title>ディレクトリ内の変更内容を監視・表示するbashコマンドdtailを公開</title>
