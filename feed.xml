@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-07T20:35:01+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T21:44:08+09:00</published><updated>2020-02-28T21:44:08+09:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-07T20:35:56+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">pico-cookieでdocument.cookieをオブジェクトにマップする</title><link href="/posts/2020/release-pico-cookie" rel="alternate" type="text/html" title="pico-cookieでdocument.cookieをオブジェクトにマップする" /><published>2020-03-07T20:01:53+09:00</published><updated>2020-03-07T20:01:53+09:00</updated><id>/posts/2020/release-pico-cookie</id><content type="html" xml:base="/posts/2020/release-pico-cookie">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;をオブジェクトにマップする&lt;a href=&quot;//github.com/urin/pico-cookie&quot;&gt;pico-cookie&lt;/a&gt;を作った。&lt;/p&gt;
+
+&lt;p&gt;同様のライブラリとして&lt;a href=&quot;//github.com/js-cookie/js-cookie&quot;&gt;js-cookie/js&lt;/a&gt;があるがメソッドを呼ばずにアクセスしたかったり普通にイテレーションできるようにしたかった。&lt;/p&gt;
+
+&lt;p&gt;単に&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;を読み取り専用のオブジェクトにマップするだけなら&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html&quot;&gt;ECMAScript® 2019&lt;/a&gt;の&lt;a href=&quot;//developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries&quot;&gt;Object.fromEntries()&lt;/a&gt;を使うと簡単だ。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromEntries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;';'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decodeURIComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これにProxyを組み合わせればオブジェクトに対する操作を&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;に反映できる。&lt;/p&gt;</content><author><name>うりん</name></author><category term="JavaScript" /><summary type="html">document.cookieをオブジェクトにマップするpico-cookieを作った。</summary></entry><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T21:44:08+09:00</published><updated>2020-02-28T21:44:08+09:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
@@ -905,67 +919,4 @@ echo The quick brown fox jumps over the lazy dog. &amp;gt;&amp;gt; %logfile%
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><category term="C++" /><summary type="html">無名関数（ラムダとも呼ばれる）のメリットは大きい。</summary></entry><entry><title type="html">Jekyll 2.3.0をWindowsに導入</title><link href="/posts/2014/install-jekyll-2.3.0-to-windows" rel="alternate" type="text/html" title="Jekyll 2.3.0をWindowsに導入" /><published>2014-08-14T23:59:32+09:00</published><updated>2014-08-14T23:59:32+09:00</updated><id>/posts/2014/install-jekyll-2.3.0-to-windows</id><content type="html" xml:base="/posts/2014/install-jekyll-2.3.0-to-windows">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.0.0&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;へ導入する方法。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
-jekyll new jekyll-install-test
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;pygmentsrbの代わりにrouge&quot;&gt;pygments.rbの代わりに&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;rouge&lt;/a&gt;&lt;/h3&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;するとエラー。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Generating... {...略...}/lib/posix/spawn.rb:162: warning: cannot close fd before spawn
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;//tech.nitoyon.com/ja/blog/2013/11/14/jekyll-win/&quot;&gt;こちら&lt;/a&gt;にもある通り&lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt;に導入する場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb&lt;/code&gt;は&lt;code class=&quot;highlighter-rouge&quot;&gt;0.5.0&lt;/code&gt;にする必要があるのだが、&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll 2.3.0&lt;/code&gt;は&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments.rb 0.6.0&lt;/code&gt;に依存しているためバージョンダウンできない。&lt;/p&gt;
-
-&lt;p&gt;代わりに&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;製の&lt;code class=&quot;highlighter-rouge&quot;&gt;rouge&lt;/code&gt;が使えるようになっているのでそれを使うようにすれば問題ない。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rouge&lt;/code&gt;の方が対応言語は少ないが基本的に&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments&lt;/code&gt;互換で動作するので既に&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments&lt;/code&gt;で動いていた記事はほぼそのまま使える。&lt;/p&gt;
-
-&lt;p&gt;無理に&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;製の&lt;code class=&quot;highlighter-rouge&quot;&gt;pygments&lt;/code&gt;を動かすより軽くて良い。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install rouge
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;rouge&lt;/code&gt;をインストールしたら&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;rouge&lt;/code&gt;を使うよう以下の行を追加する。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;これでシンタックスハイライトを含んだ記事の&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;はできるようになった。&lt;/p&gt;
-
-&lt;h3 id=&quot;wdmのインストール&quot;&gt;wdmのインストール&lt;/h3&gt;
-
-&lt;p&gt;ローカル環境で確認するときに&lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt;を使おうとすると警告が出る。警告の内容は、&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wdm&lt;/code&gt;が入ってないからディレクトリのポーリングが必要だよ（ちょっと重いってことだよ）&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;これが嫌なら単にインストールすれば良い。&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install wdm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;まとめると&quot;&gt;まとめると&lt;/h2&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll rouge wdm
-jekyll new jekyll-install-test
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-install-test
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;highlighter: rouge&amp;gt;&amp;gt; _config.yml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以上で環境構築は終わり。&lt;/p&gt;</content><author><name>うりん</name></author><category term="Jekyll" /><category term="Ruby" /><category term="Windows" /><summary type="html">Jekyll 2.3.0をRuby 2.0.0+Windowsへ導入する方法。</summary></entry></feed>
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="C" /><category term="C++" /><summary type="html">無名関数（ラムダとも呼ばれる）のメリットは大きい。</summary></entry></feed>

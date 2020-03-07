@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK</title>
-    <meta name="description" content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
-    <meta name="keywords" content="Programming, Linux, bash">
+    <title>pico-cookieでdocument.cookieをオブジェクトにマップする - URIN HACK</title>
+    <meta name="description" content="document.cookieをオブジェクトにマップするpico-cookieを作った。">
+    <meta name="keywords" content="Programming, JavaScript">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +12,14 @@
 
     <meta property="fb:admins" content="100001990741720">
     <meta property="fb:app_id" content="494189017339311">
-    <meta property="og:title"  content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
-    <meta name="twitter:title" content="Linuxローカル環境用に最小限のyumリポジトリを作成する方法 - URIN HACK">
-    <meta property="og:description"  content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
-    <meta name="twitter:description" content="環境的にyumが使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンにyumでパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。">
+    <meta property="og:title"  content="pico-cookieでdocument.cookieをオブジェクトにマップする - URIN HACK">
+    <meta name="twitter:title" content="pico-cookieでdocument.cookieをオブジェクトにマップする - URIN HACK">
+    <meta property="og:description"  content="document.cookieをオブジェクトにマップするpico-cookieを作った。">
+    <meta name="twitter:description" content="document.cookieをオブジェクトにマップするpico-cookieを作った。">
     <meta property="og:type" content="article">
     <meta property="og:image"      content="http://urin.github.io/img/layout/URIN-HACK-icon-50x50.jpg">
     <meta property="og:site_name" content="URIN HACK">
-    <meta property="og:url" content="http://urin.github.io/posts/2017/create-local-minimal-yum-repository">
+    <meta property="og:url" content="http://urin.github.io/posts/2020/release-pico-cookie">
     <meta property="twitter:card" content="summary">
     <meta name="twitter:site" content="@urinhack">
 
@@ -34,7 +34,7 @@
     -->
     <link rel="author" href="urinkun@gmail.com">
     <link href="/favicon.ico" rel="shortcut icon">
-    <link rel="canonical" href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository">
+    <link rel="canonical" href="http://urin.github.io/posts/2020/release-pico-cookie">
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   </head>
@@ -62,12 +62,12 @@
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-02-25</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-03-07</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/create-local-minimal-yum-repository'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/release-pico-cookie'></script>
       </span>
 
     </li>
@@ -75,13 +75,8 @@
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Linux" title="5件の記事">Linux</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/bash" title="3件の記事">bash</a>
-      <span class="badge digits">3</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="4件の記事">JavaScript</a>
+      <span class="badge digits">4</span>
     </li>
     
   
@@ -95,10 +90,10 @@
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/release-pico-cookie" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/release-pico-cookie" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -125,96 +120,22 @@
   </aside>
 
   <article class="post col-md-10 col-lg-10">
-    <h1 class="well well-lg">Linuxローカル環境用に最小限のyumリポジトリを作成する方法</h1>
-    <p>環境的に<code class="highlighter-rouge">yum</code>が使えない（例えばインターネット接続がない、OSメディアをマウントできない）Linuxマシンに<code class="highlighter-rouge">yum</code>でパッケージを追加インストールするための、最小のローカルリポジトリとインストーラを別のPC上で作成する方法。</p>
+    <h1 class="well well-lg">pico-cookieでdocument.cookieをオブジェクトにマップする</h1>
+    <p><code class="highlighter-rouge">document.cookie</code>をオブジェクトにマップする<a href="//github.com/urin/pico-cookie">pico-cookie</a>を作った。</p>
 
-<h2 id="概略">概略</h2>
+<p>同様のライブラリとして<a href="//github.com/js-cookie/js-cookie">js-cookie/js</a>があるがメソッドを呼ばずにアクセスしたかったり普通にイテレーションできるようにしたかった。</p>
 
-<p><code class="highlighter-rouge">yum</code>が使えないRed Hat Enterprise LinuxもしくはCentOSマシンを target と呼ぶ。</p>
+<p>単に<code class="highlighter-rouge">document.cookie</code>を読み取り専用のオブジェクトにマップするだけなら<a href="//www.ecma-international.org/ecma-262/10.0/index.html">ECMAScript® 2019</a>の<a href="//developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries">Object.fromEntries()</a>を使うと簡単だ。</p>
 
-<ol>
-  <li>target と同じバージョンの Linux 仮想マシンを最小インストールで新規作成する。これを source と呼ぶ。
-source はインターネットもしくはOSメディアなどを利用して<code class="highlighter-rouge">yum</code>が利用できる環境とする。
-仮想マシンを作成する方法は割愛。</li>
-  <li>source 上でローカル環境向けのリポジトリを作成する。これを repo と呼ぶ。</li>
-  <li>target に repo をコピーして<code class="highlighter-rouge">yum</code>で repo 内のパッケージを target にインストールする。</li>
-</ol>
-
-<h2 id="repo-の作成">repo の作成</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="c">#</span>
-<span class="c"># makelocalrepo.sh - Make local minimal yum repository</span>
-<span class="c">#</span>
-<span class="nb">set</span> -eu
-
-<span class="o">[[</span> <span class="nv">$# </span>&gt; 1 <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span>
-  <span class="nb">echo</span> <span class="s2">"</span><span class="k">$(</span>basename <span class="nv">$0</span><span class="k">)</span><span class="s2"> dest package..."</span>
-  <span class="nb">echo</span> <span class="s2">"  dest:    Name of local repository to create. dest.tar.gz is created."</span>
-  <span class="nb">echo</span> <span class="s2">"  package: Name of yum package to include into dest."</span>
-  <span class="nb">exit </span>1
-<span class="o">}</span>
-
-<span class="nv">dest</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="p">%.tar.gz</span><span class="k">}</span>
-<span class="o">[[</span> ! -e <span class="s2">"</span><span class="nv">$dest</span><span class="s2">"</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span>
-  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$dest</span><span class="s2"> should not exist."</span>
-  <span class="nb">exit </span>1
-<span class="o">}</span>
-
-<span class="nb">shift
-</span><span class="nv">packages</span><span class="o">=</span><span class="nv">$*</span>
-<span class="nv">repo</span><span class="o">=</span><span class="s2">"</span><span class="nv">$dest</span><span class="s2">/repo"</span>
-
-rpm -q --quiet yum-utils <span class="o">||</span> yum install -y yum-utils
-mkdir -p <span class="nv">$repo</span>
-yumdownloader --resolve --destdir<span class="o">=</span><span class="nv">$repo</span> <span class="nv">$packages</span>
-rpm -q --quiet createrepo <span class="o">||</span> yum install -y createrepo
-createrepo <span class="nv">$repo</span>
-
-cat &gt; <span class="s2">"</span><span class="nv">$dest</span><span class="s2">/install.sh"</span> <span class="sh">&lt;&lt;EOS
-#!/bin/bash
-set -eu
-
-cat &gt; /etc/yum.repos.d/localrepo.repo &lt;&lt;EOF
-[localrepo]
-name=localrepo
-baseurl=file://\$(readlink -f \$(dirname "\$0"))/repo
-enabled=0
-gpgcheck=0
-EOF
-
-yum --disablerepo=* --enablerepo=localrepo -y install $packages
-EOS
-
-</span>chmod +x <span class="s2">"</span><span class="nv">$dest</span><span class="s2">/install.sh"</span>
-tar czf <span class="s2">"</span><span class="nv">$dest</span><span class="s2">.tar.gz"</span> <span class="s2">"</span><span class="nv">$dest</span><span class="s2">"</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">cookie</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">';'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span>
+    <span class="nx">entry</span> <span class="o">=&gt;</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'='</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">trim</span><span class="p">()))</span>
+  <span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
 </div>
 
-<p>というシェルスクリプトを準備して後はインストールしたいパッケージを指定して実行する。</p>
-
-<p>例えば <code class="highlighter-rouge">nodejs</code> と <code class="highlighter-rouge">ruby</code> をインストールしたければ</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo makelocalrepo.sh localrepo nodejs ruby
-</code></pre>
-</div>
-<p>とするとカレントディレクトリに localrepo というディレクトリと localrepo.tar.gz というファイルが作成される。
-localrepo.tar.gz にインストーラとリポジトリが含まれる。</p>
-
-<p>ちなみに</p>
-
-<ul>
-  <li><code class="highlighter-rouge">yum</code>の downloadonly プラグインは非推奨となっており<code class="highlighter-rouge">yumdownloader</code>が今後(CentOS 6,RHEL 6以降)の推奨になっている。</li>
-  <li><code class="highlighter-rouge">yumdownloader</code>の resolve オプションで依存関係も全て解決される。ありがたい。</li>
-</ul>
-
-<h2 id="target-へ-repo-をインストール">target へ repo をインストール</h2>
-
-<p>出来上がったファイル（上の例では localrepo.tar.gz ）を target へコピーして以下を target 上で実行する。</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo tar xzf localrepo.tar.gz
-sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./install.sh
-</code></pre>
-</div>
+<p>これにProxyを組み合わせればオブジェクトに対する操作を<code class="highlighter-rouge">document.cookie</code>に反映できる。</p>
 
 
   </article>
@@ -225,12 +146,12 @@ sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./in
 <div class="post-aux">
   <ul class="list-inline">
     <li>
-      &nbsp;<i class="fa fa-edit"></i><span class="digits">2017-02-25</span>
+      &nbsp;<i class="fa fa-edit"></i><span class="digits">2020-03-07</span>
     </li>
     <li><i class="fa fa-comments"></i><a href="#disqus_thread">コメント</a>
 
       <span class="badge digits">
-        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2017/create-local-minimal-yum-repository'></script>
+        <script type='text/javascript' src='//disqus.com/forums/urinhack/get_num_replies_for_entry.js?url=http://urin.github.io/posts/2020/release-pico-cookie'></script>
       </span>
 
     </li>
@@ -238,13 +159,8 @@ sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./in
   
      
     <li>
-      <i class="fa fa-tag"></i><a href="/tags/Linux" title="5件の記事">Linux</a>
-      <span class="badge digits">5</span>
-    </li>
-     
-    <li>
-      <i class="fa fa-tag"></i><a href="/tags/bash" title="3件の記事">bash</a>
-      <span class="badge digits">3</span>
+      <i class="fa fa-tag"></i><a href="/tags/JavaScript" title="4件の記事">JavaScript</a>
+      <span class="badge digits">4</span>
     </li>
     
   
@@ -258,10 +174,10 @@ sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./in
       </a>
     </li>
     <li>
-      <div class="fb-like" data-href="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+      <div class="fb-like" data-href="http://urin.github.io/posts/2020/release-pico-cookie" data-width="120" data-layout="button_count" data-show-faces="false" data-send="false"></div>
     </li>
     <li>
-      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2017/create-local-minimal-yum-repository" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
+      <a href="https://getpocket.com/save" data-pocket-label="pocket" data-save-url="http://urin.github.io/posts/2020/release-pico-cookie" data-pocket-count="horizontal" class="pocket-btn" data-lang="en" title="あとで読む"></a>
     </li>
     <li>
       <a href="//b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="Bookmark" width="20" height="20" style="border: none;" /></a>
@@ -279,12 +195,10 @@ sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./in
 
     <div class="col-md-6 pagenation prev">
 
-      <a rel="prev" href="/posts/2016/pull-request-for-fluent-plugin-dstat-0.3.2" title="fluent-plugin-dstatで取得した値が不正になる問題を解決"><i class="fa fa-chevron-circle-left"></i><small>fluent-plugin-dstatで取得した値が不正になる問題を解決</small></a>
+      <a rel="prev" href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する"><i class="fa fa-chevron-circle-left"></i><small>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</small></a>
 
     </div>
     <div class="col-md-6 pagenation next">
-
-      <a rel="next" href="/posts/2017/run-bash-commands-as-a-user" title="特定のユーザ権限でのみ実行されるシェルスクリプト"><i class="fa fa-chevron-circle-right"></i><small>特定のユーザ権限でのみ実行されるシェルスクリプト</small></a>
 
     </div>
 
@@ -292,8 +206,8 @@ sudo <span class="nb">cd </span>localrepo <span class="o">&amp;&amp;</span> ./in
     <div id="disqus_thread"></div>
     <script>
       var disqus_shortname = 'urinhack';
-      var disqus_url = 'http://urin.github.io/posts/2017/create-local-minimal-yum-repository';
-      var disqus_title = 'Linuxローカル環境用に最小限のyumリポジトリを作成する方法';
+      var disqus_url = 'http://urin.github.io/posts/2020/release-pico-cookie';
+      var disqus_title = 'pico-cookieでdocument.cookieをオブジェクトにマップする';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

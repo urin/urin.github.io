@@ -5,9 +5,33 @@
     <description>URIN HACK - うりん</description>
     <link>http://urin.github.io/rss.xml</link>
     <link>http://urin.github.io</link>
-    <lastBuildDate>2020-02-28T21:44:08+09:00</lastBuildDate>
-    <pubDate>2020-02-28T21:44:08+09:00</pubDate>
+    <lastBuildDate>2020-03-07T20:01:53+09:00</lastBuildDate>
+    <pubDate>2020-03-07T20:01:53+09:00</pubDate>
     <ttl>1800</ttl>
+
+    <item>
+      <title>pico-cookieでdocument.cookieをオブジェクトにマップする</title>
+      <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;をオブジェクトにマップする&lt;a href=&quot;//github.com/urin/pico-cookie&quot;&gt;pico-cookie&lt;/a&gt;を作った。&lt;/p&gt;
+
+&lt;p&gt;同様のライブラリとして&lt;a href=&quot;//github.com/js-cookie/js-cookie&quot;&gt;js-cookie/js&lt;/a&gt;があるがメソッドを呼ばずにアクセスしたかったり普通にイテレーションできるようにしたかった。&lt;/p&gt;
+
+&lt;p&gt;単に&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;を読み取り専用のオブジェクトにマップするだけなら&lt;a href=&quot;//www.ecma-international.org/ecma-262/10.0/index.html&quot;&gt;ECMAScript® 2019&lt;/a&gt;の&lt;a href=&quot;//developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries&quot;&gt;Object.fromEntries()&lt;/a&gt;を使うと簡単だ。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromEntries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;';'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;decodeURIComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これにProxyを組み合わせればオブジェクトに対する操作を&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;に反映できる。&lt;/p&gt;
+
+</description>
+      <link>http://urin.github.io/posts/2020/release-pico-cookie</link>
+      <guid>http://urin.github.io//posts/2020/release-pico-cookie</guid>
+      <pubDate>2020-03-07T20:01:53+09:00</pubDate>
+    </item>
 
     <item>
       <title>JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title>
