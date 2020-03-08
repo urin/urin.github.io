@@ -135,7 +135,59 @@
 </code></pre>
 </div>
 
-<p>これにProxyを組み合わせればオブジェクトに対する操作を<code class="highlighter-rouge">document.cookie</code>に反映できる。</p>
+<p>これに<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>を組み合わせればオブジェクトに対する操作を<code class="highlighter-rouge">document.cookie</code>に反映できる。</p>
+
+<h2 id="動作条件">動作条件</h2>
+
+<ul>
+  <li>Chrome 73+</li>
+  <li>Edge 79+</li>
+  <li>Firefox 63+</li>
+  <li>Safari 12.1+</li>
+  <li>Opera 60+</li>
+  <li>Internet Explorerは非対応</li>
+</ul>
+
+<h2 id="使い方">使い方</h2>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"pico-cookie.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// document.cookie is mapped to cookie</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>  <span class="c1">// "SESSIONID=04ecb3d1b; APISID=ed724274d"</span>
+<span class="nx">cookie</span>           <span class="c1">// { SESSIONID: "04ecb3d1b", APISID: "ed724274d" }</span>
+
+<span class="c1">// Read</span>
+<span class="nx">cookie</span><span class="p">.</span><span class="nx">SESSIONID</span> <span class="c1">// "04ecb3d1b"</span>
+<span class="nx">cookie</span><span class="p">.</span><span class="nx">APISID</span>    <span class="c1">// "ed724274d"</span>
+
+<span class="c1">// Update</span>
+<span class="nx">cookie</span><span class="p">.</span><span class="nx">SESSIONID</span> <span class="o">=</span> <span class="s1">'abcd'</span>
+<span class="nx">cookie</span>           <span class="c1">// { SESSIONID: "abcd", APISID: "ed724274d" }</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>  <span class="c1">// "SESSIONID=abcd; APISID=ed724274d"</span>
+
+<span class="c1">// Add</span>
+<span class="nx">cookie</span><span class="p">.</span><span class="nx">NEWKEY</span> <span class="o">=</span> <span class="s1">'NEWVALUE'</span>
+<span class="nx">cookie</span>           <span class="c1">// { SESSIONID: "abcd", APISID: "ed724274d", NEWKEY: "NEWVALUE" }</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>  <span class="c1">// "SESSIONID=abcd; APISID=ed724274d; NEWKEY=NEWVALUE"</span>
+
+<span class="c1">// Delete</span>
+<span class="k">delete</span> <span class="nx">cookie</span><span class="p">.</span><span class="nx">NEWKEY</span>
+<span class="nx">cookie</span>           <span class="c1">// { SESSIONID: "abcd", APISID: "ed724274d" }</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span>  <span class="c1">// "SESSIONID=abcd; APISID=ed724274d"</span>
+
+<span class="c1">// Attributes</span>
+<span class="nx">cookie</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">'KEY'</span><span class="p">,</span> <span class="s1">'VALUE'</span><span class="p">,</span> <span class="p">{</span> <span class="na">samesite</span><span class="p">:</span> <span class="s1">'strict'</span> <span class="p">})</span> <span class="c1">// returns cookie itself</span>
+
+<span class="c1">// You can apply any methods same as plain object...</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">cookie</span><span class="p">)</span> <span class="c1">// ["SESSIONID", "APISID", "NEWKEY"]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="nx">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">cookie</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 
   </article>

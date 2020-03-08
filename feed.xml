@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-07T20:35:56+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">pico-cookieでdocument.cookieをオブジェクトにマップする</title><link href="/posts/2020/release-pico-cookie" rel="alternate" type="text/html" title="pico-cookieでdocument.cookieをオブジェクトにマップする" /><published>2020-03-07T20:01:53+09:00</published><updated>2020-03-07T20:01:53+09:00</updated><id>/posts/2020/release-pico-cookie</id><content type="html" xml:base="/posts/2020/release-pico-cookie">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;をオブジェクトにマップする&lt;a href=&quot;//github.com/urin/pico-cookie&quot;&gt;pico-cookie&lt;/a&gt;を作った。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-03-08T10:24:29+09:00</updated><id>/</id><title type="html">URIN HACK</title><subtitle>Amazing programming</subtitle><author><name>うりん</name></author><entry><title type="html">pico-cookieでdocument.cookieをオブジェクトにマップする</title><link href="/posts/2020/release-pico-cookie" rel="alternate" type="text/html" title="pico-cookieでdocument.cookieをオブジェクトにマップする" /><published>2020-03-07T20:01:53+09:00</published><updated>2020-03-07T20:01:53+09:00</updated><id>/posts/2020/release-pico-cookie</id><content type="html" xml:base="/posts/2020/release-pico-cookie">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;をオブジェクトにマップする&lt;a href=&quot;//github.com/urin/pico-cookie&quot;&gt;pico-cookie&lt;/a&gt;を作った。&lt;/p&gt;
 
 &lt;p&gt;同様のライブラリとして&lt;a href=&quot;//github.com/js-cookie/js-cookie&quot;&gt;js-cookie/js&lt;/a&gt;があるがメソッドを呼ばずにアクセスしたかったり普通にイテレーションできるようにしたかった。&lt;/p&gt;
 
@@ -12,7 +12,59 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;これにProxyを組み合わせればオブジェクトに対する操作を&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;に反映できる。&lt;/p&gt;</content><author><name>うりん</name></author><category term="JavaScript" /><summary type="html">document.cookieをオブジェクトにマップするpico-cookieを作った。</summary></entry><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T21:44:08+09:00</published><updated>2020-02-28T21:44:08+09:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
+&lt;p&gt;これに&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy&quot;&gt;Proxy&lt;/a&gt;を組み合わせればオブジェクトに対する操作を&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;に反映できる。&lt;/p&gt;
+
+&lt;h2 id=&quot;動作条件&quot;&gt;動作条件&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Chrome 73+&lt;/li&gt;
+  &lt;li&gt;Edge 79+&lt;/li&gt;
+  &lt;li&gt;Firefox 63+&lt;/li&gt;
+  &lt;li&gt;Safari 12.1+&lt;/li&gt;
+  &lt;li&gt;Opera 60+&lt;/li&gt;
+  &lt;li&gt;Internet Explorerは非対応&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;使い方&quot;&gt;使い方&lt;/h2&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pico-cookie.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// document.cookie is mapped to cookie&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &quot;SESSIONID=04ecb3d1b; APISID=ed724274d&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// { SESSIONID: &quot;04ecb3d1b&quot;, APISID: &quot;ed724274d&quot; }&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Read&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SESSIONID&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;04ecb3d1b&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;APISID&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// &quot;ed724274d&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Update&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SESSIONID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'abcd'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// { SESSIONID: &quot;abcd&quot;, APISID: &quot;ed724274d&quot; }&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &quot;SESSIONID=abcd; APISID=ed724274d&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Add&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NEWKEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'NEWVALUE'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// { SESSIONID: &quot;abcd&quot;, APISID: &quot;ed724274d&quot;, NEWKEY: &quot;NEWVALUE&quot; }&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &quot;SESSIONID=abcd; APISID=ed724274d; NEWKEY=NEWVALUE&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Delete&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NEWKEY&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// { SESSIONID: &quot;abcd&quot;, APISID: &quot;ed724274d&quot; }&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &quot;SESSIONID=abcd; APISID=ed724274d&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Attributes&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'KEY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'VALUE'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;samesite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'strict'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// returns cookie itself&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// You can apply any methods same as plain object...&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// [&quot;SESSIONID&quot;, &quot;APISID&quot;, &quot;NEWKEY&quot;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>うりん</name></author><category term="JavaScript" /><summary type="html">document.cookieをオブジェクトにマップするpico-cookieを作った。</summary></entry><entry><title type="html">JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する</title><link href="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser" rel="alternate" type="text/html" title="JavaScriptでローカルタイムのDateオブジェクトを夏時間終了前後のUTCへ変換する" /><published>2020-02-28T21:44:08+09:00</published><updated>2020-02-28T21:44:08+09:00</updated><id>/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser</id><content type="html" xml:base="/posts/2020/simple-way-to-convert-local-time-to-utc-on-browser">&lt;p&gt;世界中からアクセスされるWebアプリケーションで時刻を扱うとき夏時間を考慮する必要がある。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;サーバはユーザやクライアント環境(OS)の属しているタイムゾーンを知らない。&lt;/li&gt;
